@@ -61,6 +61,14 @@ class Paths
 	];
 	#end
 
+	// completely rewritten asset loading? fuck!
+	public static var currentTrackedSounds:Map<String, Sound> = [];
+	public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
+	public static var currentTrackedTextures:Map<String, Texture> = [];
+
+	// define the locally tracked assets
+	public static var localTrackedAssets:Array<String> = [];
+
 	public static function excludeAsset(key:String) {
 		if (!dumpExclusions.contains(key))
 			dumpExclusions.push(key);
@@ -165,8 +173,8 @@ class Paths
 				obj.destroy();
 				obj = null;
 				counterAssets++;
-				Debug.logTrace('Cleared $key from RAM');
-				Debug.logTrace('Cleared and removed $counterAssets cached assets.');
+				trace('Cleared $key from RAM');
+				trace('Cleared and removed $counterAssets cached assets.');
 			}
 		}
 
@@ -386,7 +394,7 @@ class Paths
 
 	inline static public function getSparrowAtlas(key:String, ?library:String, ?gpuRender:Bool):FlxAtlasFrames
 	{
-		gpuRender = gpuRender != null ? gpuRender : ClientPrefs.useGl;
+		gpuRender = gpuRender != null ? gpuRender : ClientPrefs.useGL;
 		#if MODS_ALLOWED
 		var imageLoaded:FlxGraphic = returnGraphic(key, library, gpuRender);
 		var xmlExists:Bool = false;
@@ -425,8 +433,6 @@ class Paths
 		return hideChars.split(path).join("").toLowerCase();
 	}
 
-	// completely rewritten asset loading? fuck!
-	public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
 	public static function returnGraphic(key:String, ?library:String, ?gpuRender:Bool)
 	{
 		gpuRender = gpuRender != null ? gpuRender : ClientPrefs.useGL;
@@ -518,7 +524,6 @@ class Paths
 		return null;
 	}
 
-	public static var currentTrackedSounds:Map<String, Sound> = [];
 	public static function returnSound(path:String, key:String, ?library:String) {
 		#if MODS_ALLOWED
 		var file:String = modsSounds(path, key);
