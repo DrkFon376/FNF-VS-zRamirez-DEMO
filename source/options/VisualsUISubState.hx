@@ -105,6 +105,13 @@ class VisualsUISubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 		option.onChange = onChangeFPSCounter;
+
+		var option:Option = new Option('Memeory Display',
+			'If unchecked, Memory is displayed in counter.',
+			'memoryDisplay',
+			'bool',
+			true);
+		addOption(option);
 		#end
 		
 		var option:Option = new Option('Pause Screen Song:',
