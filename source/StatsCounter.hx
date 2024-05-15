@@ -3,12 +3,15 @@ import openfl.display.FPS;
 import openfl.events.Event;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
+import flixel.FlxState;
 import flixel.FlxG;
 import flixel.util.FlxColor;
 import openfl.Lib;
 import flixel.math.FlxMath;
 import haxe.Int64;
 import openfl.system.System;
+
+using StringTools;
 
 class StatsCounter extends TextField
 {
@@ -24,6 +27,8 @@ class StatsCounter extends TextField
 	public var taskMemoryMegas:Dynamic = 0;
 
 	public var memoryUsage:String = '';
+
+	private var curState:String = '';
 
 	private var cacheCount:Int;
 
@@ -69,39 +74,42 @@ class StatsCounter extends TextField
 
 		var currentCount = times.length;
 		currentFPS = Math.round((currentCount + cacheCount) / 2);
-		if (currentFPS > ClientPrefs.framerate)
-			currentFPS = ClientPrefs.framerate;
+		/*if (currentFPS > ClientPrefs.framerate)
+			currentFPS = ClientPrefs.framerate;*/
+
+		curState = Main.initialState + '.hx';
+
+		if (curState.startsWith('options.')) 
+		{
+			var curStateSplit:Array<String> = curState.split('.');
+			curState = curStateSplit[1] + '.hx';
+		}
+		else if (curState.startsWith('editors.'))
+		{
+			var curStateSplit:Array<String> = curState.split('.');
+			curState = curStateSplit[1] + '.hx';
+		}
 
 		if (visible)
 		{
-			memoryUsage = (ClientPrefs.memoryDisplay ? "RAM: " : "");
+			memoryUsage = (ClientPrefs.memoryDisplay ? "RAM Usage: " : "");
 
 			#if !html5
 			memoryMegas = Int64.make(0, System.totalMemory);
 
 			taskMemoryMegas = Int64.make(0, MemoryUtil.getMemoryfromProcess());
 
+			var memInUse:Float = 0;
+
 			if (ClientPrefs.memoryDisplay)
 			{
-				if (memoryMegas >= 0x40000000)
-					memoryUsage += (Math.round(cast(memoryMegas, Float) / 0x400 / 0x400 / 0x400 * 1000) / 1000) + " GB";
-				else if (memoryMegas >= 0x100000)
-					memoryUsage += (Math.round(cast(memoryMegas, Float) / 0x400 / 0x400 * 1000) / 1000) + " MB";
-				else if (memoryMegas >= 0x400)
-					memoryUsage += (Math.round(cast(memoryMegas, Float) / 0x400 * 1000) / 1000) + " KB";
-				else
-					memoryUsage += memoryMegas + " B";
-
-				#if windows
-				if (taskMemoryMegas >= 0x40000000)
-					memoryUsage += " (" + (Math.round(cast(taskMemoryMegas, Float) / 0x400 / 0x400 / 0x400 * 1000) / 1000) + " GB)";
-				else if (taskMemoryMegas >= 0x100000)
-					memoryUsage += " (" + (Math.round(cast(taskMemoryMegas, Float) / 0x400 / 0x400 * 1000) / 1000) + " MB)";
-				else if (taskMemoryMegas >= 0x400)
-					memoryUsage += " (" + (Math.round(cast(taskMemoryMegas, Float) / 0x400 * 1000) / 1000) + " KB)";
-				else
-					memoryUsage += "(" + taskMemoryMegas + " B)";
+				#if !windows
+				memInUse = Math.round(cast(memoryMegas, Float) / 0x400 / 0x400 * 1000) / 1000;
+				#else
+				memInUse = Math.round(cast(taskMemoryMegas, Float) / 0x400 / 0x400 * 1000) / 1000;
 				#end
+				
+				memoryUsage += FlxMath.roundDecimal(memInUse, 2) + " MB";
 			}
 			#else
 			memoryMegas = HelperFunctions.truncateFloat((MemoryUtil.getMemoryfromProcess() / (1024 * 1024)) * 10, 3);
@@ -111,14 +119,15 @@ class StatsCounter extends TextField
 			text += '$memoryUsage';
 
 			textColor = 0xFFFFFFFF;
-			if (memoryMegas >= 0x40000000 || currentFPS <= ClientPrefs.framerate / 2)
+			if (memInUse > 3000 || currentFPS <= ClientPrefs.framerate / 2)
 			{
 				textColor = 0xFFFF0000;
 			}
 
 			text = "FPS: "
 			+ '${currentFPS}\n'
-			+ '$memoryUsage';
+			+ '$memoryUsage\n'
+			+ "State: " + '$curState';
 
 			#if debug
 			text += '\nDEBUG MODE';

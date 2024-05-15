@@ -33,7 +33,7 @@ class Main extends Sprite
 	var game = {
 		width: 1280, // WINDOW width
 		height: 720, // WINDOW height
-		initialState: TitleState, // initial game state
+		//initialState: TitleState, // initial game state
 		zoom: -1.0, // game state bounds
 		framerate: 60, // default framerate
 		skipSplash: true, // if the default flixel splash screen should be skipped
@@ -41,6 +41,8 @@ class Main extends Sprite
 	};
 
 	public static var fpsVar:StatsCounter;
+
+	public static var initialState:Class<FlxState> = TitleState; // The FlxState the game starts with.
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
@@ -88,7 +90,7 @@ class Main extends Sprite
 		}
 	
 		ClientPrefs.loadDefaultKeys();
-		addChild(new FlxGame(game.width, game.height, game.initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen));
+		addChild(new FlxGame(game.width, game.height, initialState, #if (flixel < "5.0.0") game.zoom, #end game.framerate, game.framerate, game.skipSplash, game.startFullscreen));
 
 		#if !mobile
 		fpsVar = new StatsCounter(10, 3, 0xFFFFFF);

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="zRamirezDanceTitle.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="zRamirezDance0000" x="7" y="7" width="699" height="630" frameX="-2" frameY="-16" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0001" x="713" y="7" width="703" height="630" frameX="0" frameY="-16" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0002" x="1423" y="7" width="703" height="629" frameX="0" frameY="-17" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0003" x="2133" y="7" width="699" height="629" frameX="-2" frameY="-17" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0004" x="2839" y="7" width="699" height="631" frameX="-2" frameY="-15" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0005" x="7" y="645" width="699" height="631" frameX="-2" frameY="-15" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0006" x="713" y="645" width="699" height="634" frameX="-2" frameY="-12" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0007" x="1419" y="645" width="699" height="644" frameX="-2" frameY="-2" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0008" x="1419" y="645" width="699" height="644" frameX="-2" frameY="-2" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0009" x="1419" y="645" width="699" height="644" frameX="-2" frameY="-2" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0010" x="2125" y="645" width="699" height="646" frameX="-2" frameY="0" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0011" x="2125" y="645" width="699" height="646" frameX="-2" frameY="0" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0012" x="2125" y="645" width="699" height="646" frameX="-2" frameY="0" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0013" x="2831" y="645" width="699" height="646" frameX="-2" frameY="0" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0014" x="2831" y="645" width="699" height="646" frameX="-2" frameY="0" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0015" x="7" y="1298" width="703" height="639" frameX="0" frameY="-7" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0016" x="7" y="1298" width="703" height="639" frameX="0" frameY="-7" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0017" x="717" y="1298" width="703" height="638" frameX="0" frameY="-8" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0018" x="1427" y="1298" width="699" height="638" frameX="-2" frameY="-8" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0019" x="2133" y="1298" width="699" height="640" frameX="-2" frameY="-6" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0020" x="2839" y="1298" width="699" height="640" frameX="-2" frameY="-6" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0021" x="7" y="1945" width="699" height="642" frameX="-2" frameY="-4" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0022" x="713" y="1945" width="699" height="646" frameX="-2" frameY="0" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0023" x="713" y="1945" width="699" height="646" frameX="-2" frameY="0" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0024" x="713" y="1945" width="699" height="646" frameX="-2" frameY="0" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0025" x="2125" y="645" width="699" height="646" frameX="-2" frameY="0" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0026" x="2125" y="645" width="699" height="646" frameX="-2" frameY="0" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0027" x="2125" y="645" width="699" height="646" frameX="-2" frameY="0" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0028" x="1419" y="1945" width="699" height="645" frameX="-2" frameY="-1" frameWidth="703" frameHeight="646"/>
+	<SubTexture name="zRamirezDance0029" x="1419" y="1945" width="699" height="645" frameX="-2" frameY="-1" frameWidth="703" frameHeight="646"/>
+</TextureAtlas>
