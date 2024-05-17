@@ -5,12 +5,12 @@
 
 	"weekCharacters": [
 		"",
-		"bf",
-		"gf"
+		"",
+		""
 	],
-	"weekBackground": "stage",
+	"weekBackground": "howtoplay",
 
-	"storyName": "",
+	"storyName": "How to play",
 	"weekBefore": "tutorial",
 	"weekName": "Tutorial",
 	"startUnlocked": true,

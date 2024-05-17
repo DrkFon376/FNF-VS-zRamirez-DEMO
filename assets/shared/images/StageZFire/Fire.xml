@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Fire.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Stage fuego0000" x="7" y="7" width="2695" height="524" frameX="-21" frameY="-40" frameWidth="2818" frameHeight="626"/>
+	<SubTexture name="Stage fuego0001" x="7" y="7" width="2695" height="524" frameX="-21" frameY="-40" frameWidth="2818" frameHeight="626"/>
+	<SubTexture name="Stage fuego0002" x="7" y="538" width="2805" height="562" frameX="-13" frameY="-10" frameWidth="2818" frameHeight="626"/>
+	<SubTexture name="Stage fuego0003" x="7" y="538" width="2805" height="562" frameX="-13" frameY="-10" frameWidth="2818" frameHeight="626"/>
+	<SubTexture name="Stage fuego0004" x="7" y="1107" width="2708" height="589" frameX="-9" frameY="0" frameWidth="2818" frameHeight="626"/>
+	<SubTexture name="Stage fuego0005" x="7" y="1107" width="2708" height="589" frameX="-9" frameY="0" frameWidth="2818" frameHeight="626"/>
+	<SubTexture name="Stage fuego0006" x="7" y="1703" width="2725" height="611" frameX="0" frameY="-15" frameWidth="2818" frameHeight="626"/>
+	<SubTexture name="Stage fuego0007" x="7" y="1703" width="2725" height="611" frameX="0" frameY="-15" frameWidth="2818" frameHeight="626"/>
+</TextureAtlas>

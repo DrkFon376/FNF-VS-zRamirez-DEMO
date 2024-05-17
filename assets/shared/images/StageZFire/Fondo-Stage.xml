@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Stages.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Drk stage fondo quemandosew0000" x="7" y="7" width="1444" height="891"/>
+	<SubTexture name="Drk stage fondo quemandosew0001" x="7" y="7" width="1444" height="891"/>
+	<SubTexture name="Drk stage fondo quemandosew0002" x="7" y="905" width="1444" height="891"/>
+	<SubTexture name="Drk stage fondo quemandosew0003" x="7" y="905" width="1444" height="891"/>
+	<SubTexture name="Drk stage fondo quemandosew0004" x="7" y="1803" width="1444" height="891"/>
+	<SubTexture name="Drk stage fondo quemandosew0005" x="7" y="1803" width="1444" height="891"/>
+	<SubTexture name="Drk stage fondo quemandosew0006" x="7" y="2701" width="1444" height="891"/>
+	<SubTexture name="Drk stage fondo quemandosew0007" x="7" y="2701" width="1444" height="891"/>
+</TextureAtlas>

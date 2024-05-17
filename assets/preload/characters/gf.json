@@ -3,8 +3,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				3,
-				0
+				0,
+				5
 			],
 			"fps": 24,
 			"anim": "cheer",
@@ -15,7 +15,7 @@
 			"loop": false,
 			"offsets": [
 				0,
-				-19
+				-17
 			],
 			"fps": 24,
 			"anim": "singLEFT",
@@ -26,7 +26,7 @@
 			"loop": false,
 			"offsets": [
 				0,
-				-20
+				-19
 			],
 			"fps": 24,
 			"anim": "singDOWN",
@@ -37,7 +37,7 @@
 			"loop": false,
 			"offsets": [
 				0,
-				4
+				7
 			],
 			"fps": 24,
 			"anim": "singUP",
@@ -48,7 +48,7 @@
 			"loop": false,
 			"offsets": [
 				0,
-				-20
+				-17
 			],
 			"fps": 24,
 			"anim": "singRIGHT",
@@ -59,7 +59,7 @@
 			"loop": false,
 			"offsets": [
 				-2,
-				-21
+				-18
 			],
 			"fps": 24,
 			"anim": "sad",
@@ -134,57 +134,6 @@
 				29
 			],
 			"name": "GF Dancing Beat"
-		},
-		{
-			"loop": true,
-			"offsets": [
-				45,
-				-8
-			],
-			"fps": 24,
-			"anim": "hairBlow",
-			"indices": [
-				0,
-				1,
-				2,
-				3
-			],
-			"name": "GF Dancing Beat Hair blowing"
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				-9
-			],
-			"fps": 24,
-			"anim": "hairFall",
-			"indices": [
-				0,
-				1,
-				2,
-				3,
-				4,
-				5,
-				6,
-				7,
-				8,
-				9,
-				10,
-				11
-			],
-			"name": "GF Dancing Beat Hair Landing"
-		},
-		{
-			"loop": true,
-			"offsets": [
-				-2,
-				-17
-			],
-			"fps": 24,
-			"anim": "scared",
-			"indices": [],
-			"name": "GF FEAR"
 		}
 	],
 	"no_antialiasing": false,
@@ -201,7 +150,7 @@
 		77
 	],
 	"camera_position": [
-		0,
+		-120,
 		0
 	],
 	"sing_duration": 4,

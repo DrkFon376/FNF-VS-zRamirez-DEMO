@@ -1,0 +1,4 @@
+Pantalla
+
+Value 1: hola para q apareces el modo epico
+y adios para quitarlo

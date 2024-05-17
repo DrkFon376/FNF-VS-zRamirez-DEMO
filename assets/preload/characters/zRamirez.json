@@ -13,109 +13,109 @@
 		},
 		{
 			"offsets": [
-				-128,
-				316
+				-115,
+				335
 			],
 			"loop": false,
 			"fps": 24,
 			"anim": "singDOWN",
 			"indices": [],
-			"name": "zRamirez DOWN NOTE0"
+			"name": "zRamirez Note Down0"
 		},
 		{
 			"offsets": [
-				-78,
-				349
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "zRamirez LEFT NOTE0"
-		},
-		{
-			"offsets": [
-				-155,
-				337
+				-135,
+				356
 			],
 			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
 			"indices": [],
-			"name": "zRamirez RIGHT NOTE0"
+			"name": "zRamirez Note Left0"
 		},
 		{
 			"offsets": [
-				-114,
-				365
+				-80,
+				344
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "zRamirez Note Right0"
+		},
+		{
+			"offsets": [
+				-101,
+				373
 			],
 			"loop": false,
 			"fps": 24,
 			"anim": "singUP",
 			"indices": [],
-			"name": "zRamirez UP NOTE0"
+			"name": "zRamirez Note Up0"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				-68,
-				283
+				-62,
+				303
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN-alt",
-			"fps": 24,
-			"name": "zRamirez DOWN NOTE ALT",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-57,
-				318
-			],
-			"anim": "singLEFT-alt",
-			"fps": 24,
-			"name": "zRamirez LEFT NOTE ALT",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-64,
-				321
-			],
-			"anim": "singRIGHT-alt",
-			"fps": 24,
-			"name": "zRamirez RIGHT NOTE ALT",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-81,
-				378
-			],
-			"anim": "singUP-alt",
-			"fps": 24,
-			"name": "zRamirez UP NOTE ALT",
-			"indices": []
+			"indices": [],
+			"name": "zRamirez Note Down ALT"
 		},
 		{
 			"offsets": [
-				-114,
+				-65,
 				352
 			],
 			"loop": false,
 			"fps": 24,
-			"anim": "hey",
+			"anim": "singRIGHT-alt",
 			"indices": [],
-			"name": "zRamirez HEY!"
+			"name": "zRamirez Note Left ALT"
+		},
+		{
+			"offsets": [
+				45,
+				349
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"indices": [],
+			"name": "zRamirez Note Right ALT"
+		},
+		{
+			"offsets": [
+				-40,
+				390
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-alt",
+			"indices": [],
+			"name": "zRamirez Note Up ALT"
+		},
+		{
+			"offsets": [
+				-114,
+				351
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "hey",
+			"loop": false,
+			"name": "zRamirez Hey"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/zRamirez",
+	"image": "characters/zRamirez-v2",
 	"position": [
 		-5,
-		445
+		465
 	],
 	"healthicon": "zRamirez",
 	"flip_x": false,
@@ -125,8 +125,8 @@
 		24
 	],
 	"camera_position": [
-		170,
-		-278
+		160,
+		-288
 	],
 	"sing_duration": 4,
 	"scale": 0.9
