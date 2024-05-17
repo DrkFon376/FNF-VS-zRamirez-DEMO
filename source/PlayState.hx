@@ -161,6 +161,10 @@ class PlayState extends MusicBeatState
 	public var unspawnNotes:Array<Note> = [];
 	public var eventNotes:Array<EventNote> = [];
 
+	public static var healthGainOnSustains:Bool = true; //This will be used soon... (I guess lol)
+	public static var allowedHealthDrainByOpponent:Bool = true;
+	public static var healthDrainOnOpponentSustains:Bool = true;
+
 	private var strumLine:FlxSprite;
 
 	//Handles the new epic mega sexy cam code that i've done
@@ -287,6 +291,8 @@ class PlayState extends MusicBeatState
 	public var inCutscene:Bool = false;
 	public var skipCountdown:Bool = false;
 	var songLength:Float = 0;
+
+	private var songInfo:SongInfo;
 
 	public var boyfriendCameraOffset:Array<Float> = null;
 	public var opponentCameraOffset:Array<Float> = null;
@@ -1113,6 +1119,33 @@ class PlayState extends MusicBeatState
 		FlxG.fixedTimestep = false;
 		moveCameraSection();
 
+		var daSongName:String = Paths.formatToSongPath(SONG.song);
+		var authorInfo:String = "";
+		var zRamirezAsMainComposer:String = "zRamirez & DrkFon376";
+		var drkfonAsMainComposer:String = "DrkFon376 & zRamirez";
+		var zRamirezAsSoleComposer:String = "zRamirez";
+		var drkfonAsSoleComposer:String = "DrkFon376";
+
+		switch (daSongName)
+		{
+			case "tutorial":
+				authorInfo = "Kawai-Sprite";
+			case "bad-battle" | "bad-battle-hotfix":
+				authorInfo = zRamirezAsMainComposer;
+			case "intervention":
+				authorInfo = drkfonAsMainComposer;
+			case "friendship":
+				authorInfo = drkfonAsMainComposer;
+			case "override":
+				authorInfo = drkfonAsSoleComposer;
+			default:
+				authorInfo = zRamirezAsSoleComposer;
+		}
+
+		songInfo = new SongInfo(-360, 0, SONG.song, authorInfo);
+		songInfo.cameras = [camOther];
+		add(songInfo);
+
 		healthBarBG = new AttachedSprite('healthBar');
 		healthBarBG.y = FlxG.height * 0.89;
 		healthBarBG.screenCenter(X);
@@ -1191,6 +1224,7 @@ class PlayState extends MusicBeatState
 		for (event in eventPushedMap.keys())
 		{
 			startLuasOnFolder('custom_events/' + event + '.lua');
+			startLuasOnFolder('events/' + event + '.lua');
 		}
 		#end
 		noteTypeMap.clear();
@@ -2360,6 +2394,9 @@ class PlayState extends MusicBeatState
 					spr.dance();
 				});
 		}
+
+		if (songInfo != null)
+			songInfo.start();
 
 		#if desktop
 		// Updating Discord Rich Presence (with Time Left)
@@ -4697,6 +4734,40 @@ class PlayState extends MusicBeatState
 		}
 		StrumPlayAnim(true, Std.int(Math.abs(note.noteData)), time);
 		note.hitByOpponent = true;
+
+		if (allowedHealthDrainByOpponent) {
+			if (health > 0.01 && health <= 0.66) {
+				if (note.isSustainNote) {
+					if (healthDrainOnOpponentSustains) {
+						health -= 0.0075/1.5;
+					} else {
+						health -= 0.0075/8;
+					}
+				} else {
+					health -= 0.0075;
+				}
+			} else if (health > 0.66 && health <= 1.4) {
+				if (note.isSustainNote) {
+					if (healthDrainOnOpponentSustains) {
+						health -= 0.014/1.5;
+					} else {
+						health -= 0.014/8;
+					}
+				} else {
+					health -= 0.014;
+				}
+			} else if (health > 1.4 && health <= 2) {
+				if (note.isSustainNote) {
+					if (healthDrainOnOpponentSustains) {
+						health -= 0.023/1.5;
+					} else {
+						health -= 0.023/8;
+					}
+				} else {
+					health -= 0.023;
+				}
+			}
+		}
 
 		callOnLuas('opponentNoteHit', [notes.members.indexOf(note), Math.abs(note.noteData), note.noteType, note.isSustainNote]);
 
