@@ -1019,6 +1019,8 @@ class ChartingState extends MusicBeatState
 			directories.push(Paths.mods(mod + '/custom_events/'));
 		#end
 
+		directories.push(Paths.getPreloadPath('events/'));
+
 		for (i in 0...directories.length) {
 			var directory:String =  directories[i];
 			if(FileSystem.exists(directory)) {
