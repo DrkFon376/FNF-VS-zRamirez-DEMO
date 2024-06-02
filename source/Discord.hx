@@ -44,7 +44,7 @@ class DiscordClient
 		DiscordRpc.presence({
 			details: "In the Menus",
 			state: null,
-			largeImageKey: 'logomod',
+			largeImageKey: 'logomodupdated',
 			largeImageText: "VS zRamírez"
 		});
 	}
@@ -81,7 +81,7 @@ class DiscordClient
 		DiscordRpc.presence({
 			details: details,
 			state: state,
-			largeImageKey: 'logomod',
+			largeImageKey: 'logomodupdated',
 			largeImageText: "Mod Version: " + MainMenuState.vszRamirezVersion,
 			smallImageKey : smallImageKey,
 			// Obtained times are in milliseconds so they are divided so Discord can use it
