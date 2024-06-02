@@ -1119,33 +1119,6 @@ class PlayState extends MusicBeatState
 		FlxG.fixedTimestep = false;
 		moveCameraSection();
 
-		var daSongName:String = Paths.formatToSongPath(SONG.song);
-		var authorInfo:String = "";
-		var zRamirezAsMainComposer:String = "zRamirez & DrkFon376";
-		var drkfonAsMainComposer:String = "DrkFon376 & zRamirez";
-		var zRamirezAsSoleComposer:String = "zRamirez";
-		var drkfonAsSoleComposer:String = "DrkFon376";
-
-		switch (daSongName)
-		{
-			case "tutorial":
-				authorInfo = "Kawai-Sprite";
-			case "bad-battle" | "bad-battle-hotfix":
-				authorInfo = zRamirezAsMainComposer;
-			case "intervention":
-				authorInfo = drkfonAsMainComposer;
-			case "friendship":
-				authorInfo = drkfonAsMainComposer;
-			case "override":
-				authorInfo = drkfonAsSoleComposer;
-			default:
-				authorInfo = zRamirezAsSoleComposer;
-		}
-
-		songInfo = new SongInfo(-360, 0, SONG.song, authorInfo);
-		songInfo.cameras = [camOther];
-		add(songInfo);
-
 		healthBarBG = new AttachedSprite('healthBar');
 		healthBarBG.y = FlxG.height * 0.89;
 		healthBarBG.screenCenter(X);
@@ -1185,7 +1158,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
 
-		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
+		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "VS zRamírez", 32);
 		botplayTxt.setFormat(Paths.font("PhantomMuff Full Letters 1.1.5.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.25;
@@ -2356,6 +2329,13 @@ class PlayState extends MusicBeatState
 	var lastReportedPlayheadPosition:Int = 0;
 	var songTime:Float = 0;
 
+	var authorInfoPrefix:String = "Song by: ";
+	var authorInfo:String = "";
+	var zRamirezAsMainComposer:String = "zRamirez & DrkFon376";
+	var drkfonAsMainComposer:String = "DrkFon376 & zRamirez";
+	var zRamirezAsSoleComposer:String = "zRamirez";
+	var drkfonAsSoleComposer:String = "DrkFon376";
+
 	function startSong():Void
 	{
 		startingSong = false;
@@ -2395,6 +2375,28 @@ class PlayState extends MusicBeatState
 				});
 		}
 
+		var daSongName:String = Paths.formatToSongPath(SONG.song);
+
+		switch (daSongName)
+		{
+			case "tutorial":
+				authorInfo = "Kawai-Sprite";
+			case "bad-battle" | "bad-battle-hotfix":
+				authorInfo = zRamirezAsMainComposer;
+			case "intervention":
+				authorInfo = drkfonAsMainComposer;
+			case "friendship":
+				authorInfo = drkfonAsMainComposer;
+			case "override":
+				authorInfo = drkfonAsSoleComposer;
+			default:
+				authorInfo = zRamirezAsSoleComposer;
+		}
+
+		songInfo = new SongInfo(-360, 0, SONG.song, authorInfoPrefix + authorInfo);
+		songInfo.cameras = [camOther];
+		add(songInfo);
+
 		if (songInfo != null)
 			songInfo.start();
 
@@ -2426,6 +2428,10 @@ class PlayState extends MusicBeatState
 		Conductor.changeBPM(songData.bpm);
 
 		curSong = songData.song;
+
+		SongInfo.daAuthorInfo = "";
+		SongInfo.customJukeBoxTagColor = "";
+		SongInfo.disabled = false;
 
 		if (SONG.needsVoices)
 			vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
@@ -3474,31 +3480,54 @@ class PlayState extends MusicBeatState
 				var time:Float = Std.parseFloat(value2);
 				if(Math.isNaN(time) || time <= 0) time = 0.6;
 
-				if((value != 0) || (value != 2)) {
-					if(dad.curCharacter.startsWith('gf')) { //Tutorial GF is actually Dad! The GF is an imposter!! ding ding ding ding ding ding ding, dindinding, end my suffering
-						dad.playAnim('cheer', true);
+				switch (value)
+				{
+					case 0:
+						boyfriend.playAnim('hey', true);
+						boyfriend.specialAnim = true;
+						boyfriend.heyTimer = time;
+					case 1:
+						if(dad.curCharacter.startsWith('gf')) { //Tutorial GF is actually Dad! The GF is an imposter!! ding ding ding ding ding ding ding, dindinding, end my suffering
+							dad.playAnim('cheer', true);
+							dad.specialAnim = true;
+							dad.heyTimer = time;
+						} else if (gf != null) {
+							gf.playAnim('cheer', true);
+							gf.specialAnim = true;
+							gf.heyTimer = time;
+						}
+	
+						if(curStage == 'mall') {
+							bottomBoppers.animation.play('hey', true);
+							heyTimer = time;
+						}
+					case 2:
+						dad.playAnim('hey', true);
 						dad.specialAnim = true;
 						dad.heyTimer = time;
-					} else if (gf != null) {
-						gf.playAnim('cheer', true);
-						gf.specialAnim = true;
-						gf.heyTimer = time;
-					}
+					default:
+						boyfriend.playAnim('hey', true);
+						boyfriend.specialAnim = true;
+						boyfriend.heyTimer = time;
 
-					if(curStage == 'mall') {
-						bottomBoppers.animation.play('hey', true);
-						heyTimer = time;
-					}
-				}
-				if((value != 1) || (value != 2)) {
-					boyfriend.playAnim('hey', true);
-					boyfriend.specialAnim = true;
-					boyfriend.heyTimer = time;
-				}
-				if((value != 0) || (value != 1)) {
-					dad.playAnim('hey', true);
-					dad.specialAnim = true;
-					dad.heyTimer = time;
+						if(dad.curCharacter.startsWith('gf')) { //Tutorial GF is actually Dad! The GF is an imposter!! ding ding ding ding ding ding ding, dindinding, end my suffering
+							dad.playAnim('cheer', true);
+							dad.specialAnim = true;
+							dad.heyTimer = time;
+						} else if (gf != null) {
+							gf.playAnim('cheer', true);
+							gf.specialAnim = true;
+							gf.heyTimer = time;
+						}
+	
+						if(curStage == 'mall') {
+							bottomBoppers.animation.play('hey', true);
+							heyTimer = time;
+						}
+
+						dad.playAnim('hey', true);
+						dad.specialAnim = true;
+						dad.heyTimer = time;
 				}
 
 			case 'Set GF Speed':
@@ -3886,13 +3915,22 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	public function moveCameraWhenSinging(isDad:Bool)
+	public function moveCameraWhenSinging(isDad:Bool, ?isGf:Bool = false)
 	{
 		if(isDad)
 		{
-			camFollow.set(dad.getMidpoint().x + 150 + cameraOffsetWhenSinging[0], dad.getMidpoint().y - 100 + cameraOffsetWhenSinging[1]);
-			camFollow.x += dad.cameraPosition[0] + opponentCameraOffset[0];
-			camFollow.y += dad.cameraPosition[1] + opponentCameraOffset[1];
+			if (isGf && gf != null && SONG.notes[curSection].gfSection)
+			{
+				camFollow.set(gf.getMidpoint().x + cameraOffsetWhenSinging[0], gf.getMidpoint().y + cameraOffsetWhenSinging[1]);
+				camFollow.x += gf.cameraPosition[0] + girlfriendCameraOffset[0];
+				camFollow.y += gf.cameraPosition[1] + girlfriendCameraOffset[1];
+			}
+			else
+			{
+				camFollow.set(dad.getMidpoint().x + 150 + cameraOffsetWhenSinging[0], dad.getMidpoint().y - 100 + cameraOffsetWhenSinging[1]);
+				camFollow.x += dad.cameraPosition[0] + opponentCameraOffset[0];
+				camFollow.y += dad.cameraPosition[1] + opponentCameraOffset[1];
+			}
 		}
 		else
 		{
@@ -4690,32 +4728,32 @@ class PlayState extends MusicBeatState
 				{
 					if (!SONG.notes[curSection].mustHitSection)
 					{
-						if (moveCameraWhenSingingBool)
+						if (moveCameraWhenSingingBool && !isCameraOnForcedPos)
 						{
 							if(char.animation.curAnim.name.startsWith('singLEFT'))
 							{
 								cameraOffsetWhenSinging = [0 - cameraOffsetWhenSingingValue, 0];
-								moveCameraWhenSinging(true);
+								gf != null && SONG.notes[curSection].gfSection ? moveCameraWhenSinging(true, true) : moveCameraWhenSinging(true);
 							}
 							else if(char.animation.curAnim.name.startsWith('singDOWN'))
 							{
 								cameraOffsetWhenSinging = [0, 0 + cameraOffsetWhenSingingValue];
-								moveCameraWhenSinging(true);
+								gf != null && SONG.notes[curSection].gfSection ? moveCameraWhenSinging(true, true) : moveCameraWhenSinging(true);
 							}
 							else if(char.animation.curAnim.name.startsWith('singUP'))
 							{
 								cameraOffsetWhenSinging = [0, 0 - cameraOffsetWhenSingingValue];
-								moveCameraWhenSinging(true);
+								gf != null && SONG.notes[curSection].gfSection ? moveCameraWhenSinging(true, true) : moveCameraWhenSinging(true);
 							}
 							else if(char.animation.curAnim.name.startsWith('singRIGHT'))
 							{
 								cameraOffsetWhenSinging = [0 + cameraOffsetWhenSingingValue, 0];
-								moveCameraWhenSinging(true);
+								gf != null && SONG.notes[curSection].gfSection ? moveCameraWhenSinging(true, true) : moveCameraWhenSinging(true);
 							}
 							else if(char.animation.curAnim.name.startsWith('idle'))
 							{
 								cameraOffsetWhenSinging = [0, 0];
-								moveCameraWhenSinging(true);
+								gf != null && SONG.notes[curSection].gfSection ? moveCameraWhenSinging(true, true) : moveCameraWhenSinging(true);
 							}
 						}
 					}
@@ -4848,7 +4886,7 @@ class PlayState extends MusicBeatState
 
 					if (SONG.notes[curSection].mustHitSection)
 					{
-						if (moveCameraWhenSingingBool)
+						if (moveCameraWhenSingingBool && !isCameraOnForcedPos)
 						{
 							if(boyfriend.animation.curAnim.name.startsWith('singLEFT'))
 							{
