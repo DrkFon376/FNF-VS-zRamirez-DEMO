@@ -94,12 +94,12 @@ class StatsCounter extends TextField
 		{
 			memoryUsage = (ClientPrefs.memoryDisplay ? "RAM Usage: " : "");
 
+			var memInUse:Float = 0;
+
 			#if !html5
 			memoryMegas = Int64.make(0, System.totalMemory);
 
 			taskMemoryMegas = Int64.make(0, MemoryUtil.getMemoryfromProcess());
-
-			var memInUse:Float = 0;
 
 			if (ClientPrefs.memoryDisplay)
 			{
