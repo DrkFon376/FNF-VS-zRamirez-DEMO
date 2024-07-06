@@ -36,7 +36,8 @@ class PauseSubState extends MusicBeatSubstate
 	public function new(x:Float, y:Float)
 	{
 		super();
-		if(CoolUtil.difficulties.length < 2) menuItemsOG.remove('Change Difficulty'); //No need to change difficulty if there is only one!
+		if(CoolUtil.difficulties.length < 2 || (PlayState.SONG.song.toLowerCase() == 'friendship v2' || PlayState.SONG.song.toLowerCase() == 'friendship-v2'))
+			menuItemsOG.remove('Change Difficulty'); //No need to change difficulty if there is only one!
 
 		if(PlayState.chartingMode)
 		{
@@ -57,6 +58,8 @@ class PauseSubState extends MusicBeatSubstate
 		for (i in 0...CoolUtil.difficulties.length) {
 			var diff:String = '' + CoolUtil.difficulties[i];
 			difficultyChoices.push(diff);
+			if (PlayState.SONG.song.toLowerCase() != 'bad battle hotfix' && PlayState.SONG.song.toLowerCase() != 'bad-battle-hotfix')
+				difficultyChoices.remove('Fucked');
 		}
 		difficultyChoices.push('BACK');
 

@@ -22,25 +22,28 @@ class Prompt extends MusicBeatSubstate
 	var buttons:FlxSprite = new FlxSprite(473.3, 450);
 	var theText:String = '';
 	var goAnyway:Bool = false;
+	var onlyAcceptButton:Bool = false;
 	var UI_box:FlxUIPopup;
 	var panel:FlxSprite;
 	var panelbg:FlxSprite;
 	var buttonAccept:FlxButton;
 	var buttonNo:FlxButton;
 	var cornerSize:Int = 10;
-	public function new(promptText:String='', defaultSelected:Int = 0, okCallback:Void->Void, cancelCallback:Void->Void,acceptOnDefault:Bool=false,option1:String=null,option2:String=null) 
+	public function new(promptText:String='', defaultSelected:Int = 0, okCallback:Void->Void, cancelCallback:Void->Void,acceptOnDefault:Bool=false,onlyAccept:Null<Bool>=false,option1:String=null,option2:String=null) 
 	{
 		selected = defaultSelected;
 		okc = okCallback;
 		cancelc = cancelCallback;
 		theText = promptText;
 		goAnyway = acceptOnDefault;
+		onlyAcceptButton = onlyAccept;
 		
 		var op1 = 'OK';
 		var op2 = 'CANCEL';
 		
 		if (option1 != null) op1 = option1;
 		if (option2 != null) op2 = option2;
+
 		buttonAccept = new FlxButton(473.3, 450, op1, function(){if(okc != null)okc();
 		close();} );
 		buttonNo = new FlxButton(633.3,450,op2,function(){if(cancelc != null)cancelc();
@@ -60,8 +63,16 @@ class Prompt extends MusicBeatSubstate
 		}else{
 		panel = new FlxSprite(0, 0);
 		panelbg = new FlxSprite(0, 0);
-		makeSelectorGraphic(panel,300,150,0xff999999);
-		makeSelectorGraphic(panelbg,304,154,0xff000000);
+		if (onlyAcceptButton)
+		{
+			makeSelectorGraphic(panel,300,210,0xff999999);
+			makeSelectorGraphic(panelbg,304,214,0xff000000);
+		}
+		else
+		{
+			makeSelectorGraphic(panel,300,150,0xff999999);
+			makeSelectorGraphic(panelbg,304,154,0xff000000);
+		}
 		//panel.makeGraphic(300, 150, 0xff999999);
 		//panel.loadGraphic(Paths.image('ui/promptbg'));
 		/*
@@ -80,17 +91,25 @@ class Prompt extends MusicBeatSubstate
 		add(buttonAccept);
 		add(buttonNo);
 		//add(buttons);
-		var textshit:FlxText = new FlxText(buttonNo.width*2, panel.y, 300, theText, 16);
+		var textshit:FlxText = new FlxText(0, 0, 300, theText, 16);
 		textshit.alignment = 'center';
-		add(textshit);
 		textshit.screenCenter();
+		textshit.y = panel.y + 20;
+        textshit.scrollFactor.set();
+		add(textshit);
+
 		buttonAccept.screenCenter();
 		buttonNo.screenCenter();
-		buttonAccept.x -= buttonNo.width/1.5;
-		buttonAccept.y = panel.y + panel.height-30;
-		buttonNo.x += buttonNo.width/1.5;
-		buttonNo.y = panel.y + panel.height-30;
-		textshit.scrollFactor.set();
+		buttonAccept.x = panel.x + (panel.width / 4) - (buttonAccept.width / 2);
+        buttonAccept.y = panel.y + panel.height - 40;
+        buttonNo.x = panel.x + (3 * panel.width / 4) - (buttonNo.width / 2);
+        buttonNo.y = panel.y + panel.height - 40;
+
+		if (onlyAcceptButton)
+		{
+			buttonAccept.x = panel.x + (3 * panel.width / 4) - (buttonNo.width / 2);
+			remove(buttonNo);
+		}
 		}
 	}
 	/*
@@ -135,7 +154,7 @@ class Prompt extends MusicBeatSubstate
 	function makeSelectorGraphic(panel:FlxSprite,w,h,color:FlxColor)
 	{
 		panel.makeGraphic(w, h, color);
-		panel.pixels.fillRect(new Rectangle(0, 190, panel.width, 5), 0x0);
+		//panel.pixels.fillRect(new Rectangle(0, h - cornerSize, panel.width, 5), 0x0);
 		
 		// Why did i do this? Because i'm a lmao stupid, of course
 		// also i wanted to understand better how fillRect works so i did this shit lol???

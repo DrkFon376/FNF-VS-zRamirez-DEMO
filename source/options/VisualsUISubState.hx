@@ -45,7 +45,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			"Choose what texture you want to be used in the Note Splashes.",
 			'noteSplashesTextureDefault',
 			'string',
-			'Psych',
+			'Vanilla',
 			['Psych', 'Vanilla']);
 		addOption(option);
 
@@ -104,14 +104,22 @@ class VisualsUISubState extends BaseOptionsMenu
 			'bool',
 			true);
 		addOption(option);
-		option.onChange = onChangeFPSCounter;
 
-		var option:Option = new Option('Memeory Display',
-			'If unchecked, Memory is displayed in counter.',
+		var option:Option = new Option('Show Memory Usage',
+			'If checked, Memory Usage is displayed in counter.',
 			'memoryDisplay',
 			'bool',
 			true);
 		addOption(option);
+
+		#if debug
+		var option:Option = new Option('Show State',
+			'If checked, the current state is displayed in counter.',
+			'showState',
+			'bool',
+			true);
+		addOption(option);
+		#end
 		#end
 		
 		var option:Option = new Option('Pause Screen Song:',
@@ -159,11 +167,11 @@ class VisualsUISubState extends BaseOptionsMenu
 		super.destroy();
 	}
 
-	#if !mobile
+	/*#if !mobile
 	function onChangeFPSCounter()
 	{
 		if(Main.fpsVar != null)
-			Main.fpsVar.visible = ClientPrefs.showFPS;
+			Main.fpsVar.visible = ClientPrefs.showAllCounterStats;
 	}
-	#end
+	#end*/
 }

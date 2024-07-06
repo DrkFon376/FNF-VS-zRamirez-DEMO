@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
+	<!--Our custom covers build for VS zRamírez-->
+	<define name="covers_build" if="covers_build"/>
+
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin': VS zRamirez" file="VS zRamirez" packageName="com.shadowmario.psychengine" package="com.shadowmario.psychengine" main="Main" version="0.2.8" company="Friday Night Funkin'" />
+	<!--App settings for all builds-->
+	<app packageName="com.shadowmario.psychengine" package="com.shadowmario.psychengine" main="Main" version="0.2.8" company="Friday Night Funkin'" />
+
+	<!--App settings for all builds except the covers build-->
+	<section unless="covers_build">
+		<app title="Friday Night Funkin': VS zRamirez" file="VS zRamirez" />
+	</section>
+
+	<!--App settings for the covers build-->
+	<section if="covers_build">
+		<app title="Friday Night Funkin': VS zRamirez Custom Covers Build" file="VS zRamirez Custom Covers Build" />
+	</section>
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
@@ -40,6 +54,7 @@
 	<set name="BUILD_DIR" value="export/debug" if="debug" />
 	<set name="BUILD_DIR" value="export/release" unless="debug" />
 	<set name="BUILD_DIR" value="export/32bit" if="32bits" />
+	<set name="BUILD_DIR" value="export/covers_build" if="covers_build" />
 
 	<classpath name="source" />
 	
@@ -116,7 +131,7 @@
 	<haxelib name="discord_rpc" if="desktop"/>
 
 	<!-- Enables a terminal log prompt on debug builds -->
-	<haxelib name="hxcpp-debug-server" if="debug"/>
+	<!-- <haxelib name="hxcpp-debug-server" if="debug" -->
 
 	<!-- <haxelib name="markdown" /> -->
 	<!-- <haxelib name="HtmlParser" /> -->

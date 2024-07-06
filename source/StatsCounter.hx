@@ -116,7 +116,10 @@ class StatsCounter extends TextField
 			memoryUsage += memoryMegas + " MB";
 			#end
 
-			text += '$memoryUsage';
+			if (ClientPrefs.showAllCounterStats)
+				text += '$memoryUsage';
+			else
+				text += '';
 
 			textColor = 0xFFFFFFFF;
 			if (memInUse > 3000 || currentFPS <= ClientPrefs.framerate / 2)
@@ -124,14 +127,15 @@ class StatsCounter extends TextField
 				textColor = 0xFFFF0000;
 			}
 
-			text = "FPS: "
-			+ '${currentFPS}\n'
-			+ '$memoryUsage\n'
-			+ "State: " + '$curState';
-
-			#if debug
-			text += '\nDEBUG MODE';
-			#end
+			if (ClientPrefs.showAllCounterStats)
+			{
+				text = (ClientPrefs.showFPS ? "FPS: " + '${currentFPS}\n' : "") //Ported from qt extreme v2.5
+					+ (ClientPrefs.memoryDisplay ? '$memoryUsage' + "\n" : "")
+					#if debug + (ClientPrefs.showState ? "State: " + curState + "\n" : "") #end
+					#if debug + "DEBUG MODE" #end;
+			}
+			else
+				text = '';
 		}
 
 		cacheCount = currentCount;

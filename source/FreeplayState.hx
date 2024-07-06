@@ -50,6 +50,11 @@ class FreeplayState extends MusicBeatState
 	var intendedColor:Int;
 	var colorTween:FlxTween;
 
+	var lastSongLocation:Int; //Where to loop to when looping up.
+	var lastSongColor:Int; //Used for when the background darkens to black as you descend.
+	var amountToTakeAway:Int = 0; //How deep you are in the depths.
+	var downLoopCounter:Int; //Starts at 0, but each time you loop around, will increment by 1. Once it reaches 10 or above, it will allow you to go into the depths. Resets if you go up even once.
+
 	override function create()
 	{
 		//Paths.clearStoredMemory();
@@ -89,6 +94,16 @@ class FreeplayState extends MusicBeatState
 			}
 		}
 		WeekData.loadTheFirstEnabledMod();
+
+		WeekData.setDirectoryFromWeek();
+
+		lastSongLocation = songs.length-1;
+		lastSongColor = songs[lastSongLocation].color; //Keep this the same colour as the last song on the freeplay list
+
+		for (i in 0...20){
+			addSong("", 0, 'invis', FlxColor.fromRGB(0, 0, 0));
+		}
+		addSong("Friendship v2", 0, 'invis', FlxColor.fromRGB(0, 0, 0));
 
 		/*		//KIND OF BROKEN NOW AND ALSO PRETTY USELESS//
 
@@ -237,7 +252,7 @@ class FreeplayState extends MusicBeatState
 	var holdTime:Float = 0;
 	override function update(elapsed:Float)
 	{
-		if (FlxG.sound.music.volume < 0.7)
+		if (FlxG.sound.music.volume < 0.7 && songs[curSelected].songName != "" && songs[curSelected].songName != "Friendship v2" && songs[curSelected].songName != "Friendship-v2")
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
@@ -259,7 +274,7 @@ class FreeplayState extends MusicBeatState
 			ratingSplit[1] += '0';
 		}
 
-		scoreText.text = 'PERSONAL BEST: ' + lerpScore + ' (' + ratingSplit.join('.') + '%)';
+		scoreText.text = 'PERSONAL BEST: ' + (songs[curSelected].songName == "" ? "???" : lerpScore + ' (' + ratingSplit.join('.') + '%)');
 		positionHighscore();
 
 		var upP = controls.UI_UP_P;
@@ -269,7 +284,7 @@ class FreeplayState extends MusicBeatState
 		var ctrl = FlxG.keys.justPressed.CONTROL;
 
 		var shiftMult:Int = 1;
-		if(FlxG.keys.pressed.SHIFT) shiftMult = 3;
+		//if(FlxG.keys.pressed.SHIFT) shiftMult = 3;
 
 		if(songs.length > 1)
 		{
@@ -293,7 +308,14 @@ class FreeplayState extends MusicBeatState
 				if(holdTime > 0.5 && checkNewHold - checkLastHold > 0)
 				{
 					changeSelection((checkNewHold - checkLastHold) * (controls.UI_UP ? -shiftMult : shiftMult));
-					changeDiff();
+
+					if(songs[curSelected].songName == "")
+					{
+						holdTime = 0;
+						changeDiff();
+					}
+					else
+						changeDiff();
 				}
 			}
 
@@ -326,7 +348,7 @@ class FreeplayState extends MusicBeatState
 			persistentUpdate = false;
 			openSubState(new GameplayChangersSubstate());
 		}
-		else if(space)
+		else if(space && songs[curSelected].songName != "" && songs[curSelected].songName != "Friendship v2" && songs[curSelected].songName != "Friendship-v2")
 		{
 			if(instPlaying != curSelected)
 			{
@@ -352,7 +374,7 @@ class FreeplayState extends MusicBeatState
 			}
 		}
 
-		else if (accepted)
+		else if (accepted && songs[curSelected].songName != "")
 		{
 			persistentUpdate = false;
 			var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
@@ -408,10 +430,15 @@ class FreeplayState extends MusicBeatState
 	{
 		curDifficulty += change;
 
-		if (curDifficulty < 0)
-			curDifficulty = CoolUtil.difficulties.length-1;
-		if (curDifficulty >= CoolUtil.difficulties.length)
-			curDifficulty = 0;
+		if (songs[curSelected].songName.toLowerCase()=="friendship v2" || songs[curSelected].songName.toLowerCase()=="friendship-v2")
+			curDifficulty = 1;
+		else
+		{
+			if (curDifficulty < 0)
+				curDifficulty = CoolUtil.difficulties.length-1;
+			if (curDifficulty >= CoolUtil.difficulties.length)
+				curDifficulty = 0;
+		}
 
 		lastDifficultyName = CoolUtil.difficulties[curDifficulty];
 
@@ -421,7 +448,10 @@ class FreeplayState extends MusicBeatState
 		#end
 
 		PlayState.storyDifficulty = curDifficulty;
-		diffText.text = '< ' + CoolUtil.difficultyString() + ' >';
+		if (songs[curSelected].songName == "")
+			diffText.text = '';
+		else
+			diffText.text = '< ' + CoolUtil.difficultyString() + ' >';
 		positionHighscore();
 	}
 
@@ -432,22 +462,72 @@ class FreeplayState extends MusicBeatState
 		curSelected += change;
 
 		if (curSelected < 0)
-			curSelected = songs.length - 1;
-		if (curSelected >= songs.length)
-			curSelected = 0;
-			
-		var newColor:Int = songs[curSelected].color;
-		if(newColor != intendedColor) {
-			if(colorTween != null) {
-				colorTween.cancel();
+		{
+			downLoopCounter = 0; //Resets if you loop upwards instead.
+			curSelected = lastSongLocation;
+			amountToTakeAway = 0;
+		}
+
+		var targetCount:Int = 9;
+		if(downLoopCounter >= targetCount){
+			if (curSelected >= songs.length){
+				downLoopCounter=11; //Won't go any higher to avoid some overflow bullshit if somebody tried hard enough.
+				curSelected = 0;
+				amountToTakeAway = 0;
 			}
-			intendedColor = newColor;
-			colorTween = FlxTween.color(bg, 1, bg.color, intendedColor, {
+		}else{
+			if (curSelected > lastSongLocation){
+				downLoopCounter++; //Add 1 to the downLoopCounter. 
+				curSelected = 0;
+				amountToTakeAway = 0;
+			}
+		}
+			
+		if(songs[curSelected].songName == "" || songs[curSelected].songName == "Friendship v2" || songs[curSelected].songName == "Friendship-v2"){
+			if(change > 0)
+				amountToTakeAway++;
+			if(change < 0)
+				amountToTakeAway--;
+		}else{
+			amountToTakeAway = 0;
+		}
+			
+		//decreasing volume when going down down down
+		if(songs[curSelected].songName == ""){
+			FlxG.sound.music.volume = 0.7 - amountToTakeAway*0.05;
+			if(vocals != null) {
+				vocals.volume = 0.7 - amountToTakeAway*0.05;
+			}
+		}else if(songs[curSelected].songName == "Friendship v2" || songs[curSelected].songName == "Friendship-v2"){
+			FlxG.sound.music.volume = 0;
+			if(vocals != null) {
+				vocals.volume = 0;
+			}
+		}
+
+		if(songs[curSelected].songName != ""){
+			var newColor:Int = songs[curSelected].color;
+			if(newColor != intendedColor) {
+				if(colorTween != null) {
+					colorTween.cancel();
+				}
+				intendedColor = newColor;
+				colorTween = FlxTween.color(bg, 1, bg.color, intendedColor, {
+					onComplete: function(twn:FlxTween) {
+						colorTween = null;
+					}
+				});
+			}
+		}else{
+			//darken BG
+			colorTween = FlxTween.color(bg, 0.5, bg.color, FlxColor.subtract(lastSongColor, FlxColor.fromRGB(amountToTakeAway*17,amountToTakeAway*17,amountToTakeAway*17,0)), {
 				onComplete: function(twn:FlxTween) {
 					colorTween = null;
 				}
 			});
 		}
+
+		trace("Shit to take away: " + amountToTakeAway);
 
 		// selector.y = (70 * curSelected) + 30;
 
@@ -483,7 +563,7 @@ class FreeplayState extends MusicBeatState
 		Paths.currentModDirectory = songs[curSelected].folder;
 		PlayState.storyWeek = songs[curSelected].week;
 
-		CoolUtil.difficulties = CoolUtil.defaultDifficulties.copy();
+		CoolUtil.difficulties = ((songs[curSelected].songName.toLowerCase() == 'bad-battle-hotfix' || songs[curSelected].songName.toLowerCase() == 'bad battle hotfix') ? CoolUtil.defaultDifficulties.copy() : ['Hard', 'Harder']);
 		var diffStr:String = WeekData.getCurrentWeek().difficulties;
 		if(diffStr != null) diffStr = diffStr.trim(); //Fuck you HTML5
 

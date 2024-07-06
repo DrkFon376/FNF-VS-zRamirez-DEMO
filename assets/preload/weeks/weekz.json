@@ -1,6 +1,5 @@
 {
 	"storyName": "The Fucked Style",
-	"difficulties": "Hard, Harder, Fucked",
 	"hideFreeplay": false,
 	"weekBackground": "ramirez",
 	"weekBefore": "tutorial",
@@ -19,15 +18,6 @@
 	"songs": [
 		[
 			"Bad Battle",
-			"zRamirez",
-			[
-				255,
-				215,
-				0
-			]
-		],
-		[
-			"Bad Battle Hotfix",
 			"zRamirez",
 			[
 				255,

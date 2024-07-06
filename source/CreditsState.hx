@@ -81,29 +81,29 @@ class CreditsState extends MusicBeatState
 		#end
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
-			['Psych Engine Team'],
-			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',								'https://twitter.com/Shadow_Mario_',	'444444'],
-			['RiverOaken',			'river',			'Main Artist/Animator of Psych Engine',							'https://twitter.com/RiverOaken',		'B42F71'],
-			['shubs',				'shubs',			'Additional Programmer of Psych Engine',						'https://twitter.com/yoshubs',			'5E99DF'],
+			['VS zRamírez Team'],
+			['zRamírez',				'zramirez',			'Mod Owner, Main Dev, Musician, Artist, Animator, Character and Stage Design, Some Lua Programming and Charter',		'https://www.youtube.com/channel/UCPvBcpUxgtJpcJUZEiRPK_g',			'FFE800'],
+			['DrkFon376',				'drkfon',			'Mod Co-Owner, Coder, Musician, Help with FLA Files, Charter and Fixed Some Bugs',										'https://www.youtube.com/channel/UCCVTns4b43V8Q5EON8xuSUQ',			'0A5DAF'],
+			['Ima',						'ima',				'Charter and Beta Tester',																								'https://www.youtube.com/channel/UCs9dXV0B7uKACyyW9PBFYCA',			'583627'],
 			[''],
-			['Former Engine Members'],
-			['bb-panzu',			'bb',				'Ex-Programmer of Psych Engine',								'https://twitter.com/bbsub3',			'3E813A'],
+			['Discord Server'],
+			['zRamírez Discord Server',	'discord',			'zRamírez Official Discord Server, There are Announcements about the Mod, Spoilers and Many Other Things! (Spanish and English Supported)',  	   'https://discord.gg/g2mCEc9rH5',			'4C5CE4'],
 			[''],
-			['Engine Contributors'],
-			['iFlicky',				'flicky',			'Composer of Psync and Tea Time\nMade the Dialogue Sounds',		'https://twitter.com/flicky_i',			'9E29CF'],
-			['SqirraRNG',			'sqirra',			'Crash Handler and Base code for\nChart Editor\'s Waveform',	'https://twitter.com/gedehari',			'E1843A'],
-			['EliteMasterEric',		'mastereric',		'Runtime Shaders support',										'https://twitter.com/EliteMasterEric',	'FFBD40'],
-			['PolybiusProxy',		'proxy',			'.MP4 Video Loader Library (hxCodec)',							'https://twitter.com/polybiusproxy',	'DCD294'],
-			['KadeDev',				'kade',				'Fixed some cool stuff on Chart Editor\nand other PRs',			'https://twitter.com/kade0912',			'64A250'],
-			['Keoiki',				'keoiki',			'Note Splash Animations',										'https://twitter.com/Keoiki_',			'D2D2D2'],
-			['Nebula the Zorua',	'nebula',			'LUA JIT Fork and some Lua reworks',							'https://twitter.com/Nebula_Zorua',		'7D40B2'],
-			['Smokey',				'smokey',			'Sprite Atlas Support',											'https://twitter.com/Smokey_5_',		'483D92'],
+			['Extra Mod Credits'],
+			['Iandee',					'iandee',			'Creator of the Original Design of the BF and GF Sprites from the VS Impostor Dialogues',								'https://www.youtube.com/channel/UCnoOhpnxHWtayIJUCutfP7w',			'B0B0B0'],
+			['Slushi',					'slushi',			'Help with Lua Modcharts, Bad Battle Modchart Creator',																	'https://www.youtube.com/channel/UC3sEmV3kzR7Z1icTY7hbrKg',			'16F8DD'],
+			['Glowsoony',				'glow',				'Help with Some Coding, Ported GPU Caching from Psych 0.7',																'https://www.youtube.com/channel/UCQQo4VDFWv_LX6tHzmBu8kA',			'66AFEC'],
+			['ElPatoFNF',				'pato',				'Help with Some Charting, Beta Tester',																					'https://www.youtube.com/channel/UCSDpAZ-xwBql9yLCYeDgtyA',			'605C5C'],
+			[''],
+			['Psych Engine Main Team'],
+			['Shadow Mario',			'shadowmario',		'Main Programmer and Head of Psych Engine',																				'https://twitter.com/Shadow_Mario_',								'444444'],
+			['Riveren',					'riveren',			'Main Artist/Animator of Psych Engine',																					'https://twitter.com/riverennn',									'14967B'],
 			[''],
 			["Funkin' Crew"],
-			['ninjamuffin99',		'ninjamuffin99',	"Programmer of Friday Night Funkin'",							'https://twitter.com/ninja_muffin99',	'CF2D2D'],
-			['PhantomArcade',		'phantomarcade',	"Animator of Friday Night Funkin'",								'https://twitter.com/PhantomArcade3K',	'FADC45'],
-			['evilsk8r',			'evilsk8r',			"Artist of Friday Night Funkin'",								'https://twitter.com/evilsk8r',			'5ABD4B'],
-			['kawaisprite',			'kawaisprite',		"Composer of Friday Night Funkin'",								'https://twitter.com/kawaisprite',		'378FC7']
+			['ninjamuffin99',			'ninjamuffin99',	"Original Programmer of Friday Night Funkin'",																			'https://twitter.com/ninja_muffin99',								'CF2D2D'],
+			['PhantomArcade',			'phantomarcade',	"Original Animator of Friday Night Funkin'",																			'https://twitter.com/PhantomArcade3K',								'FADC45'],
+			['evilsk8r',				'evilsk8r',			"Original Artist of Friday Night Funkin'",																				'https://twitter.com/evilsk8r',										'5ABD4B'],
+			['kawaisprite',				'kawaisprite',		"Original Composer of Friday Night Funkin'",																			'https://twitter.com/kawaisprite',									'378FC7']
 		];
 		
 		for(i in pisspoop){

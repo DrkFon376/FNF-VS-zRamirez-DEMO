@@ -1,25 +1,24 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				-20,
 				-5
 			],
-			"loop": false,
-			"anim": "cheer",
 			"fps": 24,
-			"name": "GF Cheer",
-			"indices": []
+			"anim": "cheer",
+			"indices": [],
+			"name": "GF Cheer"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				-9
 			],
-			"loop": false,
-			"anim": "danceLeft",
 			"fps": 24,
-			"name": "GF Dancing Beat",
+			"anim": "danceLeft",
 			"indices": [
 				30,
 				0,
@@ -37,17 +36,17 @@
 				12,
 				13,
 				14
-			]
+			],
+			"name": "GF Dancing Beat"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				-9
 			],
-			"loop": false,
-			"anim": "danceRight",
 			"fps": 24,
-			"name": "GF Dancing Beat",
+			"anim": "danceRight",
 			"indices": [
 				15,
 				16,
@@ -64,7 +63,8 @@
 				27,
 				28,
 				29
-			]
+			],
+			"name": "GF Dancing Beat"
 		}
 	],
 	"no_antialiasing": false,
@@ -81,8 +81,8 @@
 		77
 	],
 	"camera_position": [
-		-30,
-		0
+		-25,
+		-50
 	],
 	"sing_duration": 4,
 	"scale": 1

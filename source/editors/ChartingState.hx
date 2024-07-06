@@ -79,11 +79,15 @@ class ChartingState extends MusicBeatState
 		['', "Nothing. Yep, that's right."],
 		['Dadbattle Spotlight', "Used in Dad Battle,\nValue 1: 0/1 = ON/OFF,\n2 = Target Dad\n3 = Target BF"],
 		['Hey!', "Plays the \"Hey!\" animation from Bopeebo,\nValue 1: BF = Only Boyfriend, GF = Only Girlfriend,\nDad = Only Dad, Something else = The three.\nValue 2: Custom animation duration,\nleave it blank for 0.6s"],
-		['Set GF Speed', "Sets GF head bopping speed,\nValue 1: 1 = Normal speed,\n2 = 1/2 speed, 4 = 1/4 speed etc.\nUsed on Fresh during the beatbox parts.\n\nWarning: Value must be integer!"],
+		['Set GF Speed', "WARNING: THIS EVENT HAS BEEN ANNULLED AND NOW\nDOES NOTHING\n\nUSE 'Set Character Idle Speed' INSTEAD"],
+		['Set Character Idle Speed', "Sets BF, GF or DAD head bopping speed.\nValue 1: The character whose idle speed you want\nto change. Must be 'bf', 'gf' or 'dad'.\n\nValue 2: The new value in beats at which you want\nthe character to play its idle animation. Remember\nthat according to the bpm, the idle changes its speed,\nfor example, if it's 101-200, the idle is played every\n2 beats, if it's 201-400, it's every 4 beats, and so on.\nThis is ignored for gf if she has 'danceLeft' and\n'danceRight' animations. You can also type '0.5' if you\nwant the idle to play every half beat.\n\nWARNING: The value in beats must be a number related\nto the power of 2, that is 1, 2, 4, 8, 16, 32, etc. (with\nthe exception of '0.5'), otherwise the event will be\ncompletely ignored."],
 		['Philly Glow', "Exclusive to Week 3\nValue 1: 0/1/2 = OFF/ON/Reset Gradient\n \nNo, i won't add it to other weeks."],
 		['Kill Henchmen', "For Mom's songs, don't use this please, i love them :("],
 		['Add Camera Zoom', "Used on MILF on that one \"hard\" part\nValue 1: Camera zoom add (Default: 0.015)\nValue 2: UI zoom add (Default: 0.03)\nLeave the values blank if you want to use Default."],
-		['Move Camera When Singing', "Value 1: Type 'true' or '1' to activate the \nmovement of the camera when a character sings \nor type 'false' or '0' to deactivate it. \n\nValue 2: Type the offset value of the camera \nwhen a character sings (leave it blank to apply \nthe default value that is 25)."],
+		['Flash Camera', "Flashes the camera, does nothing if the \"Flashing\nLights\" option is disabled.\n\nValue 1: The duration of the flash in seconds, if you\ndon't type anything, the default duration is '1'.\n\nValue 2: The color of the flash and the camera it is\ntarget at, for example, 'FF0000, camHUD', remember\nto separate the values with a comma and that the\ncolor value must be in RGB format ('RRGGBB').\nThe possible targets of the camera are 'camGame',\n'camGameOverlay', 'camHUD', 'camCountdown' and\n'camOther', if you don't type anything, by default the\ncolor is 'FFFFFF' and if you don't type any camera\ntarget, by default the camera target is 'camGame'."],
+		['Move Camera When Singing', "Value 1: Type 'true' or '1' to activate the\nmovement of the camera when a character sings\nor type 'false' or '0' to deactivate it.\n\nValue 2: Type the offset value of the camera\nwhen a character sings (leave it blank to apply\nthe default value that is 25)."],
+		['Alarm Gradient', "Value 1 refers to which side\n('left' or 'right')\nValue 2 is for the alpha to fade to.\nOnly works if Flashing lights is allowed\nand Low Quality is disabled."],
+		['Overlay Alpha Fade', "Value 1: The type of tween that should do the overlay,\nmust be of type 'fadeOut' or 'fadeIn', type it in the\nvalue 1, or type '0' to apply the fadeOut or '1' for the\nfadeIn. Next, you can optionally type the camera for\nwhich the overlay's alpha effect is directed, it can\nbe 'camGame' or 'camHUD', by default the camera\nis 'camGame'.\n\nValue 2: The time in which the alpha of the overlay\nmust reach 0 or 1 depending on the type, either\nfadeOut or fadeIn respectively, by default the time\nis '0'. Next, you can optionally type the custom ease\nyou want in the fade, by default the ease is 'linear'.\nRemember to separate both values with a comma\nif it's the case (Applies to Value 1 and Value 2).\n\nExample: Value 1: fadeIn, camHUD. Value 2: 5, cubeOut"],
 		['BG Freaks Expression', "Should be used only in \"school\" Stage!"],
 		['Trigger BG Ghouls', "Should be used only in \"schoolEvil\" Stage!"],
 		['Play Animation', "Plays an animation on a Character,\nonce the animation is completed,\nthe animation changes to Idle\n\nValue 1: Animation to play.\nValue 2: Character (Dad, BF, GF)"],
@@ -224,6 +228,8 @@ class ChartingState extends MusicBeatState
 				gfVersion: 'gf',
 				speed: 1,
 				stage: 'stage',
+				overlayCamGame_On: false,
+				overlayCamHUD_On: false,
 				validScore: false
 			};
 			addSection();
@@ -409,14 +415,14 @@ class ChartingState extends MusicBeatState
 		UI_songTitle = new FlxUIInputText(10, 10, 70, _song.song, 8);
 		blockPressWhileTypingOn.push(UI_songTitle);
 
-		var check_voices = new FlxUICheckBox(10, 25, null, null, "Has voice track", 100);
+		/*var check_voices = new FlxUICheckBox(10, 25, null, null, "Has voice track", 100);
 		check_voices.checked = _song.needsVoices;
 		// _song.needsVoices = check_voices.checked;
 		check_voices.callback = function()
 		{
 			_song.needsVoices = check_voices.checked;
 			//trace('CHECKED!');
-		};
+		};*/
 
 		var saveButton:FlxButton = new FlxButton(110, 8, "Save", function()
 		{
@@ -425,9 +431,14 @@ class ChartingState extends MusicBeatState
 
 		var reloadSong:FlxButton = new FlxButton(saveButton.x + 90, saveButton.y, "Reload Audio", function()
 		{
-			currentSongName = Paths.formatToSongPath(UI_songTitle.text);
-			loadSong();
-			updateWaveform();
+			if (_song.song.toLowerCase() == "friendship v2" || _song.song.toLowerCase() == "friendship-v2")
+				openSubState(new Prompt("Error!\n\nDon't cheat!\nFind a way to access this song.\nHint: 01000100 01001111 01010111 01001110", 0, null, null, false, true));
+			else
+			{
+				currentSongName = Paths.formatToSongPath(UI_songTitle.text);
+				loadSong();
+				updateWaveform();
+			}
 		});
 
 		var reloadSongJson:FlxButton = new FlxButton(reloadSong.x, saveButton.y + 30, "Reload JSON", function()
@@ -483,7 +494,7 @@ class ChartingState extends MusicBeatState
 		clear_notes.color = FlxColor.RED;
 		clear_notes.label.color = FlxColor.WHITE;
 
-		var stepperBPM:FlxUINumericStepper = new FlxUINumericStepper(10, 70, 1, 1, 1, 400, 3);
+		var stepperBPM:FlxUINumericStepper = new FlxUINumericStepper(10, 70, 1, 1, 1, 1000, 3);
 		stepperBPM.value = Conductor.bpm;
 		stepperBPM.name = 'song_bpm';
 		blockPressWhileTypingOnStepper.push(stepperBPM);
@@ -606,11 +617,29 @@ class ChartingState extends MusicBeatState
 			updateGrid();
 		});
 
+		var check_overlayCamGame = new FlxUICheckBox(stageDropDown.x + 2, stageDropDown.y + 50, null, null, "CamGame Overlay", 100);
+		check_overlayCamGame.checked = _song.overlayCamGame_On;
+		check_overlayCamGame.callback = function()
+		{
+			_song.overlayCamGame_On = check_overlayCamGame.checked;
+			//trace('CHECKED!');
+		};
+
+		var check_overlayCamHUD = new FlxUICheckBox(stageDropDown.x + 2, check_overlayCamGame.y + 24, null, null, "CamHUD Overlay", 100);
+		check_overlayCamHUD.checked = _song.overlayCamHUD_On;
+		check_overlayCamHUD.callback = function()
+		{
+			_song.overlayCamHUD_On = check_overlayCamHUD.checked;
+			//trace('CHECKED!');
+		};
+
 		var tab_group_song = new FlxUI(null, UI_box);
 		tab_group_song.name = "Song";
 		tab_group_song.add(UI_songTitle);
 
-		tab_group_song.add(check_voices);
+		//tab_group_song.add(check_voices);
+		tab_group_song.add(check_overlayCamGame);
+		tab_group_song.add(check_overlayCamHUD);
 		tab_group_song.add(clear_events);
 		tab_group_song.add(clear_notes);
 		tab_group_song.add(saveButton);
@@ -624,9 +653,9 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(reloadNotesButton);
 		tab_group_song.add(noteSkinInputText);
 		tab_group_song.add(noteSplashesInputText);
-		tab_group_song.add(new FlxText(stepperBPM.x, stepperBPM.y - 15, 0, 'Song BPM:'));
+		tab_group_song.add(new FlxText(stepperBPM.x, stepperBPM.y - 40, 0, 'Song BPM:'));
 		tab_group_song.add(new FlxText(stepperBPM.x + 100, stepperBPM.y - 15, 0, 'Song Offset:'));
-		tab_group_song.add(new FlxText(stepperSpeed.x, stepperSpeed.y - 15, 0, 'Song Speed:'));
+		tab_group_song.add(new FlxText(stepperSpeed.x, stepperSpeed.y - 40, 0, 'Song Speed:'));
 		tab_group_song.add(new FlxText(player2DropDown.x, player2DropDown.y - 15, 0, 'Opponent:'));
 		tab_group_song.add(new FlxText(gfVersionDropDown.x, gfVersionDropDown.y - 15, 0, 'Girlfriend:'));
 		tab_group_song.add(new FlxText(player1DropDown.x, player1DropDown.y - 15, 0, 'Boyfriend:'));
@@ -637,6 +666,9 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(gfVersionDropDown);
 		tab_group_song.add(player1DropDown);
 		tab_group_song.add(stageDropDown);
+
+		stepperBPM.y -= 25;
+		stepperSpeed.y -= 25;
 
 		UI_box.addGroup(tab_group_song);
 
@@ -685,7 +717,7 @@ class ChartingState extends MusicBeatState
 		check_changeBPM.checked = _song.notes[curSec].changeBPM;
 		check_changeBPM.name = 'check_changeBPM';
 
-		stepperSectionBPM = new FlxUINumericStepper(10, check_changeBPM.y + 20, 1, Conductor.bpm, 0, 999, 1);
+		stepperSectionBPM = new FlxUINumericStepper(10, check_changeBPM.y + 20, 1, Conductor.bpm, 1, 1000, 3);
 		if(check_changeBPM.checked) {
 			stepperSectionBPM.value = _song.notes[curSec].bpm;
 		} else {
@@ -1013,13 +1045,12 @@ class ChartingState extends MusicBeatState
 		var directories:Array<String> = [];
 
 		#if MODS_ALLOWED
+		directories.push(Paths.getPreloadPath('events/'));
 		directories.push(Paths.mods('custom_events/'));
 		directories.push(Paths.mods(Paths.currentModDirectory + '/custom_events/'));
 		for(mod in Paths.getGlobalMods())
 			directories.push(Paths.mods(mod + '/custom_events/'));
 		#end
-
-		directories.push(Paths.getPreloadPath('events/'));
 
 		for (i in 0...directories.length) {
 			var directory:String =  directories[i];
@@ -1300,7 +1331,7 @@ class ChartingState extends MusicBeatState
 		if (FlxG.save.data.chart_metronome == null) FlxG.save.data.chart_metronome = false;
 		metronome.checked = FlxG.save.data.chart_metronome;
 
-		metronomeStepper = new FlxUINumericStepper(15, 55, 5, _song.bpm, 1, 1500, 1);
+		metronomeStepper = new FlxUINumericStepper(15, 55, 5, _song.bpm, 1, 1000, 3);
 		metronomeOffsetStepper = new FlxUINumericStepper(metronomeStepper.x + 100, metronomeStepper.y, 25, 0, 0, 1000, 1);
 		blockPressWhileTypingOnStepper.push(metronomeStepper);
 		blockPressWhileTypingOnStepper.push(metronomeOffsetStepper);
@@ -2961,18 +2992,25 @@ class ChartingState extends MusicBeatState
 
 	function loadJson(song:String):Void
 	{
-		//shitty null fix, i fucking hate it when this happens
-		//make it look sexier if possible
-		if (CoolUtil.difficulties[PlayState.storyDifficulty] != CoolUtil.defaultDifficulty) {
-			if(CoolUtil.difficulties[PlayState.storyDifficulty] == null){
-				PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());
-			}else{
-				PlayState.SONG = Song.loadFromJson(song.toLowerCase() + "-" + CoolUtil.difficulties[PlayState.storyDifficulty], song.toLowerCase());
-			}
-		}else{
-		PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());
+		if (song.toLowerCase() == "friendship-v2" || song.toLowerCase() == "friendship v2")
+		{
+			openSubState(new Prompt("Error!\n\nDon't cheat!\nFind a way to access this song.\nHint: 01000100 01001111 01010111 01001110", 0, null, null, false, true));
 		}
-		MusicBeatState.resetState();
+		else
+		{
+			//shitty null fix, i fucking hate it when this happens
+			//make it look sexier if possible
+			if (CoolUtil.difficulties[PlayState.storyDifficulty] != CoolUtil.defaultDifficulty) {
+				if(CoolUtil.difficulties[PlayState.storyDifficulty] == null){
+					PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());
+				}else{
+					PlayState.SONG = Song.loadFromJson(song.toLowerCase() + "-" + CoolUtil.difficulties[PlayState.storyDifficulty], song.toLowerCase());
+				}
+			}else{
+			PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());
+			}
+			MusicBeatState.resetState();
+		}
 	}
 
 	function autosaveSong():Void

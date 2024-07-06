@@ -21,7 +21,8 @@ class SongInfo extends FlxSpriteGroup
     var boxTagWidth:Int = 15;
 
     public static var daAuthorInfo:String = ""; //Customizable using lua!
-    public static var customJukeBoxTagColor:String = ""; //This too!
+    public static var customSongTitle:String = ""; //Also this!
+    public static var customJukeBoxTagColor:String = ""; //And this too!
     public static var disabled:Bool = false; //You can also disable it using lua
 
     //Inspired by the TaskSong from VS Impostor v4!
@@ -33,24 +34,24 @@ class SongInfo extends FlxSpriteGroup
         var colorNum:Int = Std.parseInt(customJukeBoxTagColor);
         if(customJukeBoxTagColor != "" && !customJukeBoxTagColor.startsWith('0x'))
             colorNum = Std.parseInt('0xFF' + customJukeBoxTagColor);
-        
-        var jukeBox = new FlxSprite(0 - boxTagWidth * 2, 15).makeGraphic(300 + boxTagWidth, 160, FlxColor.BLACK);
-        jukeBox.alpha = 0.5;
 
-        var jukeBoxTag = new FlxSprite(0 - boxTagWidth * 2 + jukeBox.width, 15).makeGraphic(20, 160, (customJukeBoxTagColor != "" ? colorNum : FlxColor.fromRGB(PlayState.instance.dad.healthColorArray[0], PlayState.instance.dad.healthColorArray[1], PlayState.instance.dad.healthColorArray[2])));
-        jukeBoxTag.alpha = 0.5;
-
-        var jukeBoxText = new FlxText(0 - boxTagWidth, 30, 300, "Now playing:", fontSize);
+        var jukeBoxText = new FlxText(0 - boxTagWidth, 27, 300, "Now playing:", fontSize);
         jukeBoxText.setFormat(Paths.font("PhantomMuff Full Letters 1.1.5.ttf"), fontSize, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
         jukeBoxText.updateHitbox();
 
-        var jukeBoxSongName = new FlxText(0 - boxTagWidth, 60, 300, song, songNameTextSize);
+        var jukeBoxSongName = new FlxText(0 - boxTagWidth, 57, 300, (customSongTitle != "" ? customSongTitle : song), songNameTextSize);
         jukeBoxSongName.setFormat(Paths.font("PhantomMuff Full Letters 1.1.5.ttf"), songNameTextSize, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
         jukeBoxSongName.updateHitbox();
 
-        var authorInfoText = new FlxText(0 - boxTagWidth, 100, 300, (daAuthorInfo != "" ? daAuthorInfo : authorInfo), fontSize);
+        var authorInfoText = new FlxText(0 - boxTagWidth, 97, 300, (daAuthorInfo != "" ? daAuthorInfo : authorInfo), fontSize);
         authorInfoText.setFormat(Paths.font("PhantomMuff Full Letters 1.1.5.ttf"), fontSize, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
         authorInfoText.updateHitbox();
+
+        var jukeBox = new FlxSprite(0 - boxTagWidth * 2, 15).makeGraphic(300 + boxTagWidth, jukeBoxText.frameHeight + jukeBoxSongName.frameHeight + authorInfoText.frameHeight + 21, FlxColor.BLACK);
+        jukeBox.alpha = 0.5;
+
+        var jukeBoxTag = new FlxSprite(0 - boxTagWidth * 2 + jukeBox.width, 15).makeGraphic(20, jukeBoxText.frameHeight + jukeBoxSongName.frameHeight + authorInfoText.frameHeight + 21, (customJukeBoxTagColor != "" ? colorNum : FlxColor.fromRGB(PlayState.instance.dad.healthColorArray[0], PlayState.instance.dad.healthColorArray[1], PlayState.instance.dad.healthColorArray[2])));
+        jukeBoxTag.alpha = 0.5;
 
         add(jukeBox);
         add(jukeBoxTag);

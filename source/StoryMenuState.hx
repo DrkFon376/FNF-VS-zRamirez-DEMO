@@ -46,6 +46,7 @@ class StoryMenuState extends MusicBeatState
 	var sprDifficulty:FlxSprite;
 	var leftArrow:FlxSprite;
 	var rightArrow:FlxSprite;
+	var lockDifficulty:FlxSprite;
 
 	var loadedWeeks:Array<WeekData> = [];
 
@@ -165,6 +166,13 @@ class StoryMenuState extends MusicBeatState
 		rightArrow.antialiasing = ClientPrefs.globalAntialiasing;
 		difficultySelectors.add(rightArrow);
 
+		lockDifficulty = new FlxSprite(leftArrow.x + 183, leftArrow.y - 15);
+		lockDifficulty.frames = ui_tex;
+		lockDifficulty.animation.addByPrefix('lock', 'lock');
+		lockDifficulty.animation.play('lock');
+		lockDifficulty.antialiasing = ClientPrefs.globalAntialiasing;
+		add(lockDifficulty);
+
 		add(bgYellow);
 		add(bgSprite);
 		add(grpWeekCharacters);
@@ -283,7 +291,7 @@ class StoryMenuState extends MusicBeatState
 
 	function selectWeek()
 	{
-		if (!weekIsLocked(loadedWeeks[curWeek].fileName))
+		if (!weekIsLocked(loadedWeeks[curWeek].fileName) && curDifficulty != 2)
 		{
 			if (stopspamming == false)
 			{
@@ -332,6 +340,7 @@ class StoryMenuState extends MusicBeatState
 	}
 
 	var tweenDifficulty:FlxTween;
+	var lockDiff:FlxTween;
 	function changeDifficulty(change:Int = 0):Void
 	{
 		curDifficulty += change;
@@ -356,9 +365,15 @@ class StoryMenuState extends MusicBeatState
 			sprDifficulty.y = leftArrow.y - 15;
 
 			if(tweenDifficulty != null) tweenDifficulty.cancel();
-			tweenDifficulty = FlxTween.tween(sprDifficulty, {y: leftArrow.y + 15, alpha: 1}, 0.07, {onComplete: function(twn:FlxTween)
+			tweenDifficulty = FlxTween.tween(sprDifficulty, {y: leftArrow.y + 15, alpha: (curDifficulty == 2 ? 0.5 : 1)}, 0.07, {onComplete: function(twn:FlxTween)
 			{
 				tweenDifficulty = null;
+			}});
+
+			if(lockDiff != null) lockDiff.cancel();
+			lockDiff = FlxTween.tween(lockDifficulty, {y: leftArrow.y, alpha: (curDifficulty == 2 ? 1 : 0)}, 0.07, {onComplete: function(twn:FlxTween)
+			{
+				lockDiff = null;
 			}});
 		}
 		lastDifficultyName = diff;
@@ -413,6 +428,7 @@ class StoryMenuState extends MusicBeatState
 		var diffStr:String = WeekData.getCurrentWeek().difficulties;
 		if(diffStr != null) diffStr = diffStr.trim(); //Fuck you HTML5
 		difficultySelectors.visible = unlocked;
+		lockDifficulty.visible = unlocked;
 
 		if(diffStr != null && diffStr.length > 0)
 		{

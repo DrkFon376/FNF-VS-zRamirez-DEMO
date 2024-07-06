@@ -113,8 +113,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				36,
-				41
+				13,
+				-2
 			],
 			"anim": "hurt",
 			"fps": 24,
@@ -233,17 +233,6 @@
 		},
 		{
 			"offsets": [
-				-9,
-				0
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "HEY! Cool",
-			"indices": [],
-			"name": "HEY COOL"
-		},
-		{
-			"offsets": [
 				75,
 				4
 			],
@@ -307,6 +296,28 @@
 			"anim": "singRIGHTmiss-alt",
 			"indices": [],
 			"name": "BFCOOLRIGHTMISS"
+		},
+		{
+			"offsets": [
+				-9,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "HEY! Cool",
+			"loop": false,
+			"name": "HEY COOL (its ugly)"
+		},
+		{
+			"offsets": [
+				15,
+				27
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "HEY! Cool Alt",
+			"loop": false,
+			"name": "HEY COOL0"
 		}
 	],
 	"no_antialiasing": false,

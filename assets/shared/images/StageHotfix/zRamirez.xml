@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="NEW zRamirez Sprites.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="zRamirez DOWN NOTE0000" x="8" y="8" width="411" height="649" frameX="0" frameY="-9" frameWidth="411" frameHeight="658"/>
+	<SubTexture name="zRamirez DOWN NOTE0001" x="429" y="8" width="408" height="654" frameX="-2" frameY="-4" frameWidth="411" frameHeight="658"/>
+	<SubTexture name="zRamirez DOWN NOTE0002" x="847" y="8" width="406" height="658" frameX="-3" frameY="0" frameWidth="411" frameHeight="658"/>
+	<SubTexture name="zRamirez DOWN NOTE0003" x="1263" y="8" width="406" height="658" frameX="-3" frameY="0" frameWidth="411" frameHeight="658"/>
+	<SubTexture name="zRamirez DOWN NOTE0004" x="1679" y="8" width="406" height="658" frameX="-3" frameY="0" frameWidth="411" frameHeight="658"/>
+	<SubTexture name="zRamirez DOWN NOTE0005" x="1679" y="8" width="406" height="658" frameX="-3" frameY="0" frameWidth="411" frameHeight="658"/>
+	<SubTexture name="zRamirez DOWN NOTE0006" x="1679" y="8" width="406" height="658" frameX="-3" frameY="0" frameWidth="411" frameHeight="658"/>
+	<SubTexture name="zRamirez DOWN NOTE0007" x="1679" y="8" width="406" height="658" frameX="-3" frameY="0" frameWidth="411" frameHeight="658"/>
+	<SubTexture name="zRamirez DOWN NOTE0008" x="1679" y="8" width="406" height="658" frameX="-3" frameY="0" frameWidth="411" frameHeight="658"/>
+	<SubTexture name="zRamirez DOWN NOTE0009" x="1679" y="8" width="406" height="658" frameX="-3" frameY="0" frameWidth="411" frameHeight="658"/>
+	<SubTexture name="zRamirez DOWN NOTE0010" x="1679" y="8" width="406" height="658" frameX="-3" frameY="0" frameWidth="411" frameHeight="658"/>
+	<SubTexture name="zRamirez DOWN NOTE0011" x="1679" y="8" width="406" height="658" frameX="-3" frameY="0" frameWidth="411" frameHeight="658"/>
+	<SubTexture name="zRamirez DOWN NOTE0012" x="1679" y="8" width="406" height="658" frameX="-3" frameY="0" frameWidth="411" frameHeight="658"/>
+	<SubTexture name="zRamirez DOWN NOTE0013" x="1679" y="8" width="406" height="658" frameX="-3" frameY="0" frameWidth="411" frameHeight="658"/>
+	<SubTexture name="zRamirez DOWN NOTE0014" x="1679" y="8" width="406" height="658" frameX="-3" frameY="0" frameWidth="411" frameHeight="658"/>
+	<SubTexture name="zRamirez DOWN NOTE ALT0000" x="2095" y="8" width="456" height="612" frameX="0" frameY="-9" frameWidth="456" frameHeight="621"/>
+	<SubTexture name="zRamirez DOWN NOTE ALT0001" x="2561" y="8" width="453" height="616" frameX="-2" frameY="-4" frameWidth="456" frameHeight="621"/>
+	<SubTexture name="zRamirez DOWN NOTE ALT0002" x="3024" y="8" width="450" height="620" frameX="-4" frameY="0" frameWidth="456" frameHeight="621"/>
+	<SubTexture name="zRamirez DOWN NOTE ALT0003" x="3484" y="8" width="450" height="620" frameX="-4" frameY="0" frameWidth="456" frameHeight="621"/>
+	<SubTexture name="zRamirez DOWN NOTE ALT0004" x="8" y="676" width="450" height="620" frameX="-4" frameY="0" frameWidth="456" frameHeight="621"/>
+	<SubTexture name="zRamirez DOWN NOTE ALT0005" x="8" y="676" width="450" height="620" frameX="-4" frameY="0" frameWidth="456" frameHeight="621"/>
+	<SubTexture name="zRamirez DOWN NOTE ALT0006" x="8" y="676" width="450" height="620" frameX="-4" frameY="0" frameWidth="456" frameHeight="621"/>
+	<SubTexture name="zRamirez DOWN NOTE ALT0007" x="8" y="676" width="450" height="620" frameX="-4" frameY="0" frameWidth="456" frameHeight="621"/>
+	<SubTexture name="zRamirez DOWN NOTE ALT0008" x="8" y="676" width="450" height="620" frameX="-4" frameY="0" frameWidth="456" frameHeight="621"/>
+	<SubTexture name="zRamirez DOWN NOTE ALT0009" x="8" y="676" width="450" height="620" frameX="-4" frameY="0" frameWidth="456" frameHeight="621"/>
+	<SubTexture name="zRamirez DOWN NOTE ALT0010" x="8" y="676" width="450" height="620" frameX="-4" frameY="0" frameWidth="456" frameHeight="621"/>
+	<SubTexture name="zRamirez DOWN NOTE ALT0011" x="8" y="676" width="450" height="620" frameX="-4" frameY="0" frameWidth="456" frameHeight="621"/>
+	<SubTexture name="zRamirez DOWN NOTE ALT0012" x="8" y="676" width="450" height="620" frameX="-4" frameY="0" frameWidth="456" frameHeight="621"/>
+	<SubTexture name="zRamirez DOWN NOTE ALT0013" x="8" y="676" width="450" height="620" frameX="-4" frameY="0" frameWidth="456" frameHeight="621"/>
+	<SubTexture name="zRamirez DOWN NOTE ALT0014" x="8" y="676" width="450" height="620" frameX="-4" frameY="0" frameWidth="456" frameHeight="621"/>
+	<SubTexture name="zRamirez HEY!0000" x="468" y="676" width="370" height="692" frameX="-5" frameY="0" frameWidth="386" frameHeight="693"/>
+	<SubTexture name="zRamirez HEY!0001" x="468" y="676" width="370" height="692" frameX="-5" frameY="0" frameWidth="386" frameHeight="693"/>
+	<SubTexture name="zRamirez HEY!0002" x="848" y="676" width="386" height="693"/>
+	<SubTexture name="zRamirez HEY!0003" x="848" y="676" width="386" height="693"/>
+	<SubTexture name="zRamirez HEY!0004" x="1244" y="676" width="386" height="693"/>
+	<SubTexture name="zRamirez HEY!0005" x="1244" y="676" width="386" height="693"/>
+	<SubTexture name="zRamirez HEY!0006" x="1244" y="676" width="386" height="693"/>
+	<SubTexture name="zRamirez HEY!0007" x="1244" y="676" width="386" height="693"/>
+	<SubTexture name="zRamirez Idle Dance0000" x="1640" y="676" width="398" height="678" frameX="-2" frameY="-14" frameWidth="400" frameHeight="692"/>
+	<SubTexture name="zRamirez Idle Dance0001" x="1640" y="676" width="398" height="678" frameX="-2" frameY="-14" frameWidth="400" frameHeight="692"/>
+	<SubTexture name="zRamirez Idle Dance0002" x="2048" y="676" width="392" height="685" frameX="-1" frameY="-7" frameWidth="400" frameHeight="692"/>
+	<SubTexture name="zRamirez Idle Dance0003" x="2048" y="676" width="392" height="685" frameX="-1" frameY="-7" frameWidth="400" frameHeight="692"/>
+	<SubTexture name="zRamirez Idle Dance0004" x="2450" y="676" width="388" height="689" frameX="0" frameY="-3" frameWidth="400" frameHeight="692"/>
+	<SubTexture name="zRamirez Idle Dance0005" x="2450" y="676" width="388" height="689" frameX="0" frameY="-3" frameWidth="400" frameHeight="692"/>
+	<SubTexture name="zRamirez Idle Dance0006" x="2848" y="676" width="387" height="692" frameX="0" frameY="0" frameWidth="400" frameHeight="692"/>
+	<SubTexture name="zRamirez Idle Dance0007" x="2848" y="676" width="387" height="692" frameX="0" frameY="0" frameWidth="400" frameHeight="692"/>
+	<SubTexture name="zRamirez Idle Dance0008" x="3245" y="676" width="386" height="692" frameX="0" frameY="0" frameWidth="400" frameHeight="692"/>
+	<SubTexture name="zRamirez Idle Dance0009" x="3245" y="676" width="386" height="692" frameX="0" frameY="0" frameWidth="400" frameHeight="692"/>
+	<SubTexture name="zRamirez Idle Dance0010" x="3245" y="676" width="386" height="692" frameX="0" frameY="0" frameWidth="400" frameHeight="692"/>
+	<SubTexture name="zRamirez Idle Dance0011" x="3245" y="676" width="386" height="692" frameX="0" frameY="0" frameWidth="400" frameHeight="692"/>
+	<SubTexture name="zRamirez Idle Dance0012" x="3245" y="676" width="386" height="692" frameX="0" frameY="0" frameWidth="400" frameHeight="692"/>
+	<SubTexture name="zRamirez Idle Dance0013" x="3245" y="676" width="386" height="692" frameX="0" frameY="0" frameWidth="400" frameHeight="692"/>
+	<SubTexture name="zRamirez Idle Dance0014" x="3245" y="676" width="386" height="692" frameX="0" frameY="0" frameWidth="400" frameHeight="692"/>
+	<SubTexture name="zRamirez LEFT NOTE0000" x="3641" y="676" width="408" height="687" frameX="0" frameY="-4" frameWidth="426" frameHeight="691"/>
+	<SubTexture name="zRamirez LEFT NOTE0001" x="8" y="1379" width="409" height="689" frameX="-10" frameY="-2" frameWidth="426" frameHeight="691"/>
+	<SubTexture name="zRamirez LEFT NOTE0002" x="427" y="1379" width="409" height="691" frameX="-17" frameY="0" frameWidth="426" frameHeight="691"/>
+	<SubTexture name="zRamirez LEFT NOTE0003" x="846" y="1379" width="409" height="691" frameX="-17" frameY="0" frameWidth="426" frameHeight="691"/>
+	<SubTexture name="zRamirez LEFT NOTE0004" x="1265" y="1379" width="409" height="691" frameX="-17" frameY="0" frameWidth="426" frameHeight="691"/>
+	<SubTexture name="zRamirez LEFT NOTE0005" x="1265" y="1379" width="409" height="691" frameX="-17" frameY="0" frameWidth="426" frameHeight="691"/>
+	<SubTexture name="zRamirez LEFT NOTE0006" x="1265" y="1379" width="409" height="691" frameX="-17" frameY="0" frameWidth="426" frameHeight="691"/>
+	<SubTexture name="zRamirez LEFT NOTE0007" x="1265" y="1379" width="409" height="691" frameX="-17" frameY="0" frameWidth="426" frameHeight="691"/>
+	<SubTexture name="zRamirez LEFT NOTE0008" x="1265" y="1379" width="409" height="691" frameX="-17" frameY="0" frameWidth="426" frameHeight="691"/>
+	<SubTexture name="zRamirez LEFT NOTE0009" x="1265" y="1379" width="409" height="691" frameX="-17" frameY="0" frameWidth="426" frameHeight="691"/>
+	<SubTexture name="zRamirez LEFT NOTE0010" x="1265" y="1379" width="409" height="691" frameX="-17" frameY="0" frameWidth="426" frameHeight="691"/>
+	<SubTexture name="zRamirez LEFT NOTE0011" x="1265" y="1379" width="409" height="691" frameX="-17" frameY="0" frameWidth="426" frameHeight="691"/>
+	<SubTexture name="zRamirez LEFT NOTE0012" x="1265" y="1379" width="409" height="691" frameX="-17" frameY="0" frameWidth="426" frameHeight="691"/>
+	<SubTexture name="zRamirez LEFT NOTE0013" x="1265" y="1379" width="409" height="691" frameX="-17" frameY="0" frameWidth="426" frameHeight="691"/>
+	<SubTexture name="zRamirez LEFT NOTE0014" x="1265" y="1379" width="409" height="691" frameX="-17" frameY="0" frameWidth="426" frameHeight="691"/>
+	<SubTexture name="zRamirez LEFT NOTE ALT0000" x="1684" y="1379" width="463" height="655" frameX="0" frameY="0" frameWidth="464" frameHeight="655"/>
+	<SubTexture name="zRamirez LEFT NOTE ALT0001" x="2157" y="1379" width="458" height="654" frameX="-6" frameY="-1" frameWidth="464" frameHeight="655"/>
+	<SubTexture name="zRamirez LEFT NOTE ALT0002" x="2625" y="1379" width="455" height="652" frameX="-9" frameY="-3" frameWidth="464" frameHeight="655"/>
+	<SubTexture name="zRamirez LEFT NOTE ALT0003" x="3090" y="1379" width="455" height="652" frameX="-9" frameY="-3" frameWidth="464" frameHeight="655"/>
+	<SubTexture name="zRamirez LEFT NOTE ALT0004" x="3555" y="1379" width="455" height="652" frameX="-9" frameY="-3" frameWidth="464" frameHeight="655"/>
+	<SubTexture name="zRamirez LEFT NOTE ALT0005" x="3555" y="1379" width="455" height="652" frameX="-9" frameY="-3" frameWidth="464" frameHeight="655"/>
+	<SubTexture name="zRamirez LEFT NOTE ALT0006" x="3555" y="1379" width="455" height="652" frameX="-9" frameY="-3" frameWidth="464" frameHeight="655"/>
+	<SubTexture name="zRamirez LEFT NOTE ALT0007" x="3555" y="1379" width="455" height="652" frameX="-9" frameY="-3" frameWidth="464" frameHeight="655"/>
+	<SubTexture name="zRamirez LEFT NOTE ALT0008" x="3555" y="1379" width="455" height="652" frameX="-9" frameY="-3" frameWidth="464" frameHeight="655"/>
+	<SubTexture name="zRamirez LEFT NOTE ALT0009" x="3555" y="1379" width="455" height="652" frameX="-9" frameY="-3" frameWidth="464" frameHeight="655"/>
+	<SubTexture name="zRamirez LEFT NOTE ALT0010" x="3555" y="1379" width="455" height="652" frameX="-9" frameY="-3" frameWidth="464" frameHeight="655"/>
+	<SubTexture name="zRamirez LEFT NOTE ALT0011" x="3555" y="1379" width="455" height="652" frameX="-9" frameY="-3" frameWidth="464" frameHeight="655"/>
+	<SubTexture name="zRamirez LEFT NOTE ALT0012" x="3555" y="1379" width="455" height="652" frameX="-9" frameY="-3" frameWidth="464" frameHeight="655"/>
+	<SubTexture name="zRamirez LEFT NOTE ALT0013" x="3555" y="1379" width="455" height="652" frameX="-9" frameY="-3" frameWidth="464" frameHeight="655"/>
+	<SubTexture name="zRamirez LEFT NOTE ALT0014" x="3555" y="1379" width="455" height="652" frameX="-9" frameY="-3" frameWidth="464" frameHeight="655"/>
+	<SubTexture name="zRamirez RIGHT NOTE0000" x="8" y="2080" width="421" height="677" frameX="-1" frameY="0" frameWidth="422" frameHeight="677"/>
+	<SubTexture name="zRamirez RIGHT NOTE0001" x="439" y="2080" width="418" height="676" frameX="0" frameY="-1" frameWidth="422" frameHeight="677"/>
+	<SubTexture name="zRamirez RIGHT NOTE0002" x="867" y="2080" width="416" height="674" frameX="0" frameY="-3" frameWidth="422" frameHeight="677"/>
+	<SubTexture name="zRamirez RIGHT NOTE0003" x="1293" y="2080" width="416" height="674" frameX="0" frameY="-3" frameWidth="422" frameHeight="677"/>
+	<SubTexture name="zRamirez RIGHT NOTE0004" x="1719" y="2080" width="416" height="674" frameX="0" frameY="-3" frameWidth="422" frameHeight="677"/>
+	<SubTexture name="zRamirez RIGHT NOTE0005" x="1719" y="2080" width="416" height="674" frameX="0" frameY="-3" frameWidth="422" frameHeight="677"/>
+	<SubTexture name="zRamirez RIGHT NOTE0006" x="1719" y="2080" width="416" height="674" frameX="0" frameY="-3" frameWidth="422" frameHeight="677"/>
+	<SubTexture name="zRamirez RIGHT NOTE0007" x="1719" y="2080" width="416" height="674" frameX="0" frameY="-3" frameWidth="422" frameHeight="677"/>
+	<SubTexture name="zRamirez RIGHT NOTE0008" x="1719" y="2080" width="416" height="674" frameX="0" frameY="-3" frameWidth="422" frameHeight="677"/>
+	<SubTexture name="zRamirez RIGHT NOTE0009" x="1719" y="2080" width="416" height="674" frameX="0" frameY="-3" frameWidth="422" frameHeight="677"/>
+	<SubTexture name="zRamirez RIGHT NOTE0010" x="1719" y="2080" width="416" height="674" frameX="0" frameY="-3" frameWidth="422" frameHeight="677"/>
+	<SubTexture name="zRamirez RIGHT NOTE0011" x="1719" y="2080" width="416" height="674" frameX="0" frameY="-3" frameWidth="422" frameHeight="677"/>
+	<SubTexture name="zRamirez RIGHT NOTE0012" x="1719" y="2080" width="416" height="674" frameX="0" frameY="-3" frameWidth="422" frameHeight="677"/>
+	<SubTexture name="zRamirez RIGHT NOTE0013" x="1719" y="2080" width="416" height="674" frameX="0" frameY="-3" frameWidth="422" frameHeight="677"/>
+	<SubTexture name="zRamirez RIGHT NOTE0014" x="1719" y="2080" width="416" height="674" frameX="0" frameY="-3" frameWidth="422" frameHeight="677"/>
+	<SubTexture name="zRamirez RIGHT NOTE ALT0000" x="2145" y="2080" width="550" height="659" frameX="-16" frameY="0" frameWidth="566" frameHeight="659"/>
+	<SubTexture name="zRamirez RIGHT NOTE ALT0001" x="2705" y="2080" width="559" height="658" frameX="-6" frameY="-1" frameWidth="566" frameHeight="659"/>
+	<SubTexture name="zRamirez RIGHT NOTE ALT0002" x="3274" y="2080" width="562" height="656" frameX="0" frameY="-3" frameWidth="566" frameHeight="659"/>
+	<SubTexture name="zRamirez RIGHT NOTE ALT0003" x="8" y="2767" width="562" height="656" frameX="0" frameY="-3" frameWidth="566" frameHeight="659"/>
+	<SubTexture name="zRamirez RIGHT NOTE ALT0004" x="580" y="2767" width="562" height="656" frameX="0" frameY="-3" frameWidth="566" frameHeight="659"/>
+	<SubTexture name="zRamirez RIGHT NOTE ALT0005" x="580" y="2767" width="562" height="656" frameX="0" frameY="-3" frameWidth="566" frameHeight="659"/>
+	<SubTexture name="zRamirez RIGHT NOTE ALT0006" x="580" y="2767" width="562" height="656" frameX="0" frameY="-3" frameWidth="566" frameHeight="659"/>
+	<SubTexture name="zRamirez RIGHT NOTE ALT0007" x="580" y="2767" width="562" height="656" frameX="0" frameY="-3" frameWidth="566" frameHeight="659"/>
+	<SubTexture name="zRamirez RIGHT NOTE ALT0008" x="580" y="2767" width="562" height="656" frameX="0" frameY="-3" frameWidth="566" frameHeight="659"/>
+	<SubTexture name="zRamirez RIGHT NOTE ALT0009" x="580" y="2767" width="562" height="656" frameX="0" frameY="-3" frameWidth="566" frameHeight="659"/>
+	<SubTexture name="zRamirez RIGHT NOTE ALT0010" x="580" y="2767" width="562" height="656" frameX="0" frameY="-3" frameWidth="566" frameHeight="659"/>
+	<SubTexture name="zRamirez RIGHT NOTE ALT0011" x="580" y="2767" width="562" height="656" frameX="0" frameY="-3" frameWidth="566" frameHeight="659"/>
+	<SubTexture name="zRamirez RIGHT NOTE ALT0012" x="580" y="2767" width="562" height="656" frameX="0" frameY="-3" frameWidth="566" frameHeight="659"/>
+	<SubTexture name="zRamirez RIGHT NOTE ALT0013" x="580" y="2767" width="562" height="656" frameX="0" frameY="-3" frameWidth="566" frameHeight="659"/>
+	<SubTexture name="zRamirez RIGHT NOTE ALT0014" x="580" y="2767" width="562" height="656" frameX="0" frameY="-3" frameWidth="566" frameHeight="659"/>
+	<SubTexture name="zRamirez UP NOTE0000" x="1152" y="2767" width="404" height="709" frameX="-2" frameY="0" frameWidth="412" frameHeight="709"/>
+	<SubTexture name="zRamirez UP NOTE0001" x="1566" y="2767" width="409" height="701" frameX="-1" frameY="-7" frameWidth="412" frameHeight="709"/>
+	<SubTexture name="zRamirez UP NOTE0002" x="1985" y="2767" width="412" height="697" frameX="0" frameY="-12" frameWidth="412" frameHeight="709"/>
+	<SubTexture name="zRamirez UP NOTE0003" x="2407" y="2767" width="412" height="697" frameX="0" frameY="-12" frameWidth="412" frameHeight="709"/>
+	<SubTexture name="zRamirez UP NOTE0004" x="2829" y="2767" width="412" height="697" frameX="0" frameY="-12" frameWidth="412" frameHeight="709"/>
+	<SubTexture name="zRamirez UP NOTE0005" x="2829" y="2767" width="412" height="697" frameX="0" frameY="-12" frameWidth="412" frameHeight="709"/>
+	<SubTexture name="zRamirez UP NOTE0006" x="2829" y="2767" width="412" height="697" frameX="0" frameY="-12" frameWidth="412" frameHeight="709"/>
+	<SubTexture name="zRamirez UP NOTE0007" x="2829" y="2767" width="412" height="697" frameX="0" frameY="-12" frameWidth="412" frameHeight="709"/>
+	<SubTexture name="zRamirez UP NOTE0008" x="2829" y="2767" width="412" height="697" frameX="0" frameY="-12" frameWidth="412" frameHeight="709"/>
+	<SubTexture name="zRamirez UP NOTE0009" x="2829" y="2767" width="412" height="697" frameX="0" frameY="-12" frameWidth="412" frameHeight="709"/>
+	<SubTexture name="zRamirez UP NOTE0010" x="2829" y="2767" width="412" height="697" frameX="0" frameY="-12" frameWidth="412" frameHeight="709"/>
+	<SubTexture name="zRamirez UP NOTE0011" x="2829" y="2767" width="412" height="697" frameX="0" frameY="-12" frameWidth="412" frameHeight="709"/>
+	<SubTexture name="zRamirez UP NOTE0012" x="2829" y="2767" width="412" height="697" frameX="0" frameY="-12" frameWidth="412" frameHeight="709"/>
+	<SubTexture name="zRamirez UP NOTE0013" x="2829" y="2767" width="412" height="697" frameX="0" frameY="-12" frameWidth="412" frameHeight="709"/>
+	<SubTexture name="zRamirez UP NOTE0014" x="2829" y="2767" width="412" height="697" frameX="0" frameY="-12" frameWidth="412" frameHeight="709"/>
+	<SubTexture name="zRamirez UP NOTE ALT0000" x="3251" y="2767" width="435" height="721" frameX="-2" frameY="0" frameWidth="443" frameHeight="721"/>
+	<SubTexture name="zRamirez UP NOTE ALT0001" x="8" y="3498" width="440" height="714" frameX="-1" frameY="-7" frameWidth="443" frameHeight="721"/>
+	<SubTexture name="zRamirez UP NOTE ALT0002" x="458" y="3498" width="443" height="709" frameX="0" frameY="-12" frameWidth="443" frameHeight="721"/>
+	<SubTexture name="zRamirez UP NOTE ALT0003" x="911" y="3498" width="443" height="709" frameX="0" frameY="-12" frameWidth="443" frameHeight="721"/>
+	<SubTexture name="zRamirez UP NOTE ALT0004" x="1364" y="3498" width="443" height="709" frameX="0" frameY="-12" frameWidth="443" frameHeight="721"/>
+	<SubTexture name="zRamirez UP NOTE ALT0005" x="1364" y="3498" width="443" height="709" frameX="0" frameY="-12" frameWidth="443" frameHeight="721"/>
+	<SubTexture name="zRamirez UP NOTE ALT0006" x="1364" y="3498" width="443" height="709" frameX="0" frameY="-12" frameWidth="443" frameHeight="721"/>
+	<SubTexture name="zRamirez UP NOTE ALT0007" x="1364" y="3498" width="443" height="709" frameX="0" frameY="-12" frameWidth="443" frameHeight="721"/>
+	<SubTexture name="zRamirez UP NOTE ALT0008" x="1364" y="3498" width="443" height="709" frameX="0" frameY="-12" frameWidth="443" frameHeight="721"/>
+	<SubTexture name="zRamirez UP NOTE ALT0009" x="1364" y="3498" width="443" height="709" frameX="0" frameY="-12" frameWidth="443" frameHeight="721"/>
+	<SubTexture name="zRamirez UP NOTE ALT0010" x="1364" y="3498" width="443" height="709" frameX="0" frameY="-12" frameWidth="443" frameHeight="721"/>
+	<SubTexture name="zRamirez UP NOTE ALT0011" x="1364" y="3498" width="443" height="709" frameX="0" frameY="-12" frameWidth="443" frameHeight="721"/>
+	<SubTexture name="zRamirez UP NOTE ALT0012" x="1364" y="3498" width="443" height="709" frameX="0" frameY="-12" frameWidth="443" frameHeight="721"/>
+	<SubTexture name="zRamirez UP NOTE ALT0013" x="1364" y="3498" width="443" height="709" frameX="0" frameY="-12" frameWidth="443" frameHeight="721"/>
+	<SubTexture name="zRamirez UP NOTE ALT0014" x="1364" y="3498" width="443" height="709" frameX="0" frameY="-12" frameWidth="443" frameHeight="721"/>
+</TextureAtlas>

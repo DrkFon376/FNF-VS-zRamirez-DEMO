@@ -61,6 +61,8 @@ class Character extends FlxSprite
 	public var singDuration:Float = 4; //Multiplier of how long a character holds the sing pose
 	public var idleSuffix:String = '';
 	public var danceIdle:Bool = false; //Character use "danceLeft" and "danceRight" instead of "idle"
+	public var danceOnBeatsOnCountdown:Int = 2;
+	public var danceAfterAnim:Bool = false;
 	public var skipDance:Bool = false;
 
 	public var healthIcon:String = 'face';
@@ -266,15 +268,18 @@ class Character extends FlxSprite
 					if(specialAnim && animation.curAnim.name == 'hey' || animation.curAnim.name == 'cheer')
 					{
 						specialAnim = false;
-						dance();
+						danceOnce();
 					}
 					heyTimer = 0;
 				}
 			} else if(specialAnim && animation.curAnim.finished)
 			{
 				specialAnim = false;
-				dance();
+				danceOnce();
 			}
+
+			if (danceAfterAnim && (danceIdle ? (animation.curAnim.name == 'danceLeft' + idleSuffix || animation.curAnim.name == 'danceRight' + idleSuffix) : animation.curAnim.name == 'idle' + idleSuffix) && animation.curAnim.finished)
+				danceAfterAnim = false;
 			
 			switch(curCharacter)
 			{
@@ -300,7 +305,7 @@ class Character extends FlxSprite
 
 				if (holdTimer >= Conductor.stepCrochet * (0.0011 / (FlxG.sound.music != null ? FlxG.sound.music.pitch : 1)) * singDuration)
 				{
-					dance();
+					danceOnce();
 					holdTimer = 0;
 				}
 			}
@@ -337,6 +342,26 @@ class Character extends FlxSprite
 		}
 	}
 
+	public function danceOnce()
+	{
+		if (!debugMode && !skipDance && !specialAnim)
+		{
+			if (danceIdle)
+			{
+				danced = !danced;
+
+				if (danced)
+					playAnim('danceRight' + idleSuffix);
+				else
+					playAnim('danceLeft' + idleSuffix);
+			}
+			else if (animation.getByName('idle' + idleSuffix) != null)
+				playAnim('idle' + idleSuffix);
+
+			danceAfterAnim = true;
+		}
+	}
+
 	public function playAnim(AnimName:String, Force:Bool = false, Reversed:Bool = false, Frame:Int = 0):Void
 	{
 		specialAnim = false;
@@ -367,6 +392,16 @@ class Character extends FlxSprite
 			}
 		}
 	}
+
+	public function getIdleCountOnCountdown(bpm:Float):Int
+	{
+        if (bpm <= 100)
+            return 1;
+        else if (bpm <= 200)
+            return 2;
+        else
+			return 4;
+    }
 	
 	function loadMappedAnims():Void
 	{

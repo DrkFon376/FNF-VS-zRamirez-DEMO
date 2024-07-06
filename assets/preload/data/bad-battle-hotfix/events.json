@@ -12,7 +12,7 @@
 					[
 						"Move Camera When Singing",
 						"true",
-						"15"
+						""
 					]
 				]
 			],
@@ -22,6 +22,31 @@
 					[
 						"Add Camera Zoom",
 						"",
+						""
+					],
+					[
+						"Flash White",
+						"",
+						""
+					],
+					[
+						"Change Character",
+						"dad",
+						"zRamirez"
+					],
+					[
+						"Change Character",
+						"bf",
+						"bf"
+					],
+					[
+						"Change Character",
+						"gf",
+						"gf-ramirez"
+					],
+					[
+						"StageChange",
+						"new",
 						""
 					]
 				]
@@ -181,17 +206,7 @@
 				[
 					[
 						"Add Camera Zoom",
-						"0.03",
-						""
-					]
-				]
-			],
-			[
-				10280.8988764045,
-				[
-					[
-						"Add Camera Zoom",
-						"0.03",
+						"",
 						""
 					]
 				]
@@ -201,7 +216,7 @@
 				[
 					[
 						"Add Camera Zoom",
-						"0.02",
+						"",
 						""
 					]
 				]
@@ -211,7 +226,7 @@
 				[
 					[
 						"Add Camera Zoom",
-						"0.02",
+						"",
 						""
 					]
 				]
@@ -221,7 +236,7 @@
 				[
 					[
 						"Add Camera Zoom",
-						"0.02",
+						"",
 						""
 					]
 				]
@@ -231,17 +246,7 @@
 				[
 					[
 						"Add Camera Zoom",
-						"0.02",
-						""
-					]
-				]
-			],
-			[
-				10784.4101123596,
-				[
-					[
-						"Add Camera Zoom",
-						"0.02",
+						"",
 						""
 					]
 				]
@@ -310,19 +315,9 @@
 						""
 					],
 					[
-						"Move Camera When Singing",
-						"false",
-						""
-					]
-				]
-			],
-			[
-				43146.0674157303,
-				[
-					[
 						"Camera Follow Pos",
-						"1024",
-						"845"
+						"1045",
+						"850"
 					]
 				]
 			],
@@ -349,16 +344,6 @@
 						"",
 						""
 					],
-					[
-						"Move Camera When Singing",
-						"true",
-						"15"
-					]
-				]
-			],
-			[
-				53932.5842696629,
-				[
 					[
 						"Camera Follow Pos",
 						"",
@@ -390,14 +375,9 @@
 						""
 					],
 					[
-						"Move Camera When Singing",
-						"false",
-						""
-					],
-					[
 						"Camera Follow Pos",
-						"1024",
-						"845"
+						"1045",
+						"850"
 					]
 				]
 			],
@@ -428,11 +408,6 @@
 						"Camera Follow Pos",
 						"",
 						""
-					],
-					[
-						"Move Camera When Singing",
-						"true",
-						"15"
 					]
 				]
 			],
@@ -463,6 +438,26 @@
 						"Flash White",
 						"",
 						""
+					],
+					[
+						"Change Character",
+						"dad",
+						"zRamirez-Demo"
+					],
+					[
+						"Change Character",
+						"bf",
+						"bfOG"
+					],
+					[
+						"Change Character",
+						"gf",
+						"gf-ramirezOLD"
+					],
+					[
+						"StageChange",
+						"old",
+						""
 					]
 				]
 			],
@@ -477,6 +472,26 @@
 					[
 						"HideUI",
 						"1",
+						""
+					],
+					[
+						"Change Character",
+						"dad",
+						"zRamirez"
+					],
+					[
+						"Change Character",
+						"bf",
+						"bf"
+					],
+					[
+						"Change Character",
+						"gf",
+						"gf-ramirez"
+					],
+					[
+						"StageChange",
+						"new",
 						""
 					]
 				]
@@ -520,14 +535,9 @@
 						""
 					],
 					[
-						"Move Camera When Singing",
-						"false",
-						""
-					],
-					[
 						"Camera Follow Pos",
-						"1024",
-						"845"
+						"1045",
+						"850"
 					]
 				]
 			],
@@ -558,11 +568,6 @@
 						"Camera Follow Pos",
 						"",
 						""
-					],
-					[
-						"Move Camera When Singing",
-						"true",
-						"15"
 					]
 				]
 			],
@@ -590,14 +595,9 @@
 						""
 					],
 					[
-						"Move Camera When Singing",
-						"false",
-						""
-					],
-					[
 						"Camera Follow Pos",
-						"1024",
-						"845"
+						"1045",
+						"850"
 					]
 				]
 			],
@@ -633,11 +633,6 @@
 						"Camera Follow Pos",
 						"",
 						""
-					],
-					[
-						"Move Camera When Singing",
-						"true",
-						"15"
 					]
 				]
 			],
@@ -665,19 +660,9 @@
 				169610.214504597,
 				[
 					[
-						"Move Camera When Singing",
-						"false",
-						""
-					],
-					[
 						"Camera Follow Pos",
-						"1024",
+						"1045",
 						"860"
-					],
-					[
-						"Camera_Tween_Zoom",
-						"0.87",
-						""
 					]
 				]
 			],
@@ -690,180 +675,30 @@
 						""
 					],
 					[
-						"PantallaYesHud",
-						"adios",
-						""
+						"Change Character",
+						"dad",
+						"zRamirez-Demo"
 					],
 					[
-						"Camera Follow Pos",
-						"1024",
-						"845"
-					]
-				]
-			],
-			[
-				175087.742594484,
-				[
-					[
-						"Camera_Tween_Zoom",
-						"0.78",
-						""
-					]
-				]
-			],
-			[
-				185789.989785495,
-				[
-					[
-						"Flash White",
-						"",
-						""
+						"Change Character",
+						"bf",
+						"bfOG"
 					],
 					[
-						"PantallaYesHud",
-						"hola",
-						""
+						"Change Character",
+						"gf",
+						"gf-ramirezOLD"
 					],
 					[
-						"Camera Follow Pos",
-						"",
-						""
-					],
-					[
-						"Move Camera When Singing",
-						"true",
-						"15"
-					]
-				]
-			],
-			[
-				185874.259448417,
-				[
-					[
-						"Camera_Tween_Zoom",
-						"0.95",
+						"StageChange",
+						"old",
 						""
 					]
 				]
 			],
 			[
-				196576.506639428,
+				175424.82124617,
 				[
-					[
-						"Flash White",
-						"",
-						""
-					],
-					[
-						"PantallaYesHud",
-						"adios",
-						""
-					],
-					[
-						"Move Camera When Singing",
-						"false",
-						""
-					],
-					[
-						"Camera Follow Pos",
-						"1024",
-						"845"
-					]
-				]
-			],
-			[
-				196660.776302349,
-				[
-					[
-						"Camera_Tween_Zoom",
-						"0.78",
-						""
-					]
-				]
-			],
-			[
-				207363.02349336,
-				[
-					[
-						"Flash White",
-						"",
-						""
-					],
-					[
-						"PantallaYesHud",
-						"hola",
-						""
-					],
-					[
-						"Camera Follow Pos",
-						"",
-						""
-					],
-					[
-						"Move Camera When Singing",
-						"true",
-						"15"
-					]
-				]
-			],
-			[
-				207447.293156282,
-				[
-					[
-						"Camera_Tween_Zoom",
-						"0.95",
-						""
-					]
-				]
-			],
-			[
-				218149.540347293,
-				[
-					[
-						"Flash White",
-						"",
-						""
-					]
-				]
-			],
-			[
-				223542.798774259,
-				[
-					[
-						"Move Camera When Singing",
-						"false",
-						""
-					],
-					[
-						"Camera Follow Pos",
-						"1039",
-						"860"
-					],
-					[
-						"Camera_Tween_Zoom",
-						"0.87",
-						""
-					]
-				]
-			],
-			[
-				228936.057201225,
-				[
-					[
-						"Flash White",
-						"",
-						""
-					]
-				]
-			],
-			[
-				229273.135852911,
-				[
-					[
-						"Camera Follow Pos",
-						"1045",
-						"850"
-					],
 					[
 						"HideUI",
 						"0",
@@ -873,11 +708,16 @@
 						"PantallaYesHud",
 						"adios",
 						""
+					],
+					[
+						"Camera Follow Pos",
+						"1045",
+						"850"
 					]
 				]
 			],
 			[
-				229357.405515832,
+				175509.090909091,
 				[
 					[
 						"Camera_Tween_Zoom",
@@ -887,8 +727,33 @@
 				]
 			],
 			[
-				242141.777323799,
+				188209.193054137,
 				[
+					[
+						"Flash White",
+						"",
+						""
+					],
+					[
+						"Change Character",
+						"dad",
+						"zRamirez"
+					],
+					[
+						"Change Character",
+						"bf",
+						"bf"
+					],
+					[
+						"Change Character",
+						"gf",
+						"gf-ramirez"
+					],
+					[
+						"StageChange",
+						"new",
+						""
+					],
 					[
 						"Hey!",
 						"",

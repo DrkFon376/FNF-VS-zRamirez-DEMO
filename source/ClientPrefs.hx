@@ -10,12 +10,14 @@ class ClientPrefs {
 	public static var downScroll:Bool = false;
 	public static var middleScroll:Bool = false;
 	public static var opponentStrums:Bool = true;
+	public static var showAllCounterStats:Bool = true;
 	public static var showFPS:Bool = true;
 	public static var memoryDisplay:Bool = true;
+	public static var showState:Bool = true;
 	public static var flashing:Bool = true;
 	public static var globalAntialiasing:Bool = true;
 	public static var noteSplashes:Bool = true;
-	public static var noteSplashesTextureDefault:String = 'Psych';
+	public static var noteSplashesTextureDefault:String = 'Vanilla';
 	public static var lowQuality:Bool = false;
 	public static var shaders:Bool = true;
 	public static var framerate:Int = 60;
@@ -103,7 +105,9 @@ class ClientPrefs {
 		FlxG.save.data.middleScroll = middleScroll;
 		FlxG.save.data.opponentStrums = opponentStrums;
 		FlxG.save.data.showFPS = showFPS;
+		FlxG.save.data.showAllCounterStats = showAllCounterStats;
 		FlxG.save.data.memoryDisplay = memoryDisplay;
+		FlxG.save.data.showState = showState;
 		FlxG.save.data.flashing = flashing;
 		FlxG.save.data.globalAntialiasing = globalAntialiasing;
 		FlxG.save.data.noteSplashes = noteSplashes;
@@ -163,12 +167,22 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.showFPS != null) {
 			showFPS = FlxG.save.data.showFPS;
+		}
+		if(FlxG.save.data.showAllCounterStats != null) {
+			#if covers_build
+			showAllCounterStats = FlxG.save.data.showAllCounterStats;
 			if(Main.fpsVar != null) {
-				Main.fpsVar.visible = showFPS;
+				Main.fpsVar.visible = ClientPrefs.showAllCounterStats;
 			}
+			#else
+			showAllCounterStats = true;
+			#end
 		}
 		if(FlxG.save.data.memoryDisplay != null){
 			memoryDisplay = FlxG.save.data.memoryDisplay;
+		}
+		if(FlxG.save.data.showState != null){
+			showState = FlxG.save.data.showState;
 		}
 		if(FlxG.save.data.flashing != null) {
 			flashing = FlxG.save.data.flashing;

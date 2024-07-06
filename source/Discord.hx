@@ -16,12 +16,21 @@ class DiscordClient
 	public function new()
 	{
 		trace("Discord Client starting...");
+		#if covers_build
+		DiscordRpc.start({
+			clientID: "1246230676441927770",
+			onReady: onReady,
+			onError: onError,
+			onDisconnected: onDisconnected
+		});
+		#else
 		DiscordRpc.start({
 			clientID: "1117653033921294366",
 			onReady: onReady,
 			onError: onError,
 			onDisconnected: onDisconnected
 		});
+		#end
 		trace("Discord Client started.");
 
 		while (true)
@@ -41,12 +50,21 @@ class DiscordClient
 	
 	static function onReady()
 	{
+		#if covers_build
+		DiscordRpc.presence({
+			details: "In the Menus",
+			state: null,
+			largeImageKey: 'logomod',
+			largeImageText: "VS zRamírez Covers Build"
+		});
+		#else
 		DiscordRpc.presence({
 			details: "In the Menus",
 			state: null,
 			largeImageKey: 'logomodupdated',
 			largeImageText: "VS zRamírez"
 		});
+		#end
 	}
 
 	static function onError(_code:Int, _message:String)
@@ -78,6 +96,18 @@ class DiscordClient
 			endTimestamp = startTimestamp + endTimestamp;
 		}
 
+		#if covers_build
+		DiscordRpc.presence({
+			details: details,
+			state: state,
+			largeImageKey: 'logomod',
+			largeImageText: "Covers Custom Build",
+			smallImageKey : smallImageKey,
+			// Obtained times are in milliseconds so they are divided so Discord can use it
+			startTimestamp : Std.int(startTimestamp / 1000),
+            endTimestamp : Std.int(endTimestamp / 1000)
+		});
+		#else
 		DiscordRpc.presence({
 			details: details,
 			state: state,
@@ -88,6 +118,7 @@ class DiscordClient
 			startTimestamp : Std.int(startTimestamp / 1000),
             endTimestamp : Std.int(endTimestamp / 1000)
 		});
+		#end
 
 		//trace('Discord RPC Updated. Arguments: $details, $state, $smallImageKey, $hasStartTimestamp, $endTimestamp');
 	}

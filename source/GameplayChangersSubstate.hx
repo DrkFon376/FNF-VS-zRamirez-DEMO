@@ -94,6 +94,12 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 
 		var option:GameplayOption = new GameplayOption('Botplay', 'botplay', 'bool', false);
 		optionsArray.push(option);
+
+		#if covers_build
+		var option:GameplayOption = new GameplayOption('Visuals Only Mode', 'visualsOnly', 'bool', false);
+		option.onChange = onChangeFPSCounter;
+		optionsArray.push(option);
+		#end
 	}
 
 	public function getOptionByName(name:String)
@@ -105,6 +111,11 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 				return opt;
 		}
 		return null;
+	}
+
+	public function onChangeFPSCounter()
+	{
+		ClientPrefs.showAllCounterStats = !ClientPrefs.gameplaySettings['visualsOnly'];
 	}
 
 	public function new()
@@ -131,24 +142,23 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		{
 			var optionText:Alphabet = new Alphabet(200, 360, optionsArray[i].name, true);
 			optionText.isMenuItem = true;
-			optionText.scaleX = 0.8;
-			optionText.scaleY = 0.8;
+			optionText.setScale(0.8);
 			optionText.targetY = i;
 			grpOptions.add(optionText);
 
 			if(optionsArray[i].type == 'bool') {
-				optionText.x += 110;
-				optionText.startPosition.x += 110;
+				optionText.x += 90;
+				optionText.startPosition.x += 90;
 				optionText.snapToPosition();
 				var checkbox:CheckboxThingie = new CheckboxThingie(optionText.x - 105, optionText.y, optionsArray[i].getValue() == true);
 				checkbox.sprTracker = optionText;
-				checkbox.offsetX -= 32;
-				checkbox.offsetY = -120;
+				checkbox.offsetX -= 20;
+				checkbox.offsetY = -52;
 				checkbox.ID = i;
 				checkboxGroup.add(checkbox);
 			} else {
 				optionText.snapToPosition();
-				var valueText:AttachedText = new AttachedText(Std.string(optionsArray[i].getValue()), optionText.width, -72, true, 0.8);
+				var valueText:AttachedText = new AttachedText(Std.string(optionsArray[i].getValue()), optionText.width + 40, 0, true, 0.8);
 				valueText.sprTracker = optionText;
 				valueText.copyAlpha = true;
 				valueText.ID = i;
@@ -161,6 +171,10 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		changeSelection();
 		reloadCheckboxes();
 	}
+
+	#if covers_build
+	static var savedBotplayOption:Bool = true;
+	#end
 
 	var nextAccept:Int = 5;
 	var holdTime:Float = 0;
@@ -195,7 +209,37 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 				if(controls.ACCEPT)
 				{
 					FlxG.sound.play(Paths.sound('scrollMenu'));
+					#if covers_build
+					var botplayOption:GameplayOption = getOptionByName("Botplay");
+					var visualsOnlyOption:GameplayOption = getOptionByName("Visuals Only Mode");
+
+					if (curOption != botplayOption && curOption != visualsOnlyOption)
+					{
+						curOption.setValue((curOption.getValue() == true) ? false : true);
+
+						if (visualsOnlyOption.getValue() == false)
+							savedBotplayOption = botplayOption.getValue();
+					}
+					else if (curOption == visualsOnlyOption)
+					{
+						curOption.setValue((curOption.getValue() == true) ? false : true);
+
+						if (visualsOnlyOption.getValue() == true)
+							botplayOption.setValue(true);
+						else
+							botplayOption.setValue(savedBotplayOption);
+					}
+					else if (curOption == botplayOption)
+					{
+						if (visualsOnlyOption.getValue() == false)
+						{
+							curOption.setValue((curOption.getValue() == true) ? false : true);
+							savedBotplayOption = curOption.getValue();
+						}
+					}
+					#else
 					curOption.setValue((curOption.getValue() == true) ? false : true);
+					#end
 					curOption.change();
 					reloadCheckboxes();
 				}

@@ -26,6 +26,9 @@ typedef SwagSong =
 	var gfVersion:String;
 	var stage:String;
 
+	var overlayCamGame_On:Bool;
+	var overlayCamHUD_On:Bool;
+
 	var arrowSkin:String;
 	var splashSkin:String;
 	var validScore:Bool;
@@ -42,6 +45,8 @@ class Song
 	public var splashSkin:String;
 	public var speed:Float = 1;
 	public var stage:String;
+	public var overlayCamGameOn:Bool = false;
+	public var overlayCamHUDOn:Bool = false;
 	public var player1:String = 'bf';
 	public var player2:String = 'dad';
 	public var gfVersion:String = 'gf';

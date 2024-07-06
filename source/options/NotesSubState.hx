@@ -83,9 +83,8 @@ class NotesSubState extends MusicBeatSubstate
 			shaderArray.push(newShader);
 		}
 
-		hsbText = new Alphabet(posX + 560, 0, "Hue    Saturation  Brightness", false);
-		hsbText.scaleX = 0.6;
-		hsbText.scaleY = 0.6;
+		hsbText = new Alphabet(posX * 2 + 13, 0, "Hue    Saturation  Brightness", false);
+		hsbText.setScale(0.6);
 		add(hsbText);
 
 		changeSelection();
@@ -211,7 +210,7 @@ class NotesSubState extends MusicBeatSubstate
 			if (curSelected == i) {
 				item.alpha = 1;
 				item.scale.set(1, 1);
-				hsbText.y = item.y - 70;
+				hsbText.y = item.y - 20;
 				blackBG.y = item.y - 20;
 			}
 		}
