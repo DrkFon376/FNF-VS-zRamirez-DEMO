@@ -2658,6 +2658,30 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		var file2:String = Paths.json(songName + '/cam-events');
+		#if MODS_ALLOWED
+		if (FileSystem.exists(Paths.modsJson(songName + '/cam-events')) || FileSystem.exists(file2)) {
+		#else
+		if (OpenFlAssets.exists(file2)) {
+		#end
+			var camEventsData:Array<Dynamic> = Song.loadFromJson('cam-events', songName).events;
+			for (event in camEventsData) //An optional extra json to separately read Add Camera Zoom events or others if you want
+			{
+				for (i in 0...event[1].length)
+				{
+					var newEventNote:Array<Dynamic> = [event[0], event[1][i][0], event[1][i][1], event[1][i][2]];
+					var subEvent:EventNote = {
+						strumTime: newEventNote[0] + ClientPrefs.noteOffset,
+						event: newEventNote[1],
+						value1: newEventNote[2],
+						value2: newEventNote[3]
+					};
+					eventNotes.push(subEvent);
+					eventPushed(subEvent);
+				}
+			}
+		}
+
 		for (section in noteData)
 		{
 			for (songNotes in section.sectionNotes)
