@@ -441,20 +441,19 @@ class ChartingState extends MusicBeatState
 			}
 		});
 
-		var reloadSongJson:FlxButton = new FlxButton(reloadSong.x, saveButton.y + 30, "Reload JSON", function()
+		var reloadSongJson:FlxButton = new FlxButton(reloadSong.x, saveButton.y + 23, "Reload JSON", function()
 		{
 			openSubState(new Prompt('This action will clear current progress.\n\nProceed?', 0, function(){loadJson(_song.song.toLowerCase()); }, null,ignoreWarnings));
 		});
 
-		var loadAutosaveBtn:FlxButton = new FlxButton(reloadSongJson.x, reloadSongJson.y + 30, 'Load Autosave', function()
+		var loadAutosaveBtn:FlxButton = new FlxButton(reloadSongJson.x, reloadSongJson.y + 23, 'Load Autosave', function()
 		{
 			PlayState.SONG = Song.parseJSONshit(FlxG.save.data.autosave);
 			MusicBeatState.resetState();
 		});
 
-		var loadEventJson:FlxButton = new FlxButton(loadAutosaveBtn.x, loadAutosaveBtn.y + 30, 'Load Events', function()
+		var loadEventJson:FlxButton = new FlxButton(loadAutosaveBtn.x, loadAutosaveBtn.y + 23, 'Load Events', function()
 		{
-
 			var songName:String = Paths.formatToSongPath(_song.song);
 			var file:String = Paths.json(songName + '/events');
 			#if sys
@@ -469,6 +468,27 @@ class ChartingState extends MusicBeatState
 				changeSection(curSec);
 			}
 		});
+
+		var loadCamEventJson:FlxButton = new FlxButton(loadEventJson.x, loadEventJson.y + 23, 'Load Cam Events', function()
+		{
+
+			var songName:String = Paths.formatToSongPath(_song.song);
+			var file:String = Paths.json(songName + '/cam-events');
+			#if sys
+			if (#if MODS_ALLOWED FileSystem.exists(Paths.modsJson(songName + '/cam-events')) || #end FileSystem.exists(file))
+			#else
+			if (OpenFlAssets.exists(file))
+			#end
+			{
+				clearEvents();
+				var events:SwagSong = Song.loadFromJson('cam-events', songName);
+				_song.events = events.events;
+				changeSection(curSec);
+			}
+		});
+
+		loadCamEventJson.setGraphicSize(80, 30);
+		loadCamEventJson.updateHitbox();
 
 		var saveEvents:FlxButton = new FlxButton(110, reloadSongJson.y, 'Save Events', function ()
 		{
@@ -648,6 +668,7 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(reloadSongJson);
 		tab_group_song.add(loadAutosaveBtn);
 		tab_group_song.add(loadEventJson);
+		tab_group_song.add(loadCamEventJson);
 		tab_group_song.add(stepperBPM);
 		tab_group_song.add(stepperSpeed);
 		tab_group_song.add(reloadNotesButton);
