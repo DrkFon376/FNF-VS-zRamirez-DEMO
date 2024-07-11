@@ -173,8 +173,8 @@ class ChartingState extends MusicBeatState
 		6,
 		8,
 		12,
-		16,
-		24
+		16
+		//24 //I don't like the 24 lol
 	];
 	var curZoom:Int = 2;
 
@@ -1383,8 +1383,8 @@ class ChartingState extends MusicBeatState
 
 		tab_group_chart.add(new FlxText(metronomeStepper.x, metronomeStepper.y - 15, 0, 'BPM:'));
 		tab_group_chart.add(new FlxText(metronomeOffsetStepper.x, metronomeOffsetStepper.y - 15, 0, 'Offset (ms):'));
-		tab_group_chart.add(new FlxText(instVolume.x, instVolume.y - 15, 0, 'Inst Volume'));
-		tab_group_chart.add(new FlxText(voicesVolume.x, voicesVolume.y - 15, 0, 'Voices Volume'));
+		tab_group_chart.add(new FlxText(instVolume.x, instVolume.y - 25, 0, 'Inst Volume\n(in editor)'));
+		tab_group_chart.add(new FlxText(voicesVolume.x, voicesVolume.y - 25, 0, 'Voices Volume\n(in editor)'));
 		tab_group_chart.add(metronome);
 		tab_group_chart.add(disableAutoScrolling);
 		tab_group_chart.add(metronomeStepper);
@@ -1426,7 +1426,7 @@ class ChartingState extends MusicBeatState
 	}
 
 	function generateSong() {
-		FlxG.sound.playMusic(Paths.inst(currentSongName), 0.6/*, false*/);
+		FlxG.sound.playMusic(Paths.inst(currentSongName), 1/*, false*/);
 		if (instVolume != null) FlxG.sound.music.volume = instVolume.value;
 		if (check_mute_inst != null && check_mute_inst.checked) FlxG.sound.music.volume = 0;
 
@@ -1783,20 +1783,22 @@ class ChartingState extends MusicBeatState
 				updateZoom();
 			}
 
-			if (FlxG.keys.justPressed.TAB)
+			if (FlxG.keys.justPressed.TAB) //I just fixed your shit -Drkfon
 			{
 				if (FlxG.keys.pressed.SHIFT)
 				{
 					UI_box.selected_tab -= 1;
 					if (UI_box.selected_tab < 0)
-						UI_box.selected_tab = 2;
+						UI_box.selected_tab = 4;
 				}
 				else
 				{
 					UI_box.selected_tab += 1;
-					if (UI_box.selected_tab >= 3)
+					if (UI_box.selected_tab > 4)
 						UI_box.selected_tab = 0;
 				}
+
+				trace("selected tab: " + UI_box.selected_tab);
 			}
 
 			if (FlxG.keys.justPressed.SPACE)
@@ -2063,7 +2065,7 @@ class ChartingState extends MusicBeatState
 		bpmTxt.text =
 		Std.string(FlxMath.roundDecimal(Conductor.songPosition / 1000, 2)) + " / " + Std.string(FlxMath.roundDecimal(FlxG.sound.music.length / 1000, 2)) +
 		"\nSection: " + curSec +
-		"\n\nBeat: " + Std.string(curDecBeat).substring(0,4) +
+		"\n\nBeat: " + (curDecBeat < 1000 ? (curDecBeat < 100 ? Std.string(FlxMath.roundDecimal(curDecBeat, 2)) : Std.string(FlxMath.roundDecimal(curDecBeat, 1))) : Std.string(Math.round(curDecBeat))) +
 		"\n\nStep: " + curStep +
 		"\n\nBeat Snap: " + quantization + "th";
 
