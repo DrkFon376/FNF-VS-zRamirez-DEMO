@@ -1786,19 +1786,9 @@ class ChartingState extends MusicBeatState
 			if (FlxG.keys.justPressed.TAB) //I just fixed your shit -Drkfon
 			{
 				if (FlxG.keys.pressed.SHIFT)
-				{
-					UI_box.selected_tab -= 1;
-					if (UI_box.selected_tab < 0)
-						UI_box.selected_tab = 4;
-				}
+					UI_box.selected_tab = (UI_box.selected_tab - 1 + 5) % 5;
 				else
-				{
-					UI_box.selected_tab += 1;
-					if (UI_box.selected_tab > 4)
-						UI_box.selected_tab = 0;
-				}
-
-				trace("selected tab: " + UI_box.selected_tab);
+					UI_box.selected_tab = (UI_box.selected_tab + 1) % 5;
 			}
 
 			if (FlxG.keys.justPressed.SPACE)
