@@ -8353,12 +8353,11 @@
 		"gfVersion": "gf-ramirezOLD",
 		"events": [],
 		"player3": null,
-		"song": "Bad-Battle-Hotfix",
+		"song": "Bad Battle Hotfix",
 		"needsVoices": true,
 		"sections": 0,
 		"validScore": true,
 		"stage": "Stage-Hotfix",
-		"overlayCamHUD_On": true,
 		"bpm": 178,
 		"speed": 3
 	}

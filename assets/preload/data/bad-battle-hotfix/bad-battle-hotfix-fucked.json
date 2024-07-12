@@ -12687,7 +12687,6 @@
 		"sections": 0,
 		"validScore": true,
 		"stage": "Stage-Hotfix-Changer",
-		"overlayCamHUD_On": true,
 		"bpm": 178,
 		"speed": 3.5
 	}

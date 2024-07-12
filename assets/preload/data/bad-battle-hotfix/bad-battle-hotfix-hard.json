@@ -6556,7 +6556,6 @@
 		"validScore": true,
 		"sections": 0,
 		"needsVoices": true,
-		"overlayCamHUD_On": true,
 		"speed": 2.7,
 		"bpm": 178
 	}
