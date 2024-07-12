@@ -554,6 +554,14 @@ class DialogueCharacterEditorState extends MusicBeatState
 				}
 			}
 
+			if (FlxG.keys.justPressed.TAB)
+			{
+				if (UI_mainbox.selected_tab_id == 'Character')
+					UI_mainbox.selected_tab_id = 'Animations';
+				else if (UI_mainbox.selected_tab_id == 'Animations')
+					UI_mainbox.selected_tab_id = 'Character';
+			}
+
 			if(UI_mainbox.selected_tab_id == 'Animations' && curSelectedAnim != null && character.dialogueAnimations.exists(curSelectedAnim)) {
 				var moved:Bool = false;
 				var animShit:DialogueAnimArray = character.dialogueAnimations.get(curSelectedAnim);

@@ -1113,6 +1113,14 @@ class CharacterEditorState extends MusicBeatState
 		FlxG.sound.volumeDownKeys = TitleState.volumeDownKeys;
 		FlxG.sound.volumeUpKeys = TitleState.volumeUpKeys;
 
+		if (FlxG.keys.justPressed.TAB)
+		{
+			if (UI_characterbox.selected_tab_id == 'Character')
+				UI_characterbox.selected_tab_id = 'Animations';
+			else if (UI_characterbox.selected_tab_id == 'Animations')
+				UI_characterbox.selected_tab_id = 'Character';
+		}
+
 		if(!charDropDown.dropPanel.visible) {
 			if (FlxG.keys.justPressed.ESCAPE) {
 				if(goToPlayState) {

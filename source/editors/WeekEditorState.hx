@@ -449,6 +449,14 @@ class WeekEditorState extends MusicBeatState
 				MusicBeatState.switchState(new editors.MasterEditorMenu());
 				FlxG.sound.playMusic(Paths.music('zRamirezMenu'));
 			}
+
+			if (FlxG.keys.justPressed.TAB)
+			{
+				if (UI_box.selected_tab_id == 'Week')
+					UI_box.selected_tab_id = 'Other';
+				else if (UI_box.selected_tab_id == 'Other')
+					UI_box.selected_tab_id = 'Week';
+			}
 		}
 
 		super.update(elapsed);
@@ -816,6 +824,7 @@ class WeekEditorFreeplayState extends MusicBeatState
 			if(controls.UI_UP_P) changeSelection(-1);
 			if(controls.UI_DOWN_P) changeSelection(1);
 		}
+
 		super.update(elapsed);
 	}
 }
