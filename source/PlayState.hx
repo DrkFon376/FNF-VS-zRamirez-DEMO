@@ -5108,9 +5108,9 @@ class PlayState extends MusicBeatState
 			char.playAnim(animToPlay + altAnim, true);
 		}
 
-		if (note != null)
+		if (daNote != null)
 		{
-			playerHoldCovers.despawnOnMiss(strumLineNotes != null && strumLineNotes.members.length > 0 && !startingSong, direction, note);
+			playerHoldCovers.despawnOnMiss(strumLineNotes != null && strumLineNotes.members.length > 0 && !startingSong, daNote.noteData, daNote);
 		}
 
 		callOnLuas('noteMiss', [notes.members.indexOf(daNote), daNote.noteData, daNote.noteType, daNote.isSustainNote]);

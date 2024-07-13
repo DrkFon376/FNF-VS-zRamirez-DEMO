@@ -4,6 +4,8 @@ import openfl.Assets;
 import Note;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 
+using StringTools;
+
 // Most of the Original code from Mr.Bruh (mr.bruh69)
 // Ported to haxe and edited by me (glowsoony)
 
@@ -102,7 +104,7 @@ class HoldCover extends FlxTypedSpriteGroup<CoverSprite>
         this.members[data].visible = true;
         if (this.members[data].isPlaying == false)
         {
-          this.members[data].playAnim(Std.string(data));
+          this.members[data].animation.play(Std.string(data));
           this.members[data].isPlaying = false;
         }
 
@@ -112,7 +114,7 @@ class HoldCover extends FlxTypedSpriteGroup<CoverSprite>
           {
             this.members[data].isPlaying = false;
             this.members[data].boom = true;
-            this.members[data].playAnim(Std.string(data) + 'p');
+            this.members[data].animation.play(Std.string(data) + 'p');
           }
           else
           {
@@ -154,7 +156,7 @@ class HoldCover extends FlxTypedSpriteGroup<CoverSprite>
 
         if (this.members[i].boom == true)
         {
-          if (this.members[i].isAnimationFinished())
+          if (this.members[i].animation.curAnim.finished)
           {
             this.members[i].visible = false;
             this.members[i].boom = false;
