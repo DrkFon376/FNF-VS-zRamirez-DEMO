@@ -7,8 +7,8 @@ import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 
 using StringTools;
 
-// Most of the Original code from Mr.Bruh (mr.bruh69)
-// Ported to haxe and edited by me (glowsoony)
+//Most of the Original code from Mr.Bruh (mr.bruh69)
+//Ported to haxe and edited by glowsoony //gracias glow :mirada_sexy:
 
 class CoverSprite extends FlxSprite
 {
