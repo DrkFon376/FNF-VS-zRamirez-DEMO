@@ -1174,7 +1174,7 @@ class PlayState extends MusicBeatState
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 
 		opponentHoldCovers = new HoldCover(true, false);
-	    	playerHoldCovers = new HoldCover(true, true);
+	    playerHoldCovers = new HoldCover(true, true);
 
 		add(strumLineNotes);
 		add(grpNoteSplashes);
