@@ -1178,8 +1178,6 @@ class PlayState extends MusicBeatState
 
 		add(strumLineNotes);
 		add(grpNoteSplashes);
-		add(opponentHoldCovers);
-		add(playerHoldCovers);
 		add(grpNoteSplashes);
 
 		if(ClientPrefs.timeBarType == 'Song Name')
@@ -1198,6 +1196,9 @@ class PlayState extends MusicBeatState
 		// startCountdown();
 
 		generateSong(SONG.song);
+
+		add(opponentHoldCovers);
+		add(playerHoldCovers);
 
 		// After all characters being loaded, it makes then invisible 0.01s later so that the player won't freeze when you change characters
 		// add(strumLine);
@@ -4004,22 +4005,25 @@ class PlayState extends MusicBeatState
 					if(Math.isNaN(targetAlpha)) targetAlpha = 0;
 
 					if(value1.toLowerCase()=="left"){
-
 						//hazardBGashley is gradient flipped
-						instance.modchartTweens.set('hazAlarmLeft', FlxTween.tween(hazardAlarmLeft, {alpha:targetAlpha}, 0.25, {
+						var modchartTweenTag:String = 'hazAlarmLeft';
+						instance.modchartTweens.set(modchartTweenTag, FlxTween.tween(hazardAlarmLeft, {alpha:targetAlpha}, 0.25, {
 							ease: FlxEase.quartOut,
 							onComplete: function(twn:FlxTween)
 							{
-								FlxTween.tween(hazardAlarmLeft, {alpha: 0}, 0.36, {ease: FlxEase.cubeOut });
+								FlxTween.tween(hazardAlarmLeft, {alpha: 0}, 0.36, {ease: FlxEase.cubeOut});
+								instance.modchartTweens.remove(modchartTweenTag);
 							}
 						}));
 					}else if(value1.toLowerCase()=="right"){
 						//hazardBGblank is gradient
-						instance.modchartTweens.set('hazAlarmRight', FlxTween.tween(hazardAlarmRight, {alpha:targetAlpha}, 0.25, {
+						var modchartTweenTag:String = 'hazAlarmRight';
+						instance.modchartTweens.set(modchartTweenTag, FlxTween.tween(hazardAlarmRight, {alpha:targetAlpha}, 0.25, {
 							ease: FlxEase.quartOut,
 							onComplete: function(twn:FlxTween)
 							{
-								FlxTween.tween(hazardAlarmRight, {alpha: 0}, 0.36, {ease: FlxEase.cubeOut });
+								FlxTween.tween(hazardAlarmRight, {alpha: 0}, 0.36, {ease: FlxEase.cubeOut});
+								instance.modchartTweens.remove(modchartTweenTag);
 							}
 						}));
 					}else{
@@ -4142,7 +4146,12 @@ class PlayState extends MusicBeatState
 				var tweenKeyShit:String = "overlay" + (isTargetCamGame ? "CamGame" : "CamHUD") + "Fade" + (leValue ? "Out" : "In");
 
 				if ((isTargetCamGame && blackOverlayCamGame != null) || (!isTargetCamGame && blackOverlayCamHUD != null))
-					instance.modchartTweens.set(tweenKeyShit, FlxTween.tween(targetOverlay, {alpha: (leValue ? 0 : 1)}, targetTime / playbackRate, {ease: getFlxEaseByString(value2Array[1])}));
+				{
+					instance.modchartTweens.set(tweenKeyShit, FlxTween.tween(targetOverlay, {alpha: (leValue ? 0 : 1)}, targetTime / playbackRate, {ease: getFlxEaseByString(value2Array[1]), onComplete: function(twn:FlxTween)
+					{
+						instance.modchartTweens.remove(tweenKeyShit);
+					}}));
+				}
 
 			case 'Change Character':
 				var charType:Int = 0;
@@ -4960,6 +4969,9 @@ class PlayState extends MusicBeatState
 				spr.resetAnim = 0;
 			}
 			callOnLuas('onKeyRelease', [key]);
+
+			if (playerHoldCovers != null && playerHoldCovers.members[key].animation.curAnim != null && !playerHoldCovers.members[key].animation.curAnim.name.endsWith('p')) //De nada glow
+				playerHoldCovers.despawnOnMiss(strumLineNotes != null && strumLineNotes.members.length > 0 && !startingSong, key);
 		}
 		//trace('released: ' + controlArray);
 	}
