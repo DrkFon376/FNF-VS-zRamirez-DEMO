@@ -1,6 +1,7 @@
-package source;
+package;
 
 import openfl.Assets;
+import flixel.FlxSprite;
 import Note;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 
@@ -40,8 +41,8 @@ class CoverSprite extends FlxSprite
 
   public function shaderCopy(noteData:Int, note:Note)
   {
-    this.antialiasing = ClientPrefs.data.antialiasing;
-    if (skin.contains('pixel') || !ClientPrefs.data.antialiasing) this.antialiasing = false;
+    this.antialiasing = ClientPrefs.globalAntialiasing;
+    if (skin.contains('pixel') || !ClientPrefs.globalAntialiasing) this.antialiasing = false;
     // var tempShader:RGBPalette = null;
     // if ((note == null || this.coverData.useRGBShader) && (PlayState.SONG == null || !PlayState.SONG.options.disableHoldCoverRGB))
     // {
