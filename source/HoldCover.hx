@@ -4,6 +4,7 @@ import openfl.Assets;
 import flixel.FlxSprite;
 import Note;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
+import flixel.util.FlxTimer;
 
 using StringTools;
 
@@ -17,15 +18,15 @@ class CoverSprite extends FlxSprite
   public var activatedSprite:Bool = true;
   public var useRGBShader:Bool = false;
 
-  public var colorSwap:ColorSwap = null;
+  public var colorSwap:ColorSwap;
   public var spriteId:String = "";
   public var skin:String = "";
 
-  public function initShader(noteData:Int)
+  /*public function initShader(noteData:Int)
   {
     colorSwap = new ColorSwap();
 		shader = colorSwap.shader;
-  }
+  }*/
 
   public function initFrames(i:Int, hcolor:String)
   {
@@ -42,14 +43,18 @@ class CoverSprite extends FlxSprite
   public function shaderCopy(noteData:Int, note:Note)
   {
     this.antialiasing = ClientPrefs.globalAntialiasing;
-    if (skin.contains('pixel') || !ClientPrefs.globalAntialiasing) this.antialiasing = false;
-    var hue:Float = ClientPrefs.arrowHSV[data % 4][0] / 360;
-		var sat:Float = ClientPrefs.arrowHSV[data % 4][1] / 100;
-		var brt:Float = ClientPrefs.arrowHSV[data % 4][2] / 100;
+    if (skin.contains('pixel') || !ClientPrefs.globalAntialiasing)
+      this.antialiasing = false;
+    
+    colorSwap = new ColorSwap();
+		shader = colorSwap.shader;
 
-    colorSwap.hue = hueColor;
-		colorSwap.saturation = satColor;
-		colorSwap.brightness = brtColor;
+    if (noteData > -1 && noteData < ClientPrefs.arrowHSV.length)
+    {
+      colorSwap.hue = ClientPrefs.arrowHSV[noteData][0] / 360;
+		  colorSwap.saturation = ClientPrefs.arrowHSV[noteData][1] / 100;
+		  colorSwap.brightness = ClientPrefs.arrowHSV[noteData][2] / 100;
+    }
   }
 }
 
@@ -91,16 +96,11 @@ class HoldCover extends FlxTypedSpriteGroup<CoverSprite>
 
     if (enabled && isReady)
     {
+      var data:Int = noteData;
+
       if (isSus)
       {
-        var data:Int = noteData;
         this.members[data].shaderCopy(noteData, note);
-        this.members[data].visible = true;
-        if (this.members[data].isPlaying == false)
-        {
-          this.members[data].animation.play(Std.string(data));
-          this.members[data].isPlaying = false;
-        }
 
         if (isHoldEnd)
         {
@@ -113,9 +113,17 @@ class HoldCover extends FlxTypedSpriteGroup<CoverSprite>
           else
           {
             this.members[data].isPlaying = false;
-            this.members[data].boom = true;
-            this.members[data].visible = false;
             this.members[data].boom = false;
+            hideHoldCoverLater(data, 0.075);
+          }
+        }
+        else
+        {
+          if (this.members[data].isPlaying == false)
+          {
+            this.members[data].visible = true;
+            this.members[data].animation.play(Std.string(data));
+            this.members[data].isPlaying = false;
           }
         }
       }
@@ -129,8 +137,22 @@ class HoldCover extends FlxTypedSpriteGroup<CoverSprite>
     {
       var data:Int = noteData;
       this.members[data].shaderCopy(noteData, note);
-      this.members[data].isPlaying = this.members[data].boom = this.members[data].visible = false;
+      this.members[data].isPlaying = false;
+      this.members[data].boom = false;
+      this.members[data].visible = false;
+      this.members[data].animation.stop();
     }
+  }
+
+  private function hideHoldCoverLater(data:Int, delay:Float):Void
+  {
+      var timer:FlxTimer = new FlxTimer();
+      var tag:String = "hideHoldCoverFromStrum" + data;
+      PlayState.instance.modchartTimers.set(tag, timer.start(delay, function(timer:FlxTimer)
+      {
+        this.members[data].visible = false;
+        PlayState.instance.modchartTimers.remove(tag);
+      }));
   }
 
   public function updateHold(elapsed:Float, isReady:Bool):Void
