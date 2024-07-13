@@ -17,14 +17,14 @@ class CoverSprite extends FlxSprite
   public var activatedSprite:Bool = true;
   public var useRGBShader:Bool = false;
 
-  //public var rgbShader:RGBPixelShaderReference;
+  public var colorSwap:ColorSwap = null;
   public var spriteId:String = "";
   public var skin:String = "";
 
   public function initShader(noteData:Int)
   {
-    /*rgbShader = new RGBPixelShaderReference();
-    shader = rgbShader.shader;*/
+    colorSwap = new ColorSwap();
+		shader = colorSwap.shader;
   }
 
   public function initFrames(i:Int, hcolor:String)
@@ -43,22 +43,13 @@ class CoverSprite extends FlxSprite
   {
     this.antialiasing = ClientPrefs.globalAntialiasing;
     if (skin.contains('pixel') || !ClientPrefs.globalAntialiasing) this.antialiasing = false;
-    // var tempShader:RGBPalette = null;
-    // if ((note == null || this.coverData.useRGBShader) && (PlayState.SONG == null || !PlayState.SONG.options.disableHoldCoverRGB))
-    // {
-    //   // If Splash RGB is enabled:
-    //   if (note != null)
-    //   {
-    //     if (this.coverData.r != -1) note.rgbShader.r = this.coverData.r;
-    //     if (this.coverData.g != -1) note.rgbShader.g = this.coverData.g;
-    //     if (this.coverData.b != -1) note.rgbShader.b = this.coverData.b;
-    //     tempShader = note.rgbShader.parent;
-    //   }
-    //   else
-    //     tempShader = Note.globalRgbShaders[noteData];
-    // }
-    // rgbShader.containsPixel = (skin.contains('pixel') || PlayState.isPixelStage);
-    // rgbShader.copyValues(tempShader);
+    var hue:Float = ClientPrefs.arrowHSV[data % 4][0] / 360;
+		var sat:Float = ClientPrefs.arrowHSV[data % 4][1] / 100;
+		var brt:Float = ClientPrefs.arrowHSV[data % 4][2] / 100;
+
+    colorSwap.hue = hueColor;
+		colorSwap.saturation = satColor;
+		colorSwap.brightness = brtColor;
   }
 }
 
@@ -93,9 +84,11 @@ class HoldCover extends FlxTypedSpriteGroup<CoverSprite>
 
   public function spawnOnNoteHit(note:Note, isReady:Bool):Void
   {
+    if (note == null) return;
     var noteData:Int = note.noteData;
     var isSus:Bool = note.isSustainNote;
     var isHoldEnd:Bool = note.animation.curAnim.name.endsWith('end');
+
     if (enabled && isReady)
     {
       if (isSus)
