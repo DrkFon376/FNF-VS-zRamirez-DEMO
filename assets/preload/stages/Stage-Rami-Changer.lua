@@ -71,7 +71,7 @@ function onCreate()
 
 end
 function onEvent(name,value1,value2)
-	if name == 'StageChange' then 
+	if name == 'Change Stage' then 
 		
 		if value1 == 'old' then
 			setProperty('stageback.visible', false);

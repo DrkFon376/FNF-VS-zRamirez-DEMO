@@ -1,6 +1,0 @@
-Cambia la stage del mod a la nueva o la vieja 
-dependiendo del valor indicado en el "value 1"
-Coloca en el value 1 "new" para mostrar la nueva stage
-Coloca en el value 1 "old" para mostrar la vieja stage
-este evento solo funciona si esta seleccionada la 
-"Stage-Hotfix-Changer" en cualquier canción
