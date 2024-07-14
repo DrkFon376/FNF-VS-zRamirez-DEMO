@@ -17,6 +17,7 @@ class ClientPrefs {
 	public static var flashing:Bool = true;
 	public static var globalAntialiasing:Bool = true;
 	public static var noteSplashes:Bool = true;
+	public static var holdSplashes:Bool = true;
 	public static var noteSplashesTextureDefault:String = 'Vanilla';
 	public static var lowQuality:Bool = false;
 	public static var shaders:Bool = true;
@@ -111,6 +112,7 @@ class ClientPrefs {
 		FlxG.save.data.flashing = flashing;
 		FlxG.save.data.globalAntialiasing = globalAntialiasing;
 		FlxG.save.data.noteSplashes = noteSplashes;
+		FlxG.save.data.holdSplashes = holdSplashes;
 		FlxG.save.data.noteSplashesTextureDefault = noteSplashesTextureDefault;
 		FlxG.save.data.lowQuality = lowQuality;
 		FlxG.save.data.shaders = shaders;
@@ -192,6 +194,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.noteSplashes != null) {
 			noteSplashes = FlxG.save.data.noteSplashes;
+		}
+		if(FlxG.save.data.holdSplashes != null) {
+			holdSplashes = FlxG.save.data.holdSplashes;
 		}
 		if(FlxG.save.data.noteSplashesTextureDefault != null) {
 			noteSplashesTextureDefault = FlxG.save.data.noteSplashesTextureDefault;
