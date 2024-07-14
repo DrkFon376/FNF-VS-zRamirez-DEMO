@@ -92,7 +92,7 @@ class CreditsState extends MusicBeatState
 			['Extra Mod Credits'],
 			['Iandee',					'iandee',			'Creator of the Original Design of the BF and GF Sprites from the VS Impostor Dialogues',								'https://www.youtube.com/channel/UCnoOhpnxHWtayIJUCutfP7w',			'B0B0B0'],
 			['Slushi',					'slushi',			'Help with Lua Modcharts, Bad Battle Modchart Creator',																	'https://www.youtube.com/channel/UC3sEmV3kzR7Z1icTY7hbrKg',			'16F8DD'],
-			['Glowsoony',				'glow',				'Help with Some Coding, Ported GPU Caching from Psych 0.7',																'https://www.youtube.com/channel/UCQQo4VDFWv_LX6tHzmBu8kA',			'66AFEC'],
+			['Glowsoony',				'glow',				'Help with Some Coding, Ported GPU Caching from Psych 0.7 and Helped to Port the Hold Splashes from the V-Slice',		'https://www.youtube.com/channel/UCQQo4VDFWv_LX6tHzmBu8kA',			'66AFEC'],
 			['ElPatoFNF',				'pato',				'Help with Some Charting, Beta Tester',																					'https://www.youtube.com/channel/UCSDpAZ-xwBql9yLCYeDgtyA',			'605C5C'],
 			[''],
 			['Psych Engine Main Team'],
