@@ -50,7 +50,7 @@
 						"gf-ramirez"
 					],
 					[
-						"StageChange",
+						"Change Stage",
 						"new",
 						""
 					],
@@ -232,6 +232,16 @@
 				]
 			],
 			[
+				85617.97752809,
+				[
+					[
+						"Overlay Alpha Fade",
+						"fadeIn",
+						"0.590625"
+					]
+				]
+			],
+			[
 				86292.1348314608,
 				[
 					[
@@ -265,9 +275,24 @@
 						"gf-ramirezOLD"
 					],
 					[
-						"StageChange",
+						"Change Stage",
 						"old",
 						""
+					],
+					[
+						"Overlay Alpha Fade",
+						"fadeOut",
+						""
+					]
+				]
+			],
+			[
+				98640.712096892,
+				[
+					[
+						"Overlay Alpha Fade",
+						"fadeIn, camHUD",
+						"0.715625"
 					]
 				]
 			],
@@ -300,8 +325,13 @@
 						"gf-ramirez"
 					],
 					[
-						"StageChange",
+						"Change Stage",
 						"new",
+						""
+					],
+					[
+						"Overlay Alpha Fade",
+						"fadeOut, camHUD",
 						""
 					]
 				]
@@ -477,6 +507,16 @@
 				]
 			],
 			[
+				174329.315628192,
+				[
+					[
+						"Overlay Alpha Fade",
+						"fadeIn",
+						"0.590625"
+					]
+				]
+			],
+			[
 				175003.472931563,
 				[
 					[
@@ -500,8 +540,13 @@
 						"gf-ramirezOLD"
 					],
 					[
-						"StageChange",
+						"Change Stage",
 						"old",
+						""
+					],
+					[
+						"Overlay Alpha Fade",
+						"fadeOut",
 						""
 					]
 				]
@@ -537,6 +582,16 @@
 				]
 			],
 			[
+				187352.050196994,
+				[
+					[
+						"Overlay Alpha Fade",
+						"fadeIn, camHUD",
+						"0.715625"
+					]
+				]
+			],
+			[
 				188209.193054137,
 				[
 					[
@@ -560,7 +615,7 @@
 						"gf-ramirez"
 					],
 					[
-						"StageChange",
+						"Change Stage",
 						"new",
 						""
 					],
@@ -568,6 +623,11 @@
 						"Hey!",
 						"",
 						"30"
+					],
+					[
+						"Overlay Alpha Fade",
+						"fadeOut, camHUD",
+						""
 					]
 				]
 			]
