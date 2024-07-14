@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="Stages.png">
+<TextureAtlas imagePath="Fondo-Stage.png">
 	<!-- Created with Adobe Animate version 19.2.1.408 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="Drk stage fondo quemandosew0000" x="7" y="7" width="1444" height="891"/>
-	<SubTexture name="Drk stage fondo quemandosew0001" x="7" y="7" width="1444" height="891"/>
-	<SubTexture name="Drk stage fondo quemandosew0002" x="7" y="905" width="1444" height="891"/>
-	<SubTexture name="Drk stage fondo quemandosew0003" x="7" y="905" width="1444" height="891"/>
-	<SubTexture name="Drk stage fondo quemandosew0004" x="7" y="1803" width="1444" height="891"/>
-	<SubTexture name="Drk stage fondo quemandosew0005" x="7" y="1803" width="1444" height="891"/>
-	<SubTexture name="Drk stage fondo quemandosew0006" x="7" y="2701" width="1444" height="891"/>
-	<SubTexture name="Drk stage fondo quemandosew0007" x="7" y="2701" width="1444" height="891"/>
+	<SubTexture name="MIFONDOENLLAMAS0000" x="8" y="8" width="1148" height="708" frameX="0" frameY="0" frameWidth="1184" frameHeight="708"/>
+	<SubTexture name="MIFONDOENLLAMAS0001" x="8" y="8" width="1148" height="708" frameX="0" frameY="0" frameWidth="1184" frameHeight="708"/>
+	<SubTexture name="MIFONDOENLLAMAS0002" x="8" y="726" width="1184" height="708"/>
+	<SubTexture name="MIFONDOENLLAMAS0003" x="8" y="726" width="1184" height="708"/>
+	<SubTexture name="MIFONDOENLLAMAS0004" x="8" y="1444" width="1148" height="708" frameX="0" frameY="0" frameWidth="1184" frameHeight="708"/>
+	<SubTexture name="MIFONDOENLLAMAS0005" x="8" y="1444" width="1148" height="708" frameX="0" frameY="0" frameWidth="1184" frameHeight="708"/>
+	<SubTexture name="MIFONDOENLLAMAS0006" x="8" y="2162" width="1148" height="708" frameX="0" frameY="0" frameWidth="1184" frameHeight="708"/>
+	<SubTexture name="MIFONDOENLLAMAS0007" x="8" y="2162" width="1148" height="708" frameX="0" frameY="0" frameWidth="1184" frameHeight="708"/>
 </TextureAtlas>

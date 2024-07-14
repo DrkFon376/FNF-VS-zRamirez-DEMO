@@ -5,20 +5,20 @@ function onCreate()
 	setLuaSpriteScrollFactor('stageback', 1.0, 1.0);
 	scaleObject('stageback', 1.0, 1.0);
 
-	makeLuaSprite('stagefront', 'StageHotfix/StageFront', -201, 1048);
+	makeLuaSprite('stagefront', 'StageHotfix/StageFront', -208, 1031);
 	setLuaSpriteScrollFactor('stagefront', 1.0, 1.0);
 	scaleObject('stagefront', 1.0, 1.0);
 
-    makeLuaSprite('mueble', 'StageHotfix/StageMueble', 575, 602);
+    makeLuaSprite('mueble', 'StageHotfix/StageMueble', 569, 607);
     setLuaSpriteScrollFactor('mueble', 1.0, 1.0);
     scaleObject('mueble', 1.1, 1.1);
 
     if not lowQuality then
-	    makeLuaSprite('adornos', 'StageHotfix/Adornos', -110, 295);
+	    makeLuaSprite('adornos', 'StageHotfix/Adornos', -110, 305);
 	    setLuaSpriteScrollFactor('adornos', 1.0, 1.0);
 	    scaleObject('adornos', 1.0, 1.0);
 
-		makeLuaSprite('extra', 'StageHotfix/StageExtra2', 275, 715);
+		makeLuaSprite('extra', 'StageHotfix/StageExtra2', 290, 715);
 		setLuaSpriteScrollFactor('extra', 1.0, 1.0);
 		scaleObject('extra', 1.0, 1.0);
 
@@ -27,7 +27,7 @@ function onCreate()
 		scaleObject('luz', 1.0, 1.0);
 		setProperty('luz.alpha', 0.2);
     end
-
+	
 	--old stage assets
 	makeLuaSprite('stagebackold', 'StageHotfix/StageBackOLD', -200, 0);
 	setLuaSpriteScrollFactor('stagebackold', 1.0, 1.0);
