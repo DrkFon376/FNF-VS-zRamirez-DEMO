@@ -1194,8 +1194,8 @@ class PlayState extends MusicBeatState
 
 		generateSong(SONG.song);
 
-		opponentHoldCovers = new HoldCover((ClientPrefs.holdSplashes && ClientPrefs.opponentStrums) ? true : false, false);
-	    playerHoldCovers = new HoldCover(ClientPrefs.holdSplashes, true);
+		opponentHoldCovers = new HoldCover(!visualsOnlyMode ? (ClientPrefs.holdSplashes && ClientPrefs.opponentStrums ? true : false) : false, false);
+	    playerHoldCovers = new HoldCover(!visualsOnlyMode ? ClientPrefs.holdSplashes : false, true);
 		add(opponentHoldCovers);
 		add(playerHoldCovers);
 
@@ -2578,7 +2578,9 @@ class PlayState extends MusicBeatState
 				authorInfo = zRamirezAsMainComposer;
 			case "intervention":
 				authorInfo = drkfonAsMainComposer;
-			case "friendship" | "friendship v2" | "friendship-v2":
+			case "friendship":
+				authorInfo = zRamirezAsSoleComposer;			
+			case "friendship v2" | "friendship-v2":
 				authorInfo = drkfonAsMainComposer;
 			case "override":
 				authorInfo = drkfonAsSoleComposer;
