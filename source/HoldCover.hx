@@ -121,10 +121,9 @@ class HoldCover extends FlxTypedSpriteGroup<CoverSprite>
         {
           if (this.members[data].isPlaying == false)
           {
-            this.members[data].visible = true;
+            if (this.members[data].boom == false)
+              this.members[data].visible = true;
             this.members[data].animation.play(Std.string(data));
-            if (this.members[data].boom == true)
-              this.members[data].visible = false;
             this.members[data].isPlaying = false;
           }
         }
