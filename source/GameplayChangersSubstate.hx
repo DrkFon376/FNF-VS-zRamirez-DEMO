@@ -116,6 +116,8 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 	public function onChangeFPSCounter()
 	{
 		ClientPrefs.showAllCounterStats = !ClientPrefs.gameplaySettings['visualsOnly'];
+		if(Main.fpsVar != null)
+			Main.fpsVar.visible = ClientPrefs.showAllCounterStats;
 	}
 
 	public function new()
