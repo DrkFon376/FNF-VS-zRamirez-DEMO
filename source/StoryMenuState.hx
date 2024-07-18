@@ -420,6 +420,14 @@ class StoryMenuState extends MusicBeatState
 		if(assetName == null || assetName.length < 1) {
 			bgSprite.visible = false;
 		} else {
+			if (leWeek.weekName == "Week Z")
+			{
+				if (isWeekZComplete())
+					assetName = "ramirez_completed";
+				else
+					assetName = "ramirez_not_completed";
+			}
+			
 			bgSprite.loadGraphic(Paths.image('menubackgrounds/menu_' + assetName));
 		}
 		PlayState.storyWeek = curWeek;
@@ -466,6 +474,11 @@ class StoryMenuState extends MusicBeatState
 			curDifficulty = newPos;
 		}
 		updateText();
+	}
+
+	function isWeekZComplete():Bool
+	{
+		return weekCompleted.exists("weekz") && weekCompleted.get("weekz");
 	}
 
 	function weekIsLocked(name:String):Bool {
