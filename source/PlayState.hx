@@ -2538,7 +2538,7 @@ class PlayState extends MusicBeatState
 
 		FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 1, false);
 		FlxG.sound.music.pitch = playbackRate;
-		FlxG.sound.music.onComplete = finishSong.bind();
+		FlxG.sound.music.onComplete = onSongComplete.bind();
 		vocals.play();
 
 		if(startOnTime > 0)
@@ -4456,6 +4456,23 @@ class PlayState extends MusicBeatState
 		}
 	}
 
+	//Stolen from Haz again lmaoo
+	private var songCompletedAlready:Bool = false;
+	//FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK FUCK
+	private function onSongComplete()
+	{
+		if (songCompletedAlready)
+		{
+			trace("song already completed lmao");
+			return;
+		}
+		else
+		{
+			trace("onSongComplete");
+			songCompletedAlready = true;
+			finishSong(false);
+		}
+	}
 
 	public var transitioning = false;
 	public function endSong():Void
