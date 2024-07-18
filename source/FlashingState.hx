@@ -15,12 +15,19 @@ class FlashingState extends MusicBeatState
 {
 	public static var leftState:Bool = false;
 
+	var zRamirezBG:FlxSprite;
 	var warnText:FlxText;
 	override function create()
 	{
 		super.create();
 
+		zRamirezBG = new FlxSprite().loadGraphic(Paths.image("Flashing_Lights_Background"));
+		zRamirezBG.screenCenter();
+		zRamirezBG.updateHitbox();
+		add(zRamirezBG);
+
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+		bg.alpha = 0.6;
 		add(bg);
 
 		warnText = new FlxText(0, 0, FlxG.width,
@@ -48,12 +55,15 @@ class FlashingState extends MusicBeatState
 					ClientPrefs.saveSettings();
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 					FlxFlicker.flicker(warnText, 1, 0.1, false, true, function(flk:FlxFlicker) {
-						new FlxTimer().start(0.5, function (tmr:FlxTimer) {
-							MusicBeatState.switchState(new TitleState());
+						FlxTween.tween(zRamirezBG, {alpha: 0}, 1, {
+							onComplete: function(twn:FlxTween) {
+								MusicBeatState.switchState(new TitleState());
+							}
 						});
 					});
 				} else {
 					FlxG.sound.play(Paths.sound('cancelMenu'));
+					FlxTween.tween(zRamirezBG, {alpha: 0}, 1);
 					FlxTween.tween(warnText, {alpha: 0}, 1, {
 						onComplete: function (twn:FlxTween) {
 							MusicBeatState.switchState(new TitleState());
