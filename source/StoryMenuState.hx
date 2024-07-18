@@ -42,6 +42,8 @@ class StoryMenuState extends MusicBeatState
 
 	var grpLocks:FlxTypedGroup<FlxSprite>;
 
+	var comingSoonText:FlxText;
+
 	var difficultySelectors:FlxGroup;
 	var sprDifficulty:FlxSprite;
 	var leftArrow:FlxSprite;
@@ -190,6 +192,14 @@ class StoryMenuState extends MusicBeatState
 		add(scoreText);
 		add(txtWeekTitle);
 
+		comingSoonText = new FlxText(0, 0, 700, "Coming Soon...", 150);
+		comingSoonText.setFormat(Paths.font("PhantomMuff Full Letters 1.1.5.ttf"), 150, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		comingSoonText.borderSize = 10;
+		comingSoonText.screenCenter();
+		comingSoonText.updateHitbox();
+		comingSoonText.alpha = 0;
+		add(comingSoonText);
+
 		changeWeek();
 		changeDifficulty();
 
@@ -275,6 +285,12 @@ class StoryMenuState extends MusicBeatState
 			movedBack = true;
 			MusicBeatState.switchState(new MainMenuState());
 		}
+		
+		if (comingSoonText != null)
+		{
+			if(comingSoonText.alpha > 0)
+				comingSoonText.alpha -= 0.8 * elapsed;
+		}
 
 		super.update(elapsed);
 
@@ -336,6 +352,8 @@ class StoryMenuState extends MusicBeatState
 			});
 		} else {
 			FlxG.sound.play(Paths.sound('cancelMenu'));
+			if (curDifficulty == 2)
+				comingSoonText.alpha = 1;
 		}
 	}
 
