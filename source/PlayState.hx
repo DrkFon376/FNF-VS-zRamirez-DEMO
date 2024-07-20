@@ -310,6 +310,8 @@ class PlayState extends MusicBeatState
 	private var singAnimations:Array<String> = ['singLEFT', 'singDOWN', 'singUP', 'singRIGHT'];
 
 	public var inCutscene:Bool = false;
+	var checkSubtitlesOptionTextBG:FlxSprite;
+	var checkSubtitlesOptionText:Alphabet;
 	public var skipCountdown:Bool = false;
 	var songLength:Float = 0;
 
@@ -1441,6 +1443,26 @@ class PlayState extends MusicBeatState
 			startCountdown();
 		}
 		RecalculateRating();
+
+		if (isStoryMode && (SONG.song.toLowerCase() == "bad battle" || SONG.song.toLowerCase() == "bad-battle") && !FlxG.save.data.enteredVisualsOptions)
+		{
+			checkSubtitlesOptionText = new Alphabet(0, FlxG.height + 300, 'You can enable English Subtitles for Cutscenes in Visuals Options', true);
+			checkSubtitlesOptionText.setScale(0.4, 0.4);
+			checkSubtitlesOptionText.screenCenter(X);
+			checkSubtitlesOptionText.cameras = [camOther];
+
+			checkSubtitlesOptionTextBG = new FlxSprite(0, FlxG.height + 285.8).makeGraphic(Std.int(checkSubtitlesOptionText.width + 60), Std.int(checkSubtitlesOptionText.height * 2), FlxColor.BLACK);
+			checkSubtitlesOptionTextBG.alpha = 0.6;
+			checkSubtitlesOptionTextBG.screenCenter(X);
+			checkSubtitlesOptionTextBG.cameras = [camOther];
+
+			//Used to find the final positions after tweens
+			//trace("text y: " + checkSubtitlesOptionText);
+			//trace("textBG y: " + checkSubtitlesOptionTextBG);
+
+			add(checkSubtitlesOptionTextBG);
+			add(checkSubtitlesOptionText);
+		}
 
 		//PRECACHING MISS SOUNDS BECAUSE I THINK THEY CAN LAG PEOPLE AND FUCK THEM UP IDK HOW HAXE WORKS
 		if(ClientPrefs.hitsoundVolume > 0) precacheList.set('hitsound', 'sound');
@@ -2604,6 +2626,12 @@ class PlayState extends MusicBeatState
 		if (songInfo != null)
 			songInfo.start();
 
+		if (checkSubtitlesOptionText != null && checkSubtitlesOptionTextBG != null)
+		{
+			if (isStoryMode && (SONG.song.toLowerCase() == "bad battle" || SONG.song.toLowerCase() == "bad-battle") && !FlxG.save.data.enteredVisualsOptions)
+				startCheckSubtitlesOptionText();
+		}
+
 		#if desktop
 		// Updating Discord Rich Presence (with Time Left)
 		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength);
@@ -3636,6 +3664,21 @@ class PlayState extends MusicBeatState
 			}
 		}
 		return false;
+	}
+
+	function startCheckSubtitlesOptionText()
+	{
+		PlayState.instance.modchartTweens.set("checkSubtitlesOptionTextTween", FlxTween.tween(checkSubtitlesOptionText, {y: 650}, 2, {ease: FlxEase.quintInOut, startDelay: 0.8, onComplete: function(twn:FlxTween){
+			PlayState.instance.modchartTweens.set("checkSubtitlesOptionTextTweenPart2", FlxTween.tween(checkSubtitlesOptionText, {y: FlxG.height + 300}, 2, {ease: FlxEase.quintInOut, startDelay: 2.5, onComplete: function(twn:FlxTween){ 
+				checkSubtitlesOptionText.destroy(); 
+			}}));
+		}}));
+
+		PlayState.instance.modchartTweens.set("checkSubtitlesOptionTextBGTween", FlxTween.tween(checkSubtitlesOptionTextBG, {y: 635.8}, 2, {ease: FlxEase.quintInOut, startDelay: 0.8, onComplete: function(twn:FlxTween){
+			PlayState.instance.modchartTweens.set("checkSubtitlesOptionTextBGTweenPart2", FlxTween.tween(checkSubtitlesOptionTextBG, {y: FlxG.height + 285.8}, 2, {ease: FlxEase.quintInOut, startDelay: 2.5, onComplete: function(twn:FlxTween){ 
+				checkSubtitlesOptionTextBG.destroy(); 
+			}}));
+		}}));
 	}
 
 	public function checkEventNote() {

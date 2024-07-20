@@ -313,6 +313,9 @@ class ClientPrefs {
 		}
 		if (FlxG.save.data.comboStacking != null)
 			comboStacking = FlxG.save.data.comboStacking;
+		
+		if (FlxG.save.data.enteredVisualsOptions == null)
+			FlxG.save.data.enteredVisualsOptions = false;
 
 		var save:FlxSave = new FlxSave();
 		save.bind('controls_v2', CoolUtil.getSavePath());

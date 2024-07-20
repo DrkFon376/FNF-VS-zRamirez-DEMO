@@ -33,6 +33,7 @@ class VisualsUISubState extends BaseOptionsMenu
 	{
 		title = 'Visuals and UI';
 		rpcTitle = 'Visuals & UI Settings Menu'; //for Discord Rich Presence
+		FlxG.save.data.enteredVisualsOptions = true;
 
 		var option:Option = new Option('Note Splashes',
 			"If unchecked, hitting \"Sick!\" notes won't show particles.",
