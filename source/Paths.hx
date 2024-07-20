@@ -80,6 +80,7 @@ class Paths
 		'assets/music/zRamirezMenu.$SOUND_EXT',
 		'assets/shared/music/breakfast-pixel.$SOUND_EXT',
 		'assets/shared/music/tea-time.$SOUND_EXT',
+		'assets/shared/music/ramirez-week-pause.$SOUND_EXT',
 	];
 
 	/// haya I love you for the base cache dump I took to the max
