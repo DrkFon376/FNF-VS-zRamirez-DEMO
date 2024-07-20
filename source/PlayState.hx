@@ -1422,6 +1422,15 @@ class PlayState extends MusicBeatState
 				case 'ugh' | 'guns' | 'stress':
 					tankIntro();
 
+				case 'bad battle' | 'bad-battle':
+					startVideo(ClientPrefs.cutscenesSubtitles ? "Bad_Battle_Cutscene_Eng_Subtitles" : "Bad_Battle_Cutscene");
+
+				case 'intervention':
+					startVideo(ClientPrefs.cutscenesSubtitles ? "Intervention_Cutscene_Eng_Subtitles" : "Intervention_Cutscene");
+
+				case 'friendship':
+					startVideo(ClientPrefs.cutscenesSubtitles ? "Friendship_Cutscene_Eng_Subtitles" : "Friendship_Cutscene");
+
 				default:
 					startCountdown();
 			}
@@ -1443,15 +1452,15 @@ class PlayState extends MusicBeatState
 		switch (leSong)
 		{
 			case "bad-battle" | "bad-battle-hotfix" | "bad battle" | "bad battle hotfix" | "intervention" | "friendship" | "friendship-v2" | "friendship v2":
-				PauseSubState.songName = 'zRamirezWeekPause';
+				PauseSubState.songName = 'ramirez-week-pause';
 		}
 
 		if (PauseSubState.songName != null) {
 			precacheList.set(PauseSubState.songName, 'music');
 		} else if(ClientPrefs.pauseMusic != 'None') {
-			precacheList.set(Paths.formatToSongPath(ClientPrefs.pauseMusic == 'Breakfast' ? "breakfast-pixel" : ClientPrefs.pauseMusic), 'music');
+			precacheList.set(Paths.formatToSongPath(ClientPrefs.pauseMusic == 'Breakfast' ? "breakfast-pixel" : (ClientPrefs.pauseMusic == 'zRamírez' ? "ramirez-week-pause" : ClientPrefs.pauseMusic)), 'music');
 		}
-
+		
 		precacheList.set('alphabet', 'image');
 	
 		#if desktop

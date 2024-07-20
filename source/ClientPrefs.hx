@@ -16,6 +16,7 @@ class ClientPrefs {
 	public static var showState:Bool = true;
 	public static var flashing:Bool = true;
 	public static var globalAntialiasing:Bool = true;
+	public static var cutscenesSubtitles:Bool = false;
 	public static var noteSplashes:Bool = true;
 	public static var holdSplashes:Bool = true;
 	public static var noteSplashesTextureDefault:String = 'Vanilla';
@@ -111,6 +112,7 @@ class ClientPrefs {
 		FlxG.save.data.showState = showState;
 		FlxG.save.data.flashing = flashing;
 		FlxG.save.data.globalAntialiasing = globalAntialiasing;
+		FlxG.save.data.cutscenesSubtitles = cutscenesSubtitles;
 		FlxG.save.data.noteSplashes = noteSplashes;
 		FlxG.save.data.holdSplashes = holdSplashes;
 		FlxG.save.data.noteSplashesTextureDefault = noteSplashesTextureDefault;
@@ -191,6 +193,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.globalAntialiasing != null) {
 			globalAntialiasing = FlxG.save.data.globalAntialiasing;
+		}
+		if(FlxG.save.data.cutscenesSubtitles != null) {
+			cutscenesSubtitles = FlxG.save.data.cutscenesSubtitles;
 		}
 		if(FlxG.save.data.noteSplashes != null) {
 			noteSplashes = FlxG.save.data.noteSplashes;

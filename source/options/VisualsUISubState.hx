@@ -71,6 +71,13 @@ class VisualsUISubState extends BaseOptionsMenu
 			['Time Left', 'Time Elapsed', 'Song Name', 'Disabled']);
 		addOption(option);
 
+		var option:Option = new Option('Cutscenes English Subtitles',
+			"If checked, English subtitles will be displayed in cutscenes.",
+			'cutscenesSubtitles',
+			'bool',
+			false);
+		addOption(option);
+
 		var option:Option = new Option('Flashing Lights',
 			"Uncheck this if you're sensitive to flashing lights!",
 			'flashing',
