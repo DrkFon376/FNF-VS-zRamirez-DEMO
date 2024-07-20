@@ -5584,7 +5584,7 @@ class PlayState extends MusicBeatState
 	public function spawnNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
 		var skin:String = 'noteSplashes';
 
-		if (ClientPrefs.noteSplashesTextureDefault == 'Vanilla')
+		if (ClientPrefs.noteSplashesTexture == 'Vanilla')
 			skin = 'noteSplashesVanilla';
 		
 		if(PlayState.SONG.splashSkin != null && PlayState.SONG.splashSkin.length > 0) skin = PlayState.SONG.splashSkin;

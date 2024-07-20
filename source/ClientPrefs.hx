@@ -19,7 +19,7 @@ class ClientPrefs {
 	public static var cutscenesSubtitles:Bool = false;
 	public static var noteSplashes:Bool = true;
 	public static var holdSplashes:Bool = true;
-	public static var noteSplashesTextureDefault:String = 'Vanilla';
+	public static var noteSplashesTexture:String = 'Vanilla';
 	public static var lowQuality:Bool = false;
 	public static var shaders:Bool = true;
 	public static var framerate:Int = 60;
@@ -115,7 +115,7 @@ class ClientPrefs {
 		FlxG.save.data.cutscenesSubtitles = cutscenesSubtitles;
 		FlxG.save.data.noteSplashes = noteSplashes;
 		FlxG.save.data.holdSplashes = holdSplashes;
-		FlxG.save.data.noteSplashesTextureDefault = noteSplashesTextureDefault;
+		FlxG.save.data.noteSplashesTexture = noteSplashesTexture;
 		FlxG.save.data.lowQuality = lowQuality;
 		FlxG.save.data.shaders = shaders;
 		FlxG.save.data.framerate = framerate;
@@ -203,8 +203,8 @@ class ClientPrefs {
 		if(FlxG.save.data.holdSplashes != null) {
 			holdSplashes = FlxG.save.data.holdSplashes;
 		}
-		if(FlxG.save.data.noteSplashesTextureDefault != null) {
-			noteSplashesTextureDefault = FlxG.save.data.noteSplashesTextureDefault;
+		if(FlxG.save.data.noteSplashesTexture != null) {
+			noteSplashesTexture = FlxG.save.data.noteSplashesTexture;
 		}
 		if(FlxG.save.data.lowQuality != null) {
 			lowQuality = FlxG.save.data.lowQuality;
@@ -313,7 +313,7 @@ class ClientPrefs {
 		}
 		if (FlxG.save.data.comboStacking != null)
 			comboStacking = FlxG.save.data.comboStacking;
-		
+
 		if (FlxG.save.data.enteredVisualsOptions == null)
 			FlxG.save.data.enteredVisualsOptions = false;
 

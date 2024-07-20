@@ -15,7 +15,7 @@ class NoteSplash extends FlxSprite
 
 		var skin:String = 'noteSplashes';
 
-		if (ClientPrefs.noteSplashesTextureDefault == 'Base Game')
+		if (ClientPrefs.noteSplashesTexture == 'Vanilla')
 			skin = 'noteSplashesVanilla';
 
 		if(PlayState.SONG.splashSkin != null && PlayState.SONG.splashSkin.length > 0) skin = PlayState.SONG.splashSkin;
@@ -34,7 +34,7 @@ class NoteSplash extends FlxSprite
 		alpha = 0.6;
 
 		if(texture == null) {
-			if (ClientPrefs.noteSplashesTextureDefault == 'Psych')
+			if (ClientPrefs.noteSplashesTexture == 'Psych')
 				texture = 'noteSplashes';
 			else
 				texture = 'noteSplashesVanilla';
@@ -49,7 +49,7 @@ class NoteSplash extends FlxSprite
 		colorSwap.saturation = satColor;
 		colorSwap.brightness = brtColor;
 
-		if (ClientPrefs.noteSplashesTextureDefault == 'Psych')
+		if (ClientPrefs.noteSplashesTexture == 'Psych')
 			offset.set(10, 10);
 		else
 			offset.set(-25, -17);

@@ -51,7 +51,7 @@ class VisualsUISubState extends BaseOptionsMenu
 
 		var option:Option = new Option('Note Splashes Texture:',
 			"Choose what texture you want to be used in the Note Splashes.",
-			'noteSplashesTextureDefault',
+			'noteSplashesTexture',
 			'string',
 			'Vanilla',
 			['Psych', 'Vanilla']);
