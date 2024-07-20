@@ -185,7 +185,7 @@ class HoldCover extends FlxTypedSpriteGroup<CoverSprite>
 
   function ni(note, info):Float
   {
-    if (enabled && PlayState.instance != null)
+    if (enabled && PlayState.instance != null && !PlayState.instance.inCutscene)
     {
       var game:PlayState = PlayState.instance;
       if (game == null) return 110;
