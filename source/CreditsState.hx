@@ -85,6 +85,7 @@ class CreditsState extends MusicBeatState
 			['zRamírez',				'zramirez',			'Mod Owner, Main Dev, Musician, Artist, Animator, Character and Stage Design, Some Lua Programming and Charter',		'https://www.youtube.com/channel/UCPvBcpUxgtJpcJUZEiRPK_g',			'FFE800'],
 			['DrkFon376',				'drkfon',			'Mod Co-Owner, Coder, Musician, Help with FLA Files, Charter and Fixed Some Bugs',										'https://www.youtube.com/channel/UCCVTns4b43V8Q5EON8xuSUQ',			'0A5DAF'],
 			['Ima',						'ima',				'Charter and Beta Tester',																								'https://www.youtube.com/channel/UCs9dXV0B7uKACyyW9PBFYCA',			'583627'],
+			['Edu_YT',					'edu',				'Helped to Create the Super Awesome Cutscenes for Story Mode, Beta Tester',												'https://www.youtube.com/channel/UCs9dXV0B7uKACyyW9PBFYCA',			'209520'],
 			[''],
 			['Discord Server'],
 			['zRamírez Discord Server',	'discord',			'zRamírez Official Discord Server, There are Announcements about the Mod, Spoilers and Many Other Things! (Spanish and English Supported)',  	   'https://discord.gg/g2mCEc9rH5',			'4C5CE4'],
