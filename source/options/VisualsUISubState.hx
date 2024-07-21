@@ -79,6 +79,13 @@ class VisualsUISubState extends BaseOptionsMenu
 			false);
 		addOption(option);
 
+		var option:Option = new Option('Flashing Lights Warning',
+			"If unchecked, the flashing lights warning will no longer be displayed when starting the game.",
+			'flashingWarningEnabled',
+			'bool',
+			true);
+		addOption(option);
+
 		var option:Option = new Option('Flashing Lights',
 			"Uncheck this if you're sensitive to flashing lights!",
 			'flashing',

@@ -15,6 +15,7 @@ class ClientPrefs {
 	public static var memoryDisplay:Bool = true;
 	public static var showState:Bool = true;
 	public static var flashing:Bool = true;
+	public static var flashingWarningEnabled:Bool = true;
 	public static var globalAntialiasing:Bool = true;
 	public static var cutscenesSubtitles:Bool = false;
 	public static var noteSplashes:Bool = true;
@@ -111,6 +112,7 @@ class ClientPrefs {
 		FlxG.save.data.memoryDisplay = memoryDisplay;
 		FlxG.save.data.showState = showState;
 		FlxG.save.data.flashing = flashing;
+		FlxG.save.data.flashingWarningEnabled = flashingWarningEnabled;
 		FlxG.save.data.globalAntialiasing = globalAntialiasing;
 		FlxG.save.data.cutscenesSubtitles = cutscenesSubtitles;
 		FlxG.save.data.noteSplashes = noteSplashes;
@@ -190,6 +192,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.flashing != null) {
 			flashing = FlxG.save.data.flashing;
+		}
+		if(FlxG.save.data.flashingWarningEnabled != null) {
+			flashingWarningEnabled = FlxG.save.data.flashingWarningEnabled;
 		}
 		if(FlxG.save.data.globalAntialiasing != null) {
 			globalAntialiasing = FlxG.save.data.globalAntialiasing;
@@ -316,6 +321,9 @@ class ClientPrefs {
 
 		if (FlxG.save.data.enteredVisualsOptions == null)
 			FlxG.save.data.enteredVisualsOptions = false;
+
+		if (FlxG.save.data.firstWarning == null)
+			FlxG.save.data.firstWarning = false;
 
 		var save:FlxSave = new FlxSave();
 		save.bind('controls_v2', CoolUtil.getSavePath());

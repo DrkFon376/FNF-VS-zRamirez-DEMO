@@ -17,6 +17,9 @@ class FlashingState extends MusicBeatState
 
 	var zRamirezBG:FlxSprite;
 	var warnText:FlxText;
+	var disabledText:Alphabet;
+	var pressed:Bool = false;
+
 	override function create()
 	{
 		super.create();
@@ -30,16 +33,32 @@ class FlashingState extends MusicBeatState
 		bg.alpha = 0.6;
 		add(bg);
 
-		warnText = new FlxText(0, 0, FlxG.width,
+		warnText = new FlxText(0, 0, FlxG.width, (!FlxG.save.data.firstWarning ?
 			"Hey, watch out!\n
 			This Mod contains some flashing lights!\n
 			Press ENTER to disable them now or go to Options Menu.\n
 			Press ESCAPE to ignore this message.\n
-			You've been warned!",
+			You've been warned!" :
+			"Hey, watch out!\n
+			This Mod contains some flashing lights!\n
+			Press ENTER to disable them now or go to Options Menu.\n
+			Press ESCAPE to ignore this message.\n
+			You've been warned!\n\n
+			Press D for disable this warning
+			the next time you open the game\n
+			(You can enable it again in Visuals Options)"),
 			32);
 		warnText.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
 		warnText.screenCenter(Y);
 		add(warnText);
+
+		disabledText = new Alphabet(0, FlxG.height - 100, 'Warning Disabled', true);
+		disabledText.setScale(0.8, 0.8);
+		disabledText.screenCenter(X);
+		disabledText.alpha = 0;
+		add(disabledText);
+
+		pressed = false;
 	}
 
 	override function update(elapsed:Float)
@@ -48,12 +67,15 @@ class FlashingState extends MusicBeatState
 			var back:Bool = controls.BACK;
 			if (controls.ACCEPT || back) {
 				leftState = true;
+				FlxG.save.data.firstWarning = true;
 				FlxTransitionableState.skipNextTransIn = true;
 				FlxTransitionableState.skipNextTransOut = true;
 				if(!back) {
 					ClientPrefs.flashing = false;
 					ClientPrefs.saveSettings();
 					FlxG.sound.play(Paths.sound('confirmMenu'));
+					if (disabledText != null && disabledText.alpha > 0)
+						FlxTween.tween(disabledText, {alpha: 0}, 0.4);
 					FlxFlicker.flicker(warnText, 1, 0.1, false, true, function(flk:FlxFlicker) {
 						FlxTween.tween(zRamirezBG, {alpha: 0}, 1, {
 							onComplete: function(twn:FlxTween) {
@@ -62,7 +84,11 @@ class FlashingState extends MusicBeatState
 						});
 					});
 				} else {
+					ClientPrefs.flashing = true;
+					ClientPrefs.saveSettings();
 					FlxG.sound.play(Paths.sound('cancelMenu'));
+					if (disabledText != null && disabledText.alpha > 0)
+						FlxTween.tween(disabledText, {alpha: 0}, 0.4);
 					FlxTween.tween(zRamirezBG, {alpha: 0}, 1);
 					FlxTween.tween(warnText, {alpha: 0}, 1, {
 						onComplete: function (twn:FlxTween) {
@@ -70,6 +96,19 @@ class FlashingState extends MusicBeatState
 						}
 					});
 				}
+			}
+			else if (FlxG.save.data.firstWarning && FlxG.keys.justPressed.D && !pressed)
+			{
+				ClientPrefs.flashingWarningEnabled = false;
+				ClientPrefs.saveSettings();
+				disabledText.alpha = 1;
+				pressed = true;
+			}
+
+			if (disabledText != null)
+			{
+				if (disabledText.alpha > 0)
+					disabledText.alpha -= 0.8 * elapsed;
 			}
 		}
 		super.update(elapsed);
