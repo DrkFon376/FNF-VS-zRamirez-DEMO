@@ -3347,6 +3347,10 @@ class PlayState extends MusicBeatState
 			Conductor.songPosition += FlxG.elapsed * 1000 * playbackRate;
 		}
 
+		if (Conductor.songPosition >= FlxG.sound.music.length){ //Because using "oncomplete" for music doesn't work when changing pitch? idfk
+			onSongComplete(); //BRO WHAT THE FUCK, I SWEAR ON MY LIFE I HAD ALREADY PUT THIS LINE, anyways, here it is again lmao -Drkfon
+		}
+
 		if (startingSong)
 		{
 			if (startedCountdown && Conductor.songPosition >= 0)
