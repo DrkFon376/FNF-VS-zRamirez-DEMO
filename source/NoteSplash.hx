@@ -4,15 +4,17 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 
-class NoteSplashOffsets
+class NoteSplashOffset
 {
+	public function new() {}
+	
 	public var animOffsets:Map<String, Array<Float>> = [];
 	public function getOffset(name:String):Array<Float>
 		return animOffsets[name];
 
 	public function setOffset(name:String, pos:Array<Float>):Array<Float>
 	{
-		animOffset.set(name, pos);
+		animOffsets.set(name, pos);
 		return getOffset(name);
 	}
 }
