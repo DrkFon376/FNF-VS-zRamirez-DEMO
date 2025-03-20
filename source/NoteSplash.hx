@@ -4,11 +4,46 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 
+class NoteSplashOffsets
+{
+	public var animOffsets:Map<String, Array<Float>> = [];
+	public function getOffset(name:String):Array<Float>
+		return animOffsets[name];
+
+	public function setOffset(name:String, pos:Array<Float>):Array<Float>
+	{
+		animOffset.set(name, pos);
+		return getOffset(name);
+	}
+}
+
+class NoteSplashOffsetHandler
+{
+	public var skins:Map<String, NoteSplashOffset> = [];
+
+	public function new() {}
+
+	public function getSkin(name:String):NoteSplashOffset
+		return skins[name];
+
+	public function setSkin(name:String, offsets:NoteSplashOffset)
+	{
+		skins.set(name, offset);
+		return getSkin(name);
+	}
+
+	public function getSkinOffset(anim:String, animNum:String):Array<Float>
+		return getSkin(name).getOffset(animNum);
+
+	public function ne() {}
+}
+
 class NoteSplash extends FlxSprite
 {
 	public var colorSwap:ColorSwap = null;
 	private var idleAnim:String;
 	private var textureLoaded:String = null;
+	public var offsetHandler:NoteSplashOffsetHandler = new NoteSplashOffsetHandler();
 
 	public function new(x:Float = 0, y:Float = 0, ?note:Int = 0) {
 		super(x, y);
@@ -54,9 +89,14 @@ class NoteSplash extends FlxSprite
 		else
 			offset.set(-25, -17);
 
-		var animNum:Int = FlxG.random.int(1, 2);
-		animation.play('note' + note + '-' + animNum, true);
+		animation.play(checkAnim(note), true);
 		if(animation.curAnim != null)animation.curAnim.frameRate = 24 + FlxG.random.int(-2, 2);
+	}
+
+	function checkAnim(note:Int):String {
+		if (!animation.getByName('note$note-2'))
+			return 'note$note-1';
+		return 'note$note-' + FlxG.random.int(1, 2);
 	}
 
 	function loadAnims(skin:String) {

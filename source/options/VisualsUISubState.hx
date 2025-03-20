@@ -57,6 +57,14 @@ class VisualsUISubState extends BaseOptionsMenu
 			['Psych', 'Vanilla']);
 		addOption(option);
 
+		var option:Option = new Option('Note Skin Texture:',
+			"Choose what texture you want to be used in on the Notes.",
+			'noteSkin',
+			'string',
+			'Vanilla',
+			['Vanilla', 'Future']);
+		addOption(option);
+
 		var option:Option = new Option('Hide HUD',
 			'If checked, hides most HUD elements.',
 			'hideHud',
