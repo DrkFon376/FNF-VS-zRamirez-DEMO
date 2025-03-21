@@ -7,7 +7,7 @@ import flixel.graphics.frames.FlxAtlasFrames;
 class NoteSplashOffset
 {
 	public function new() {}
-	
+
 	public var animOffsets:Map<String, Array<Float>> = [];
 	public function getOffset(name:String):Array<Float>
 		return animOffsets[name];
@@ -28,7 +28,7 @@ class NoteSplashOffsetHandler
 	public function getSkin(name:String):NoteSplashOffset
 		return skins[name];
 
-	public function setSkin(name:String, offsets:NoteSplashOffset)
+	public function setSkin(name:String, offset:NoteSplashOffset)
 	{
 		skins.set(name, offset);
 		return getSkin(name);
@@ -96,7 +96,7 @@ class NoteSplash extends FlxSprite
 	}
 
 	function checkAnim(note:Int):String {
-		if (!animation.getByName('note$note-2'))
+		if (animation.getByName('note$note-2') == null)
 			return 'note$note-1';
 		return 'note$note-' + FlxG.random.int(1, 2);
 	}
