@@ -240,10 +240,10 @@ class Note extends FlxSprite
 				scale.y *= PlayState.daPixelZoom;
 				updateHitbox();
 			}
-			earlyHitMult = 0;
 		}
 		else if(!isSustainNote)
 		{
+			earlyHitMult = 1;
 			centerOffsets();
 			centerOrigin();
 		}

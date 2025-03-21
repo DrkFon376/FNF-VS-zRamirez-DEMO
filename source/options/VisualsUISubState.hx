@@ -62,7 +62,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			'noteSkin',
 			'string',
 			'Vanilla',
-			['Vanilla', 'Future']);
+			['Vanilla', 'Future', 'Future']);
 		addOption(option);
 
 		var option:Option = new Option('Hide HUD',
