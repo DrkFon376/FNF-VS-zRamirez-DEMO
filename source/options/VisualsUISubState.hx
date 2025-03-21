@@ -54,7 +54,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			'noteSplashesTexture',
 			'string',
 			'Vanilla',
-			['Psych', 'Vanilla']);
+			['Vanilla', 'Psych', 'Diamond']);
 		addOption(option);
 
 		var option:Option = new Option('Note Skin Texture:',
