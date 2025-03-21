@@ -4567,7 +4567,7 @@ class PlayState extends MusicBeatState
 		if(achievementObj != null) {
 			return;
 		} else {
-			var achieve:String = checkForAchievement(['ur_bad', 'ur_good', 'taunt_master', 'friendship_v2']);
+			var achieve:String = checkForAchievement(['zweek_beat', 'ur_bad', 'ur_good', 'taunt_master', 'friendship_v2']);
 
 			if(achieve != null) {
 				startAchievement(achieve);
@@ -6205,6 +6205,10 @@ class PlayState extends MusicBeatState
 				}*/
 				switch(achievementName)
 				{
+					case 'zweek_beat':
+						if(WeekData.getWeekFileName().toLowerCase() == 'weekz' && isStoryMode && storyPlaylist.length <= 1 && !usedPractice) {
+							unlock = true;
+						}
 					case 'ur_bad':
 						if(ratingPercent < 0.2 && !practiceMode) {
 							unlock = true;
