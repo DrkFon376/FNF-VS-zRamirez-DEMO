@@ -34,7 +34,7 @@ class NoteSplashOffsetHandler
 		return getSkin(name);
 	}
 
-	public function getSkinOffset(anim:String, animNum:String):Array<Float>
+	public function getSkinOffset(name:String, animNum:String):Array<Float>
 		return getSkin(name).getOffset(animNum);
 
 	public function ne() {}
