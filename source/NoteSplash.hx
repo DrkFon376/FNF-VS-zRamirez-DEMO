@@ -37,7 +37,8 @@ class NoteSplashOffsetHandler
 	public function getSkinOffset(name:String, animNum:String):Array<Float>
 		return getSkin(name).getOffset(animNum);
 
-	public function ne() {}
+	public function setSkinOffset(skin:String, name:String, pos:Array<Float>):Array<Float>
+		return getSkin(skin).setOffset(name, pos);
 }
 
 class NoteSplash extends FlxSprite

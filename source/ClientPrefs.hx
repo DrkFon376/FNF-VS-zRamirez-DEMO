@@ -319,6 +319,10 @@ class ClientPrefs {
 		{
 			checkForUpdates = FlxG.save.data.checkForUpdates;
 		}
+		
+		if (FlxG.save.data.noteSkin != null) {
+			noteSkin = FlxG.save.data.noteSkin;
+		}
 		if (FlxG.save.data.comboStacking != null)
 			comboStacking = FlxG.save.data.comboStacking;
 
@@ -327,11 +331,6 @@ class ClientPrefs {
 
 		if (FlxG.save.data.firstWarning == null)
 			FlxG.save.data.firstWarning = false;
-
-		if (FlxG.save.data.noteSkin == null) 
-		{
-			noteSkin = FlxG.save.data.noteSkin;
-		}
 
 		var save:FlxSave = new FlxSave();
 		save.bind('controls_v2', CoolUtil.getSavePath());
