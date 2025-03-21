@@ -240,8 +240,12 @@ class Note extends FlxSprite
 				scale.y *= PlayState.daPixelZoom;
 				updateHitbox();
 			}
-		} else if(!isSustainNote) {
-			earlyHitMult = 1;
+			earlyHitMult = 0;
+		}
+		else if(!isSustainNote)
+		{
+			centerOffsets();
+			centerOrigin();
 		}
 		x += offsetX;
 	}
@@ -313,6 +317,8 @@ class Note extends FlxSprite
 
 		if(animName != null)
 			animation.play(animName, true);
+		
+		updateHitbox();
 
 		if(inEditor) {
 			setGraphicSize(ChartingState.GRID_SIZE, ChartingState.GRID_SIZE);
