@@ -54,7 +54,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			'noteSplashesTexture',
 			'string',
 			'Vanilla',
-			['Vanilla', 'Psych', 'Diamond']);
+			['Vanilla', 'Psych', 'Diamond', 'Electric', 'Sparkles']);
 		addOption(option);
 
 		var option:Option = new Option('Note Skin Texture:',
@@ -62,7 +62,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			'noteSkin',
 			'string',
 			'Vanilla',
-			['Vanilla', 'Future', 'Future2']);
+			['Vanilla', 'Future', 'Future2', 'Chip']);
 		addOption(option);
 
 		var option:Option = new Option('Hide HUD',

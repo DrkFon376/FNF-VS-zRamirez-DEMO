@@ -4,6 +4,8 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 
+using StringTools;
+
 class NoteSplashData
 {
 	public function new() {}
@@ -63,14 +65,27 @@ class NoteSplash extends FlxSprite
 		{
 			case 'noteSplashShit/Diamond':
 				data.fps = [22, 26];
-				for (anim in ['note0-1', 'note1-1', 'note2-1', 'note3-1'])
-					data.setOffset(anim, [-28, -52]);
+				for (anim in ['note0-1', 'note1-1', 'note2-1', 'note3-1', 'note0-2', 'note1-2', 'note2-2', 'note3-2'])
+				{
+					if (anim.contains('-1'))
+						data.setOffset(anim, [-28, -52]);
+					else
+						data.setOffset(anim, [-16, -55]);
+				}
 			case 'noteSplashShit/Psych':
 				for (anim in ['note0-1', 'note1-1', 'note2-1', 'note3-1', 'note0-2', 'note1-2', 'note2-2', 'note3-2'])
 					data.setOffset(anim, [0, 0]);
 			case 'noteSplashShit/Vanilla':
 				for (anim in ['note0-1', 'note1-1', 'note2-1', 'note3-1', 'note0-2', 'note1-2', 'note2-2', 'note3-2'])
 					data.setOffset(anim, [-35, -27]);
+			case 'noteSplashShit/Electric':
+				data.fps = [22, 26];
+				for (anim in ['note0-1', 'note1-1', 'note2-1', 'note3-1'])
+					data.setOffset(anim, [-44, -54]);
+			case 'noteSplashShit/Sparkles':
+				data.fps = [22, 26];
+				for (anim in ['note0-1', 'note1-1', 'note2-1', 'note3-1'])
+					data.setOffset(anim, [-48, -48]);
 		}
 		offsetHandler.setSkin(skin, data);
 		
