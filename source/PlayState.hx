@@ -6206,7 +6206,7 @@ class PlayState extends MusicBeatState
 				switch(achievementName)
 				{
 					case 'weekz_beat':
-						if(WeekData.getWeekFileName().toLowerCase() == 'weekz' && isStoryMode && songMisses < 1 && storyPlaylist.length <= 1 && !usedPractice) {
+						if(WeekData.getWeekFileName().toLowerCase() == 'weekz' && isStoryMode && storyPlaylist.length <= 1 && !usedPractice) {
 							unlock = true;
 						}
 					case 'ur_bad':
