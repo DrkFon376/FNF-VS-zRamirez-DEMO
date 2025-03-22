@@ -6197,16 +6197,16 @@ class PlayState extends MusicBeatState
 			if(!Achievements.isAchievementUnlocked(achievementName) && !cpuControlled) {
 				var unlock:Bool = false;
 				
-				/*if (achievementName.contains(WeekData.getWeekFileName()) && achievementName.endsWith('nomiss')) // any FC achievements, name should be "weekFileName_nomiss", e.g: "weekd_nomiss";
+				/*if (achievementName.contains(WeekData.getWeekFileName()) && achievementName.endsWith('nomiss')) // any FC achievements, name should be "weekFileName_nomiss", e.g: "weekd_nomiss"; --Wtf, this is a reference to drkfon week?!?!?!?1?
 				{
-					if(isStoryMode && campaignMisses + songMisses < 1 && CoolUtil.difficultyString() == 'HARD'
+					if(isStoryMode && campaignMisses + songMisses < 1 && CoolUtil.difficultyString() == 'Harder'
 						&& storyPlaylist.length <= 1 && !changedDifficulty && !usedPractice)
 						unlock = true;
 				}*/
 				switch(achievementName)
 				{
-					case 'zweek_beat':
-						if(WeekData.getWeekFileName().toLowerCase() == 'weekz' && isStoryMode && storyPlaylist.length <= 1 && !usedPractice) {
+					case 'weekz_beat':
+						if(WeekData.getWeekFileName().toLowerCase() == 'weekz' && isStoryMode && songMisses < 1 && storyPlaylist.length <= 1 && !usedPractice) {
 							unlock = true;
 						}
 					case 'ur_bad':
@@ -6223,6 +6223,10 @@ class PlayState extends MusicBeatState
 						}
 					case 'friendship_v2':
 						if(Paths.formatToSongPath(SONG.song) == 'friendship-v2' && !usedPractice) {
+							unlock = true;
+						}
+					case 'toastie':
+						if(ClientPrefs.framerate <= 60 && !ClientPrefs.shaders && ClientPrefs.lowQuality && !ClientPrefs.globalAntialiasing) {
 							unlock = true;
 						}
 					/*case 'roadkill_enthusiast':
@@ -6247,10 +6251,6 @@ class PlayState extends MusicBeatState
 							if(howManyPresses <= 2) {
 								unlock = true;
 							}
-						}
-					case 'toastie':
-						if(ClientPrefs.framerate <= 60 && !ClientPrefs.shaders && ClientPrefs.lowQuality && !ClientPrefs.globalAntialiasing) {
-							unlock = true;
 						}
 					case 'debugger':
 						if(Paths.formatToSongPath(SONG.song) == 'test' && !usedPractice) {
