@@ -293,6 +293,18 @@ class PlayState extends MusicBeatState
 
 	var luz:FlxSprite;
 
+	var stageBack:BGSprite;
+	var stageFront:BGSprite;
+	var mueble:BGSprite;
+	var adornos:BGSprite;
+	var extra:BGSprite;
+	var luzChanger:FlxSprite;
+	var stageBackOLD:BGSprite;
+	var stageFrontOLD:BGSprite;
+	var muebleOLD:BGSprite;
+	var adornosOLD:BGSprite;
+	var extraOLD:BGSprite;
+
 	public var songScore:Int = 0;
 	public var songHits:Int = 0;
 	public var songMisses:Int = 0;
@@ -566,6 +578,7 @@ class PlayState extends MusicBeatState
 				stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
 				stageFront.updateHitbox();
 				add(stageFront);
+				//This is for trash PCs, like zRamirez for example
 				if(!ClientPrefs.lowQuality) {
 					var stageLight:BGSprite = new BGSprite('stage_light', -125, -100, 0.9, 0.9);
 					stageLight.setGraphicSize(Std.int(stageLight.width * 1.1));
@@ -606,6 +619,61 @@ class PlayState extends MusicBeatState
 					luz = new FlxSprite(-200, 0).loadGraphic(Paths.image('StageHotfix/idk'));
 					luz.scrollFactor.set(1.0, 1.0);
 					luz.alpha=0.2;
+				}
+
+			case 'Stage-Rami-Changer': //Vs zRamirez - zRamirez Changer Stage (is used in Bad Battle Hotfix and soon in Bad Battle Fucked Remix)
+				//New Stuff (This isn't visible by default)
+				stageBack = new BGSprite('StageHotfix/StageBack', -200, 0, 1.0, 1.0);
+				add(stageBack);
+				stageBack.visible=false;
+
+				stageFront = new BGSprite('StageHotfix/StageFront', -208, 1031, 1.0, 1.0);
+				add(stageFront);
+				stageFront.visible=false;
+
+				mueble = new BGSprite('StageHotfix/StageMueble', 569, 607, 1.0, 1.0);
+				mueble.setGraphicSize(Std.int(mueble.width * 1.1));
+				mueble.updateHitbox();
+				add(mueble);
+				mueble.visible=false;
+				//This is for trash PCs, like zRamirez for example
+				if(!ClientPrefs.lowQuality) {
+					adornos = new BGSprite('StageHotfix/Adornos', -110, 305, 1.0, 1.0);
+					add(adornos);
+					adornos.visible=false;
+
+					extra = new BGSprite('StageHotfix/StageExtra2', 290, 715, 1.0, 1.0);
+					add(extra);
+					extra.visible=false;
+
+					luzChanger = new FlxSprite(-200, 0).loadGraphic(Paths.image('StageHotfix/idk'));
+					luzChanger.scrollFactor.set(1.0, 1.0);
+					luzChanger.alpha=0.2;
+					luzChanger.visible=false;
+				}
+				//Old Stuff (This is visible by default)
+				stageBackOLD = new BGSprite('StageHotfix/StageBackOLD', -200, 0);
+				add(stageBackOLD);
+				stageBackOLD.visible=true;
+
+				stageFrontOLD = new BGSprite('StageHotfix/StageFrontOLD', -200, 1050, 1.0, 1.0);
+				add(stageFrontOLD);
+				stageFrontOLD.visible=true;
+
+				muebleOLD = new BGSprite('StageHotfix/StageMuebleOLD', 586, 699, 1.0, 1.0);
+				muebleOLD.setGraphicSize(Std.int(muebleOLD.width * 1.0));
+				muebleOLD.updateHitbox();
+				add(muebleOLD);
+				muebleOLD.visible=true;
+				//This is for trash PCs, like zRamirez for example
+				if(!ClientPrefs.lowQuality) {
+					adornosOLD = new BGSprite('StageHotfix/AdornosOLD', -110, 300, 1.0, 1.0);
+					add(adornosOLD);
+					adornosOLD.visible=true;
+
+					extraOLD = new BGSprite('StageHotfix/StageExtra2OLD', 265, 735, 1.0, 1.0);
+					add(extraOLD);
+					extraOLD.visible=true;
 				}
 
 		}
@@ -679,6 +747,9 @@ class PlayState extends MusicBeatState
 		{
 			case 'Stage-Rami':
 				add(luz);
+
+			case 'Stage-Rami-Changer':
+				add(luzChanger);
 		}
 
 		#if LUA_ALLOWED
@@ -2504,6 +2575,54 @@ class PlayState extends MusicBeatState
 
 				var newCharacter:String = event.value2;
 				addCharacterToList(newCharacter, charType);
+
+			case 'Change Stage':
+				switch (event.value1.toLowerCase().trim()) {
+					case 'new' | 'nuevo' | 'nueva' | '0':
+						stageBack.visible=true;
+						stageFront.visible=true;
+						mueble.visible=true;
+						if (!ClientPrefs.lowQuality){
+							adornos.visible=true;
+							extra.visible=true;
+							luzChanger.visible=true;
+						}
+						stageBackOLD.visible=false;
+						stageFrontOLD.visible=false;
+						muebleOLD.visible=false;
+						if (!ClientPrefs.lowQuality){
+							adornosOLD.visible=false;
+							extraOLD.visible=false;
+						}
+					case 'old' | 'viejo' | 'vieja' | '1':
+						stageBack.visible=false;
+						stageFront.visible=false;
+						mueble.visible=false;
+						if (!ClientPrefs.lowQuality){
+							adornos.visible=false;
+							extra.visible=false;
+							luzChanger.visible=false;
+						}
+						stageBackOLD.visible=true;
+						stageFrontOLD.visible=true;
+						muebleOLD.visible=true;
+						if (!ClientPrefs.lowQuality){
+							adornosOLD.visible=true;
+							extraOLD.visible=true;
+						}
+					case 'nothing' | 'nada' | 'black' | 'negro' | 'lights-down' | 'lightsdown' | 'nigga' | '2':
+						stageBack.visible=false;
+						stageFront.visible=false;
+						mueble.visible=false;
+						adornos.visible=false;
+						extra.visible=false;
+						luzChanger.visible=false;
+						stageBackOLD.visible=false;
+						stageFrontOLD.visible=false;
+						muebleOLD.visible=false;
+						adornosOLD.visible=false;
+						extraOLD.visible=false;
+				}
 
 			case 'Dadbattle Spotlight':
 				dadbattleBlack = new BGSprite(null, -800, -400, 0, 0);
