@@ -293,6 +293,8 @@ class PlayState extends MusicBeatState
 
 	var luz:FlxSprite;
 
+	var fire:FlxSprite;
+
 	var stageBack:BGSprite;
 	var stageFront:BGSprite;
 	var mueble:BGSprite;
@@ -676,6 +678,43 @@ class PlayState extends MusicBeatState
 					extraOLD.visible=true;
 				}
 
+			case 'Stage-Rami-Fire': //Vs zRamirez - zRamirez Stage Burning
+				var fondo:FlxSprite = new FlxSprite(466, 147).loadGraphic(Paths.image('StageZFire/Fondo-Stage'));
+				fondo.animation.addByPrefix('idle', 'MIFONDOENLLAMAS0', 24, true);
+				fondo.scrollFactor.set(1.0, 1.0);
+				add(fondo);
+				fondo.animation.play('idle');
+
+				fire = new FlxSprite(-200, 900).loadGraphic(Paths.image('StageZFire/Fire'));
+				fire.animation.addByPrefix('idle', 'Stage fuego0', 24, true);
+				fire.scrollFactor.set(1.0, 1.0);
+				fire.animation.play('idle');
+
+				var stageBack:BGSprite = new BGSprite('StageZFire/StageBack', -200, 0, 1.0, 1.0);
+				add(stageBack);
+
+				var stageFront:BGSprite = new BGSprite('StageZFire/StageFront', -208, 1031, 1.0, 1.0);
+				add(stageFront);
+
+				var mueble:BGSprite = new BGSprite('StageZFire/Mueble', 569, 641, 1.0, 1.0);
+				mueble.setGraphicSize(Std.int(mueble.width * 1.1));
+				mueble.updateHitbox();
+				add(mueble);
+				//This is for trash PCs, like zRamirez for example
+				if(!ClientPrefs.lowQuality) {
+					var adornos:BGSprite = new BGSprite('StageZFire/StageExtra', -110, 305, 1.0, 1.0);
+					add(adornos);
+
+					var extra:BGSprite = new BGSprite('StageZFire/StageExtra2', 290, 715, 1.0, 1.0);
+					add(extra);
+
+					var grid:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('StageZFire/BLURE'));
+					grid.scrollFactor.set(1.0, 1.0);
+					grid.cameras = [camOther];
+					grid.alpha=0.5;
+					add(grid);
+				}
+
 		}
 
 		switch(Paths.formatToSongPath(SONG.song))
@@ -750,6 +789,9 @@ class PlayState extends MusicBeatState
 
 			case 'Stage-Rami-Changer':
 				add(luzChanger);
+
+			case 'Stage-Rami-Fire':
+				add(fire);
 		}
 
 		#if LUA_ALLOWED
