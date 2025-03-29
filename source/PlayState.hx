@@ -291,7 +291,7 @@ class PlayState extends MusicBeatState
 	var tankmanRun:FlxTypedGroup<TankmenBG>;
 	var foregroundSprites:FlxTypedGroup<BGSprite>;
 
-	var luz:FlxSprite;
+	/*var luz:FlxSprite;
 
 	var fire:FlxSprite;
 
@@ -305,7 +305,7 @@ class PlayState extends MusicBeatState
 	var stageFrontOLD:BGSprite;
 	var muebleOLD:BGSprite;
 	var adornosOLD:BGSprite;
-	var extraOLD:BGSprite;
+	var extraOLD:BGSprite;*/
 
 	public var songScore:Int = 0;
 	public var songHits:Int = 0;
@@ -599,7 +599,7 @@ class PlayState extends MusicBeatState
 				}
 				dadbattleSmokes = new FlxSpriteGroup(); //troll'd
 
-			case 'Stage-Rami': //Vs zRamirez - zRamirez Normal Stage
+			/*case 'Stage-Rami': //Vs zRamirez - zRamirez Normal Stage
 				var stageBack:BGSprite = new BGSprite('StageHotfix/StageBack', -200, 0, 1.0, 1.0);
 				add(stageBack);
 
@@ -713,7 +713,7 @@ class PlayState extends MusicBeatState
 					grid.cameras = [camOther];
 					grid.alpha=0.5;
 					add(grid);
-				}
+				}*/
 
 		}
 
@@ -784,14 +784,14 @@ class PlayState extends MusicBeatState
 
 		switch(curStage)
 		{
-			case 'Stage-Rami':
+			/*case 'Stage-Rami':
 				add(luz);
 
 			case 'Stage-Rami-Changer':
 				add(luzChanger);
 
 			case 'Stage-Rami-Fire':
-				add(fire);
+				add(fire);*/
 		}
 
 		#if LUA_ALLOWED
@@ -2618,7 +2618,7 @@ class PlayState extends MusicBeatState
 				var newCharacter:String = event.value2;
 				addCharacterToList(newCharacter, charType);
 
-			case 'Change Stage':
+			/*case 'Change Stage':
 				switch (event.value1.toLowerCase().trim()) {
 					case 'new' | 'nuevo' | 'nueva' | '0':
 						stageBack.visible=true;
@@ -2664,7 +2664,7 @@ class PlayState extends MusicBeatState
 						muebleOLD.visible=false;
 						adornosOLD.visible=false;
 						extraOLD.visible=false;
-				}
+				}*/
 
 			case 'Dadbattle Spotlight':
 				dadbattleBlack = new BGSprite(null, -800, -400, 0, 0);
