@@ -161,6 +161,10 @@ class PlayState extends MusicBeatState
 	public static var gfIdleInt:Int = 4;
 	public static var bfIdleInt:Int = 4;
 
+	public static var dadInvertIdleDirection:Bool = false;
+	public static var gfInvertIdleDirection:Bool = false;
+	public static var bfInvertIdleDirection:Bool = false;
+
 	public static var dadIdleisHalfBeat:Bool = false;
 	public static var gfIdleisHalfBeat:Bool = false;
 	public static var bfIdleisHalfBeat:Bool = false;
@@ -3627,7 +3631,9 @@ class PlayState extends MusicBeatState
 
 			case 'Set Character Idle Speed':
 				var charType:Int = 0;
-				switch(value1.toLowerCase().trim())
+				var MIARREGLO:Array<String> = value1.split(',');
+
+				switch(MIARREGLO[0].toLowerCase().trim())
 				{
 					case 'bf' | 'boyfriend':
 						charType = 0;
@@ -3664,6 +3670,14 @@ class PlayState extends MusicBeatState
 							bfIdleSpeedChanged = true;
 						}
 
+						switch(MIARREGLO[1].toLowerCase().trim())
+						{
+							case 'true' | '1' | 'si':
+								bfInvertIdleDirection = true;
+							case 'false' | '0' | 'no' | '':
+								bfInvertIdleDirection = false;
+						}
+
 					case 1:
 						if (value2.toLowerCase().trim() == '0.5')
 							dadIdleisHalfBeat = true;
@@ -3682,6 +3696,14 @@ class PlayState extends MusicBeatState
 						{
 							dadIdleInt = 2;
 							dadIdleSpeedChanged = true;
+						}
+
+						switch(MIARREGLO[1].toLowerCase().trim())
+						{
+							case 'true' | '1' | 'si':
+								dadInvertIdleDirection = true;
+							case 'false' | '0' | 'no' | '':
+								dadInvertIdleDirection = false;
 						}
 
 					case 2:
@@ -3704,6 +3726,14 @@ class PlayState extends MusicBeatState
 							gfIdleInt = 2;
 							gfIdleSpeedChanged = true;
 							//isGfIdleByBPM = false;
+						}
+
+						switch(MIARREGLO[1].toLowerCase().trim())
+						{
+							case 'true' | '1' | 'si':
+								gfInvertIdleDirection = true;
+							case 'false' | '0' | 'no' | '':
+								gfInvertIdleDirection = false;
 						}
 				}
 
@@ -5658,16 +5688,16 @@ class PlayState extends MusicBeatState
 				if (!gfIdleSpeedChanged)
 				{
 					if (curStep % 8 == 0) //Bpm doesn't directly affect gf's idle speed when she has 'danceLeft' and 'danceRight' animations
-						gf.playAnim('danceLeft' + gf.idleSuffix, true);
+						gf.playAnim((gfInvertIdleDirection ? 'danceRight' : 'danceLeft') + gf.idleSuffix, true);
 					else if (curStep % 8 == 4)
-						gf.playAnim('danceRight' + gf.idleSuffix, true);
+						gf.playAnim((gfInvertIdleDirection ? 'danceLeft' : 'danceRight') + gf.idleSuffix, true);
 				}
 				else
 				{
 					if (curStep % gfIdleSpeedInt == 0)
-						gf.playAnim('danceLeft' + gf.idleSuffix, true);
+						gf.playAnim((gfInvertIdleDirection ? 'danceRight' : 'danceLeft') + gf.idleSuffix, true);
 					else if (curStep % gfIdleSpeedInt == gfIdleInt)
-						gf.playAnim('danceRight' + gf.idleSuffix, true);
+						gf.playAnim((gfInvertIdleDirection ? 'danceLeft' : 'danceRight') + gf.idleSuffix, true);
 				}
 			}
 			else
@@ -5683,16 +5713,16 @@ class PlayState extends MusicBeatState
 				if (boyfriend.curCharacter.startsWith('gf') && !bfIdleSpeedChanged) //gf as bf? lmao
 				{
 					if (curStep % 8 == 4)
-						boyfriend.playAnim('danceLeft' + boyfriend.idleSuffix, true);
+						boyfriend.playAnim((bfInvertIdleDirection ? 'danceRight' : 'danceLeft') + boyfriend.idleSuffix, true);
 					else if (curStep % 8 == 0)
-						boyfriend.playAnim('danceRight' + boyfriend.idleSuffix, true);
+						boyfriend.playAnim((bfInvertIdleDirection ? 'danceLeft' : 'danceRight') + boyfriend.idleSuffix, true);
 				}
 				else
 				{
 					if (curStep % bfIdleSpeedInt == bfIdleInt)
-						boyfriend.playAnim('danceLeft' + boyfriend.idleSuffix, true);
+						boyfriend.playAnim((bfInvertIdleDirection ? 'danceRight' : 'danceLeft') + boyfriend.idleSuffix, true);
 					else if (curStep % bfIdleSpeedInt == 0)
-						boyfriend.playAnim('danceRight' + boyfriend.idleSuffix, true);
+						boyfriend.playAnim((bfInvertIdleDirection ? 'danceLeft' : 'danceRight') + boyfriend.idleSuffix, true);
 				}
 			}
 			else
@@ -5708,16 +5738,16 @@ class PlayState extends MusicBeatState
 				if (dad.curCharacter.startsWith('gf') && !dadIdleSpeedChanged)
 				{
 					if (curStep % 8 == 0)
-						dad.playAnim('danceLeft' + dad.idleSuffix, true);
+						dad.playAnim((dadInvertIdleDirection ? 'danceRight' : 'danceLeft') + dad.idleSuffix, true);
 					else if (curStep % 8 == 4)
-						dad.playAnim('danceRight' + dad.idleSuffix, true);
+						dad.playAnim((dadInvertIdleDirection ? 'danceLeft' : 'danceRight') + dad.idleSuffix, true);
 				}
 				else
 				{
 					if (curStep % dadIdleSpeedInt == 0)
-						dad.playAnim('danceLeft' + dad.idleSuffix, true);
+						dad.playAnim((dadInvertIdleDirection ? 'danceRight' : 'danceLeft') + dad.idleSuffix, true);
 					else if (curStep % dadIdleSpeedInt == dadIdleInt)
-						dad.playAnim('danceRight' + dad.idleSuffix, true);
+						dad.playAnim((dadInvertIdleDirection ? 'danceLeft' : 'danceRight') + dad.idleSuffix, true);
 				}
 			}
 			else
