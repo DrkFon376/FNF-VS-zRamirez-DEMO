@@ -20,6 +20,9 @@ class NoteOffsetState extends MusicBeatState
 {
 	var boyfriend:Character;
 	var gf:Character;
+	var dad:Character;
+
+	var luz:FlxSprite;
 
 	public var camHUD:FlxCamera;
 	public var camGame:FlxCamera;
@@ -56,47 +59,52 @@ class NoteOffsetState extends MusicBeatState
 
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 		CustomFadeTransition.nextCamera = camOther;
-		FlxG.camera.scroll.set(120, 130);
+		FlxG.camera.scroll.set(400, 475);
 
 		persistentUpdate = true;
 		FlxG.sound.pause();
 		// Stage
-		var bg:BGSprite = new BGSprite('stageback', -600, -200, 0.9, 0.9);
-		add(bg);
+		var stageBack:BGSprite = new BGSprite('StageHotfix/StageBack', -200, 0, 1.0, 1.0);
+		add(stageBack);
 
-		var stageFront:BGSprite = new BGSprite('stagefront', -650, 600, 0.9, 0.9);
-		stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
-		stageFront.updateHitbox();
+		var stageFront:BGSprite = new BGSprite('StageHotfix/StageFront', -208, 1031, 1.0, 1.0);
 		add(stageFront);
 
+		var mueble:BGSprite = new BGSprite('StageHotfix/StageMueble', 569, 607, 1.0, 1.0);
+		mueble.setGraphicSize(Std.int(mueble.width * 1.1));
+		mueble.updateHitbox();
+		add(mueble);
+		//This is for trash PCs, like zRamirez for example
 		if(!ClientPrefs.lowQuality) {
-			var stageLight:BGSprite = new BGSprite('stage_light', -125, -100, 0.9, 0.9);
-			stageLight.setGraphicSize(Std.int(stageLight.width * 1.1));
-			stageLight.updateHitbox();
-			add(stageLight);
-			var stageLight:BGSprite = new BGSprite('stage_light', 1225, -100, 0.9, 0.9);
-			stageLight.setGraphicSize(Std.int(stageLight.width * 1.1));
-			stageLight.updateHitbox();
-			stageLight.flipX = true;
-			add(stageLight);
+			var adornos:BGSprite = new BGSprite('StageHotfix/Adornos', -110, 305, 1.0, 1.0);
+			add(adornos);
 
-			var stageCurtains:BGSprite = new BGSprite('stagecurtains', -500, -300, 1.3, 1.3);
-			stageCurtains.setGraphicSize(Std.int(stageCurtains.width * 0.9));
-			stageCurtains.updateHitbox();
-			add(stageCurtains);
+			var extra:BGSprite = new BGSprite('StageHotfix/StageExtra2', 290, 715, 1.0, 1.0);
+			add(extra);
+
 		}
 
 		// Characters
-		gf = new Character(400, 130, 'gf');
+		gf = new Character(668, 505, 'gf-ramirez');
 		gf.x += gf.positionArray[0];
 		gf.y += gf.positionArray[1];
-		gf.scrollFactor.set(0.95, 0.95);
-		boyfriend = new Character(770, 100, 'bf', true);
+		boyfriend = new Character(1290, 440, 'bf', true);
 		boyfriend.x += boyfriend.positionArray[0];
 		boyfriend.y += boyfriend.positionArray[1];
+		dad = new Character(285, 440, 'zRamirez');
+		dad.x += dad.positionArray[0];
+		dad.flipX = false;
+		dad.y += dad.positionArray[1];
 		add(gf);
 		add(boyfriend);
-
+		add(dad);
+		// Front Light
+		if (!ClientPrefs.lowQuality) {
+    		luz = new FlxSprite(-200, 0).loadGraphic(Paths.image('StageHotfix/idk'));
+    		luz.scrollFactor.set(1.0, 1.0);
+    		luz.alpha = 0.2;
+			add(luz); // <- MUY IMPORTANTE: debe ir DESPUÉS de los personajes
+		}
 		// Combo stuff
 
 		coolText = new FlxText(0, 0, 0, '', 32);
@@ -378,14 +386,15 @@ class NoteOffsetState extends MusicBeatState
 		{
 			boyfriend.dance();
 			gf.dance();
+			dad.dance();
 		}
 		
 		if(curBeat % 4 == 2)
 		{
-			FlxG.camera.zoom = 1.15;
+			FlxG.camera.zoom = 0.88;
 
 			if(zoomTween != null) zoomTween.cancel();
-			zoomTween = FlxTween.tween(FlxG.camera, {zoom: 1}, 1, {ease: FlxEase.circOut, onComplete: function(twn:FlxTween)
+			zoomTween = FlxTween.tween(FlxG.camera, {zoom: 0.83}, 0.83, {ease: FlxEase.circOut, onComplete: function(twn:FlxTween)
 				{
 					zoomTween = null;
 				}
