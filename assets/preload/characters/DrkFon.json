@@ -1,0 +1,89 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-114,
+				351
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "zRamirez Idle Dance"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-116,
+				336
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "zRamirez Note Down0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-133,
+				355
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "zRamirez Note Left0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-85,
+				343
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "zRamirez Note Right0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-96,
+				380
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "zRamirez Note Up0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-114,
+				351
+			],
+			"anim": "hey",
+			"fps": 24,
+			"name": "zRamirez Hey",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/DrkFon",
+	"position": [
+		-20,
+		445
+	],
+	"healthicon": "drkfon",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		0,
+		255
+	],
+	"camera_position": [
+		170,
+		-278
+	],
+	"sing_duration": 4,
+	"scale": 0.9
+}
