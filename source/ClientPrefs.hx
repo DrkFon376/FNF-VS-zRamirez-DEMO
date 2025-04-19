@@ -70,7 +70,7 @@ class ClientPrefs {
 
 	public static var noteSkin:String = "Vanilla";
 	public static var useGL:Bool = true;
-	public static var holdAlpha:Float = 0.4;
+	public static var holdAlpha:Float = 0.6;
 
 	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
 	public static var keyBinds:Map<String, Array<FlxKey>> = [
