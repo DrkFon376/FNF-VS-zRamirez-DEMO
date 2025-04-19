@@ -72,9 +72,11 @@ import sys.io.File;
 #end
 
 #if VIDEOS_ALLOWED
+#if hxCodec
 #if (hxCodec >= "2.6.1") import hxcodec.VideoHandler as MP4Handler;
 #elseif (hxCodec == "2.6.0") import VideoHandler as MP4Handler;
 #else import vlc.MP4Handler; #end
+#end
 #end
 
 using StringTools;
@@ -295,7 +297,7 @@ class PlayState extends MusicBeatState
 	var tankmanRun:FlxTypedGroup<TankmenBG>;
 	var foregroundSprites:FlxTypedGroup<BGSprite>;
 
-	/*var luz:FlxSprite;
+	var luz:FlxSprite;
 
 	var fire:FlxSprite;
 
@@ -309,7 +311,7 @@ class PlayState extends MusicBeatState
 	var stageFrontOLD:BGSprite;
 	var muebleOLD:BGSprite;
 	var adornosOLD:BGSprite;
-	var extraOLD:BGSprite;*/
+	var extraOLD:BGSprite;
 
 	public var songScore:Int = 0;
 	public var songHits:Int = 0;
@@ -603,7 +605,7 @@ class PlayState extends MusicBeatState
 				}
 				dadbattleSmokes = new FlxSpriteGroup(); //troll'd
 
-			/*case 'Stage-Rami': //Vs zRamirez - zRamirez Normal Stage
+			case 'Stage-Rami': //Vs zRamirez - zRamirez Normal Stage
 				var stageBack:BGSprite = new BGSprite('StageHotfix/StageBack', -200, 0, 1.0, 1.0);
 				add(stageBack);
 
@@ -683,16 +685,18 @@ class PlayState extends MusicBeatState
 				}
 
 			case 'Stage-Rami-Fire': //Vs zRamirez - zRamirez Stage Burning
-				var fondo:FlxSprite = new FlxSprite(466, 147).loadGraphic(Paths.image('StageZFire/Fondo-Stage'));
+				var fondo:FlxSprite = new FlxSprite(466, 147);
+				fondo.frames = Paths.getSparrowAtlas('StageZFire/Fondo-Stage');
 				fondo.animation.addByPrefix('idle', 'MIFONDOENLLAMAS0', 24, true);
 				fondo.scrollFactor.set(1.0, 1.0);
 				add(fondo);
-				fondo.animation.play('idle');
+				fondo.animation.play('idle', true);
 
-				fire = new FlxSprite(-200, 900).loadGraphic(Paths.image('StageZFire/Fire'));
+				fire = new FlxSprite(-200, 900);
+				fire.frames = Paths.getSparrowAtlas('StageZFire/Fire');
 				fire.animation.addByPrefix('idle', 'Stage fuego0', 24, true);
 				fire.scrollFactor.set(1.0, 1.0);
-				fire.animation.play('idle');
+				fire.animation.play('idle', true);
 
 				var stageBack:BGSprite = new BGSprite('StageZFire/StageBack', -200, 0, 1.0, 1.0);
 				add(stageBack);
@@ -717,7 +721,7 @@ class PlayState extends MusicBeatState
 					grid.cameras = [camOther];
 					grid.alpha=0.5;
 					add(grid);
-				}*/
+				}
 
 		}
 
@@ -788,14 +792,14 @@ class PlayState extends MusicBeatState
 
 		switch(curStage)
 		{
-			/*case 'Stage-Rami':
+			case 'Stage-Rami':
 				add(luz);
 
 			case 'Stage-Rami-Changer':
 				add(luzChanger);
 
 			case 'Stage-Rami-Fire':
-				add(fire);*/
+				add(fire);
 		}
 
 		#if LUA_ALLOWED
@@ -1317,7 +1321,9 @@ class PlayState extends MusicBeatState
 			return true;
 		}
 
-		var foldersToCheck:Array<String> = [Paths.mods('shaders/')];
+		var foldersToCheck:Array<String> = [Paths.getPreloadPath('shaders/')]; 
+
+		foldersToCheck.insert(0, Paths.mods('scripts/'));
 		if(Paths.currentModDirectory != null && Paths.currentModDirectory.length > 0)
 			foldersToCheck.insert(0, Paths.mods(Paths.currentModDirectory + '/shaders/'));
 
@@ -1495,7 +1501,7 @@ class PlayState extends MusicBeatState
 
 	public function startVideo(name:String)
 	{
-		#if VIDEOS_ALLOWED
+		#if (VIDEOS_ALLOWED && hxCodec)
 		inCutscene = true;
 
 		var filepath:String = Paths.video(name);
@@ -2621,54 +2627,6 @@ class PlayState extends MusicBeatState
 
 				var newCharacter:String = event.value2;
 				addCharacterToList(newCharacter, charType);
-
-			/*case 'Change Stage':
-				switch (event.value1.toLowerCase().trim()) {
-					case 'new' | 'nuevo' | 'nueva' | '0':
-						stageBack.visible=true;
-						stageFront.visible=true;
-						mueble.visible=true;
-						if (!ClientPrefs.lowQuality){
-							adornos.visible=true;
-							extra.visible=true;
-							luzChanger.visible=true;
-						}
-						stageBackOLD.visible=false;
-						stageFrontOLD.visible=false;
-						muebleOLD.visible=false;
-						if (!ClientPrefs.lowQuality){
-							adornosOLD.visible=false;
-							extraOLD.visible=false;
-						}
-					case 'old' | 'viejo' | 'vieja' | '1':
-						stageBack.visible=false;
-						stageFront.visible=false;
-						mueble.visible=false;
-						if (!ClientPrefs.lowQuality){
-							adornos.visible=false;
-							extra.visible=false;
-							luzChanger.visible=false;
-						}
-						stageBackOLD.visible=true;
-						stageFrontOLD.visible=true;
-						muebleOLD.visible=true;
-						if (!ClientPrefs.lowQuality){
-							adornosOLD.visible=true;
-							extraOLD.visible=true;
-						}
-					case 'nothing' | 'nada' | 'black' | 'negro' | 'lights-down' | 'lightsdown' | 'nigga' | '2':
-						stageBack.visible=false;
-						stageFront.visible=false;
-						mueble.visible=false;
-						adornos.visible=false;
-						extra.visible=false;
-						luzChanger.visible=false;
-						stageBackOLD.visible=false;
-						stageFrontOLD.visible=false;
-						muebleOLD.visible=false;
-						adornosOLD.visible=false;
-						extraOLD.visible=false;
-				}*/
 
 			case 'Dadbattle Spotlight':
 				dadbattleBlack = new BGSprite(null, -800, -400, 0, 0);
@@ -3848,6 +3806,54 @@ class PlayState extends MusicBeatState
 
 					FlxG.camera.zoom += camZoom;
 					camHUD.zoom += hudZoom;
+				}
+
+			case 'Change Stage':
+				switch (value1.toLowerCase().trim()) {
+					case 'new' | 'nuevo' | 'nueva' | '0':
+						stageBack.visible=true;
+						stageFront.visible=true;
+						mueble.visible=true;
+						if (!ClientPrefs.lowQuality){
+							adornos.visible=true;
+							extra.visible=true;
+							luzChanger.visible=true;
+						}
+						stageBackOLD.visible=false;
+						stageFrontOLD.visible=false;
+						muebleOLD.visible=false;
+						if (!ClientPrefs.lowQuality){
+							adornosOLD.visible=false;
+							extraOLD.visible=false;
+						}
+					case 'old' | 'viejo' | 'vieja' | '1':
+						stageBack.visible=false;
+						stageFront.visible=false;
+						mueble.visible=false;
+						if (!ClientPrefs.lowQuality){
+							adornos.visible=false;
+							extra.visible=false;
+							luzChanger.visible=false;
+						}
+						stageBackOLD.visible=true;
+						stageFrontOLD.visible=true;
+						muebleOLD.visible=true;
+						if (!ClientPrefs.lowQuality){
+							adornosOLD.visible=true;
+							extraOLD.visible=true;
+						}
+					case 'nothing' | 'nada' | 'black' | 'negro' | 'lights-down' | 'lightsdown' | 'nigga' | '2':
+						stageBack.visible=false;
+						stageFront.visible=false;
+						mueble.visible=false;
+						adornos.visible=false;
+						extra.visible=false;
+						luzChanger.visible=false;
+						stageBackOLD.visible=false;
+						stageFrontOLD.visible=false;
+						muebleOLD.visible=false;
+						adornosOLD.visible=false;
+						extraOLD.visible=false;
 				}
 
 			case 'Flash Camera':

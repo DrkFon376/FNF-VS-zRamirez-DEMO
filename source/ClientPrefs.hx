@@ -70,6 +70,7 @@ class ClientPrefs {
 
 	public static var noteSkin:String = "Vanilla";
 	public static var useGL:Bool = true;
+	public static var holdAlpha:Float = 0.4;
 
 	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
 	public static var keyBinds:Map<String, Array<FlxKey>> = [
@@ -127,6 +128,7 @@ class ClientPrefs {
 
 		//New Stuff
 		FlxG.save.data.useGL = useGL;
+		FlxG.save.data.holdAlpha = holdAlpha;
 
 		FlxG.save.data.camZooms = camZooms;
 		FlxG.save.data.noteOffset = noteOffset;
@@ -240,6 +242,9 @@ class ClientPrefs {
 		//New Stuff
 		if (FlxG.save.data.useGL != null) {
 			useGL = FlxG.save.data.useGL;
+		}
+		if (FlxG.save.data.holdAlpha != null) {
+			holdAlpha = FlxG.save.data.holdAlpha;
 		}
 		
 		if(FlxG.save.data.camZooms != null) {
