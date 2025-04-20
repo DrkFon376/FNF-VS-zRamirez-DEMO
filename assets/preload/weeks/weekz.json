@@ -1,6 +1,6 @@
 {
 	"storyName": "The Fucked Style",
-	"hideFreeplay": false,
+	"hideFreeplay": true,
 	"weekBackground": "ramirez",
 	"weekBefore": "tutorial",
 	"freeplayColor": [
