@@ -95,7 +95,6 @@ class CreditsState extends MusicBeatState
 			['Foxeru',					'foxeru',			'Creator of Camellia Note Skin',																						'https://x.com/FoxeruKun',											'735A42'],
 			['Olivier99',				'bf',				'Creator of StepMania Note Skin',																						'https://gamebanana.com/members/1860941',							'5DA7FA'],
 			['TheZoroForce240',			'bf',				'Creator of RTX Editor Shader',																							'https://gamebanana.com/members/1708748',							'5DA7FA'],
-			['SadSami',					'bf',				'Creator of Smooth Health Bar Script',																					'https://youtube.com/@sadsami1860',									'5DA7FA'],
 			['Ima',						'ima',				'His made the chart of Intervention v1',																				'https://www.youtube.com/channel/UCs9dXV0B7uKACyyW9PBFYCA',			'583627'],
 			['Slushi',					'slushi',			'Help with Lua Modcharts, Bad Battle Modchart Creator',																	'https://www.youtube.com/channel/UC3sEmV3kzR7Z1icTY7hbrKg',			'16F8DD'],
 			['ElPatoFNF',				'pato',				'Help with Some Charting, Beta Tester',																					'https://www.youtube.com/channel/UCSDpAZ-xwBql9yLCYeDgtyA',			'605C5C'],
