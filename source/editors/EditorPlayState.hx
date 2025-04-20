@@ -107,7 +107,7 @@ class EditorPlayState extends MusicBeatState
 		splash.alpha = 0.0;
 		
 		if (PlayState.SONG.needsVoices)
-			vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
+			vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song, PlayState.SONG.props.vocalPrefix, PlayState.SONG.props.vocalSuffix));
 		else
 			vocals = new FlxSound();
 
@@ -193,7 +193,7 @@ class EditorPlayState extends MusicBeatState
 	var startingSong:Bool = true;
 	private function generateSong(dataPath:String):Void
 	{
-		FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 0, false);
+		FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song, PlayState.SONG.props.instPrefix, PlayState.SONG.props.instSuffix), 0, false);
 		FlxG.sound.music.pause();
 		FlxG.sound.music.onComplete = endSong;
 		vocals.pause();

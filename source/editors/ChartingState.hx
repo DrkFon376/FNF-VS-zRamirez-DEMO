@@ -1,5 +1,6 @@
 package editors;
 
+import Song.SuffixesPrefixes;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -9,6 +10,7 @@ import haxe.format.JsonParser;
 import haxe.io.Bytes;
 import Conductor.BPMChangeEvent;
 import Section.SwagSection;
+import Song;
 import Song.SwagSong;
 import flixel.FlxG;
 import flixel.FlxObject;
@@ -231,7 +233,14 @@ class ChartingState extends MusicBeatState
 				stage: 'stage',
 				overlayCamGame_On: false,
 				overlayCamHUD_On: false,
-				validScore: false
+				validScore: false,
+
+				props: {
+					instSuffix: "",
+					instPrefix: "",
+					vocalSuffix: "",
+					vocalPrefix: ""
+				}
 			};
 			addSection();
 			PlayState.SONG = _song;
@@ -407,23 +416,26 @@ class ChartingState extends MusicBeatState
 	var playSoundBf:FlxUICheckBox = null;
 	var playSoundDad:FlxUICheckBox = null;
 	var UI_songTitle:FlxUIInputText;
-	var noteSkinInputText:FlxUIInputText;
-	var noteSplashesInputText:FlxUIInputText;
 	var stageDropDown:FlxUIDropDownMenuCustom;
 	var sliderRate:FlxUISlider;
+	var vocSuf:FlxUIDropDownMenuCustom;
+	var vocPre:FlxUIDropDownMenuCustom;
+	var instSuf:FlxUIDropDownMenuCustom;
+	var instPre:FlxUIDropDownMenuCustom;
+
 	function addSongUI():Void
 	{
 		UI_songTitle = new FlxUIInputText(10, 10, 70, _song.song, 8);
 		blockPressWhileTypingOn.push(UI_songTitle);
 
-		/*var check_voices = new FlxUICheckBox(10, 25, null, null, "Has voice track", 100);
-		check_voices.checked = _song.needsVoices;
-		// _song.needsVoices = check_voices.checked;
-		check_voices.callback = function()
-		{
-			_song.needsVoices = check_voices.checked;
-			//trace('CHECKED!');
-		};*/
+		// var check_voices = new FlxUICheckBox(10, 25, null, null, "Has voice track", 100);
+		// check_voices.checked = _song.needsVoices;
+		// // _song.needsVoices = check_voices.checked;
+		// check_voices.callback = function()
+		// {
+		// 	_song.needsVoices = check_voices.checked;
+		// 	//trace('CHECKED!');
+		// };
 
 		var saveButton:FlxButton = new FlxButton(110, 8, "Save", function()
 		{
@@ -625,19 +637,6 @@ class ChartingState extends MusicBeatState
 		stageDropDown.selectedLabel = _song.stage;
 		blockPressWhileScrolling.push(stageDropDown);
 
-		var skin = PlayState.SONG.arrowSkin;
-		if(skin == null) skin = '';
-		noteSkinInputText = new FlxUIInputText(player2DropDown.x, player2DropDown.y + 50, 150, skin, 8);
-		blockPressWhileTypingOn.push(noteSkinInputText);
-
-		noteSplashesInputText = new FlxUIInputText(noteSkinInputText.x, noteSkinInputText.y + 35, 150, _song.splashSkin, 8);
-		blockPressWhileTypingOn.push(noteSplashesInputText);
-
-		var reloadNotesButton:FlxButton = new FlxButton(noteSplashesInputText.x + 5, noteSplashesInputText.y + 20, 'Change Notes', function() {
-			_song.arrowSkin = noteSkinInputText.text;
-			updateGrid();
-		});
-
 		var check_overlayCamGame = new FlxUICheckBox(stageDropDown.x + 2, stageDropDown.y + 50, null, null, "CamGame Overlay", 100);
 		check_overlayCamGame.checked = _song.overlayCamGame_On;
 		check_overlayCamGame.callback = function()
@@ -653,6 +652,71 @@ class ChartingState extends MusicBeatState
 			_song.overlayCamHUD_On = check_overlayCamHUD.checked;
 			//trace('CHECKED!');
 		};
+
+		var suffixesPrefixes:SuffixesPrefixes = null;
+		var file:Dynamic = null;
+		try
+		{
+			#if sys
+			file = File.getContent(Paths.json(Paths.formatToSongPath(_song.song) + '/fixes'));
+			if (file == null)
+				file = File.getContent(Paths.modsJson(Paths.formatToSongPath(_song.song) + '/fixes'));
+			#else
+			file = Assets.getText(Paths.json(Paths.formatToSongPath(_song.song) + '/fixes'));
+			#end
+
+			var fixesFile:Dynamic = cast Json.parse(file);
+			suffixesPrefixes = {
+					vocalPrefixes: fixesFile.vocalPrefixes,
+					vocalSuffixes: fixesFile.vocalSuffixes,
+					instPrefixes: fixesFile.instPrefixes,
+					instSuffixes: fixesFile.instSuffixes
+			}
+		}
+		catch(e)
+		{
+			suffixesPrefixes = {
+				vocalPrefixes: [],
+				vocalSuffixes: [],
+				instPrefixes: [],
+				instSuffixes: []
+			}
+		}
+
+		function checkArray(array:Array<String>):Array<String>
+		{
+			var toReturn:Array<String> = [""];
+			if (array != null)
+			{
+				if (array[0] != "")
+					array.insert(0, "");
+				toReturn = array;
+			}
+			return toReturn;
+		}
+
+		final vocPreA:Array<String> = checkArray(suffixesPrefixes.vocalPrefixes);
+		final vocSufA:Array<String> = checkArray(suffixesPrefixes.vocalSuffixes);
+		final instPreA:Array<String> = checkArray(suffixesPrefixes.instPrefixes);
+		final instSufA:Array<String> = checkArray(suffixesPrefixes.instSuffixes);
+
+		vocPre = new FlxUIDropDownMenuCustom(player2DropDown.x, player2DropDown.y + 40, FlxUIDropDownMenuCustom.makeStrIdLabelArray(vocPreA, true), function(pre:String) {
+			_song.props.vocalPrefix = pre;
+		});
+		vocPre.selectedLabel = _song.props.vocalPrefix;
+
+		vocSuf = new FlxUIDropDownMenuCustom(vocPre.x, vocPre.y + 60, FlxUIDropDownMenuCustom.makeStrIdLabelArray(vocSufA, true), function(suf:String) {
+			_song.props.vocalSuffix = suf;
+		});
+		vocSuf.selectedLabel = _song.props.vocalSuffix;
+
+		instPre = new FlxUIDropDownMenuCustom(vocPre.x + 160, vocPre.y, FlxUIDropDownMenuCustom.makeStrIdLabelArray(instPreA, true), function(pre:String) {
+			_song.props.instPrefix = pre;
+		});
+
+		instSuf = new FlxUIDropDownMenuCustom(instPre.x, vocPre.y + 60, FlxUIDropDownMenuCustom.makeStrIdLabelArray(instSufA, true), function(suf:String) {
+			_song.props.instSuffix = suf;
+		});
 
 		var tab_group_song = new FlxUI(null, UI_box);
 		tab_group_song.name = "Song";
@@ -672,9 +736,6 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(loadCamEventJson);
 		tab_group_song.add(stepperBPM);
 		tab_group_song.add(stepperSpeed);
-		tab_group_song.add(reloadNotesButton);
-		tab_group_song.add(noteSkinInputText);
-		tab_group_song.add(noteSplashesInputText);
 		tab_group_song.add(new FlxText(stepperBPM.x, stepperBPM.y - 40, 0, 'Song BPM:'));
 		tab_group_song.add(new FlxText(stepperBPM.x + 100, stepperBPM.y - 15, 0, 'Song Offset:'));
 		tab_group_song.add(new FlxText(stepperSpeed.x, stepperSpeed.y - 40, 0, 'Song Speed:'));
@@ -682,12 +743,18 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(new FlxText(gfVersionDropDown.x, gfVersionDropDown.y - 15, 0, 'Girlfriend:'));
 		tab_group_song.add(new FlxText(player1DropDown.x, player1DropDown.y - 15, 0, 'Boyfriend:'));
 		tab_group_song.add(new FlxText(stageDropDown.x, stageDropDown.y - 15, 0, 'Stage:'));
-		tab_group_song.add(new FlxText(noteSkinInputText.x, noteSkinInputText.y - 15, 0, 'Note Texture:'));
-		tab_group_song.add(new FlxText(noteSplashesInputText.x, noteSplashesInputText.y - 15, 0, 'Note Splashes Texture:'));
 		tab_group_song.add(player2DropDown);
 		tab_group_song.add(gfVersionDropDown);
 		tab_group_song.add(player1DropDown);
 		tab_group_song.add(stageDropDown);
+		tab_group_song.add(vocPre);
+		tab_group_song.add(vocSuf);
+		tab_group_song.add(instPre);
+		tab_group_song.add(instSuf);
+		tab_group_song.add(new FlxText(vocPre.x, vocPre.y - 15, 0, "Vocal Prefix:"));
+		tab_group_song.add(new FlxText(vocSuf.x, vocSuf.y - 15, 0, "Vocal Suffix:"));
+		tab_group_song.add(new FlxText(instPre.x, instPre.y - 15, 0, "Instrumental Prefix:"));
+		tab_group_song.add(new FlxText(instSuf.x, instSuf.y - 15, 0, "Instrumental Suffix:"));
 
 		stepperBPM.y -= 25;
 		stepperSpeed.y -= 25;
@@ -704,6 +771,9 @@ class ChartingState extends MusicBeatState
 	var stepperSectionBPM:FlxUINumericStepper;
 	var check_altAnim:FlxUICheckBox;
 	var check_altAnimBF:FlxUICheckBox;
+
+	var noteSkinInputText:FlxUIInputText;
+	var noteSplashesInputText:FlxUIInputText;
 
 	var sectionToCopy:Int = 0;
 	var notesCopied:Array<Dynamic>;
@@ -1002,7 +1072,7 @@ class ChartingState extends MusicBeatState
 		}
 
 		#if LUA_ALLOWED
-		var directories:Array<String> = [];
+		var directories:Array<String> = [Paths.getPreloadPath('custom_notetypes/')];
 
 		#if MODS_ALLOWED
 		directories.push(Paths.mods('custom_notetypes/'));
@@ -1044,12 +1114,33 @@ class ChartingState extends MusicBeatState
 		});
 		blockPressWhileScrolling.push(noteTypeDropDown);
 
+		var skin = PlayState.SONG.arrowSkin;
+		if(skin == null) skin = '';
+		noteSkinInputText = new FlxUIInputText(10, 240, 150, skin, 8);
+		blockPressWhileTypingOn.push(noteSkinInputText);
+
+		noteSplashesInputText = new FlxUIInputText(noteSkinInputText.x, noteSkinInputText.y + 35, 150, _song.splashSkin, 8);
+		blockPressWhileTypingOn.push(noteSplashesInputText);
+
+		var reloadNotesButton:FlxButton = new FlxButton(noteSplashesInputText.x + 5, noteSplashesInputText.y + 20, 'Change Notes', function() {
+			_song.arrowSkin = noteSkinInputText.text;
+			updateGrid();
+		});
+
 		tab_group_note.add(new FlxText(10, 10, 0, 'Sustain length:'));
 		tab_group_note.add(new FlxText(10, 50, 0, 'Strum time (in miliseconds):'));
 		tab_group_note.add(new FlxText(10, 90, 0, 'Note type:'));
 		tab_group_note.add(stepperSusLength);
 		tab_group_note.add(strumTimeInputText);
 		tab_group_note.add(noteTypeDropDown);
+
+		
+		tab_group_note.add(reloadNotesButton);
+		tab_group_note.add(noteSkinInputText);
+		tab_group_note.add(noteSplashesInputText);
+
+		tab_group_note.add(new FlxText(noteSkinInputText.x, noteSkinInputText.y - 15, 0, 'Note Texture:'));
+		tab_group_note.add(new FlxText(noteSplashesInputText.x, noteSplashesInputText.y - 15, 0, 'Note Splashes Texture:'));
 
 		UI_box.addGroup(tab_group_note);
 	}
@@ -1064,10 +1155,9 @@ class ChartingState extends MusicBeatState
 
 		#if LUA_ALLOWED
 		var eventPushedMap:Map<String, Bool> = new Map<String, Bool>();
-		var directories:Array<String> = [];
+		var directories:Array<String> = [Paths.getPreloadPath('custom_events/')];
 
 		#if MODS_ALLOWED
-		directories.push(Paths.getPreloadPath('events/'));
 		directories.push(Paths.mods('custom_events/'));
 		directories.push(Paths.mods(Paths.currentModDirectory + '/custom_events/'));
 		for(mod in Paths.getGlobalMods())
@@ -1414,7 +1504,7 @@ class ChartingState extends MusicBeatState
 			// vocals.stop();
 		}
 
-		var file:Dynamic = Paths.voices(currentSongName);
+		var file:Dynamic = Paths.voices(currentSongName, _song.props.vocalPrefix, _song.props.vocalSuffix);
 		vocals = new FlxSound();
 		if (Std.isOfType(file, Sound) || OpenFlAssets.exists(file)) {
 			vocals.loadEmbedded(file);
@@ -1427,7 +1517,7 @@ class ChartingState extends MusicBeatState
 	}
 
 	function generateSong() {
-		FlxG.sound.playMusic(Paths.inst(currentSongName), 1/*, false*/);
+		FlxG.sound.playMusic(Paths.inst(currentSongName, _song.props.instPrefix, _song.props.instSuffix), 1/*, false*/);
 		if (instVolume != null) FlxG.sound.music.volume = instVolume.value;
 		if (check_mute_inst != null && check_mute_inst.checked) FlxG.sound.music.volume = 0;
 

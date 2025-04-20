@@ -311,10 +311,12 @@ class Paths
 		return file;
 	}
 
-	inline static public function voices(song:String):Any
+	inline static public function voices(song:String, ?prefix:String, ?suffix:String):Any
 	{
+		if (prefix == null) prefix = "";
+		if (suffix == null) suffix = "";
 		#if html5
-		return 'songs:assets/songs/${formatToSongPath(song)}/Voices.$SOUND_EXT';
+		return 'songs:assets/songs/${formatToSongPath(song)}/${prefix}Voices${suffix}.$SOUND_EXT';
 		#else
 		var songKey:String = '${formatToSongPath(song)}/Voices';
 		var voices = returnSound('songs', songKey);
@@ -322,10 +324,12 @@ class Paths
 		#end
 	}
 
-	inline static public function inst(song:String):Any
+	inline static public function inst(song:String, ?prefix:String, ?suffix:String):Any
 	{
+		if (prefix == null) prefix = "";
+		if (suffix == null) suffix = "";
 		#if html5
-		return 'songs:assets/songs/${formatToSongPath(song)}/Inst.$SOUND_EXT';
+		return 'songs:assets/songs/${formatToSongPath(song)}/${prefix}Inst${suffix}.$SOUND_EXT';
 		#else
 		var songKey:String = '${formatToSongPath(song)}/Inst';
 		var inst = returnSound('songs', songKey);

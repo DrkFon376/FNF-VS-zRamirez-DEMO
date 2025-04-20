@@ -12,6 +12,21 @@ import sys.FileSystem;
 
 using StringTools;
 
+typedef SuffixesPrefixes = {
+	var ?instSuffixes:Array<String>;
+	var ?instPrefixes:Array<String>;
+	var ?vocalPrefixes:Array<String>;
+	var ?vocalSuffixes:Array<String>;
+}
+
+
+typedef SwagSongProps = {
+	var ?instSuffix:String;
+	var ?instPrefix:String;
+	var ?vocalSuffix:String;
+	var ?vocalPrefix:String;
+}
+
 typedef SwagSong =
 {
 	var song:String;
@@ -32,6 +47,8 @@ typedef SwagSong =
 	var arrowSkin:String;
 	var splashSkin:String;
 	var validScore:Bool;
+
+	var ?props:SwagSongProps;
 }
 
 class Song
@@ -144,6 +161,15 @@ class Song
 	{
 		var swagShit:SwagSong = cast Json.parse(rawJson).song;
 		swagShit.validScore = true;
+		if (swagShit.props == null)
+		{
+			swagShit.props = {
+				instSuffix: "",
+				instPrefix: "",
+				vocalSuffix: "",
+				vocalPrefix: ""
+			}
+		}
 		return swagShit;
 	}
 }
