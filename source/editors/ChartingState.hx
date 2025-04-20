@@ -1077,7 +1077,6 @@ class ChartingState extends MusicBeatState
 		var directories:Array<String> = [Paths.getPreloadPath('custom_notetypes/')];
 
 		#if MODS_ALLOWED
-		directories.push(Paths.getPreloadPath('events/'));
 		directories.push(Paths.mods('custom_notetypes/'));
 		directories.push(Paths.mods(Paths.currentModDirectory + '/custom_notetypes/'));
 		for(mod in Paths.getGlobalMods())
@@ -1158,7 +1157,7 @@ class ChartingState extends MusicBeatState
 
 		#if LUA_ALLOWED
 		var eventPushedMap:Map<String, Bool> = new Map<String, Bool>();
-		var directories:Array<String> = [Paths.getPreloadPath('custom_events/')];
+		var directories:Array<String> = [Paths.getPreloadPath('events/')];
 
 		#if MODS_ALLOWED
 		directories.push(Paths.mods('custom_events/'));
