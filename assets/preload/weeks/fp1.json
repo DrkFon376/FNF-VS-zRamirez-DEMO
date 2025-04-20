@@ -1,0 +1,32 @@
+{
+	"storyName": "The Fucked Style",
+	"difficulties": "Hard, Harder, Fucked",
+	"hideFreeplay": false,
+	"weekBackground": "ramirez",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"songs": [
+		[
+			"Bad Battle",
+			"zRamirez",
+			[
+				255,
+				215,
+				0
+			]
+		]
+	],
+	"hideStoryMode": true,
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"hiddenUntilUnlocked": false,
+	"weekName": "Week Z"
+}
