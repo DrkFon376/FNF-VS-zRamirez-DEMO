@@ -19,7 +19,6 @@ typedef SuffixesPrefixes = {
 	var ?vocalSuffixes:Array<String>;
 }
 
-
 typedef SwagSongProps = {
 	var ?instSuffix:String;
 	var ?instPrefix:String;

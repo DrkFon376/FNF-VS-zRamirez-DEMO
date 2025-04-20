@@ -21,6 +21,8 @@ import WeekData;
 #if MODS_ALLOWED
 import sys.FileSystem;
 #end
+import Song.SuffixesPrefixes;
+import Song.SwagSongProps;
 
 using StringTools;
 
@@ -250,6 +252,7 @@ class FreeplayState extends MusicBeatState
 	var instPlaying:Int = -1;
 	public static var vocals:FlxSound = null;
 	var holdTime:Float = 0;
+	var currentProps:SwagSongProps = null;
 	override function update(elapsed:Float)
 	{
 		if (FlxG.sound.music.volume < 0.7 && songs[curSelected].songName != "" && songs[curSelected].songName != "Friendship v2" && songs[curSelected].songName != "Friendship-v2")
@@ -350,13 +353,15 @@ class FreeplayState extends MusicBeatState
 		}
 		else if(space && songs[curSelected].songName != "" && songs[curSelected].songName != "Friendship v2" && songs[curSelected].songName != "Friendship-v2")
 		{
-			if(instPlaying != curSelected)
+			var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
+			var propCheck:SwagSongProps = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase()).props;
+			if(currentProps != propCheck)
 			{
 				#if PRELOAD_ALL
 				destroyFreeplayVocals();
 				FlxG.sound.music.volume = 0;
 				Paths.currentModDirectory = songs[curSelected].folder;
-				var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
+				
 				PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
 				if (PlayState.SONG.needsVoices)
 					vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song, PlayState.SONG.props.vocalPrefix, PlayState.SONG.props.vocalSuffix));
@@ -369,7 +374,8 @@ class FreeplayState extends MusicBeatState
 				vocals.persist = true;
 				vocals.looped = true;
 				vocals.volume = 0.7;
-				instPlaying = curSelected;
+				currentProps = PlayState.SONG.props;
+				if (instPlaying != curSelected) instPlaying = curSelected;
 				#end
 			}
 		}

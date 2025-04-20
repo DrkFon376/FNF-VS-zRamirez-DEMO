@@ -57,6 +57,12 @@ class Note extends FlxSprite
 	public var lateHitMult:Float = 1;
 	public var lowPriority:Bool = false;
 
+	public var isHoldEnd(get, never):Bool;
+	function get_isHoldEnd():Bool
+		return animation.curAnim.name.endsWith('end');
+	public var canHoldC:Bool = false;
+	public var endHoldC:Bool = false;
+
 	public static var swagWidth:Float = 160 * 0.7;
 	
 	public static var defaultNoteSkin(default, never):String = 'noteSkins/NOTE_assets';
@@ -105,7 +111,7 @@ class Note extends FlxSprite
 
 	public function resizeByRatio(ratio:Float) //haha funny twitter shit
 	{
-		if(isSustainNote && !animation.curAnim.name.endsWith('end'))
+		if(isSustainNote && !isHoldEnd)
 		{
 			scale.y *= ratio;
 			updateHitbox();
@@ -208,6 +214,8 @@ class Note extends FlxSprite
 			offsetX += width / 2;
 			copyAngle = false;
 
+			endHoldC = true;
+			canHoldC = false;
 			animation.play(colArray[noteData % 4] + 'holdend');
 
 			updateHitbox();
@@ -219,6 +227,8 @@ class Note extends FlxSprite
 
 			if (prevNote.isSustainNote)
 			{
+				prevNote.endHoldC = false;
+				prevNote.canHoldC = true;
 				prevNote.animation.play(colArray[prevNote.noteData % 4] + 'hold');
 
 				prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.05;
