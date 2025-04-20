@@ -318,7 +318,7 @@ class Paths
 		#if html5
 		return 'songs:assets/songs/${formatToSongPath(song)}/${prefix}Voices${suffix}.$SOUND_EXT';
 		#else
-		var songKey:String = '${formatToSongPath(song)}/Voices';
+		var songKey:String = '${formatToSongPath(song)}/${prefix}Voices${suffix}';
 		var voices = returnSound('songs', songKey);
 		return voices;
 		#end
@@ -331,7 +331,7 @@ class Paths
 		#if html5
 		return 'songs:assets/songs/${formatToSongPath(song)}/${prefix}Inst${suffix}.$SOUND_EXT';
 		#else
-		var songKey:String = '${formatToSongPath(song)}/Inst';
+		var songKey:String = '${formatToSongPath(song)}/${prefix}Inst${suffix}';
 		var inst = returnSound('songs', songKey);
 		return inst;
 		#end

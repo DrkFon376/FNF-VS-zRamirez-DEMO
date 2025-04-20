@@ -58,7 +58,8 @@ class PauseSubState extends MusicBeatSubstate
 		for (i in 0...CoolUtil.difficulties.length) {
 			var diff:String = '' + CoolUtil.difficulties[i];
 			difficultyChoices.push(diff);
-			if (PlayState.SONG.song.toLowerCase() != 'bad battle hotfix' && PlayState.SONG.song.toLowerCase() != 'bad-battle-hotfix')
+			final isFucked:Bool = (Paths.formatToSongPath(PlayState.SONG.song) == 'bad-battle-hotfix' || Paths.formatToSongPath(PlayState.SONG.song) == 'bad-battle');
+			if (!isFucked)
 				difficultyChoices.remove('Fucked');
 		}
 		difficultyChoices.push('BACK');

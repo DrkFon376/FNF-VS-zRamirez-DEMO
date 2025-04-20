@@ -701,22 +701,24 @@ class ChartingState extends MusicBeatState
 		final instSufA:Array<String> = checkArray(suffixesPrefixes.instSuffixes);
 
 		vocPre = new FlxUIDropDownMenuCustom(player2DropDown.x, player2DropDown.y + 40, FlxUIDropDownMenuCustom.makeStrIdLabelArray(vocPreA, true), function(pre:String) {
-			_song.props.vocalPrefix = pre;
+			_song.props.vocalPrefix = vocPreA[Std.parseInt(pre)];
 		});
 		vocPre.selectedLabel = _song.props.vocalPrefix;
 
 		vocSuf = new FlxUIDropDownMenuCustom(vocPre.x, vocPre.y + 60, FlxUIDropDownMenuCustom.makeStrIdLabelArray(vocSufA, true), function(suf:String) {
-			_song.props.vocalSuffix = suf;
+			_song.props.vocalSuffix = vocSufA[Std.parseInt(suf)];
 		});
 		vocSuf.selectedLabel = _song.props.vocalSuffix;
 
 		instPre = new FlxUIDropDownMenuCustom(vocPre.x + 160, vocPre.y, FlxUIDropDownMenuCustom.makeStrIdLabelArray(instPreA, true), function(pre:String) {
-			_song.props.instPrefix = pre;
+			_song.props.instPrefix = instPreA[Std.parseInt(pre)];
 		});
+		instPre.selectedLabel = _song.props.instPrefix;
 
 		instSuf = new FlxUIDropDownMenuCustom(instPre.x, vocPre.y + 60, FlxUIDropDownMenuCustom.makeStrIdLabelArray(instSufA, true), function(suf:String) {
-			_song.props.instSuffix = suf;
+			_song.props.instSuffix = instSufA[Std.parseInt(suf)];
 		});
+		instSuf.selectedLabel = _song.props.instSuffix;
 
 		var tab_group_song = new FlxUI(null, UI_box);
 		tab_group_song.name = "Song";

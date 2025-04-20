@@ -563,7 +563,9 @@ class FreeplayState extends MusicBeatState
 		Paths.currentModDirectory = songs[curSelected].folder;
 		PlayState.storyWeek = songs[curSelected].week;
 
-		CoolUtil.difficulties = ((songs[curSelected].songName.toLowerCase() == 'bad-battle-hotfix' || songs[curSelected].songName.toLowerCase() == 'bad battle hotfix') ? CoolUtil.defaultDifficulties.copy() : ['Hard', 'Harder']);
+		final name:String = Paths.formatToSongPath(songs[curSelected].songName);
+		final isFucked:Bool = (name == 'bad-battle-hotfix' || name == 'bad-battle');
+		CoolUtil.difficulties = (isFucked ? CoolUtil.defaultDifficulties.copy() : ['Hard', 'Harder']);
 		var diffStr:String = WeekData.getCurrentWeek().difficulties;
 		if(diffStr != null) diffStr = diffStr.trim(); //Fuck you HTML5
 
