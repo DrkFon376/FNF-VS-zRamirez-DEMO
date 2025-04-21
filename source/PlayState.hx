@@ -3371,13 +3371,18 @@ class PlayState extends MusicBeatState
 			checkEventNote();
 		}
 
-		for (i in 0...4)
-		{
-			if (opponentHoldCovers != null)
-				opponentHoldCovers.grabMember(i).holdCPos.set(strumLineNotes.members[i].x, strumLineNotes.members[i].y);
-			if (playerHoldCovers != null)
-				playerHoldCovers.grabMember(i).holdCPos.set(strumLineNotes.members[i+4].x, strumLineNotes.members[i+4].y);
-		}
+		if (strumLineNotes != null && strumLineNotes.members.length >= 8)
+			{
+				for (i in 0...4)
+				{
+					if (opponentHoldCovers != null && strumLineNotes.members[i] != null && opponentHoldCovers.grabMember(i) != null)
+						opponentHoldCovers.grabMember(i).holdCPos.set(strumLineNotes.members[i].x, strumLineNotes.members[i].y);
+			
+					if (playerHoldCovers != null && strumLineNotes.members[i+4] != null && playerHoldCovers.grabMember(i) != null)
+						playerHoldCovers.grabMember(i).holdCPos.set(strumLineNotes.members[i+4].x, strumLineNotes.members[i+4].y);
+				}
+			}
+			
 
 		#if debug
 		if(!endingSong && !startingSong) {
