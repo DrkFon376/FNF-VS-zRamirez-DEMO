@@ -2928,7 +2928,7 @@ class PlayState extends MusicBeatState
 			iconP1.swapOldIcon();
 		}*/
 		callOnLuas('onUpdate', [elapsed]);
-		healthLerp = FlxMath.lerp(healthLerp, health, 0.20);
+		healthLerp = FlxMath.lerp(health, healthLerp, Math.exp(-elapsed * 9 * playbackRate));
 
 		switch (curStage)
 		{
@@ -3109,8 +3109,8 @@ class PlayState extends MusicBeatState
 
 		var iconOffset:Int = 26;
 
-		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
-		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
+		iconP1.x = FlxMath.lerp(healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset, iconP1.x, Math.exp(-elapsed * 9 * playbackRate));
+		iconP2.x = FlxMath.lerp(healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2, iconP2.x, Math.exp(-elapsed * 9 * playbackRate));
 
 		if (health > 2)
 			health = 2;
@@ -5208,15 +5208,18 @@ class PlayState extends MusicBeatState
 
 		if (allowedHealthDrainByOpponent) {
 			if (CoolUtil.difficulties[storyDifficulty] == 'Fucked')
-				health -= note.hitHealth-.001/(note.isSustainNote?0.5:1) * healthGain;
+			{
+				if (health > 0.02)
+					health -= (note.hitHealth-.003/(note.isSustainNote?1.5:1.6)) * healthGain;
+			}
 			else
 			{
 				if (health > 0.01 && health <= 0.66) {
 					if (note.isSustainNote) {
 						if (healthDrainOnOpponentSustains) {
-							health -= 0.0075/.3;
+							health -= 0.0075/1.5;
 						} else {
-							health -= 0.0075/1.6;
+							health -= 0.0075/8;
 						}
 					} else {
 						health -= 0.0075;
@@ -5224,9 +5227,9 @@ class PlayState extends MusicBeatState
 				} else if (health > 0.66 && health <= 1.4) {
 					if (note.isSustainNote) {
 						if (healthDrainOnOpponentSustains) {
-							health -= 0.014/.3;
+							health -= 0.014/1.5;
 						} else {
-							health -= 0.014/1.6;
+							health -= 0.014/8;
 						}
 					} else {
 						health -= 0.014;
@@ -5234,9 +5237,9 @@ class PlayState extends MusicBeatState
 				} else if (health > 1.4 && health <= 2) {
 					if (note.isSustainNote) {
 						if (healthDrainOnOpponentSustains) {
-							health -= 0.023/.3;
+							health -= 0.023/1.5;
 						} else {
-							health -= 0.023/1.6;
+							health -= 0.023/8;
 						}
 					} else {
 						health -= 0.03;
