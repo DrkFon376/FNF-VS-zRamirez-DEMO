@@ -155,6 +155,8 @@ class PlayState extends MusicBeatState
 
 	public var vocals:FlxSound;
 
+	public var videoFinishCallback:Void->Void;
+
 	public var dad:Character = null;
 	public var gf:Character = null;
 	public var boyfriend:Boyfriend = null;
@@ -1226,6 +1228,22 @@ class PlayState extends MusicBeatState
 		else
 		{
 			startCountdown();
+		}
+
+		if (!isStoryMode && !seenCutscene && (SONG.song.toLowerCase() == "bad battle" || SONG.song.toLowerCase() == "bad-battle") && storyDifficulty == 2)
+		{
+			switch (daSong)
+			{
+				case 'bad battle' | 'bad-battle':
+					startVideo(ClientPrefs.cutscenesSubtitles ? "Bad_Battle_Fucked_Cutscene_Eng_Subtitles" : "Bad_Battle_Fucked_Cutscene");
+			}
+			seenCutscene = true;
+		}
+		else
+		{
+			videoFinishCallback = function() {
+				startCountdown();
+			};
 		}
 		RecalculateRating();
 
@@ -4450,7 +4468,7 @@ class PlayState extends MusicBeatState
 		if(achievementObj != null) {
 			return;
 		} else {
-			var achieve:String = checkForAchievement(['zweek_beat', 'ur_bad', 'ur_good', 'taunt_master', 'friendship_v2']);
+			var achieve:String = checkForAchievement(['zweek_beat', 'bb_fucked', 'dweek_beat', 'toastie', 'ur_bad', 'ur_good', 'taunt_master', 'friendship_v2']);
 
 			if(achieve != null) {
 				startAchievement(achieve);
@@ -6091,6 +6109,14 @@ class PlayState extends MusicBeatState
 				{
 					case 'zweek_beat':
 						if(WeekData.getWeekFileName().toLowerCase() == 'weekz' && isStoryMode && storyPlaylist.length <= 1 && !usedPractice) {
+							unlock = true;
+						}
+					case 'bb_fucked':
+						if(Paths.formatToSongPath(SONG.song) == 'bad-battle' && !usedPractice && storyDifficulty==2) {
+							unlock = true;
+						}
+					case 'dweek_beat':
+						if(Paths.formatToSongPath(SONG.song) == 'override' && !usedPractice) {
 							unlock = true;
 						}
 					case 'ur_bad':
