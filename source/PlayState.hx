@@ -631,6 +631,16 @@ class PlayState extends MusicBeatState
 					luz.alpha=0.2;
 				}
 
+			case 'Stage-Drk': //Vs zRamirez - DrkFon Evening Stage
+			var stageBack:BGSprite = new BGSprite('Tree-Stage/sky', -390, -470, 1.0, 1.0);
+			add(stageBack);
+
+			var bush:BGSprite = new BGSprite('Tree-Stage/bush', -390, -470, 1.0, 1.0);
+			add(bush);
+
+			var stageFront:BGSprite = new BGSprite('Tree-Stage/tree', -390, -470, 1.0, 1.0);
+			add(stageFront);
+
 			case 'Stage-Rami-Changer': //Vs zRamirez - zRamirez Changer Stage (is used in Bad Battle Hotfix and soon in Bad Battle Fucked Remix)
 				//New Stuff (This isn't visible by default)
 				stageBack = new BGSprite('StageHotfix/StageBack', -200, 0, 1.0, 1.0);

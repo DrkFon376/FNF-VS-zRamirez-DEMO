@@ -91,6 +91,7 @@ class CreditsState extends MusicBeatState
 			['zRamírez Discord Server',	'discord',			'zRamírez Official Discord Server, There are Announcements about the Mod, Spoilers and Many Other Things! (Spanish and English Supported)',  	   'https://discord.gg/g2mCEc9rH5',			'4C5CE4'],
 			[''],
 			['Extra Mod Credits'],
+			['DonoNaza_UwU',			'dono',				'Tree stage designer',																									'https://www.youtube.com/@DonoNaza_UwU',							'AE267B'],
 			['Iandee',					'iandee',			'Creator of the Original Design of the BF and GF Sprites from the VS Impostor Dialogues',								'https://www.youtube.com/channel/UCnoOhpnxHWtayIJUCutfP7w',			'B0B0B0'],
 			['Foxeru',					'foxeru',			'Creator of Camellia Note Skin',																						'https://x.com/FoxeruKun',											'735A42'],
 			['Olivier99',				'bf',				'Creator of StepMania Note Skin',																						'https://gamebanana.com/members/1860941',							'5DA7FA'],
