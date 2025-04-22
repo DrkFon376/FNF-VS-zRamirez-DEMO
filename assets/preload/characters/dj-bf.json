@@ -1,0 +1,45 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				-6,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "BF idle dance",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				50,
+				-31
+			],
+			"anim": "cheer",
+			"fps": 24,
+			"name": "BF hey",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bf-dj",
+	"position": [
+		130,
+		120
+	],
+	"healthicon": "bf",
+	"flip_x": false,
+	"healthbar_colors": [
+		49,
+		176,
+		209
+	],
+	"camera_position": [
+		-40,
+		-90
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

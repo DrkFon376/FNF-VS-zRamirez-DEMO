@@ -743,6 +743,8 @@ class PlayState extends MusicBeatState
 		{
 			case 'stress':
 				GameOverSubstate.characterName = 'bf-holding-gf-dead';
+			case 'bad-battle-pico':
+				GameOverSubstate.characterName = 'pico-dead';
 		}
 
 		if(isPixelStage) {

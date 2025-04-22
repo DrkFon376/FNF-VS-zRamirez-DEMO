@@ -92,7 +92,7 @@ class CreditsState extends MusicBeatState
 			[''],
 			['Extra Mod Credits'],
 			['DonoNaza_UwU',			'dono',				'Tree stage designer',																									'https://www.youtube.com/@DonoNaza_UwU',							'AE267B'],
-			['Iandee',					'iandee',			'Creator of the Original Design of the BF and GF Sprites from the VS Impostor Dialogues',								'https://www.youtube.com/channel/UCnoOhpnxHWtayIJUCutfP7w',			'B0B0B0'],
+			['Iandee',					'iandee',			'Creator of the Original Design of the BF and GF Sprites from the VS Impostor Dialogues and Creator of the Pico Design',	'https://www.youtube.com/channel/UCnoOhpnxHWtayIJUCutfP7w',		'B0B0B0'],
 			['Foxeru',					'foxeru',			'Creator of Camellia Note Skin',																						'https://x.com/FoxeruKun',											'735A42'],
 			['Olivier99',				'bf',				'Creator of StepMania Note Skin',																						'https://gamebanana.com/members/1860941',							'5DA7FA'],
 			['TheZoroForce240',			'bf',				'Creator of RTX Editor Shader',																							'https://gamebanana.com/members/1708748',							'5DA7FA'],

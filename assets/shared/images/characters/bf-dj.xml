@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Boyfriend_Freeplay_assets.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="BF hey0000" x="8" y="8" width="560" height="482" frameX="-5" frameY="-21" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0001" x="578" y="8" width="560" height="482" frameX="-5" frameY="-21" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0002" x="1148" y="8" width="564" height="482" frameX="-4" frameY="-21" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0003" x="1148" y="8" width="564" height="482" frameX="-4" frameY="-21" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0004" x="1722" y="8" width="564" height="482" frameX="-4" frameY="-21" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0005" x="2296" y="8" width="568" height="483" frameX="0" frameY="-20" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0006" x="2874" y="8" width="568" height="483" frameX="0" frameY="-20" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0007" x="3452" y="8" width="513" height="476" frameX="-55" frameY="-27" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0008" x="8" y="501" width="513" height="503" frameX="-55" frameY="0" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0009" x="531" y="501" width="513" height="503" frameX="-55" frameY="0" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0010" x="1054" y="501" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0011" x="1577" y="501" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0012" x="2100" y="501" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0013" x="2100" y="501" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0014" x="2623" y="501" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0015" x="2623" y="501" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0016" x="3146" y="501" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0017" x="3146" y="501" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0018" x="8" y="1014" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0019" x="8" y="1014" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0020" x="2100" y="501" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0021" x="2100" y="501" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0022" x="2623" y="501" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0023" x="2623" y="501" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0024" x="3146" y="501" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0025" x="3146" y="501" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0026" x="8" y="1014" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0027" x="8" y="1014" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0028" x="2100" y="501" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF hey0029" x="2100" y="501" width="513" height="497" frameX="-55" frameY="-6" frameWidth="568" frameHeight="503"/>
+	<SubTexture name="BF idle dance0000" x="531" y="1014" width="512" height="509" frameX="0" frameY="-24" frameWidth="512" frameHeight="533"/>
+	<SubTexture name="BF idle dance0001" x="531" y="1014" width="512" height="509" frameX="0" frameY="-24" frameWidth="512" frameHeight="533"/>
+	<SubTexture name="BF idle dance0002" x="1053" y="1014" width="512" height="499" frameX="0" frameY="-34" frameWidth="512" frameHeight="533"/>
+	<SubTexture name="BF idle dance0003" x="1053" y="1014" width="512" height="499" frameX="0" frameY="-34" frameWidth="512" frameHeight="533"/>
+	<SubTexture name="BF idle dance0004" x="1575" y="1014" width="512" height="533"/>
+	<SubTexture name="BF idle dance0005" x="1575" y="1014" width="512" height="533"/>
+	<SubTexture name="BF idle dance0006" x="2097" y="1014" width="512" height="531" frameX="0" frameY="-2" frameWidth="512" frameHeight="533"/>
+	<SubTexture name="BF idle dance0007" x="2097" y="1014" width="512" height="531" frameX="0" frameY="-2" frameWidth="512" frameHeight="533"/>
+	<SubTexture name="BF idle dance0008" x="2619" y="1014" width="512" height="524" frameX="0" frameY="-9" frameWidth="512" frameHeight="533"/>
+	<SubTexture name="BF idle dance0009" x="2619" y="1014" width="512" height="524" frameX="0" frameY="-9" frameWidth="512" frameHeight="533"/>
+	<SubTexture name="BF idle dance0010" x="3141" y="1014" width="512" height="524" frameX="0" frameY="-9" frameWidth="512" frameHeight="533"/>
+	<SubTexture name="BF idle dance0011" x="3141" y="1014" width="512" height="524" frameX="0" frameY="-9" frameWidth="512" frameHeight="533"/>
+	<SubTexture name="BF idle dance0012" x="8" y="1557" width="512" height="524" frameX="0" frameY="-9" frameWidth="512" frameHeight="533"/>
+	<SubTexture name="BF idle dance0013" x="8" y="1557" width="512" height="524" frameX="0" frameY="-9" frameWidth="512" frameHeight="533"/>
+</TextureAtlas>
