@@ -155,8 +155,6 @@ class PlayState extends MusicBeatState
 
 	public var vocals:FlxSound;
 
-	public var videoFinishCallback:Void->Void;
-
 	public var dad:Character = null;
 	public var gf:Character = null;
 	public var boyfriend:Boyfriend = null;
@@ -1226,26 +1224,10 @@ class PlayState extends MusicBeatState
 					startCountdown();
 			}
 			seenCutscene = true;
-		}
-		else
+		}		
+		else 
 		{
 			startCountdown();
-		}
-
-		if (!isStoryMode && !seenCutscene && (SONG.song.toLowerCase() == "bad battle" || SONG.song.toLowerCase() == "bad-battle") && storyDifficulty == 2)
-		{
-			switch (daSong)
-			{
-				case 'bad battle' | 'bad-battle':
-					startVideo(ClientPrefs.cutscenesSubtitles ? "Bad_Battle_Fucked_Cutscene_Eng_Subtitles" : "Bad_Battle_Fucked_Cutscene");
-			}
-			seenCutscene = true;
-		}
-		else
-		{
-			videoFinishCallback = function() {
-				startCountdown();
-			};
 		}
 		RecalculateRating();
 
