@@ -1207,23 +1207,38 @@ class PlayState extends MusicBeatState
 		#end
 
 		var daSong:String = Paths.formatToSongPath(curSong);
-		if (isStoryMode && !seenCutscene)
+		if (!seenCutscene)
 		{
-			switch (daSong)
+			if (isStoryMode)
 			{
-				case 'bad battle' | 'bad-battle':
-					startVideo(ClientPrefs.cutscenesSubtitles ? "Bad_Battle_Cutscene_Eng_Subtitles" : "Bad_Battle_Cutscene");
+				switch (daSong)
+				{
+					case 'bad battle' | 'bad-battle':
+						startVideo(ClientPrefs.cutscenesSubtitles ? "Bad_Battle_Cutscene_Eng_Subtitles" : "Bad_Battle_Cutscene");
 
-				case 'intervention':
-					startVideo(ClientPrefs.cutscenesSubtitles ? "Intervention_Cutscene_Eng_Subtitles" : "Intervention_Cutscene");
+					case 'intervention':
+						startVideo(ClientPrefs.cutscenesSubtitles ? "Intervention_Cutscene_Eng_Subtitles" : "Intervention_Cutscene");
 
-				case 'friendship':
-					startVideo(ClientPrefs.cutscenesSubtitles ? "Friendship_Cutscene_Eng_Subtitles" : "Friendship_Cutscene");
+					case 'friendship':
+						startVideo(ClientPrefs.cutscenesSubtitles ? "Friendship_Cutscene_Eng_Subtitles" : "Friendship_Cutscene");
 
-				default:
-					startCountdown();
+					default:
+						startCountdown();
+				}
+				seenCutscene = true;
 			}
-			seenCutscene = true;
+			else
+			{
+				if ((SONG.song.toLowerCase() == "bad battle" || SONG.song.toLowerCase() == "bad-battle") && storyDifficulty == 2)
+				{
+					startVideo(ClientPrefs.cutscenesSubtitles ? "Bad_Battle_Fucked_Cutscene_Eng_Subtitles" : "Bad_Battle_Fucked_Cutscene");
+					seenCutscene = true;
+				}
+				else 
+				{
+					startCountdown();
+				}
+			}
 		}		
 		else 
 		{
