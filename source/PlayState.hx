@@ -5216,7 +5216,7 @@ class PlayState extends MusicBeatState
 		if (allowedHealthDrainByOpponent) {
 			if (CoolUtil.difficulties[storyDifficulty] == 'Fucked')
 			{
-				if (health > 0.02)
+				if (health > 0.07)
 					health -= (note.hitHealth-.003/(note.isSustainNote?1.5:1.6)) * healthGain;
 			}
 			else
