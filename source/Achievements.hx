@@ -15,7 +15,7 @@ class Achievements {
 		["It's a Funkin time...",		"Complete Week Z on Hard or Harder",											'zweek_beat',			false],
 		["Get Ready to final match...",	"Complete Bad Battle on Fucked Difficulty",										'bb_fucked',			false],
 		["I'll see you here soon.",		"Beat Override Song",															'dweek_beat',			false],
-		["This is zRamirez's PC",		"Seriously you need to play with these shitty graphics?",						'toastie',				 true],
+		["This is zRamirez's PC",		"Seriously, do you need to play with these shitty graphics?",						'toastie',				 true],
 		["What a Funkin' Disaster!",	"Complete a Song with a rating lower than 20%",									'ur_bad',				false],
 		["Perfectionist",				"Complete a Song with a rating of 100%",										'ur_good',				false],
 		["Taunt Master",				"Taunt 100 times or more in a song and complete it with less than 10 misses",	'taunt_master',			false],
