@@ -159,6 +159,8 @@ class PlayState extends MusicBeatState
 	public var gf:Character = null;
 	public var boyfriend:Boyfriend = null;
 
+	public var ara:FlxSprite;
+
 	public static var dadIdleInt:Int = 4;
 	public static var gfIdleInt:Int = 4;
 	public static var bfIdleInt:Int = 4;
@@ -640,6 +642,15 @@ class PlayState extends MusicBeatState
 
 			var stageFront:BGSprite = new BGSprite('Tree-Stage/tree', -390, -470, 1.0, 1.0);
 			add(stageFront);
+
+			ara = new FlxSprite(1815, 470);
+			ara.frames = Paths.getSparrowAtlas('Tree-Stage/ara-background');
+			ara.animation.addByPrefix('idle', 'Ara idle dance', 24, true);
+			ara.scrollFactor.set(1.0, 1.0);
+			ara.setGraphicSize(Std.int(ara.width * 0.9));
+			ara.updateHitbox();
+			add(ara);
+			ara.animation.play('idle', true);
 
 			case 'Stage-Rami-Changer': //Vs zRamirez - zRamirez Changer Stage (is used in Bad Battle Hotfix and soon in Bad Battle Fucked Remix)
 				//New Stuff (This isn't visible by default)

@@ -29,6 +29,7 @@ function onCreatePost()
     setSpriteShader('boyfriend', 'RTXLighting')
     setSpriteShader('dad', 'RTXLighting')
     setSpriteShader('gf', 'RTXLighting')
+    setSpriteShader('ara', 'RTXLighting')
 
     setShaderFloatArray('boyfriend', 'overlayColor', {0.0, 0.0, 0.0, 0.0})
     setShaderFloatArray('boyfriend', 'satinColor', {0.0, 0.0, 0.0, 0.0})
