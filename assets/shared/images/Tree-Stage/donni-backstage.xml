@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="donni-backstage.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Donni idle dance0000" x="8" y="8" width="353" height="606" frameX="0" frameY="-6" frameWidth="353" frameHeight="615"/>
+	<SubTexture name="Donni idle dance0001" x="8" y="8" width="353" height="606" frameX="0" frameY="-6" frameWidth="353" frameHeight="615"/>
+	<SubTexture name="Donni idle dance0002" x="8" y="624" width="349" height="610" frameX="-2" frameY="-3" frameWidth="353" frameHeight="615"/>
+	<SubTexture name="Donni idle dance0003" x="8" y="624" width="349" height="610" frameX="-2" frameY="-3" frameWidth="353" frameHeight="615"/>
+	<SubTexture name="Donni idle dance0004" x="8" y="1244" width="345" height="615" frameX="-4" frameY="0" frameWidth="353" frameHeight="615"/>
+	<SubTexture name="Donni idle dance0005" x="8" y="1244" width="345" height="615" frameX="-4" frameY="0" frameWidth="353" frameHeight="615"/>
+	<SubTexture name="Donni idle dance0006" x="8" y="1244" width="345" height="615" frameX="-4" frameY="0" frameWidth="353" frameHeight="615"/>
+	<SubTexture name="Donni idle dance0007" x="8" y="1244" width="345" height="615" frameX="-4" frameY="0" frameWidth="353" frameHeight="615"/>
+	<SubTexture name="Donni idle dance0008" x="8" y="1244" width="345" height="615" frameX="-4" frameY="0" frameWidth="353" frameHeight="615"/>
+	<SubTexture name="Donni idle dance0009" x="8" y="1244" width="345" height="615" frameX="-4" frameY="0" frameWidth="353" frameHeight="615"/>
+</TextureAtlas>

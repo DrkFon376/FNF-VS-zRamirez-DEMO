@@ -160,6 +160,7 @@ class PlayState extends MusicBeatState
 	public var boyfriend:Boyfriend = null;
 
 	public var ara:BGSprite;
+	public var dono:BGSprite;
 
 	public static var dadIdleInt:Int = 4;
 	public static var gfIdleInt:Int = 4;
@@ -643,11 +644,20 @@ class PlayState extends MusicBeatState
 				var stageFront:BGSprite = new BGSprite('Tree-Stage/tree', -390, -470, 1.0, 1.0);
 				add(stageFront);
 
-				ara = new BGSprite('Tree-Stage/ara-background', 1815, 470, 1.0, 1.0, ['Ara idle dance']);
-				ara.setGraphicSize(Std.int(ara.width * 0.9));
-				ara.updateHitbox();
-				ara.antialiasing = ClientPrefs.globalAntialiasing;
-				add(ara);
+				//This is for trash PCs, like zRamirez for example
+				if(!ClientPrefs.lowQuality) {
+					ara = new BGSprite('Tree-Stage/ara-background', 1815, 470, 1.0, 1.0, ['Ara idle dance']);
+					ara.setGraphicSize(Std.int(ara.width * 0.9));
+					ara.updateHitbox();
+					ara.antialiasing = ClientPrefs.globalAntialiasing;
+					add(ara);
+
+					dono = new BGSprite('Tree-Stage/donni-backstage', 250, 405, 1.0, 1.0, ['Donni idle dance']);
+					dono.setGraphicSize(Std.int(dono.width * 0.9));
+					dono.updateHitbox();
+					dono.antialiasing = ClientPrefs.globalAntialiasing;
+					add(dono);
+				}
 
 			case 'Stage-Rami-Changer': //Vs zRamirez - zRamirez Changer Stage (is used in Bad Battle Hotfix and soon in Bad Battle Fucked Remix)
 				//New Stuff (This isn't visible by default)
@@ -2174,6 +2184,10 @@ class PlayState extends MusicBeatState
 				else if (curStage == "Stage-Drk") {
 					if (ara != null)
 						ara.dance(true);
+				}
+				else if (curStage == "Stage-Drk") {
+					if (dono != null)
+						dono.dance(true);
 				}
 
 				switch (swagCounter)
