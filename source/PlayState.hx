@@ -159,7 +159,7 @@ class PlayState extends MusicBeatState
 	public var gf:Character = null;
 	public var boyfriend:Boyfriend = null;
 
-	public var ara:FlxSprite;
+	public var ara:BGSprite;
 
 	public static var dadIdleInt:Int = 4;
 	public static var gfIdleInt:Int = 4;
@@ -634,24 +634,20 @@ class PlayState extends MusicBeatState
 				}
 
 			case 'Stage-Drk': //Vs zRamirez - DrkFon Evening Stage
-			var stageBack:BGSprite = new BGSprite('Tree-Stage/sky', -390, -470, 1.0, 1.0);
-			add(stageBack);
+				var stageBack:BGSprite = new BGSprite('Tree-Stage/sky', -390, -470, 1.0, 1.0);
+				add(stageBack);
 
-			var bush:BGSprite = new BGSprite('Tree-Stage/bush', -390, -470, 1.0, 1.0);
-			add(bush);
+				var bush:BGSprite = new BGSprite('Tree-Stage/bush', -390, -470, 1.0, 1.0);
+				add(bush);
 
-			var stageFront:BGSprite = new BGSprite('Tree-Stage/tree', -390, -470, 1.0, 1.0);
-			add(stageFront);
+				var stageFront:BGSprite = new BGSprite('Tree-Stage/tree', -390, -470, 1.0, 1.0);
+				add(stageFront);
 
-			ara = new FlxSprite(1815, 470);
-			ara.frames = Paths.getSparrowAtlas('Tree-Stage/ara-background');
-			ara.animation.addByPrefix('idle', 'Ara idle dance', 24, true);
-			ara.scrollFactor.set(1.0, 1.0);
-			ara.setGraphicSize(Std.int(ara.width * 0.9));
-			ara.updateHitbox();
-			ara.antialiasing = ClientPrefs.globalAntialiasing;
-			add(ara);
-			ara.animation.play('idle', true);
+				ara = new BGSprite('Tree-Stage/ara-background', 1815, 470, 1.0, 1.0, ['Ara idle dance']);
+				ara.setGraphicSize(Std.int(ara.width * 0.9));
+				ara.updateHitbox();
+				ara.antialiasing = ClientPrefs.globalAntialiasing;
+				add(ara);
 
 			case 'Stage-Rami-Changer': //Vs zRamirez - zRamirez Changer Stage (is used in Bad Battle Hotfix and soon in Bad Battle Fucked Remix)
 				//New Stuff (This isn't visible by default)
@@ -2168,12 +2164,16 @@ class PlayState extends MusicBeatState
 				}
 
 				// head bopping for bg characters on Mall
-				if(curStage == 'mall') {
-					if(!ClientPrefs.lowQuality)
+				if (curStage == 'mall') {
+					if (!ClientPrefs.lowQuality)
 						upperBoppers.dance(true);
 
 					bottomBoppers.dance(true);
 					santa.dance(true);
+				}
+				else if (curStage == "Stage-Drk") {
+					if (ara != null)
+						ara.dance(true);
 				}
 
 				switch (swagCounter)
@@ -5922,6 +5922,10 @@ class PlayState extends MusicBeatState
 					trainCooldown = FlxG.random.int(-4, 0);
 					trainStart();
 				}
+
+			case "Stage-Drk":
+				if (ara != null)
+					ara.dance(true);
 		}
 
 		if (curStage == 'spooky' && FlxG.random.bool(10) && curBeat > lightningStrikeBeat + lightningOffset)
