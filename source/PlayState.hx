@@ -649,6 +649,7 @@ class PlayState extends MusicBeatState
 			ara.scrollFactor.set(1.0, 1.0);
 			ara.setGraphicSize(Std.int(ara.width * 0.9));
 			ara.updateHitbox();
+			ara.antialiasing = ClientPrefs.globalAntialiasing;
 			add(ara);
 			ara.animation.play('idle', true);
 
