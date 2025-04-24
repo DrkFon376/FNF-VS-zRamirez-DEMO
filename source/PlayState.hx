@@ -2184,8 +2184,6 @@ class PlayState extends MusicBeatState
 				else if (curStage == "Stage-Drk") {
 					if (ara != null)
 						ara.dance(true);
-				}
-				else if (curStage == "Stage-Drk") {
 					if (dono != null)
 						dono.dance(true);
 				}
@@ -2435,11 +2433,11 @@ class PlayState extends MusicBeatState
 		{
 			case "tutorial":
 				authorInfo = "Kawai-Sprite";
-			case "bad-battle" | "bad-battle-hotfix" | "bad battle" | "bad battle hotfix":
+			case "bad-battle" | "bad-battle-hotfix" | "bad battle" | "bad battle hotfix" | "bad-battle-classic" | "bad battle classic":
 				authorInfo = zRamirezAsMainComposer;
-			case "intervention":
+			case "intervention" | "intervention-classic" | "intervention classic":
 				authorInfo = drkfonAsMainComposer;
-			case "friendship":
+			case "friendship" | "bad-battle-pico" | "bad battle pico" | "last-smile" | "last smile":
 				authorInfo = zRamirezAsSoleComposer;			
 			case "friendship v2" | "friendship-v2":
 				authorInfo = drkfonAsMainComposer;
