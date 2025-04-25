@@ -560,6 +560,8 @@ class TitleState extends MusicBeatState
 			skipIntro();
 		}
 
+		spawnParticle();
+
 		if(swagShader != null)
 		{
 			if(controls.UI_LEFT) swagShader.hue -= elapsed * 0.1;
@@ -775,5 +777,37 @@ class TitleState extends MusicBeatState
 			}
 			skippedIntro = true;
 		}
+	}
+
+	//Ported from QT Extreme v2.5, yea, probably a build that will never see the light of day -Drkfon
+	var interval:Float = 0;
+	function spawnParticle():Void //New cool particles effect! (yea, I hardcoded this from a Psych lua script lol)
+	{
+		var quartStep:Float = Conductor.stepCrochet / 4;
+		var songPos:Float = Conductor.songPosition;
+
+		if (Conductor.songPosition <= 0)
+			interval = 0;
+		
+		if (songPos >= interval)
+		{
+			var rarr:Float = songPos/500;
+
+			var particle:FlxSprite = new FlxSprite(FlxG.random.int(500, 2000), 1600).loadGraphic(Paths.image('Particle'));
+			particle.setGraphicSize(Std.int(particle.width * 0.5));
+			particle.updateHitbox();
+			particle.antialiasing = true;
+
+       		var endX:Float = -900 * Math.sin((rarr + 1 * 0.1) * Math.PI);
+			var endY:Float = -900 * Math.tan((rarr + 1 * 0.1) * Math.PI);
+
+			add(particle);
+
+			FlxTween.tween(particle, {x: endX, y: endY}, 6, {type: FlxTweenType.PERSIST, onComplete: function(twn:FlxTween){
+				particle.destroy();
+			}});
+
+			interval += quartStep;
+		}			
 	}
 }
