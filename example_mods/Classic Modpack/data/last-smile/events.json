@@ -1,0 +1,226 @@
+{
+	"song": {
+		"events": [
+			[
+				0,
+				[
+					[
+						"Move Camera When Singing",
+						"true",
+						""
+					],
+					[
+						"HideUI",
+						"0",
+						""
+					],
+					[
+						"Overlay Alpha Fade",
+						"fadeOut",
+						"12"
+					],
+					[
+						"Set Character Idle Speed",
+						"gf",
+						"2"
+					]
+				]
+			],
+			[
+				12000,
+				[
+					[
+						"Flash Camera",
+						"0.75",
+						""
+					]
+				]
+			],
+			[
+				24000,
+				[
+					[
+						"HideUI",
+						"1",
+						""
+					],
+					[
+						"Flash Camera",
+						"0.75",
+						""
+					],
+					[
+						"Camera_Tween_Zoom",
+						"0.95",
+						""
+					],
+					[
+						"PantallaYesHud",
+						"hola",
+						""
+					]
+				]
+			],
+			[
+				36000,
+				[
+					[
+						"Flash Camera",
+						"0.75",
+						""
+					]
+				]
+			],
+			[
+				48000,
+				[
+					[
+						"Flash Camera",
+						"0.75",
+						""
+					]
+				]
+			],
+			[
+				60000,
+				[
+					[
+						"Flash Camera",
+						"0.75",
+						""
+					]
+				]
+			],
+			[
+				72000,
+				[
+					[
+						"Flash Camera",
+						"0.75",
+						""
+					]
+				]
+			],
+			[
+				84000,
+				[
+					[
+						"Flash Camera",
+						"0.75",
+						""
+					],
+					[
+						"Camera_Tween_Zoom",
+						"0.86",
+						""
+					],
+					[
+						"Camera Follow Pos",
+						"1045",
+						"850"
+					]
+				]
+			],
+			[
+				96000,
+				[
+					[
+						"Flash Camera",
+						"0.75",
+						""
+					],
+					[
+						"Camera_Tween_Zoom",
+						"0.78",
+						""
+					],
+					[
+						"PantallaYesHud",
+						"adios",
+						""
+					]
+				]
+			],
+			[
+				108000,
+				[
+					[
+						"Flash Camera",
+						"0.75",
+						""
+					]
+				]
+			],
+			[
+				120000,
+				[
+					[
+						"Flash Camera",
+						"0.75",
+						""
+					],
+					[
+						"Camera_Tween_Zoom",
+						"0.83",
+						""
+					],
+					[
+						"Move Camera When Singing",
+						"false",
+						""
+					],
+					[
+						"Camera Follow Pos",
+						"1045",
+						"850"
+					]
+				]
+			],
+			[
+				122625,
+				[
+					[
+						"HideUI",
+						"0",
+						""
+					]
+				]
+			],
+			[
+				132000,
+				[
+					[
+						"Flash Camera",
+						"0.75",
+						""
+					],
+					[
+						"Overlay Alpha Fade",
+						"fadeIn",
+						"11.6394903"
+					]
+				]
+			],
+			[
+				144000,
+				[
+					[
+						"Overlay Alpha Fade",
+						"fadeOut",
+						"0.001"
+					],
+					[
+						"Flash Camera",
+						"1",
+						""
+					],
+					[
+						"Hey!",
+						"",
+						"30"
+					]
+				]
+			]
+		]
+	}
+}

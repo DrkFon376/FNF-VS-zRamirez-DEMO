@@ -1,0 +1,7 @@
+{
+	"name": "Vs zRamírez Classic Modpack",
+	"description": "Restore classic versions of some songs and adding some extras",
+	"restart":false,
+	"runsGlobally": false,
+	"color": [255, 215, 0]
+}
