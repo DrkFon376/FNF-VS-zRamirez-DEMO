@@ -44,14 +44,16 @@ class HoldCoverGroup extends FlxTypedSpriteGroup<HoldCoverSprite>
       member.shaderCopy(note.noteData, note);
       if (note.endHoldC || note.canHoldC && note.nextNote == null)
       {
-        if (canSplash) member.playEnd();
+        if (canSplash && member.holdSucceeded)
+          member.playEnd();
         else 
           member.endCover();
       }
-      else if (note.sustainLength > 0 && !note.isSustainNote)
+      else if (note.sustainLength > 0 && (!note.isSustainNote || !member.visible))
       {
         member.revive();
         member.playStart();
+        member.holdSucceeded = true;
       }
     }
   }

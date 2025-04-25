@@ -2184,6 +2184,7 @@ class PlayState extends MusicBeatState
 				else if (curStage == "Stage-Drk") {
 					if (ara != null)
 						ara.dance(true);
+
 					if (dono != null)
 						dono.dance(true);
 				}
@@ -4936,6 +4937,29 @@ class PlayState extends MusicBeatState
 				Conductor.songPosition = lastTime;
 			}
 
+			if (playerHoldCovers != null)
+			{
+				var foundSustainNote:Note = null;
+			
+				notes.forEachAlive(function(note:Note)
+				{
+					if (note.noteData == key && note.mustPress && note.isSustainNote && !note.wasGoodHit && note.canBeHit)
+					{
+						foundSustainNote = note;
+					}
+				});
+			
+				if (foundSustainNote != null)
+				{
+					var member = playerHoldCovers.grabMember(key);
+					if (member != null && !member.visible)
+					{
+						member.revive();
+						member.playStart();
+					}
+				}
+			}
+
 			var spr:StrumNote = playerStrums.members[key];
 			if(strumsBlocked[key] != true && spr != null && spr.animation.curAnim.name != 'confirm')
 			{
@@ -4970,6 +4994,20 @@ class PlayState extends MusicBeatState
 				spr.resetAnim = 0;
 			}
 			callOnLuas('onKeyRelease', [key]);
+
+			if (playerHoldCovers != null && playerHoldCovers.members[key].animation.curAnim != null && !playerHoldCovers.members[key].animation.curAnim.name.endsWith('End')) //Me cago en todo glow
+			{
+				playerHoldCovers.despawnOnMiss(key);
+
+				if (playerHoldCovers != null)
+				{
+					var member = playerHoldCovers.grabMember(key);
+					if (member != null)
+					{
+						member.holdSucceeded = false;
+					}
+				}
+			}
 		}
 		//trace('released: ' + controlArray);
 	}
@@ -5938,6 +5976,9 @@ class PlayState extends MusicBeatState
 			case "Stage-Drk":
 				if (ara != null)
 					ara.dance(true);
+
+				if (dono != null)
+					dono.dance(true);
 		}
 
 		if (curStage == 'spooky' && FlxG.random.bool(10) && curBeat > lightningStrikeBeat + lightningOffset)

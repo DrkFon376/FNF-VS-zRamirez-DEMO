@@ -23,6 +23,8 @@ class HoldCoverSprite extends FlxSprite
   public var colorSwap:ColorSwap;
   public var skin:String = "";
 
+  public var holdSucceeded:Bool = false;
+
   public var coverData:HoldCoverData =
     {
       texture: null,
@@ -68,9 +70,9 @@ class HoldCoverSprite extends FlxSprite
 
     if (noteData > -1 && noteData < ClientPrefs.arrowHSV.length)
     {
-        colorSwap.hue = ClientPrefs.arrowHSV[noteData][0] / 360;
-		colorSwap.saturation = ClientPrefs.arrowHSV[noteData][1] / 100;
-		colorSwap.brightness = ClientPrefs.arrowHSV[noteData][2] / 100;
+      colorSwap.hue = ClientPrefs.arrowHSV[noteData][0] / 360;
+		  colorSwap.saturation = ClientPrefs.arrowHSV[noteData][1] / 100;
+		  colorSwap.brightness = ClientPrefs.arrowHSV[noteData][2] / 100;
     }
   }
 
@@ -79,7 +81,7 @@ class HoldCoverSprite extends FlxSprite
       // *lightning* *zap* *crackle*
       if (!animation.finished && animation.curAnim != null) animation.curAnim.finish();
       visible = false;
-      kill();
+      //kill();
     }
   
     public function playStart():Void
