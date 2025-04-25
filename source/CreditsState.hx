@@ -98,7 +98,7 @@ class CreditsState extends MusicBeatState
 			['TheZoroForce240',			'bf',				'Creator of RTX Editor Shader',																							'https://gamebanana.com/members/1708748',							'5DA7FA'],
 			['Ima',						'ima',				'His made the chart of Intervention v1',																				'https://www.youtube.com/channel/UCs9dXV0B7uKACyyW9PBFYCA',			'583627'],
 			['Slushi',					'slushi',			'Help with Lua Modcharts, Bad Battle Modchart Creator',																	'https://www.youtube.com/channel/UC3sEmV3kzR7Z1icTY7hbrKg',			'16F8DD'],
-			['ElPatoFNF',				'pato',				'Help with Some Charting, Beta Tester',																					'https://www.youtube.com/channel/UCSDpAZ-xwBql9yLCYeDgtyA',			'605C5C'],
+			['ElPatoFNF',				'pato',				'Help with Some Charting, Original Creator of Bad Battle Fucked Mix, Beta Tester',										'https://www.youtube.com/channel/UCSDpAZ-xwBql9yLCYeDgtyA',			'605C5C'],
 			[''],
 			['Psych Engine Main Team'],
 			['Shadow Mario',			'shadowmario',		'Main Programmer and Head of Psych Engine',																				'https://twitter.com/Shadow_Mario_',								'444444'],
