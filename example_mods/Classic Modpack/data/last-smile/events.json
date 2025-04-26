@@ -10,11 +10,6 @@
 						""
 					],
 					[
-						"HideUI",
-						"0",
-						""
-					],
-					[
 						"Overlay Alpha Fade",
 						"fadeOut",
 						"12"
@@ -39,11 +34,6 @@
 			[
 				24000,
 				[
-					[
-						"HideUI",
-						"1",
-						""
-					],
 					[
 						"Flash Camera",
 						"0.75",
