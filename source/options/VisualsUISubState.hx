@@ -42,7 +42,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
-		var option:Option = new Option('Hold Splashes',
+		var option:Option = new Option('Hold Covers',
 			"If unchecked, hitting a Sustain Note won't show particles (also applies to opponent's side).",
 			'holdSplashes',
 			'bool',
