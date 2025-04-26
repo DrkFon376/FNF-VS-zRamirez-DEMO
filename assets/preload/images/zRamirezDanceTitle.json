@@ -1,11 +1,11 @@
 {	
-	"titlex":-80,
-	"titley":-100,
+	"titlex":-40,
+	"titley":-40,
 	"graphicSizeMultiplier": 0.6,
 	"startx":150,
 	"starty":576,
-	"gfx":512,
-	"gfy":40,
+	"gfx":652,
+	"gfy":70,
 	"backgroundSprite":"TittleScreen",
 	"bpm":120
 }
