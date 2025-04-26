@@ -60,6 +60,7 @@ class NoteOffsetState extends MusicBeatState
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 		CustomFadeTransition.nextCamera = camOther;
 		FlxG.camera.scroll.set(400, 475);
+		FlxG.camera.zoom = 0.83;
 
 		persistentUpdate = true;
 		FlxG.sound.pause();
