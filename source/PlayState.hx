@@ -2448,6 +2448,16 @@ class PlayState extends MusicBeatState
 				authorInfo = zRamirezAsSoleComposer;
 		}
 
+		if ((SONG.song.toLowerCase() == 'bad-battle' || SONG.song.toLowerCase() == 'bad battle') && storyDifficulty == 2)
+		{
+			authorInfo = "zRamírez, DrkFon376 & ElPatoFNF";
+			SongInfo.customSongTitle = "Bad Battle Fucked";
+		}
+		else if  (SONG.song.toLowerCase() == 'bad battle pico' || SONG.song.toLowerCase() == 'bad-battle-pico')
+		{
+			SongInfo.customJukeBoxTagColor = "FD6922";
+		}
+
 		songInfo = new SongInfo(-360, 0, SONG.song, authorInfoPrefix + authorInfo);
 		songInfo.cameras = [camOther];
 		add(songInfo);

@@ -152,8 +152,8 @@ class NoteOffsetState extends MusicBeatState
 		// Note delay stuff
 		
 		beatText = new Alphabet(0, 0, 'Beat Hit!', true);
-		beatText.setScale(0.6, 0.6);
-		beatText.x += 260;
+		beatText.setScale(0.7, 0.7);
+		beatText.x += 730;
 		beatText.alpha = 0;
 		beatText.acceleration.y = 250;
 		beatText.visible = false;
@@ -392,7 +392,7 @@ class NoteOffsetState extends MusicBeatState
 		
 		if(curBeat % 4 == 2)
 		{
-			FlxG.camera.zoom = 0.88;
+			FlxG.camera.zoom = 0.905;
 
 			if(zoomTween != null) zoomTween.cancel();
 			zoomTween = FlxTween.tween(FlxG.camera, {zoom: 0.83}, 0.83, {ease: FlxEase.circOut, onComplete: function(twn:FlxTween)
@@ -402,7 +402,7 @@ class NoteOffsetState extends MusicBeatState
 			});
 
 			beatText.alpha = 1;
-			beatText.y = 320;
+			beatText.y = 610;
 			beatText.velocity.y = -150;
 			if(beatTween != null) beatTween.cancel();
 			beatTween = FlxTween.tween(beatText, {alpha: 0}, 1, {ease: FlxEase.sineIn, onComplete: function(twn:FlxTween)
