@@ -43,6 +43,7 @@ typedef TitleData =
 	titley:Float,
 	startx:Float,
 	starty:Float,
+	graphicSizeMultiplier:Float,
 	gfx:Float,
 	gfy:Float,
 	backgroundSprite:String,
@@ -313,10 +314,14 @@ class TitleState extends MusicBeatState
 			//EDIT THIS ONE IF YOU'RE MAKING A SOURCE CODE MOD!!!!
 			//EDIT THIS ONE IF YOU'RE MAKING A SOURCE CODE MOD!!!!
 			//EDIT THIS ONE IF YOU'RE MAKING A SOURCE CODE MOD!!!!
-				zRamirezDance.frames = Paths.getSparrowAtlas('zRamirezDanceTitle');
-				zRamirezDance.animation.addByIndices('danceLeft', 'zRamirezDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-				zRamirezDance.animation.addByIndices('danceRight', 'zRamirezDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+				zRamirezDance.frames = Paths.getSparrowAtlas('zRamirezDanceTitleNEW');
+				zRamirezDance.animation.addByPrefix('idle', 'zRamirez idle', 24, false);
+				//zRamirezDance.animation.addByIndices('danceLeft', 'zRamirezDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+				//zRamirezDance.animation.addByIndices('danceRight', 'zRamirezDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
 		}
+
+		zRamirezDance.setGraphicSize(Std.int(zRamirezDance.width * titleJSON.graphicSizeMultiplier));
+		zRamirezDance.updateHitbox();
 		zRamirezDance.antialiasing = ClientPrefs.globalAntialiasing;
 
 		add(zRamirezDance);
@@ -615,11 +620,13 @@ class TitleState extends MusicBeatState
 			logoBl.animation.play('bump', true);
 
 		if(zRamirezDance != null) {
-			danceLeft = !danceLeft;
+			/*danceLeft = !danceLeft;
 			if (danceLeft)
 				zRamirezDance.animation.play('danceRight');
 			else
-				zRamirezDance.animation.play('danceLeft');
+				zRamirezDance.animation.play('danceLeft');*/
+
+			zRamirezDance.animation.play('idle', true);
 		}
 
 		if(!closedState) {

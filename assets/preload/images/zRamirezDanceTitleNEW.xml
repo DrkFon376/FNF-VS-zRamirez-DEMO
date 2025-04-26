@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="zRamirezDanceTitleNEW.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="zRamirez idle0000" x="8" y="8" width="1039" height="1106" frameX="-14" frameY="-21" frameWidth="1063" frameHeight="1127"/>
+	<SubTexture name="zRamirez idle0001" x="8" y="8" width="1039" height="1106" frameX="-14" frameY="-21" frameWidth="1063" frameHeight="1127"/>
+	<SubTexture name="zRamirez idle0002" x="1057" y="8" width="1040" height="1110" frameX="0" frameY="-17" frameWidth="1063" frameHeight="1127"/>
+	<SubTexture name="zRamirez idle0003" x="1057" y="8" width="1040" height="1110" frameX="0" frameY="-17" frameWidth="1063" frameHeight="1127"/>
+	<SubTexture name="zRamirez idle0004" x="2107" y="8" width="1039" height="1116" frameX="-4" frameY="-11" frameWidth="1063" frameHeight="1127"/>
+	<SubTexture name="zRamirez idle0005" x="2107" y="8" width="1039" height="1116" frameX="-4" frameY="-11" frameWidth="1063" frameHeight="1127"/>
+	<SubTexture name="zRamirez idle0006" x="8" y="1134" width="1039" height="1127" frameX="-18" frameY="0" frameWidth="1063" frameHeight="1127"/>
+	<SubTexture name="zRamirez idle0007" x="8" y="1134" width="1039" height="1127" frameX="-18" frameY="0" frameWidth="1063" frameHeight="1127"/>
+	<SubTexture name="zRamirez idle0008" x="1057" y="1134" width="1037" height="1127" frameX="-26" frameY="0" frameWidth="1063" frameHeight="1127"/>
+	<SubTexture name="zRamirez idle0009" x="1057" y="1134" width="1037" height="1127" frameX="-26" frameY="0" frameWidth="1063" frameHeight="1127"/>
+	<SubTexture name="zRamirez idle0010" x="1057" y="1134" width="1037" height="1127" frameX="-26" frameY="0" frameWidth="1063" frameHeight="1127"/>
+	<SubTexture name="zRamirez idle0011" x="1057" y="1134" width="1037" height="1127" frameX="-26" frameY="0" frameWidth="1063" frameHeight="1127"/>
+	<SubTexture name="zRamirez idle0012" x="1057" y="1134" width="1037" height="1127" frameX="-26" frameY="0" frameWidth="1063" frameHeight="1127"/>
+	<SubTexture name="zRamirez idle0013" x="1057" y="1134" width="1037" height="1127" frameX="-26" frameY="0" frameWidth="1063" frameHeight="1127"/>
+	<SubTexture name="zRamirez idle0014" x="1057" y="1134" width="1037" height="1127" frameX="-26" frameY="0" frameWidth="1063" frameHeight="1127"/>
+	<SubTexture name="zRamirez idle0015" x="1057" y="1134" width="1037" height="1127" frameX="-26" frameY="0" frameWidth="1063" frameHeight="1127"/>
+	<SubTexture name="zRamirez idle0016" x="1057" y="1134" width="1037" height="1127" frameX="-26" frameY="0" frameWidth="1063" frameHeight="1127"/>
+</TextureAtlas>
