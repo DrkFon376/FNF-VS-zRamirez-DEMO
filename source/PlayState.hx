@@ -4937,7 +4937,7 @@ class PlayState extends MusicBeatState
 				Conductor.songPosition = lastTime;
 			}
 
-			if (playerHoldCovers != null)
+			if (playerHoldCovers.enabled && playerHoldCovers != null)
 			{
 				var foundSustainNote:Note = null;
 			
