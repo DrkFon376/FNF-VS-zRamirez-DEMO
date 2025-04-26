@@ -1,5 +1,6 @@
-Intercala el zoom de la cámara del juego a un valor específico en una duración específica en una facilidad específica
+Interleaves the camGame zoom to a specific value
+at a specific duration at a specific ease
 
-Valor1: TargetZoom, Duración (ejemplo: 0.69, 0.1) 
+Value 1: targetZoom, duration (example: 0.69, 0.1) 
 
-Valor2: facilidad (ejemplo: quadOut)
+Value 2: ease (example: quadOut)

@@ -1,4 +1,5 @@
 Pantalla
 
-Value 1: hola para q apareces el modo epico
-y adios para quitarlo
+Value 1:
+'hola' to activate epic mode
+'adios' to deactivate it

@@ -1,3 +1,5 @@
-Value1 = 0 for hide, 1 for show
+Value 1:
+0 to hide the UI
+1 to show the UI
 
-Value2 = time
+Value 2: time
