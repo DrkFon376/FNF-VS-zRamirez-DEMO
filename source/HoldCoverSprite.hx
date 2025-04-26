@@ -81,7 +81,7 @@ class HoldCoverSprite extends FlxSprite
       // *lightning* *zap* *crackle*
       if (!animation.finished && animation.curAnim != null) animation.curAnim.finish();
       visible = false;
-      //kill();
+      kill();
     }
   
     public function playStart():Void
