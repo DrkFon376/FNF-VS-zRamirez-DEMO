@@ -19,7 +19,6 @@ typedef HoldCoverData =
 
 class HoldCoverSprite extends FlxSprite
 {
-  public var useShader:Bool = false;
   public var colorSwap:ColorSwap;
   public var skin:String = "";
 
@@ -34,11 +33,11 @@ class HoldCoverSprite extends FlxSprite
   public var offsetX:Float = 0;
   public var offsetY:Float = 0;
 
-  /*public function initShader(noteData:Int)
+  public function initShader()
   {
     colorSwap = new ColorSwap();
 		shader = colorSwap.shader;
-  }*/
+  }
 
   public function initFrames(i:Int, hcolor:String)
   {
@@ -55,6 +54,7 @@ class HoldCoverSprite extends FlxSprite
       this.animation.addByPrefix('holdCoverStart', 'holdCoverStart$hcolor', 24, false);
       this.animation.addByPrefix('holdCover', 'holdCover$hcolor', 24, true);
       this.animation.addByPrefix('holdCoverEnd', 'holdCoverEnd$hcolor', 24, false);
+    initShader();
   }
 
   public function shaderCopy(noteData:Int, note:Note)
@@ -63,16 +63,22 @@ class HoldCoverSprite extends FlxSprite
     if (skin.contains('pixel') || !ClientPrefs.globalAntialiasing)
       this.antialiasing = false;
 
-    if (!useShader) return;
-    
-    colorSwap = new ColorSwap();
-    shader = colorSwap.shader;
+    if (!coverData.useShader) return;
 
     if (noteData > -1 && noteData < ClientPrefs.arrowHSV.length)
     {
-      colorSwap.hue = ClientPrefs.arrowHSV[noteData][0] / 360;
-		  colorSwap.saturation = ClientPrefs.arrowHSV[noteData][1] / 100;
-		  colorSwap.brightness = ClientPrefs.arrowHSV[noteData][2] / 100;
+      if (note != null)
+      {
+        colorSwap.hue = note.holdSplashHue;
+        colorSwap.saturation = note.holdSplashSat;
+        colorSwap.brightness = note.holdSplashBrt;
+      }
+      else
+      {
+        colorSwap.hue = ClientPrefs.arrowHSV[noteData][0] / 360;
+        colorSwap.saturation = ClientPrefs.arrowHSV[noteData][1] / 100;
+        colorSwap.brightness = ClientPrefs.arrowHSV[noteData][2] / 100;
+      }
     }
   }
 

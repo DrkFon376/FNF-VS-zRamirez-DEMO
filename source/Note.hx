@@ -76,6 +76,10 @@ class Note extends FlxSprite
 	public var noteSplashSat:Float = 0;
 	public var noteSplashBrt:Float = 0;
 
+	public var holdSplashHue:Float = 0;
+	public var holdSplashSat:Float = 0;
+	public var holdSplashBrt:Float = 0;
+
 	public var offsetX:Float = 0;
 	public var offsetY:Float = 0;
 	public var offsetAngle:Float = 0;
@@ -165,6 +169,9 @@ class Note extends FlxSprite
 		noteSplashHue = colorSwap.hue;
 		noteSplashSat = colorSwap.saturation;
 		noteSplashBrt = colorSwap.brightness;
+		holdSplashHue = colorSwap.hue;
+		holdSplashSat = colorSwap.saturation;
+		holdSplashBrt = colorSwap.brightness;
 		return value;
 	}
 
