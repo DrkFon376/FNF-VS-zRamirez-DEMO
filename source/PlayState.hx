@@ -4502,7 +4502,7 @@ class PlayState extends MusicBeatState
 		if(achievementObj != null) {
 			return;
 		} else {
-			var achieve:String = checkForAchievement(['zweek_beat', 'bb_fucked', 'dweek_beat', 'toastie', 'ur_bad', 'ur_good', 'taunt_master', 'friendship_v2']);
+			var achieve:String = checkForAchievement(['zweek_beat', 'bb_fucked', 'dweek_beat', 'gopico_yeah', 'toastie', 'ur_bad', 'ur_good', 'taunt_master', 'friendship_v2']);
 
 			if(achieve != null) {
 				startAchievement(achieve);
@@ -6195,6 +6195,10 @@ class PlayState extends MusicBeatState
 						}
 					case 'dweek_beat':
 						if(Paths.formatToSongPath(SONG.song) == 'override' && !usedPractice) {
+							unlock = true;
+						}
+					case 'gopico_yeah':
+						if(Paths.formatToSongPath(SONG.song) == 'bad-battle-pico' && !usedPractice) {
 							unlock = true;
 						}
 					case 'ur_bad':
