@@ -28,6 +28,7 @@ class Achievements {
 		FlxG.log.add('Completed achievement "' + name +'"');
 		achievementsMap.set(name, true);
 		FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
+		trace("I LOADED AFTER UNLOCK ACHIEVEMENT" + FlxG.save.data.achievementsMap);
 	}
 
 	public static function isAchievementUnlocked(name:String) {
@@ -50,6 +51,7 @@ class Achievements {
 		if(FlxG.save.data != null) {
 			if(FlxG.save.data.achievementsMap != null) {
 				achievementsMap = FlxG.save.data.achievementsMap;
+			trace("NO SE WE SOLO APAREZCO PARA COMPROBAR QUE SI CARGUEN LOS LOGROS A LA VERGA" + FlxG.save.data.achievementsMap);
 			}
 			if(henchmenDeath == 0 && FlxG.save.data.henchmenDeath != null) {
 				henchmenDeath = FlxG.save.data.henchmenDeath;
