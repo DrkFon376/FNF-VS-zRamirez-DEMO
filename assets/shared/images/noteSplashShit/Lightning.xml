@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="NOTES AND SPLASHES FROM VS ZRAMIREZ.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="note splash blue 10000" x="8" y="8" width="129" height="130" frameX="-86" frameY="-92" frameWidth="308" frameHeight="302"/>
+	<SubTexture name="note splash blue 10001" x="147" y="8" width="239" height="243" frameX="-34" frameY="-30" frameWidth="308" frameHeight="302"/>
+	<SubTexture name="note splash blue 10002" x="396" y="8" width="281" height="275" frameX="-14" frameY="-16" frameWidth="308" frameHeight="302"/>
+	<SubTexture name="note splash blue 10003" x="687" y="8" width="308" height="302"/>
+	<SubTexture name="note splash green 10000" x="8" y="320" width="129" height="130" frameX="-86" frameY="-92" frameWidth="308" frameHeight="302"/>
+	<SubTexture name="note splash green 10001" x="147" y="320" width="239" height="243" frameX="-34" frameY="-30" frameWidth="308" frameHeight="302"/>
+	<SubTexture name="note splash green 10002" x="396" y="320" width="281" height="275" frameX="-14" frameY="-16" frameWidth="308" frameHeight="302"/>
+	<SubTexture name="note splash green 10003" x="687" y="320" width="308" height="302"/>
+	<SubTexture name="note splash purple 10000" x="8" y="632" width="129" height="130" frameX="-86" frameY="-92" frameWidth="308" frameHeight="302"/>
+	<SubTexture name="note splash purple 10001" x="147" y="632" width="239" height="243" frameX="-34" frameY="-30" frameWidth="308" frameHeight="302"/>
+	<SubTexture name="note splash purple 10002" x="396" y="632" width="281" height="275" frameX="-14" frameY="-16" frameWidth="308" frameHeight="302"/>
+	<SubTexture name="note splash purple 10003" x="687" y="632" width="308" height="302"/>
+	<SubTexture name="note splash red 10000" x="8" y="944" width="129" height="130" frameX="-86" frameY="-92" frameWidth="308" frameHeight="302"/>
+	<SubTexture name="note splash red 10001" x="147" y="944" width="239" height="243" frameX="-34" frameY="-30" frameWidth="308" frameHeight="302"/>
+	<SubTexture name="note splash red 10002" x="396" y="944" width="281" height="275" frameX="-14" frameY="-16" frameWidth="308" frameHeight="302"/>
+	<SubTexture name="note splash red 10003" x="687" y="944" width="308" height="302"/>
+</TextureAtlas>
