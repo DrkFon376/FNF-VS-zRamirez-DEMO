@@ -5189,6 +5189,8 @@ class PlayState extends MusicBeatState
 			if (combo > 1 && gf != null && gf.animOffsets.exists('sad'))
 			{
 				gf.playAnim('sad');
+				gf.specialAnim = true;
+				trace('You really hurts GF :(');
 			}
 			combo = 0;
 
