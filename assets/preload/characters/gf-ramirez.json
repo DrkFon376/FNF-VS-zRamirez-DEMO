@@ -3,8 +3,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				-20,
-				0
+				-8,
+				2
 			],
 			"fps": 24,
 			"anim": "cheer",
@@ -65,12 +65,23 @@
 				29
 			],
 			"name": "GF Dancing Beat"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				2,
+				7
+			],
+			"anim": "sad",
+			"fps": 24,
+			"name": "gf sad",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/GF-Ramirez-V2",
+	"image": "characters/GF-Ramirez-V3",
 	"position": [
-		250,
+		260,
 		140
 	],
 	"healthicon": "gf",
@@ -81,8 +92,8 @@
 		77
 	],
 	"camera_position": [
-		-30,
-		-50
+		-43,
+		-51
 	],
 	"sing_duration": 4,
 	"scale": 1
