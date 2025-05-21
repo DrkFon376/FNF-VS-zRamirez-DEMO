@@ -5132,6 +5132,15 @@ class PlayState extends MusicBeatState
 				note.destroy();
 			}
 		});
+		if (!boyfriend.stunned)
+		{
+			if (combo > 10 && gf != null && gf.animOffsets.exists('sad'))
+			{
+				gf.playAnim('sad');
+				gf.specialAnim = true;
+				trace('You really hurts GF :(');
+			}
+		}
 		combo = 0;
 		health -= daNote.missHealth * healthLoss;
 		
@@ -5186,7 +5195,7 @@ class PlayState extends MusicBeatState
 				doDeathCheck(true);
 			}
 
-			if (combo > 1 && gf != null && gf.animOffsets.exists('sad'))
+			if (combo > 10 && gf != null && gf.animOffsets.exists('sad') && !ClientPrefs.ghostTapping)
 			{
 				gf.playAnim('sad');
 				gf.specialAnim = true;
