@@ -20,7 +20,7 @@ class ClientPrefs {
 	public static var cutscenesSubtitles:Bool = false;
 	public static var noteSplashes:Bool = true;
 	public static var holdSplashes:Bool = true;
-	public static var noteSplashesTexture:String = 'Vanilla';
+	public static var noteSplashesTexture:String = 'Lightning';
 	public static var lowQuality:Bool = false;
 	public static var shaders:Bool = true;
 	public static var framerate:Int = 60;

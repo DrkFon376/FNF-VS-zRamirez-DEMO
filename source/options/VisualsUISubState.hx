@@ -53,8 +53,8 @@ class VisualsUISubState extends BaseOptionsMenu
 			"Choose what texture you want to be used in the Note Splashes.",
 			'noteSplashesTexture',
 			'string',
-			'Vanilla',
-			['Vanilla', 'Psych', 'Diamond', 'Electric', 'Sparkles', 'Lightning']);
+			'Lightning',
+			['Lightning', 'Vanilla', 'Psych', 'Diamond', 'Electric', 'Sparkles']);
 		addOption(option);
 
 		var option:Option = new Option('Note Skin Texture:',

@@ -63,6 +63,10 @@ class NoteSplash extends FlxSprite
 		final data:NoteSplashData = new NoteSplashData();
 		switch (skin)
 		{
+			case 'noteSplashShit/Lightning':
+				data.fps = [22, 26];
+				for (anim in ['note0-1', 'note1-1', 'note2-1', 'note3-1'])
+					data.setOffset(anim, [-15, -19]);
 			case 'noteSplashShit/Diamond':
 				data.fps = [22, 26];
 				for (anim in ['note0-1', 'note1-1', 'note2-1', 'note3-1', 'note0-2', 'note1-2', 'note2-2', 'note3-2'])
@@ -86,10 +90,6 @@ class NoteSplash extends FlxSprite
 				data.fps = [22, 26];
 				for (anim in ['note0-1', 'note1-1', 'note2-1', 'note3-1'])
 					data.setOffset(anim, [-48, -48]);
-			case 'noteSplashShit/Lightning':
-				data.fps = [22, 26];
-				for (anim in ['note0-1', 'note1-1', 'note2-1', 'note3-1'])
-					data.setOffset(anim, [-15, -19]);
 		}
 		offsetHandler.setSkin(skin, data);
 		
