@@ -610,8 +610,56 @@ class PlayState extends MusicBeatState
 				}
 				dadbattleSmokes = new FlxSpriteGroup(); //troll'd
 
-			case 'Stage-Rami': //Vs zRamirez - zRamirez Normal Stage
+			case 'Stage-Rami': //Vs zRamirez - zRamirez Day Back Stage
 				var stageBack:BGSprite = new BGSprite('StageHotfix/StageBack', -200, 0, 1.0, 1.0);
+				add(stageBack);
+
+				var stageFront:BGSprite = new BGSprite('StageHotfix/StageFront', -208, 1031, 1.0, 1.0);
+				add(stageFront);
+
+				var mueble:BGSprite = new BGSprite('StageHotfix/StageMueble', 569, 607, 1.0, 1.0);
+				mueble.setGraphicSize(Std.int(mueble.width * 1.1));
+				mueble.updateHitbox();
+				add(mueble);
+				//This is for trash PCs, like zRamirez for example
+				if(!ClientPrefs.lowQuality) {
+					var adornos:BGSprite = new BGSprite('StageHotfix/Adornos', -110, 305, 1.0, 1.0);
+					add(adornos);
+
+					var extra:BGSprite = new BGSprite('StageHotfix/StageExtra2', 290, 715, 1.0, 1.0);
+					add(extra);
+
+					luz = new FlxSprite(-200, 0).loadGraphic(Paths.image('StageHotfix/idk'));
+					luz.scrollFactor.set(1.0, 1.0);
+					luz.alpha=0.2;
+				}
+
+			case 'Stage-Rami-Sunset': //Vs zRamirez - zRamirez Sunset Back Stage
+				var stageBack:BGSprite = new BGSprite('StageHotfix/StageBack-Sunset', -200, 0, 1.0, 1.0);
+				add(stageBack);
+
+				var stageFront:BGSprite = new BGSprite('StageHotfix/StageFront', -208, 1031, 1.0, 1.0);
+				add(stageFront);
+
+				var mueble:BGSprite = new BGSprite('StageHotfix/StageMueble', 569, 607, 1.0, 1.0);
+				mueble.setGraphicSize(Std.int(mueble.width * 1.1));
+				mueble.updateHitbox();
+				add(mueble);
+				//This is for trash PCs, like zRamirez for example
+				if(!ClientPrefs.lowQuality) {
+					var adornos:BGSprite = new BGSprite('StageHotfix/Adornos', -110, 305, 1.0, 1.0);
+					add(adornos);
+
+					var extra:BGSprite = new BGSprite('StageHotfix/StageExtra2', 290, 715, 1.0, 1.0);
+					add(extra);
+
+					luz = new FlxSprite(-200, 0).loadGraphic(Paths.image('StageHotfix/idk'));
+					luz.scrollFactor.set(1.0, 1.0);
+					luz.alpha=0.2;
+				}
+
+			case 'Stage-Rami-Night': //Vs zRamirez - zRamirez Night Back Stage
+				var stageBack:BGSprite = new BGSprite('StageHotfix/StageBack-Night', -200, 0, 1.0, 1.0);
 				add(stageBack);
 
 				var stageFront:BGSprite = new BGSprite('StageHotfix/StageFront', -208, 1031, 1.0, 1.0);
@@ -825,6 +873,12 @@ class PlayState extends MusicBeatState
 		switch(curStage)
 		{
 			case 'Stage-Rami':
+				add(luz);
+
+			case 'Stage-Rami-Sunset':
+				add(luz);
+
+			case 'Stage-Rami-Night':
 				add(luz);
 
 			case 'Stage-Rami-Changer':
@@ -1247,9 +1301,26 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				if ((SONG.song.toLowerCase() == "bad battle" || SONG.song.toLowerCase() == "bad-battle") && storyDifficulty == 2)
+				if (!isStoryMode)
 				{
-					startVideo(ClientPrefs.cutscenesSubtitles ? "Bad_Battle_Fucked_Cutscene_Eng_Subtitles" : "Bad_Battle_Fucked_Cutscene");
+					switch (daSong)
+					{
+						case 'bad battle' | 'bad-battle':
+							if (storyDifficulty == 2)
+							{
+								startVideo(ClientPrefs.cutscenesSubtitles ? "Bad_Battle_Fucked_Cutscene_Eng_Subtitles" : "Bad_Battle_Fucked_Cutscene");
+							}
+							else
+							{
+								startCountdown();
+							}
+
+						case 'override':
+							startVideo(ClientPrefs.cutscenesSubtitles ? "Override_Cutscene_Eng_Subtitles" : "Override_Cutscene");
+							
+						default:
+							startCountdown();
+					}
 					seenCutscene = true;
 				}
 				else 
