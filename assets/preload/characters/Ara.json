@@ -1,0 +1,133 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-114,
+				351
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "Ara idle dance"
+		},
+		{
+			"offsets": [
+				-65,
+				311
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Ara NOTE DOWN"
+		},
+		{
+			"offsets": [
+				-124,
+				349
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Ara NOTE RIGHT"
+		},
+		{
+			"offsets": [
+				-29,
+				354
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Ara NOTE LEFT"
+		},
+		{
+			"offsets": [
+				-127,
+				387
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Ara NOTE UP"
+		},
+		{
+			"offsets": [
+				-66,
+				311
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"indices": [],
+			"name": "Ara NOTE DOWN"
+		},
+		{
+			"offsets": [
+				-124,
+				349
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"indices": [],
+			"name": "Ara NOTE RIGHT"
+		},
+		{
+			"offsets": [
+				-29,
+				354
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"indices": [],
+			"name": "Ara NOTE LEFT"
+		},
+		{
+			"offsets": [
+				-127,
+				387
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP-alt",
+			"indices": [],
+			"name": "Ara NOTE UP"
+		},
+		{
+			"offsets": [
+				-114,
+				349
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "hey",
+			"loop": false,
+			"name": "Ara HEY"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/Ara",
+	"position": [
+		-5,
+		425
+	],
+	"healthicon": "Ara",
+	"flip_x": false,
+	"healthbar_colors": [
+		160,
+		0,
+		235
+	],
+	"camera_position": [
+		180,
+		-262
+	],
+	"sing_duration": 5,
+	"scale": 0.9
+}

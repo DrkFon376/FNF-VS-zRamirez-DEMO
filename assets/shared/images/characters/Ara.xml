@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Ara vs zRamirez Sprites.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Ara HEY!!0000" x="8" y="8" width="373" height="714" frameX="0" frameY="0" frameWidth="381" frameHeight="714"/>
+	<SubTexture name="Ara HEY!!0001" x="391" y="8" width="371" height="714" frameX="-5" frameY="0" frameWidth="381" frameHeight="714"/>
+	<SubTexture name="Ara HEY!!0002" x="772" y="8" width="373" height="713" frameX="-6" frameY="-1" frameWidth="381" frameHeight="714"/>
+	<SubTexture name="Ara HEY!!0003" x="1155" y="8" width="374" height="713" frameX="-7" frameY="-1" frameWidth="381" frameHeight="714"/>
+	<SubTexture name="Ara HEY!!0004" x="1539" y="8" width="380" height="714" frameX="-1" frameY="0" frameWidth="381" frameHeight="714"/>
+	<SubTexture name="Ara HEY!!0005" x="1539" y="8" width="380" height="714" frameX="-1" frameY="0" frameWidth="381" frameHeight="714"/>
+	<SubTexture name="Ara HEY!!0006" x="1539" y="8" width="380" height="714" frameX="-1" frameY="0" frameWidth="381" frameHeight="714"/>
+	<SubTexture name="Ara HEY!!0007" x="1539" y="8" width="380" height="714" frameX="-1" frameY="0" frameWidth="381" frameHeight="714"/>
+	<SubTexture name="Ara HEY!!0008" x="1539" y="8" width="380" height="714" frameX="-1" frameY="0" frameWidth="381" frameHeight="714"/>
+	<SubTexture name="Ara HEY!!0009" x="1539" y="8" width="380" height="714" frameX="-1" frameY="0" frameWidth="381" frameHeight="714"/>
+	<SubTexture name="Ara HEY!!0010" x="1539" y="8" width="380" height="714" frameX="-1" frameY="0" frameWidth="381" frameHeight="714"/>
+	<SubTexture name="Ara HEY!!0011" x="1539" y="8" width="380" height="714" frameX="-1" frameY="0" frameWidth="381" frameHeight="714"/>
+	<SubTexture name="Ara HEY!!0012" x="1539" y="8" width="380" height="714" frameX="-1" frameY="0" frameWidth="381" frameHeight="714"/>
+	<SubTexture name="Ara HEY!!0013" x="1539" y="8" width="380" height="714" frameX="-1" frameY="0" frameWidth="381" frameHeight="714"/>
+	<SubTexture name="Ara HEY!!0014" x="1539" y="8" width="380" height="714" frameX="-1" frameY="0" frameWidth="381" frameHeight="714"/>
+	<SubTexture name="Ara NOTE DOWN0000" x="1929" y="8" width="402" height="682" frameX="0" frameY="-11" frameWidth="402" frameHeight="694"/>
+	<SubTexture name="Ara NOTE DOWN0001" x="2341" y="8" width="396" height="688" frameX="-4" frameY="-6" frameWidth="402" frameHeight="694"/>
+	<SubTexture name="Ara NOTE DOWN0002" x="2747" y="8" width="388" height="690" frameX="-10" frameY="-3" frameWidth="402" frameHeight="694"/>
+	<SubTexture name="Ara NOTE DOWN0003" x="3145" y="8" width="380" height="693" frameX="-16" frameY="0" frameWidth="402" frameHeight="694"/>
+	<SubTexture name="Ara NOTE DOWN0004" x="3535" y="8" width="380" height="691" frameX="-16" frameY="-2" frameWidth="402" frameHeight="694"/>
+	<SubTexture name="Ara NOTE DOWN0005" x="8" y="732" width="380" height="691" frameX="-16" frameY="-2" frameWidth="402" frameHeight="694"/>
+	<SubTexture name="Ara NOTE DOWN0006" x="398" y="732" width="380" height="691" frameX="-16" frameY="-2" frameWidth="402" frameHeight="694"/>
+	<SubTexture name="Ara NOTE DOWN0007" x="788" y="732" width="380" height="692" frameX="-16" frameY="-1" frameWidth="402" frameHeight="694"/>
+	<SubTexture name="Ara NOTE DOWN0008" x="1178" y="732" width="380" height="693" frameX="-16" frameY="0" frameWidth="402" frameHeight="694"/>
+	<SubTexture name="Ara NOTE DOWN0009" x="1178" y="732" width="380" height="693" frameX="-16" frameY="0" frameWidth="402" frameHeight="694"/>
+	<SubTexture name="Ara NOTE DOWN0010" x="1178" y="732" width="380" height="693" frameX="-16" frameY="0" frameWidth="402" frameHeight="694"/>
+	<SubTexture name="Ara NOTE DOWN0011" x="1178" y="732" width="380" height="693" frameX="-16" frameY="0" frameWidth="402" frameHeight="694"/>
+	<SubTexture name="Ara NOTE DOWN0012" x="1178" y="732" width="380" height="693" frameX="-16" frameY="0" frameWidth="402" frameHeight="694"/>
+	<SubTexture name="Ara NOTE DOWN0013" x="1178" y="732" width="380" height="693" frameX="-16" frameY="0" frameWidth="402" frameHeight="694"/>
+	<SubTexture name="Ara NOTE DOWN0014" x="1178" y="732" width="380" height="693" frameX="-16" frameY="0" frameWidth="402" frameHeight="694"/>
+	<SubTexture name="Ara NOTE LEFT0000" x="1568" y="732" width="513" height="736" frameX="0" frameY="-4" frameWidth="515" frameHeight="740"/>
+	<SubTexture name="Ara NOTE LEFT0001" x="2091" y="732" width="508" height="736" frameX="-4" frameY="-4" frameWidth="515" frameHeight="740"/>
+	<SubTexture name="Ara NOTE LEFT0002" x="2609" y="732" width="498" height="738" frameX="-16" frameY="-2" frameWidth="515" frameHeight="740"/>
+	<SubTexture name="Ara NOTE LEFT0003" x="3117" y="732" width="491" height="740" frameX="-24" frameY="0" frameWidth="515" frameHeight="740"/>
+	<SubTexture name="Ara NOTE LEFT0004" x="8" y="1482" width="491" height="740" frameX="-24" frameY="0" frameWidth="515" frameHeight="740"/>
+	<SubTexture name="Ara NOTE LEFT0005" x="509" y="1482" width="491" height="740" frameX="-24" frameY="0" frameWidth="515" frameHeight="740"/>
+	<SubTexture name="Ara NOTE LEFT0006" x="1010" y="1482" width="491" height="740" frameX="-24" frameY="0" frameWidth="515" frameHeight="740"/>
+	<SubTexture name="Ara NOTE LEFT0007" x="1511" y="1482" width="491" height="740" frameX="-24" frameY="0" frameWidth="515" frameHeight="740"/>
+	<SubTexture name="Ara NOTE LEFT0008" x="2012" y="1482" width="491" height="740" frameX="-24" frameY="0" frameWidth="515" frameHeight="740"/>
+	<SubTexture name="Ara NOTE LEFT0009" x="2513" y="1482" width="491" height="739" frameX="-24" frameY="-1" frameWidth="515" frameHeight="740"/>
+	<SubTexture name="Ara NOTE LEFT0010" x="2513" y="1482" width="491" height="739" frameX="-24" frameY="-1" frameWidth="515" frameHeight="740"/>
+	<SubTexture name="Ara NOTE LEFT0011" x="3014" y="1482" width="491" height="740" frameX="-24" frameY="0" frameWidth="515" frameHeight="740"/>
+	<SubTexture name="Ara NOTE LEFT0012" x="3014" y="1482" width="491" height="740" frameX="-24" frameY="0" frameWidth="515" frameHeight="740"/>
+	<SubTexture name="Ara NOTE LEFT0013" x="3014" y="1482" width="491" height="740" frameX="-24" frameY="0" frameWidth="515" frameHeight="740"/>
+	<SubTexture name="Ara NOTE LEFT0014" x="3014" y="1482" width="491" height="740" frameX="-24" frameY="0" frameWidth="515" frameHeight="740"/>
+	<SubTexture name="Ara NOTE RIGHT0000" x="3515" y="1482" width="406" height="726" frameX="-2" frameY="-2" frameWidth="408" frameHeight="728"/>
+	<SubTexture name="Ara NOTE RIGHT0001" x="8" y="2232" width="402" height="726" frameX="-2" frameY="-2" frameWidth="408" frameHeight="728"/>
+	<SubTexture name="Ara NOTE RIGHT0002" x="420" y="2232" width="397" height="727" frameX="0" frameY="-1" frameWidth="408" frameHeight="728"/>
+	<SubTexture name="Ara NOTE RIGHT0003" x="827" y="2232" width="387" height="727" frameX="0" frameY="-1" frameWidth="408" frameHeight="728"/>
+	<SubTexture name="Ara NOTE RIGHT0004" x="1224" y="2232" width="387" height="727" frameX="0" frameY="-1" frameWidth="408" frameHeight="728"/>
+	<SubTexture name="Ara NOTE RIGHT0005" x="1621" y="2232" width="387" height="727" frameX="0" frameY="-1" frameWidth="408" frameHeight="728"/>
+	<SubTexture name="Ara NOTE RIGHT0006" x="2018" y="2232" width="387" height="727" frameX="0" frameY="-1" frameWidth="408" frameHeight="728"/>
+	<SubTexture name="Ara NOTE RIGHT0007" x="2415" y="2232" width="387" height="728" frameX="0" frameY="0" frameWidth="408" frameHeight="728"/>
+	<SubTexture name="Ara NOTE RIGHT0008" x="2415" y="2232" width="387" height="728" frameX="0" frameY="0" frameWidth="408" frameHeight="728"/>
+	<SubTexture name="Ara NOTE RIGHT0009" x="2812" y="2232" width="387" height="728" frameX="0" frameY="0" frameWidth="408" frameHeight="728"/>
+	<SubTexture name="Ara NOTE RIGHT0010" x="2812" y="2232" width="387" height="728" frameX="0" frameY="0" frameWidth="408" frameHeight="728"/>
+	<SubTexture name="Ara NOTE RIGHT0011" x="2812" y="2232" width="387" height="728" frameX="0" frameY="0" frameWidth="408" frameHeight="728"/>
+	<SubTexture name="Ara NOTE RIGHT0012" x="2812" y="2232" width="387" height="728" frameX="0" frameY="0" frameWidth="408" frameHeight="728"/>
+	<SubTexture name="Ara NOTE RIGHT0013" x="2812" y="2232" width="387" height="728" frameX="0" frameY="0" frameWidth="408" frameHeight="728"/>
+	<SubTexture name="Ara NOTE RIGHT0014" x="2812" y="2232" width="387" height="728" frameX="0" frameY="0" frameWidth="408" frameHeight="728"/>
+	<SubTexture name="Ara NOTE UP0000" x="3209" y="2232" width="361" height="772" frameX="-3" frameY="0" frameWidth="364" frameHeight="772"/>
+	<SubTexture name="Ara NOTE UP0001" x="3580" y="2232" width="362" height="772" frameX="-2" frameY="0" frameWidth="364" frameHeight="772"/>
+	<SubTexture name="Ara NOTE UP0002" x="8" y="3014" width="361" height="769" frameX="-1" frameY="-3" frameWidth="364" frameHeight="772"/>
+	<SubTexture name="Ara NOTE UP0003" x="379" y="3014" width="359" height="767" frameX="-1" frameY="-5" frameWidth="364" frameHeight="772"/>
+	<SubTexture name="Ara NOTE UP0004" x="748" y="3014" width="357" height="767" frameX="-3" frameY="-5" frameWidth="364" frameHeight="772"/>
+	<SubTexture name="Ara NOTE UP0005" x="1115" y="3014" width="358" height="766" frameX="-2" frameY="-6" frameWidth="364" frameHeight="772"/>
+	<SubTexture name="Ara NOTE UP0006" x="1483" y="3014" width="360" height="766" frameX="0" frameY="-6" frameWidth="364" frameHeight="772"/>
+	<SubTexture name="Ara NOTE UP0007" x="1853" y="3014" width="359" height="767" frameX="-1" frameY="-5" frameWidth="364" frameHeight="772"/>
+	<SubTexture name="Ara NOTE UP0008" x="1853" y="3014" width="359" height="767" frameX="-1" frameY="-5" frameWidth="364" frameHeight="772"/>
+	<SubTexture name="Ara NOTE UP0009" x="1853" y="3014" width="359" height="767" frameX="-1" frameY="-5" frameWidth="364" frameHeight="772"/>
+	<SubTexture name="Ara NOTE UP0010" x="1853" y="3014" width="359" height="767" frameX="-1" frameY="-5" frameWidth="364" frameHeight="772"/>
+	<SubTexture name="Ara NOTE UP0011" x="1853" y="3014" width="359" height="767" frameX="-1" frameY="-5" frameWidth="364" frameHeight="772"/>
+	<SubTexture name="Ara NOTE UP0012" x="1853" y="3014" width="359" height="767" frameX="-1" frameY="-5" frameWidth="364" frameHeight="772"/>
+	<SubTexture name="Ara NOTE UP0013" x="1853" y="3014" width="359" height="767" frameX="-1" frameY="-5" frameWidth="364" frameHeight="772"/>
+	<SubTexture name="Ara NOTE UP0014" x="1853" y="3014" width="359" height="767" frameX="-1" frameY="-5" frameWidth="364" frameHeight="772"/>
+	<SubTexture name="Ara idle dance0000" x="2222" y="3014" width="370" height="702" frameX="-10" frameY="-14" frameWidth="383" frameHeight="716"/>
+	<SubTexture name="Ara idle dance0001" x="2222" y="3014" width="370" height="702" frameX="-10" frameY="-14" frameWidth="383" frameHeight="716"/>
+	<SubTexture name="Ara idle dance0002" x="2602" y="3014" width="361" height="704" frameX="-17" frameY="-12" frameWidth="383" frameHeight="716"/>
+	<SubTexture name="Ara idle dance0003" x="2602" y="3014" width="361" height="704" frameX="-17" frameY="-12" frameWidth="383" frameHeight="716"/>
+	<SubTexture name="Ara idle dance0004" x="2973" y="3014" width="362" height="706" frameX="-13" frameY="-10" frameWidth="383" frameHeight="716"/>
+	<SubTexture name="Ara idle dance0005" x="2973" y="3014" width="362" height="706" frameX="-13" frameY="-10" frameWidth="383" frameHeight="716"/>
+	<SubTexture name="Ara idle dance0006" x="3345" y="3014" width="377" height="713" frameX="-5" frameY="-3" frameWidth="383" frameHeight="716"/>
+	<SubTexture name="Ara idle dance0007" x="3345" y="3014" width="377" height="713" frameX="-5" frameY="-3" frameWidth="383" frameHeight="716"/>
+	<SubTexture name="Ara idle dance0008" x="8" y="3793" width="383" height="716"/>
+	<SubTexture name="Ara idle dance0009" x="401" y="3793" width="383" height="716"/>
+	<SubTexture name="Ara idle dance0010" x="794" y="3793" width="383" height="716"/>
+	<SubTexture name="Ara idle dance0011" x="794" y="3793" width="383" height="716"/>
+	<SubTexture name="Ara idle dance0012" x="1187" y="3793" width="383" height="716"/>
+	<SubTexture name="Ara idle dance0013" x="1187" y="3793" width="383" height="716"/>
+	<SubTexture name="Ara idle dance0014" x="1580" y="3793" width="383" height="716"/>
+</TextureAtlas>
