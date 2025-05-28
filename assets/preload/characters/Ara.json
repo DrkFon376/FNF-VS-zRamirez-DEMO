@@ -1,114 +1,114 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
-				-114,
+				-115,
 				351
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "Ara idle dance"
+			"fps": 24,
+			"name": "Ara idle dance",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-65,
 				311
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "Ara NOTE DOWN"
+			"fps": 24,
+			"name": "Ara NOTE DOWN",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-124,
 				349
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Ara NOTE RIGHT"
+			"fps": 24,
+			"name": "Ara NOTE RIGHT",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-29,
 				354
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "Ara NOTE LEFT"
+			"fps": 24,
+			"name": "Ara NOTE LEFT",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-127,
 				387
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "Ara NOTE UP"
+			"fps": 24,
+			"name": "Ara NOTE UP",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-66,
 				311
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN-alt",
-			"indices": [],
-			"name": "Ara NOTE DOWN"
+			"fps": 24,
+			"name": "Ara NOTE DOWN",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-124,
 				349
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT-alt",
-			"indices": [],
-			"name": "Ara NOTE RIGHT"
+			"fps": 24,
+			"name": "Ara NOTE RIGHT",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-29,
 				354
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT-alt",
-			"indices": [],
-			"name": "Ara NOTE LEFT"
+			"fps": 24,
+			"name": "Ara NOTE LEFT",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-127,
 				387
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP-alt",
-			"indices": [],
-			"name": "Ara NOTE UP"
+			"fps": 24,
+			"name": "Ara NOTE UP",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-114,
 				349
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "hey",
-			"loop": false,
-			"name": "Ara HEY"
+			"fps": 24,
+			"name": "Ara HEY",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
@@ -120,9 +120,9 @@
 	"healthicon": "Ara",
 	"flip_x": false,
 	"healthbar_colors": [
-		160,
-		0,
-		235
+		164,
+		37,
+		159
 	],
 	"camera_position": [
 		180,

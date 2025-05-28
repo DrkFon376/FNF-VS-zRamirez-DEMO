@@ -1,70 +1,70 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				-114,
 				351
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "zRamirez Idle Dance"
+			"fps": 24,
+			"name": "zRamirez Idle Dance",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-116,
 				336
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "zRamirez Note Down0",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "zRamirez Note Down0"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-133,
 				355
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "zRamirez Note Left0",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "zRamirez Note Left0"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-85,
 				343
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "zRamirez Note Right0",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "zRamirez Note Right0"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-96,
 				380
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "zRamirez Note Up0",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "zRamirez Note Up0"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-114,
 				351
 			],
-			"anim": "hey",
+			"loop": false,
 			"fps": 24,
-			"name": "zRamirez Hey",
-			"indices": []
+			"anim": "hey",
+			"indices": [],
+			"name": "zRamirez Hey"
 		}
 	],
 	"no_antialiasing": false,
@@ -76,9 +76,9 @@
 	"healthicon": "drkfon",
 	"flip_x": false,
 	"healthbar_colors": [
-		0,
-		0,
-		255
+		64,
+		83,
+		193
 	],
 	"camera_position": [
 		170,

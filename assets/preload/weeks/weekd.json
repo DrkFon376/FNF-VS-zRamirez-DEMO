@@ -4,9 +4,9 @@
 			"Override",
 			"drkfon",
 			[
-				0,
-				73,
-				255
+				64,
+				83,
+				193
 			]
 		]
 	],
@@ -22,9 +22,9 @@
 	"storyName": "Your New Week",
 	"weekName": "Custom Week",
 	"freeplayColor": [
-		146,
-		113,
-		253
+		64,
+		83,
+		193
 	],
 	"hideStoryMode": true,
 	"weekBefore": "tutorial",
