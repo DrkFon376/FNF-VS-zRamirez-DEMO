@@ -12,7 +12,7 @@ class NoteSplashData
 
 	public var animOffsets:Map<String, Array<Float>> = [];
 	public function getOffset(name:String):Array<Float>
-		return animOffsets[name];
+		return animOffsets[name] != null ? animOffsets[name] : [0, 0];
 
 	public function setOffset(name:String, pos:Array<Float>):Array<Float>
 	{
@@ -20,7 +20,7 @@ class NoteSplashData
 		return getOffset(name);
 	}
 
-	public var fps:Array<Int> = null;
+	public var fps:Array<Int> = [22, 26];
 }
 
 class NoteSplashOffsetHandler
@@ -38,11 +38,17 @@ class NoteSplashOffsetHandler
 		return getSkin(name);
 	}
 
+	public function getSkinFPS(name:String):Array<Int>
+		return getSkin(name) != null ? getSkin(name).fps : [22, 26];
+
+	public function setSkinFPS(name:String, fps:Array<Int>):Array<Int>
+		return getSkin(name) != null ? getSkin(name).fps = fps : fps;
+
 	public function getSkinOffset(name:String, animNum:String):Array<Float>
-		return getSkin(name).getOffset(animNum);
+		return getSkin(name) != null ? getSkin(name).getOffset(animNum) : [0, 0];
 
 	public function setSkinOffset(skin:String, name:String, pos:Array<Float>):Array<Float>
-		return getSkin(skin).setOffset(name, pos);
+		return getSkin(skin) != null ? getSkin(name).setOffset(name, pos) : pos;
 }
 
 class NoteSplash extends FlxSprite
@@ -127,7 +133,7 @@ class NoteSplash extends FlxSprite
 			offset.y += animOffsets[1];
 		}
 
-		final fpsArray:Array<Int> = offsetHandler.getSkin(texture).fps;
+		final fpsArray:Array<Int> = offsetHandler.getSkinFPS(texture);
 		if(animation.curAnim != null) animation.curAnim.frameRate = fpsArray == null ? 24 + FlxG.random.int(-2, 2) : FlxG.random.int(fpsArray[0], fpsArray[1]);
 	}
 

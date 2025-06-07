@@ -65,7 +65,6 @@ class Note extends FlxSprite
 
 	public static var swagWidth:Float = 160 * 0.7;
 	
-	public static var defaultNoteSkin(default, never):String = 'noteSkins/NOTE_assets';
 	private var colArray:Array<String> = ['purple', 'blue', 'green', 'red'];
 	private var pixelInt:Array<Int> = [0, 1, 2, 3];
 
@@ -143,7 +142,7 @@ class Note extends FlxSprite
 			switch(value) {
 				case 'Hurt Note':
 					ignoreNote = mustPress;
-					reloadNote('HURT');
+					reloadNote('', 'HURT', 'NOTE_assets');
 					noteSplashTexture = 'HURTnoteSplashes';
 					colorSwap.hue = 0;
 					colorSwap.saturation = 0;
@@ -166,12 +165,9 @@ class Note extends FlxSprite
 			}
 			noteType = value;
 		}
-		noteSplashHue = colorSwap.hue;
-		noteSplashSat = colorSwap.saturation;
-		noteSplashBrt = colorSwap.brightness;
-		holdSplashHue = colorSwap.hue;
-		holdSplashSat = colorSwap.saturation;
-		holdSplashBrt = colorSwap.brightness;
+		noteSplashHue = holdSplashHue = colorSwap.hue;
+		noteSplashSat = holdSplashSat = colorSwap.saturation;
+		noteSplashBrt = holdSplashBrt = colorSwap.brightness;
 		return value;
 	}
 
@@ -221,10 +217,7 @@ class Note extends FlxSprite
 			offsetX += width / 2;
 			copyAngle = false;
 
-			endHoldC = true;
-			canHoldC = false;
 			animation.play(colArray[noteData % 4] + 'holdend');
-
 			updateHitbox();
 
 			offsetX -= width / 2;
@@ -251,6 +244,9 @@ class Note extends FlxSprite
 				prevNote.updateHitbox();
 				// prevNote.setGraphicSize();
 			}
+
+			endHoldC = true;
+			canHoldC = false;
 
 			if(PlayState.isPixelStage) {
 				scale.y *= PlayState.daPixelZoom;
