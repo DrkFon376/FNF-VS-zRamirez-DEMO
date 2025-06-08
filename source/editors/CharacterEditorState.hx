@@ -71,7 +71,7 @@ class CharacterEditorState extends MusicBeatState
 	private var camHUD:FlxCamera;
 	private var camMenu:FlxCamera;
 
-	var changeBGbutton:FlxButton;
+	// var changeBGbutton:FlxButton;
 	var leHealthIcon:HealthIcon;
 	var characterList:Array<String> = [];
 
@@ -105,12 +105,12 @@ class CharacterEditorState extends MusicBeatState
 		cameraFollowPointer.color = FlxColor.WHITE;
 		add(cameraFollowPointer);
 
-		changeBGbutton = new FlxButton(FlxG.width - 360, 25, "", function()
-		{
-			onPixelBG = !onPixelBG;
-			reloadBGs();
-		});
-		changeBGbutton.cameras = [camMenu];
+		// changeBGbutton = new FlxButton(FlxG.width - 360, 25, "", function()
+		// {
+		// 	onPixelBG = !onPixelBG;
+		// 	reloadBGs();
+		// });
+		// changeBGbutton.cameras = [camMenu];
 
 		loadChar(!daAnim.startsWith('bf'), false);
 
@@ -189,7 +189,7 @@ class CharacterEditorState extends MusicBeatState
 		UI_characterbox.scrollFactor.set();
 		add(UI_characterbox);
 		add(UI_box);
-		add(changeBGbutton);
+		// add(changeBGbutton);
 
 		//addOffsetsUI();
 		addSettingsUI();
@@ -260,7 +260,7 @@ class CharacterEditorState extends MusicBeatState
 			bgSchool.updateHitbox();
 			bgStreet.updateHitbox();
 			bgTrees.updateHitbox();
-			changeBGbutton.text = "Regular BG";
+			// changeBGbutton.text = "Regular BG";
 		} else {
 			var bg:BGSprite = new BGSprite('stageback', -600 + OFFSET_X - playerXDifference, -300, 0.9, 0.9);
 			bgLayer.add(bg);
@@ -269,7 +269,7 @@ class CharacterEditorState extends MusicBeatState
 			stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
 			stageFront.updateHitbox();
 			bgLayer.add(stageFront);
-			changeBGbutton.text = "Pixel BG";
+			// changeBGbutton.text = "Pixel BG";
 		}
 	}
 
@@ -423,7 +423,7 @@ class CharacterEditorState extends MusicBeatState
 			char.isPlayer = !char.isPlayer;
 			char.flipX = !char.flipX;
 			updatePointerPos();
-			reloadBGs();
+			// reloadBGs();
 			ghostChar.flipX = char.flipX;
 		};
 
@@ -950,7 +950,7 @@ class CharacterEditorState extends MusicBeatState
 			genBoyOffsets();
 		}
 		reloadCharacterOptions();
-		reloadBGs();
+		// reloadBGs();
 		updatePointerPos();
 	}
 
