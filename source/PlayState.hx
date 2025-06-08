@@ -3972,51 +3972,28 @@ class PlayState extends MusicBeatState
 				}
 
 			case 'Change Stage':
-				switch (value1.toLowerCase().trim()) {
-					case 'new' | 'nuevo' | 'nueva' | '0':
-						stageBack.visible=true;
-						stageFront.visible=true;
-						mueble.visible=true;
-						if (!ClientPrefs.lowQuality){
-							adornos.visible=true;
-							extra.visible=true;
-							luzChanger.visible=true;
-						}
-						stageBackOLD.visible=false;
-						stageFrontOLD.visible=false;
-						muebleOLD.visible=false;
-						if (!ClientPrefs.lowQuality){
-							adornosOLD.visible=false;
-							extraOLD.visible=false;
-						}
-					case 'old' | 'viejo' | 'vieja' | '1':
-						stageBack.visible=false;
-						stageFront.visible=false;
-						mueble.visible=false;
-						if (!ClientPrefs.lowQuality){
-							adornos.visible=false;
-							extra.visible=false;
-							luzChanger.visible=false;
-						}
-						stageBackOLD.visible=true;
-						stageFrontOLD.visible=true;
-						muebleOLD.visible=true;
-						if (!ClientPrefs.lowQuality){
-							adornosOLD.visible=true;
-							extraOLD.visible=true;
-						}
-					case 'nothing' | 'nada' | 'black' | 'negro' | 'lights-down' | 'lightsdown' | 'nigga' | '2':
-						stageBack.visible=false;
-						stageFront.visible=false;
-						mueble.visible=false;
-						adornos.visible=false;
-						extra.visible=false;
-						luzChanger.visible=false;
-						stageBackOLD.visible=false;
-						stageFrontOLD.visible=false;
-						muebleOLD.visible=false;
-						adornosOLD.visible=false;
-						extraOLD.visible=false;
+				final value:String = value1.toLowerCase().trim();
+				var newItems:Bool = false;
+				var oldItems:Bool = false;
+				switch (value) {
+					case 'new' | 'nuevo' | 'nueva' | '0': newItems = true;
+					case 'old' | 'viejo' | 'vieja' | '1': oldItems = true;
+				}
+
+				for (sprite in [stageBack, stageFront, mueble, stageBackOLD, stageFrontOLD, muebleOLD])
+				{
+					if (sprite == null) continue;
+					final newSprite:Bool = (sprite == stageBack || sprite == stageFront || sprite == mueble);
+					sprite.visible = newSprite ? newItems : oldItems;
+				}
+				if (!ClientPrefs.lowQuality)
+				{
+					for (sprite in [adornos, extra, luzChanger, adornosOLD, extraOLD])
+					{
+						if (sprite == null) continue;
+						final newSprite:Bool = (sprite == adornos || sprite == extra || sprite == luzChanger);
+						sprite.visible = newSprite ? newItems : oldItems;
+					}
 				}
 
 			case 'Flash Camera':
@@ -4044,24 +4021,9 @@ class PlayState extends MusicBeatState
 					
 			case 'Move Camera When Singing':
 				var value:Float = Std.parseFloat(value2);
-
-				switch(value1.toLowerCase().trim())
-				{
-					case 'true' | '1':
-						moveCameraWhenSingingBool = true;
-					case 'false' | '0':
-						moveCameraWhenSingingBool = false;
-				}
-
-				if (!moveCameraWhenSingingBool)
-					cameraOffsetWhenSingingValue = 0;
-				else
-				{
-					if(Math.isNaN(value))
-						cameraOffsetWhenSingingValue = 25;
-					else
-						cameraOffsetWhenSingingValue = Math.abs(value);
-				}
+				value1 = value1.toLowerCase().trim();
+				moveCameraWhenSingingBool = (value1 == 'true' || value1 == '1');
+				cameraOffsetWhenSingingValue = !moveCameraWhenSingingBool ? 0 : Math.isNaN(value) ? 25 : value;
 
 			case 'Alarm Gradient':
 				if(ClientPrefs.flashing && !ClientPrefs.lowQuality){
@@ -4453,35 +4415,23 @@ class PlayState extends MusicBeatState
 			camFollow.set(camFollowReal.x + cameraOffsetWhenSinging[0], camFollowReal.y + cameraOffsetWhenSinging[1]);
 		else
 		{
-			if(isDad)
+			if (isGf && gf != null && SONG.notes[curSection].gfSection)
 			{
-				if (isGf && gf != null && SONG.notes[curSection].gfSection)
-				{
-					camFollow.set(gf.getMidpoint().x + cameraOffsetWhenSinging[0], gf.getMidpoint().y + cameraOffsetWhenSinging[1]);
-					camFollow.x += gf.cameraPosition[0] + girlfriendCameraOffset[0];
-					camFollow.y += gf.cameraPosition[1] + girlfriendCameraOffset[1];
-				}
-				else
-				{
-					camFollow.set(dad.getMidpoint().x + 150 + cameraOffsetWhenSinging[0], dad.getMidpoint().y - 100 + cameraOffsetWhenSinging[1]);
-					camFollow.x += dad.cameraPosition[0] + opponentCameraOffset[0];
-					camFollow.y += dad.cameraPosition[1] + opponentCameraOffset[1];
-				}
+				camFollow.set(gf.getMidpoint().x + cameraOffsetWhenSinging[0], gf.getMidpoint().y + cameraOffsetWhenSinging[1]);
+				camFollow.x += gf.cameraPosition[0] + girlfriendCameraOffset[0];
+				camFollow.y += gf.cameraPosition[1] + girlfriendCameraOffset[1];
+			}
+			else if(isDad)
+			{	
+				camFollow.set(dad.getMidpoint().x + 150 + cameraOffsetWhenSinging[0], dad.getMidpoint().y - 100 + cameraOffsetWhenSinging[1]);
+				camFollow.x += dad.cameraPosition[0] + opponentCameraOffset[0];
+				camFollow.y += dad.cameraPosition[1] + opponentCameraOffset[1];
 			}
 			else
 			{
-				if (isGf && gf != null && SONG.notes[curSection].gfSection)
-				{
-					camFollow.set(gf.getMidpoint().x + cameraOffsetWhenSinging[0], gf.getMidpoint().y + cameraOffsetWhenSinging[1]);
-					camFollow.x += gf.cameraPosition[0] + girlfriendCameraOffset[0];
-					camFollow.y += gf.cameraPosition[1] + girlfriendCameraOffset[1];
-				}
-				else
-				{
-					camFollow.set(boyfriend.getMidpoint().x - 100 + cameraOffsetWhenSinging[0], boyfriend.getMidpoint().y - 100 + cameraOffsetWhenSinging[1]);
-					camFollow.x -= boyfriend.cameraPosition[0] - boyfriendCameraOffset[0];
-					camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
-				}
+				camFollow.set(boyfriend.getMidpoint().x - 100 + cameraOffsetWhenSinging[0], boyfriend.getMidpoint().y - 100 + cameraOffsetWhenSinging[1]);
+				camFollow.x -= boyfriend.cameraPosition[0] - boyfriendCameraOffset[0];
+				camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
 			}
 		}
 	}
