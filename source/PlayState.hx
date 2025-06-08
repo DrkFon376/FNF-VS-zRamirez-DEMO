@@ -4021,24 +4021,10 @@ class PlayState extends MusicBeatState
 					
 			case 'Move Camera When Singing':
 				var value:Float = Std.parseFloat(value2);
-				switch(value1.toLowerCase().trim())
-				{
-					case 'true' | '1':
-						moveCameraWhenSingingBool = true;
-					case 'false' | '0':
-						moveCameraWhenSingingBool = false;
-				}
-
-				if (!moveCameraWhenSingingBool)
-					cameraOffsetWhenSingingValue = 0;
-				else
-				{
-					if(Math.isNaN(value))
-						cameraOffsetWhenSingingValue = 25;
-					else
-						cameraOffsetWhenSingingValue = Math.abs(value);
-				}
-
+				value1 = value1.toLowerCase().trim();
+				moveCameraWhenSingingBool = (value1 == 'true' || value1 == '1');
+				cameraOffsetWhenSingingValue = (moveCameraWhenSingingBool ? (Math.isNaN(value) ? 25 : Math.abs(value)) : 0);
+				
 			case 'Alarm Gradient':
 				if(ClientPrefs.flashing && !ClientPrefs.lowQuality){
 					//Value 1  = which side
@@ -4429,35 +4415,23 @@ class PlayState extends MusicBeatState
 			camFollow.set(camFollowReal.x + cameraOffsetWhenSinging[0], camFollowReal.y + cameraOffsetWhenSinging[1]);
 		else
 		{
-			if(isDad)
+			if (isGf && gf != null && SONG.notes[curSection].gfSection)
 			{
-				if (isGf && gf != null && SONG.notes[curSection].gfSection)
-				{
-					camFollow.set(gf.getMidpoint().x + cameraOffsetWhenSinging[0], gf.getMidpoint().y + cameraOffsetWhenSinging[1]);
-					camFollow.x += gf.cameraPosition[0] + girlfriendCameraOffset[0];
-					camFollow.y += gf.cameraPosition[1] + girlfriendCameraOffset[1];
-				}
-				else
-				{
-					camFollow.set(dad.getMidpoint().x + 150 + cameraOffsetWhenSinging[0], dad.getMidpoint().y - 100 + cameraOffsetWhenSinging[1]);
-					camFollow.x += dad.cameraPosition[0] + opponentCameraOffset[0];
-					camFollow.y += dad.cameraPosition[1] + opponentCameraOffset[1];
-				}
+				camFollow.set(gf.getMidpoint().x + cameraOffsetWhenSinging[0], gf.getMidpoint().y + cameraOffsetWhenSinging[1]);
+				camFollow.x += gf.cameraPosition[0] + girlfriendCameraOffset[0];
+				camFollow.y += gf.cameraPosition[1] + girlfriendCameraOffset[1];
+			}
+			else if(isDad)
+			{
+				camFollow.set(dad.getMidpoint().x + 150 + cameraOffsetWhenSinging[0], dad.getMidpoint().y - 100 + cameraOffsetWhenSinging[1]);
+				camFollow.x += dad.cameraPosition[0] + opponentCameraOffset[0];
+				camFollow.y += dad.cameraPosition[1] + opponentCameraOffset[1];
 			}
 			else
 			{
-				if (isGf && gf != null && SONG.notes[curSection].gfSection)
-				{
-					camFollow.set(gf.getMidpoint().x + cameraOffsetWhenSinging[0], gf.getMidpoint().y + cameraOffsetWhenSinging[1]);
-					camFollow.x += gf.cameraPosition[0] + girlfriendCameraOffset[0];
-					camFollow.y += gf.cameraPosition[1] + girlfriendCameraOffset[1];
-				}
-				else
-				{
-					camFollow.set(boyfriend.getMidpoint().x - 100 + cameraOffsetWhenSinging[0], boyfriend.getMidpoint().y - 100 + cameraOffsetWhenSinging[1]);
-					camFollow.x -= boyfriend.cameraPosition[0] - boyfriendCameraOffset[0];
-					camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
-				}
+				camFollow.set(boyfriend.getMidpoint().x - 100 + cameraOffsetWhenSinging[0], boyfriend.getMidpoint().y - 100 + cameraOffsetWhenSinging[1]);
+				camFollow.x -= boyfriend.cameraPosition[0] - boyfriendCameraOffset[0];
+				camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
 			}
 		}
 	}
