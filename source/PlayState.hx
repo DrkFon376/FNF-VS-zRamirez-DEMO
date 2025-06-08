@@ -5197,7 +5197,4 @@ class PlayState extends MusicBeatState
 		return null;
 	}
 	#end
-
-	var curLight:Int = -1;
-	var curLightEvent:Int = -1;
 }
