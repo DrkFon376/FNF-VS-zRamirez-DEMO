@@ -80,7 +80,10 @@ class CharacterEditorState extends MusicBeatState
 
 	override function create()
 	{
-		FlxG.sound.playMusic(Paths.music('breakfast-pixel'), 0.5);
+		if (ClientPrefs.pauseMusic != 'None') 
+		{
+			FlxG.sound.playMusic(Paths.music(ClientPrefs.pauseMusic == 'Breakfast' ? "breakfast-pixel" : (ClientPrefs.pauseMusic == 'zRamírez' ? "ramirez-week-pause" : ClientPrefs.pauseMusic == 'Tea Time' ? "tea-time" : ClientPrefs.pauseMusic)), 0.5);
+		}
 
 		camEditor = new FlxCamera();
 		camHUD = new FlxCamera();
