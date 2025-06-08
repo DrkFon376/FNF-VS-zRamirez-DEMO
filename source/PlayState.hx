@@ -4022,8 +4022,8 @@ class PlayState extends MusicBeatState
 			case 'Move Camera When Singing':
 				var value:Float = Std.parseFloat(value2);
 				value1 = value1.toLowerCase().trim();
-				moveCameraWhenSingingBool = (value1 == 'true' || value1 == '1');
 				cameraOffsetWhenSingingValue = (moveCameraWhenSingingBool ? (Math.isNaN(value) ? 25 : Math.abs(value)) : 0);
+				if (value1.length > 0) moveCameraWhenSingingBool = (value1 == 'true' || value1 == '1');
 				
 			case 'Alarm Gradient':
 				if(ClientPrefs.flashing && !ClientPrefs.lowQuality){
