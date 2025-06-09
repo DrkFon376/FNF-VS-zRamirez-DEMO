@@ -619,7 +619,7 @@ class TitleState extends MusicBeatState
 		if(logoBl != null)
 			logoBl.animation.play('bump', true);
 
-		FlxG.camera.zoom = 1.125;
+		FlxG.camera.zoom = 1.015;
 
 		FlxTween.tween(FlxG.camera, {zoom: 1}, Conductor.crochet / 1300,
 		{
