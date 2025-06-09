@@ -619,6 +619,13 @@ class TitleState extends MusicBeatState
 		if(logoBl != null)
 			logoBl.animation.play('bump', true);
 
+		FlxG.camera.zoom = 1.125;
+
+		FlxTween.tween(FlxG.camera, {zoom: 1}, Conductor.crochet / 1300,
+		{
+			ease: FlxEase.quadOut
+		});
+
 		if(zRamirezDance != null) {
 			/*danceLeft = !danceLeft;
 			if (danceLeft)
