@@ -790,14 +790,20 @@ class PlayState extends MusicBeatState
 		blackOverlayCamGame = new FlxSprite(0, 200).makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
 		blackOverlayCamGame.screenCenter();
 		blackOverlayCamGame.updateHitbox();
-		blackOverlayCamGame.alpha = SONG.overlayCamHUD_On ? 1 : 0;
+		if (SONG.overlayCamGame_On)
+			blackOverlayCamGame.alpha = 1;
+		else
+			blackOverlayCamGame.alpha = 0;
 		blackOverlayCamGame.cameras = [camGameOverlay];
 		add(blackOverlayCamGame);
 
 		blackOverlayCamHUD = new FlxSprite().makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
 		blackOverlayCamHUD.screenCenter();
 		blackOverlayCamHUD.updateHitbox();
-		blackOverlayCamHUD.alpha = SONG.overlayCamHUD_On ? 1 : 0;
+		if (SONG.overlayCamHUD_On)
+			blackOverlayCamHUD.alpha = 1;
+		else
+			blackOverlayCamHUD.alpha = 0;
 		blackOverlayCamHUD.cameras = [camCountdown]; //Ironic, right?
 		add(blackOverlayCamHUD);
 
