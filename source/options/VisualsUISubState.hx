@@ -35,18 +35,12 @@ class VisualsUISubState extends BaseOptionsMenu
 		rpcTitle = 'Visuals & UI Settings Menu'; //for Discord Rich Presence
 		FlxG.save.data.enteredVisualsOptions = true;
 
-		var option:Option = new Option('Note Splashes',
-			"If unchecked, hitting \"Sick!\" notes won't show particles.",
-			'noteSplashes',
-			'bool',
-			true);
-		addOption(option);
-
-		var option:Option = new Option('Hold Covers',
-			"If unchecked, hitting a Sustain Note won't show particles (also applies to opponent's side).",
-			'holdSplashes',
-			'bool',
-			true);
+		var option:Option = new Option('Note Skin Texture:',
+			"Choose what texture you want to be used in on the Notes.",
+			'noteSkin',
+			'string',
+			'Vanilla',
+			['Vanilla', 'Future', 'Chip', 'Bar', 'Diamond', 'Square', 'Camellia', 'StepMania', 'FutureALT', 'DoritosPizzerola']);
 		addOption(option);
 
 		var option:Option = new Option('Note Splashes Texture:',
@@ -55,14 +49,6 @@ class VisualsUISubState extends BaseOptionsMenu
 			'string',
 			'Lightning',
 			['Lightning', 'Vanilla', 'Psych', 'Diamond', 'Electric', 'Sparkles']);
-		addOption(option);
-
-		var option:Option = new Option('Note Skin Texture:',
-			"Choose what texture you want to be used in on the Notes.",
-			'noteSkin',
-			'string',
-			'Vanilla',
-			['Vanilla', 'Future', 'Chip', 'Bar', 'Diamond', 'Square', 'Camellia', 'StepMania', 'FutureALT', 'DoritosPizzerola']);
 		addOption(option);
 
 		var option:Option = new Option('Sustain Alpha',
@@ -75,6 +61,20 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.maxValue = 1;
 		option.changeValue = 0.1;
 		option.decimals = 1;
+		addOption(option);
+
+		var option:Option = new Option('Note Splashes',
+			"If unchecked, hitting \"Sick!\" notes won't show particles.",
+			'noteSplashes',
+			'bool',
+			true);
+		addOption(option);
+
+		var option:Option = new Option('Hold Covers',
+			"If unchecked, hitting a Sustain Note won't show particles (also applies to opponent's side).",
+			'holdSplashes',
+			'bool',
+			true);
 		addOption(option);
 
 		var option:Option = new Option('Hide HUD',
