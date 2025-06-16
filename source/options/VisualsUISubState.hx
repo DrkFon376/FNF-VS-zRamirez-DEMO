@@ -35,7 +35,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		rpcTitle = 'Visuals & UI Settings Menu'; //for Discord Rich Presence
 		FlxG.save.data.enteredVisualsOptions = true;
 
-		var option:Option = new Option('Note Skin Texture:',
+		var option:Option = new Option('Note Skins:',
 			"Choose what texture you want to be used in on the Notes.",
 			'noteSkin',
 			'string',
@@ -43,7 +43,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			['Vanilla', 'Future', 'Chip', 'Bar', 'Diamond', 'Square', 'Camellia', 'StepMania', 'FutureALT', 'DoritosPizzerola']);
 		addOption(option);
 
-		var option:Option = new Option('Note Splashes Texture:',
+		var option:Option = new Option('Note Splashes:',
 			"Choose what texture you want to be used in the Note Splashes.",
 			'noteSplashesTexture',
 			'string',
