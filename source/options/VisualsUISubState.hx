@@ -32,7 +32,8 @@ using StringTools;
 
 class VisualsUISubState extends BaseOptionsMenu
 {
-	var notes:FlxTypedGroup<StrumNote>;
+	public var splashes:FlxTypedGroup<NoteSplash>;
+	public var notes:FlxTypedGroup<StrumNote>;
 	var notesTween:Array<FlxTween> = [];
 	var noteY:Float = 90;
 	public function new()
@@ -43,14 +44,20 @@ class VisualsUISubState extends BaseOptionsMenu
 
 		// for note skins
 		notes = new FlxTypedGroup<StrumNote>();
+		splashes = new FlxTypedGroup<NoteSplash>();
 		for (i in 0...Note.colArray.length)
 		{
 			var note:StrumNote = new StrumNote(370 + (560 / Note.colArray.length) * i, -200, i, 0);
 			changeNoteSkin(note);
 			notes.add(note);
+
+			var splash:NoteSplash = new NoteSplash(0, 0, 0);
+			splash.ID = i;
+			splash.kill();
+			splashes.add(splash);
 		}
 
-		var option:Option = new Option('Note Skin Texture:',
+		var option:Option = new Option('Note Skins: ',
 			"Choose what texture you want to be used in on the Notes.",
 			'noteSkin',
 			'string',
@@ -59,13 +66,14 @@ class VisualsUISubState extends BaseOptionsMenu
 		addOption(option);
 		option.onChange = onChangeNoteSkin;
 
-		var option:Option = new Option('Note Splashes Texture:',
+		var option:Option = new Option('Note Splashes: ',
 			"Choose what texture you want to be used in the Note Splashes.",
-			'noteSplashesTexture',
+			'splashSkin',
 			'string',
 			'Lightning',
 			['Lightning', 'Vanilla', 'Psych', 'Diamond', 'Electric', 'Sparkles']);
 		addOption(option);
+		option.onChange = onChangeSplashSkin;
 
 		var option:Option = new Option('Sustain Alpha',
 			'How visible the hold note is.',
@@ -207,6 +215,7 @@ class VisualsUISubState extends BaseOptionsMenu
 
 		super();
 		add(notes);
+		add(splashes);
 	}
 
 	var notesShown:Bool = false;
@@ -216,7 +225,7 @@ class VisualsUISubState extends BaseOptionsMenu
 
 		switch(curOption.variable)
 		{
-			case 'noteSkin':
+			case 'noteSkin', 'splashSkin':
 				if(!notesShown)
 				{
 					for (note in notes.members)
@@ -226,6 +235,8 @@ class VisualsUISubState extends BaseOptionsMenu
 					}
 				}
 				notesShown = true;
+				if (curOption.variable.startsWith('splash') && Math.abs(notes.members[0].y - noteY) < 25) playNoteSplashes();
+
 			default:
 				if(notesShown) 
 				{
@@ -262,7 +273,6 @@ class VisualsUISubState extends BaseOptionsMenu
 
 	function changeNoteSkin(note:StrumNote)
 	{
-
 		var skin:String = 'noteShit/' + ClientPrefs.noteSkin;
 		var customSkin:String = ClientPrefs.noteSkin;
 		if(Paths.fileExists('images/$customSkin.png', IMAGE)) skin = customSkin;
@@ -270,6 +280,21 @@ class VisualsUISubState extends BaseOptionsMenu
 		note.texture = skin; //Load texture and anims
 		note.reloadNote();
 		note.playAnim('static');
+	}
+
+	function onChangeSplashSkin()
+		playNoteSplashes();
+
+	function playNoteSplashes()
+	{
+		splashes.forEach(function(splash:NoteSplash)
+		{
+			final hue:Float = ClientPrefs.arrowHSV[splash.ID][0] / 360;
+			final sat:Float = ClientPrefs.arrowHSV[splash.ID][1] / 100;
+			final brt:Float = ClientPrefs.arrowHSV[splash.ID][2] / 100;
+			splash.revive();
+			splash.setupNoteSplash(notes.members[splash.ID].x, notes.members[splash.ID].y, splash.ID, 'noteSplashShit/' + ClientPrefs.splashSkin, hue, sat, brt);
+		});
 	}
 
 	override function destroy()

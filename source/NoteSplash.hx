@@ -61,9 +61,19 @@ class NoteSplash extends FlxSprite
 	public function new(x:Float = 0, y:Float = 0, ?note:Int = 0) {
 		super(x, y);
 
-		var skin:String = 'noteSplashShit/' + ClientPrefs.noteSplashesTexture;
-		if(PlayState.SONG.splashSkin != null && PlayState.SONG.splashSkin.length > 0) skin = PlayState.SONG.splashSkin;
+		var skin:String = 'noteSplashShit/' + ClientPrefs.splashSkin;
+		if(PlayState.SONG !=  null && PlayState.SONG.splashSkin != null && PlayState.SONG.splashSkin.length > 0) skin = PlayState.SONG.splashSkin;
 
+		loadSplashData(skin);
+		
+		colorSwap = new ColorSwap();
+		shader = colorSwap.shader;
+
+		setupNoteSplash(x, y, note);
+		antialiasing = ClientPrefs.globalAntialiasing;
+	}
+
+	public function loadSplashData(skin:String) {
 		loadAnims(skin);
 
 		final data:NoteSplashData = new NoteSplashData();
@@ -98,12 +108,6 @@ class NoteSplash extends FlxSprite
 					data.setOffset(anim, [-48, -48]);
 		}
 		offsetHandler.setSkin(skin, data);
-		
-		colorSwap = new ColorSwap();
-		shader = colorSwap.shader;
-
-		setupNoteSplash(x, y, note);
-		antialiasing = ClientPrefs.globalAntialiasing;
 	}
 
 	public function setupNoteSplash(x:Float, y:Float, note:Int = 0, texture:String = null, hueColor:Float = 0, satColor:Float = 0, brtColor:Float = 0) {
@@ -111,12 +115,12 @@ class NoteSplash extends FlxSprite
 		alpha = 0.6;
 
 		if(texture == null) {
-			texture = 'noteSplashShit/' + ClientPrefs.noteSplashesTexture;
-			if(PlayState.SONG.splashSkin != null && PlayState.SONG.splashSkin.length > 0) texture = PlayState.SONG.splashSkin;
+			texture = 'noteSplashShit/' + ClientPrefs.splashSkin;
+			if(PlayState.SONG != null && PlayState.SONG.splashSkin != null && PlayState.SONG.splashSkin.length > 0) texture = PlayState.SONG.splashSkin;
 		}
 
 		if(textureLoaded != texture) {
-			loadAnims(texture);
+			loadSplashData(texture);
 		}
 		colorSwap.hue = hueColor;
 		colorSwap.saturation = satColor;
