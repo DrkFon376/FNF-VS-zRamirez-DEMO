@@ -32,7 +32,6 @@ using StringTools;
 
 class VisualsUISubState extends BaseOptionsMenu
 {
-	var noteOptionID:Int = -1;
 	var notes:FlxTypedGroup<StrumNote>;
 	var notesTween:Array<FlxTween> = [];
 	var noteY:Float = 90;
@@ -47,9 +46,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		for (i in 0...Note.colArray.length)
 		{
 			var note:StrumNote = new StrumNote(370 + (560 / Note.colArray.length) * i, -200, i, 0);
-			note.centerOffsets();
-			note.centerOrigin();
-			note.playAnim('static');
+			changeNoteSkin(note);
 			notes.add(note);
 		}
 
@@ -61,7 +58,6 @@ class VisualsUISubState extends BaseOptionsMenu
 			['Vanilla', 'Future', 'Chip', 'Bar', 'Diamond', 'Square', 'Camellia', 'StepMania', 'FutureALT', 'DoritosPizzerola']);
 		addOption(option);
 		option.onChange = onChangeNoteSkin;
-		noteOptionID = optionsArray.length - 1;
 
 		var option:Option = new Option('Note Splashes Texture:',
 			"Choose what texture you want to be used in the Note Splashes.",
@@ -210,22 +206,37 @@ class VisualsUISubState extends BaseOptionsMenu
 		addOption(option);
 
 		super();
+		add(notes);
 	}
 
+	var notesShown:Bool = false;
 	override function changeSelection(change:Int = 0)
 	{
 		super.changeSelection(change);
-		
-		if(noteOptionID < 0) return;
 
-		for (i in 0...Note.colArray.length)
+		switch(curOption.variable)
 		{
-			var note:StrumNote = notes.members[i];
-			if(notesTween[i] != null) notesTween[i].cancel();
-			if(curSelected == noteOptionID)
-				notesTween[i] = FlxTween.tween(note, {y: noteY}, Math.abs(note.y / (200 + noteY)) / 3, {ease: FlxEase.quadInOut});
-			else
-				notesTween[i] = FlxTween.tween(note, {y: -200}, Math.abs(note.y / (200 + noteY)) / 3, {ease: FlxEase.quadInOut});
+			case 'noteSkin':
+				if(!notesShown)
+				{
+					for (note in notes.members)
+					{
+						FlxTween.cancelTweensOf(note);
+						FlxTween.tween(note, {y: noteY}, Math.abs(note.y / (200 + noteY)) / 3, {ease: FlxEase.quadInOut});
+					}
+				}
+				notesShown = true;
+			default:
+				if(notesShown) 
+				{
+					for (note in notes.members)
+					{
+						FlxTween.cancelTweensOf(note);
+						FlxTween.tween(note, {y: -200}, Math.abs(note.y / (200 + noteY)) / 3, {ease: FlxEase.quadInOut});
+					}
+				}
+				notesShown = false;
+
 		}
 	}
 
@@ -251,8 +262,10 @@ class VisualsUISubState extends BaseOptionsMenu
 
 	function changeNoteSkin(note:StrumNote)
 	{
+
 		var skin:String = 'noteShit/' + ClientPrefs.noteSkin;
-		var customSkin:String = 'noteShit/' + ClientPrefs.noteSkin;
+		var customSkin:String = ClientPrefs.noteSkin;
+		if(Paths.fileExists('images/$customSkin.png', IMAGE)) skin = customSkin;
 
 		note.texture = skin; //Load texture and anims
 		note.reloadNote();
