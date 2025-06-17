@@ -4722,7 +4722,7 @@ class PlayState extends MusicBeatState
 	}
 
 	public function spawnNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
-		var skin:String = 'noteSplashShit/' + ClientPrefs.noteSplashesTexture;
+		var skin:String = 'noteSplashShit/' + ClientPrefs.splashSkin;
 		if(PlayState.SONG.splashSkin != null && PlayState.SONG.splashSkin.length > 0) skin = PlayState.SONG.splashSkin;
 
 		var hue:Float = 0;
