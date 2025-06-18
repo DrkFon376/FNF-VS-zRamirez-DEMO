@@ -20,6 +20,7 @@ import lime.app.Application;
 import Achievements;
 import editors.MasterEditorMenu;
 import flixel.input.keyboard.FlxKey;
+import options.OptionsState;
 
 using StringTools;
 
@@ -254,6 +255,7 @@ class MainMenuState extends MusicBeatState
 										MusicBeatState.switchState(new CreditsState());
 									case 'options':
 										LoadingState.loadAndSwitchState(new options.OptionsState());
+										OptionsState.onPlayState = false; //FUCK YOU STUPID LINE
 								}
 							});
 						}

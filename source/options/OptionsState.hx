@@ -98,14 +98,13 @@ class OptionsState extends MusicBeatState
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 
-		if (controls.UI_UP_P) {
+		if (controls.UI_UP_P)
 			changeSelection(-1);
-		}
-		if (controls.UI_DOWN_P) {
+		if (controls.UI_DOWN_P)
 			changeSelection(1);
-		}
 
-		if (controls.BACK) {
+		if (controls.BACK)
+		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			if(onPlayState)
 			{
@@ -113,7 +112,8 @@ class OptionsState extends MusicBeatState
 				LoadingState.loadAndSwitchState(new PlayState());
 				FlxG.sound.music.volume = 0;
 			}
-			else MusicBeatState.switchState(new MainMenuState());
+			else if(!onPlayState)//I Hate this - zRamírez
+				MusicBeatState.switchState(new MainMenuState());
 		}
 		else if (controls.ACCEPT) openSelectedSubstate(options[curSelected]);
 	}

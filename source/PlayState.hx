@@ -2359,11 +2359,12 @@ class PlayState extends MusicBeatState
 		super.openSubState(SubState);
 	}
 
+	public var canResync:Bool = true;
 	override function closeSubState()
 	{
 		if (paused)
 		{
-			if (FlxG.sound.music != null && !startingSong)
+			if (FlxG.sound.music != null && !startingSong && canResync)
 			{
 				resyncVocals();
 			}
@@ -2536,6 +2537,7 @@ class PlayState extends MusicBeatState
 			persistentUpdate = false;
 			paused = true;
 			cancelMusicFadeTween();
+			canResync = false;
 			MusicBeatState.switchState(new CharacterEditorState(SONG.player2));
 		}
 		
@@ -2838,6 +2840,7 @@ class PlayState extends MusicBeatState
 
 	function openChartEditor()
 	{
+		canResync = false;
 		persistentUpdate = false;
 		paused = true;
 		cancelMusicFadeTween();
@@ -2859,6 +2862,7 @@ class PlayState extends MusicBeatState
 				deathCounter++;
 
 				paused = true;
+				canResync = false;
 
 				vocals.stop();
 				FlxG.sound.music.stop();
@@ -3697,6 +3701,7 @@ class PlayState extends MusicBeatState
 					if(FlxTransitionableState.skipNextTransIn) {
 						CustomFadeTransition.nextCamera = null;
 					}
+					canResync = false;
 					MusicBeatState.switchState(new StoryMenuState());
 
 					// if ()
@@ -3741,6 +3746,7 @@ class PlayState extends MusicBeatState
 					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0] + difficulty, PlayState.storyPlaylist[0]);
 					FlxG.sound.music.stop();
 
+					canResync = false;
 					if(winterHorrorlandNext) {
 						new FlxTimer().start(1.5, function(tmr:FlxTimer) {
 							cancelMusicFadeTween();
@@ -3760,6 +3766,7 @@ class PlayState extends MusicBeatState
 				if(FlxTransitionableState.skipNextTransIn) {
 					CustomFadeTransition.nextCamera = null;
 				}
+				canResync = false;
 				MusicBeatState.switchState(new FreeplayState());
 				FlxG.sound.playMusic(Paths.music('zRamirezMenu'));
 				changedDifficulty = false;
