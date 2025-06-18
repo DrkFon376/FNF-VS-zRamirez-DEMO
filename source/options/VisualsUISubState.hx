@@ -75,6 +75,19 @@ class VisualsUISubState extends BaseOptionsMenu
 		addOption(option);
 		option.onChange = onChangeSplashSkin;
 
+		var option:Option = new Option('Note Splashes Alpha',
+			'How visible the Splash Note effect is.\nIf you want to disable the Splashes effect, uncheck \"Note Splashes\" option (This was made this way to prevent lag.)',
+			'splashAlpha',
+			'percent',
+			1);
+		option.scrollSpeed = 1.6;
+		option.minValue = 0.1;
+		option.maxValue = 1;
+		option.changeValue = 0.1;
+		option.decimals = 1;
+		addOption(option);
+		option.onChange = onChangeSplashAlpha;
+
 		var option:Option = new Option('Sustain Alpha',
 			'How visible the hold note is.',
 			'holdAlpha',
@@ -87,6 +100,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.decimals = 1;
 		addOption(option);
 
+		//Man, que carajos, esta opción en teoria es innesesaria ya que esta el splash alpha, pero como este mod esta pensado para gente con una pc igual de mierda que la mia pues aquí esta la opción de mrd -zRamírez
 		var option:Option = new Option('Note Splashes',
 			"If unchecked, hitting \"Sick!\" notes won't show particles.",
 			'noteSplashes',
@@ -225,7 +239,7 @@ class VisualsUISubState extends BaseOptionsMenu
 
 		switch(curOption.variable)
 		{
-			case 'noteSkin', 'splashSkin':
+			case 'noteSkin', 'splashSkin', 'splashAlpha':
 				if(!notesShown)
 				{
 					for (note in notes.members)
@@ -296,6 +310,9 @@ class VisualsUISubState extends BaseOptionsMenu
 			splash.setupNoteSplash(notes.members[splash.ID].x, notes.members[splash.ID].y, splash.ID, 'noteSplashShit/' + ClientPrefs.splashSkin, hue, sat, brt);
 		});
 	}
+
+	function onChangeSplashAlpha()
+		playNoteSplashes();
 
 	override function destroy()
 	{
