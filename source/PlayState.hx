@@ -1001,6 +1001,14 @@ class PlayState extends MusicBeatState
 
 		generateSong(SONG.song);
 
+		for (note in unspawnNotes) 
+		{
+    		if (note.isSustainNote && ClientPrefs.disableSustainLoop)
+			{
+        		note.noAnimation = true;
+   		 	}
+		}
+
 		opponentHoldCovers = new HoldCoverGroup();
 		opponentHoldCovers.enabled = !visualsOnlyMode ? (ClientPrefs.holdSplashes && ClientPrefs.opponentStrums ? true : false) : false;
 	    playerHoldCovers = new HoldCoverGroup();
@@ -4458,6 +4466,13 @@ class PlayState extends MusicBeatState
 				char.holdTimer = 0;
 			}
 		}
+		if (note.isSustainNote && ClientPrefs.disableSustainLoop) {
+    		if (note.gfNote || note.noteType == 'GF Sing') {
+        		gf.holdTimer = 0;
+    		} else {
+        		dad.holdTimer = 0;
+    		}
+		}
 
 		if (SONG.needsVoices)
 			vocals.volume = 1;
@@ -4531,6 +4546,14 @@ class PlayState extends MusicBeatState
 			if (ClientPrefs.hitsoundVolume > 0 && !note.hitsoundDisabled)
 			{
 				FlxG.sound.play(Paths.sound('hitsound'), ClientPrefs.hitsoundVolume);
+			}
+
+			if (note.isSustainNote && ClientPrefs.disableSustainLoop) {
+    			if (note.gfNote || note.noteType == 'GF Sing') {
+       		 		gf.holdTimer = 0;
+    			} else {
+        			boyfriend.holdTimer = 0;
+    			}
 			}
 
 			if(note.hitCausesMiss) {

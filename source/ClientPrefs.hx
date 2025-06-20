@@ -20,6 +20,7 @@ class ClientPrefs {
 	public static var cutscenesSubtitles:Bool = false;
 	public static var noteSplashes:Bool = true;
 	public static var holdSplashes:Bool = true;
+	public static var disableSustainLoop:Bool = false;
 	public static var splashSkin:String = 'Lightning';
 	public static var lowQuality:Bool = false;
 	public static var shaders:Bool = true;
@@ -120,6 +121,7 @@ class ClientPrefs {
 		FlxG.save.data.cutscenesSubtitles = cutscenesSubtitles;
 		FlxG.save.data.noteSplashes = noteSplashes;
 		FlxG.save.data.holdSplashes = holdSplashes;
+		FlxG.save.data.disableSustainLoop = disableSustainLoop;
 		FlxG.save.data.splashSkin = splashSkin;
 		FlxG.save.data.lowQuality = lowQuality;
 		FlxG.save.data.shaders = shaders;
@@ -214,6 +216,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.holdSplashes != null) {
 			holdSplashes = FlxG.save.data.holdSplashes;
+		}
+		if(FlxG.save.data.disableSustainLoop != null) {
+			disableSustainLoop = FlxG.save.data.disableSustainLoop;
 		}
 		if(FlxG.save.data.splashSkin != null) {
 			splashSkin = FlxG.save.data.splashSkin;
