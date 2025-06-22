@@ -4046,6 +4046,7 @@ class PlayState extends MusicBeatState
 			startDelay: Conductor.crochet * 0.002 / playbackRate
 		});
 
+		var usedPractice:Bool = (ClientPrefs.getGameplaySetting('practice', false) || ClientPrefs.getGameplaySetting('botplay', false));
 		if (combo >= heyComboInterval && combo % heyComboInterval == 0 && combo != lastHeyCombo && !chartingMode && !cpuControlled && !usedPractice)
 		{
     		if (gf != null)
