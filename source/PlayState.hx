@@ -353,6 +353,8 @@ class PlayState extends MusicBeatState
 	public static var lastCombo:FlxSprite;
 	// stores the last combo score objects in an array
 	public static var lastScore:Array<FlxSprite> = [];
+	public var lastHeyCombo:Int = 0;
+	public var heyComboInterval:Int = 250; 
 
 	public var healthLerp:Float = 1;
 
@@ -4043,6 +4045,15 @@ class PlayState extends MusicBeatState
 			},
 			startDelay: Conductor.crochet * 0.002 / playbackRate
 		});
+
+		if (combo >= heyComboInterval && combo % heyComboInterval == 0 && combo != lastHeyCombo && !chartingMode && !cpuControlled && !usedPractice)
+		{
+    		if (gf != null)
+        	gf.playAnim('cheer', true);
+			gf.specialAnim = true;
+    
+    		lastHeyCombo = combo;
+		}
 	}
 
 	public var strumsBlocked:Array<Bool> = [];
