@@ -70,6 +70,13 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
+		var option:Option = new Option('Disable Pop Up Score',
+			"If checked, hitting notes won't make \"Sick\", \"Good\".. and combo popups (Useful for low end PCs).\nIf you use botplay, they will be automatically disabled.",
+			'disablePopUp',
+			'bool',
+			false);
+		addOption(option);
+
 		var option:Option = new Option('Disable Reset Button',
 			"If checked, pressing Reset won't do anything.",
 			'noReset',
