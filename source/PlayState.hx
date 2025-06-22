@@ -478,8 +478,14 @@ class PlayState extends MusicBeatState
 		if(SONG.stage == null || SONG.stage.length < 1) {
 			switch (songName)
 			{
-				case 'bad-battle' | 'intervention' | 'friendship':
+				case 'bad-battle', 'friendship-v2':
 					curStage = 'Stage-Rami';
+				case 'intervention':
+					curStage = 'Stage-Rami-Sunset';
+				case 'friendship':
+					curStage = 'Stage-Rami-Night';
+				case 'override', 'bad-battle-pico':
+					curStage = 'Stage-Drk';
 				default:
 					curStage = 'stage';
 			}
@@ -864,7 +870,7 @@ class PlayState extends MusicBeatState
 		{
 			switch (curStage)
 			{
-				case 'Stage-Rami':
+				case 'Stage-Rami', 'Stage-Rami-Sunset', 'Stage-Rami-Night':
 					gfVersion = 'gf-ramirez';
 				default:
 					gfVersion = 'gf';
@@ -5116,7 +5122,7 @@ class PlayState extends MusicBeatState
 
 			// Rating FC
 			ratingFC = "";
-			if (sicks > 0) ratingFC = "SFC";
+			if (sicks > 0) ratingFC = "PFC";
 			if (goods > 0) ratingFC = "GFC";
 			if (bads > 0 || shits > 0) ratingFC = "FC";
 			if (songMisses > 0 && songMisses < 10) ratingFC = "SDCB";
