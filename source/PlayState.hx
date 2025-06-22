@@ -4047,7 +4047,7 @@ class PlayState extends MusicBeatState
 		});
 
 		var usedPractice:Bool = (ClientPrefs.getGameplaySetting('practice', false) || ClientPrefs.getGameplaySetting('botplay', false));
-		if (combo >= heyComboInterval && combo % heyComboInterval == 0 && combo != lastHeyCombo && !chartingMode && !cpuControlled && !usedPractice)
+		if (combo >= heyComboInterval && combo % heyComboInterval == 0 && combo != lastHeyCombo && gf.animOffsets.exists('cheer') && !chartingMode && !cpuControlled && !usedPractice)
 		{
     		if (gf != null)
         	gf.playAnim('cheer', true);
