@@ -10,6 +10,8 @@ import flixel.util.FlxColor;
 import flixel.util.FlxAxes;
 import MainMenuState;
 
+import haxe.Json;
+
 #if sys
 import sys.FileSystem;
 import sys.io.File;
@@ -17,14 +19,15 @@ import sys.io.File;
 
 using StringTools;
 
+typedef GalleryData = {
+    var description:String;
+}
+
 class GalleryState extends MusicBeatState
 {    
     var images:Array<String> = [];
-    var descriptions:Array<String> = [
-        "Placeholder.",
-        "Placeholder2.",
-        "Placeholder3."
-    ];
+    var jsons:Array<String> = [];
+    var descriptions:Array<String> = [];
 
     var currentIndex:Int = 0;
     var currentImage:FlxSprite;
@@ -60,8 +63,20 @@ class GalleryState extends MusicBeatState
                         trace(file);
                         images.push(file.replace('.png', ''));
                     }
+
+                    if (file.endsWith('.json') && !jsons.contains(file))
+                    {
+                        trace(file);
+                        jsons.push(file.replace('.json', ''));
+                    }
                 }
             }
+        }
+
+        for (json in jsons)
+        {
+            final data:GalleryData = Json.parse(File.getContent(Paths.getPath('images/gallery/$file.json')));
+            descriptions.push(data.description);
         }
         #end
 
@@ -116,7 +131,10 @@ class GalleryState extends MusicBeatState
         currentImage.screenCenter(FlxAxes.X);
         currentImage.y = 80;
 
-        descriptionText.text = descriptions[currentIndex];
-        descriptionText.y = currentImage.y + currentImage.height + 20;
+        if (descriptions[currentIndex] != null)
+        {
+            descriptionText.text = descriptions[currentIndex];
+            descriptionText.y = currentImage.y + currentImage.height + 20;
+        }
     }
 }
