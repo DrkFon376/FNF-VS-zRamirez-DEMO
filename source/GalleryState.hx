@@ -75,7 +75,7 @@ class GalleryState extends MusicBeatState
 
         for (json in jsons)
         {
-            final data:GalleryData = Json.parse(File.getContent(Paths.getPath('images/gallery/$json.json')));
+            final data:GalleryData = Json.parse(File.getContent(Paths.getPath('images/gallery/$json.json', openfl.utils.AssetType.TEXT)));
             descriptions.push(data.description);
         }
         #end
