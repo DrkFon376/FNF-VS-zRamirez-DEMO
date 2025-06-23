@@ -4,20 +4,22 @@ package;
 import Discord.DiscordClient;
 #end
 import flixel.FlxG;
-import flixel.FlxState;
 import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxAxes;
-import flixel.math.FlxPoint;
 import MainMenuState;
 
-class GalleryState extends MusicBeatState
-{
-    
-    var images:Array<String> = ['placeholder1', 'placeholder2', 'placeholder3'];
+#if sys
+import sys.FileSystem;
+import sys.io.File;
+#end
 
-    
+using StringTools;
+
+class GalleryState extends MusicBeatState
+{    
+    var images:Array<String> = [];
     var descriptions:Array<String> = [
         "Placeholder.",
         "Placeholder2.",
@@ -30,12 +32,38 @@ class GalleryState extends MusicBeatState
 
     override function create()
     {
-
         #if desktop
-	        DiscordClient.changePresence("Gallery", null);
+	    DiscordClient.changePresence("Gallery", null);
 	    #end
         
         super.create();
+
+        var foldersToCheck:Array<String> = [Paths.getPreloadPath('images/gallery/')];
+        #if sys
+		#if MODS_ALLOWED
+		foldersToCheck.insert(0, Paths.mods('images/gallery/'));
+		if(Paths.currentModDirectory != null && Paths.currentModDirectory.length > 0)
+			foldersToCheck.insert(0, Paths.mods(Paths.currentModDirectory + '/images/gallery/'));
+
+		for(mod in Paths.getGlobalMods())
+			foldersToCheck.insert(0, Paths.mods(mod + '/images/gallery/'));
+		#end
+
+		for (folder in foldersToCheck)
+		{
+			if(FileSystem.exists(folder))
+			{
+				for (file in FileSystem.readDirectory(folder))
+				{
+                    if (file.endsWith('.png') && !images.contains(file))
+                    {
+                        trace(file);
+                        images.push(file.replace('.png', ''));
+                    }
+                }
+            }
+        }
+        #end
 
         var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
         bg.scrollFactor.set(0, 0);
@@ -45,7 +73,7 @@ class GalleryState extends MusicBeatState
         add(bg);
 
         currentImage = new FlxSprite();
-        currentImage.loadGraphic(Paths.image('gallery/'));
+        currentImage.loadGraphic(Paths.image('gallery/' + images[currentIndex]));
         currentImage.setGraphicSize(0, Std.int(FlxG.height * 0.5));
         currentImage.updateHitbox();
         currentImage.screenCenter(FlxAxes.X); 
@@ -61,6 +89,7 @@ class GalleryState extends MusicBeatState
         instructions.setFormat("VCR OSD Mono", 16, FlxColor.GRAY, CENTER);
         instructions.scrollFactor.set();
         add(instructions);
+        changeImage(0);
     }
 
     override function update(elapsed:Float)
@@ -81,7 +110,7 @@ class GalleryState extends MusicBeatState
         if (currentIndex < 0) currentIndex = images.length - 1;
         if (currentIndex >= images.length) currentIndex = 0;
 
-        currentImage.loadGraphic(Paths.image('gallery/'));
+        currentImage.loadGraphic(Paths.image('gallery/' + images[currentIndex]));
         currentImage.setGraphicSize(0, Std.int(FlxG.height * 0.5));
         currentImage.updateHitbox();
         currentImage.screenCenter(FlxAxes.X);

@@ -74,9 +74,8 @@ class Option
 			}
 		}
 
-		if(getValue() == null) {
+		if(getValue() == null)
 			setValue(defaultValue);
-		}
 
 		switch(type)
 		{
