@@ -2294,18 +2294,10 @@ class PlayState extends MusicBeatState
 		for (i in 0...4)
 		{
 			// FlxG.log.add(i);
-			var targetAlpha:Float = 1;
+			var targetAlpha:Float = visualsOnlyMode ? 0 : 1;
 
-			if (visualsOnlyMode)
-				targetAlpha = 0;
-			else
-			{
-				if (player < 1)
-				{
-					if(!ClientPrefs.opponentStrums) targetAlpha = 0;
-					else if(ClientPrefs.middleScroll) targetAlpha = 0.35;
-				}
-			}
+			if (!visualsOnlyMode && player < 1)
+				targetAlpha = !ClientPrefs.opponentStrums ? 0 : ClientPrefs.middleScroll ? 0.35 : 1;
 
 			var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i, player);
 			babyArrow.downScroll = ClientPrefs.downScroll;
@@ -2797,16 +2789,16 @@ class PlayState extends MusicBeatState
 		}
 
 		if (strumLineNotes != null && strumLineNotes.members.length >= 8)
+		{
+			for (i in 0...4)
 			{
-				for (i in 0...4)
-				{
-					if (opponentHoldCovers != null && strumLineNotes.members[i] != null && opponentHoldCovers.grabMember(i) != null)
-						opponentHoldCovers.grabMember(i).holdCPos.set(strumLineNotes.members[i].x, strumLineNotes.members[i].y);
-			
-					if (playerHoldCovers != null && strumLineNotes.members[i+4] != null && playerHoldCovers.grabMember(i) != null)
-						playerHoldCovers.grabMember(i).holdCPos.set(strumLineNotes.members[i+4].x, strumLineNotes.members[i+4].y);
-				}
+				if (opponentHoldCovers != null && strumLineNotes.members[i] != null && opponentHoldCovers.grabMember(i) != null)
+					opponentHoldCovers.grabMember(i).holdCPos.set(strumLineNotes.members[i].x, strumLineNotes.members[i].y);
+		
+				if (playerHoldCovers != null && strumLineNotes.members[i+4] != null && playerHoldCovers.grabMember(i) != null)
+					playerHoldCovers.grabMember(i).holdCPos.set(strumLineNotes.members[i+4].x, strumLineNotes.members[i+4].y);
 			}
+		}
 			
 
 		#if debug
@@ -3034,10 +3026,7 @@ class PlayState extends MusicBeatState
 				switch (charType)
 				{
 					case 0:
-						if (value2.toLowerCase().trim() == '0.5')
-							bfIdleisHalfBeat = true;
-						else
-							bfIdleisHalfBeat = false;
+						bfIdleisHalfBeat = (value2.toLowerCase().trim() == '0.5');
 
 						if (!bfIdleisHalfBeat)
 						{
@@ -3062,10 +3051,7 @@ class PlayState extends MusicBeatState
 						}
 
 					case 1:
-						if (value2.toLowerCase().trim() == '0.5')
-							dadIdleisHalfBeat = true;
-						else
-							dadIdleisHalfBeat = false;
+						dadIdleisHalfBeat = (value2.toLowerCase().trim() == '0.5');
 
 						if (!dadIdleisHalfBeat)
 						{
@@ -3090,11 +3076,7 @@ class PlayState extends MusicBeatState
 						}
 
 					case 2:
-						if (value2.toLowerCase().trim() == '0.5')
-							gfIdleisHalfBeat = true;
-						else
-							gfIdleisHalfBeat = false;
-
+						gfIdleisHalfBeat = (value2.toLowerCase().trim() == '0.5');
 						if (!gfIdleisHalfBeat)
 						{
 							if (beatIntValue > 0 && (beatIntValue & (beatIntValue - 1)) == 0) //If the value entered is not part of the power of 2 (such as 1, 2, 4, 8, 16, 32, etc.) the event is completely ignored
@@ -5004,6 +4986,7 @@ class PlayState extends MusicBeatState
 			if (SONG.notes[curSection].changeBPM)
 			{
 				Conductor.changeBPM(SONG.notes[curSection].bpm);
+				recalculateIdleInt(Conductor.bpm);
 				setOnLuas('curBpm', Conductor.bpm);
 				setOnLuas('crochet', Conductor.crochet);
 				setOnLuas('stepCrochet', Conductor.stepCrochet);

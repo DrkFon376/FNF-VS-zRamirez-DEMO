@@ -71,8 +71,8 @@ class FlashingState extends MusicBeatState
 				FlxTransitionableState.skipNextTransIn = true;
 				FlxTransitionableState.skipNextTransOut = true;
 				if(!back) {
-					ClientPrefs.flashing = false;
-					ClientPrefs.saveSettings();
+					FlxG.save.data.flashing = false;
+					FlxG.save.flush();
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 					if (disabledText != null && disabledText.alpha > 0)
 						FlxTween.tween(disabledText, {alpha: 0}, 0.4);
@@ -84,8 +84,8 @@ class FlashingState extends MusicBeatState
 						});
 					});
 				} else {
-					ClientPrefs.flashing = true;
-					ClientPrefs.saveSettings();
+					FlxG.save.data.flashing = true;
+					FlxG.save.flush();
 					FlxG.sound.play(Paths.sound('cancelMenu'));
 					if (disabledText != null && disabledText.alpha > 0)
 						FlxTween.tween(disabledText, {alpha: 0}, 0.4);
