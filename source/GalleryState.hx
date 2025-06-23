@@ -88,14 +88,9 @@ class GalleryState extends MusicBeatState
         add(bg);
 
         currentImage = new FlxSprite();
-        currentImage.loadGraphic(Paths.image('gallery/' + images[currentIndex]));
-        currentImage.setGraphicSize(0, Std.int(FlxG.height * 0.5));
-        currentImage.updateHitbox();
-        currentImage.screenCenter(FlxAxes.X); 
-        currentImage.y = 80;
         add(currentImage);
 
-        descriptionText = new FlxText(0, currentImage.y + currentImage.height + 20, FlxG.width, descriptions[currentIndex], 16);
+        descriptionText = new FlxText(0, currentImage.y + currentImage.height + 20, FlxG.width, "", 16);
         descriptionText.setFormat("VCR OSD Mono", 18, FlxColor.WHITE, CENTER);
         descriptionText.scrollFactor.set();
         add(descriptionText);
