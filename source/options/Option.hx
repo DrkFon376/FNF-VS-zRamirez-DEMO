@@ -70,10 +70,7 @@ class Option
 				case 'percent':
 					defaultValue = 1;
 				case 'string':
-					defaultValue = '';
-					if(options.length > 0) {
-						defaultValue = options[0];
-					}
+					defaultValue = options.length > 0 ? options[0] : '';
 			}
 		}
 
@@ -85,9 +82,8 @@ class Option
 		{
 			case 'string':
 				var num:Int = options.indexOf(getValue());
-				if(num > -1) {
+				if(num > -1) 
 					curOption = num;
-				}
 	
 			case 'percent':
 				displayFormat = '%v%';
@@ -102,39 +98,21 @@ class Option
 	public function change()
 	{
 		//nothing lol
-		if(onChange != null) {
-			onChange();
-		}
+		if(onChange != null) onChange();
 	}
 
 	public function getValue():Dynamic
-	{
 		return Reflect.getProperty(ClientPrefs, variable);
-	}
 	public function setValue(value:Dynamic)
-	{
 		Reflect.setProperty(ClientPrefs, variable, value);
-	}
 
 	public function setChild(child:Alphabet)
-	{
 		this.child = child;
-	}
 
 	private function get_text()
-	{
-		if(child != null) {
-			return child.text;
-		}
-		return null;
-	}
+		return child != null ? child.text : null;
 	private function set_text(newValue:String = '')
-	{
-		if(child != null) {
-			child.text = newValue;
-		}
-		return null;
-	}
+		return child != null ? child.text = newValue : null;
 
 	private function get_type()
 	{

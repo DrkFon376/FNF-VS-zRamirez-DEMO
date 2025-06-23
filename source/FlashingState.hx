@@ -99,8 +99,8 @@ class FlashingState extends MusicBeatState
 			}
 			else if (FlxG.save.data.firstWarning && FlxG.keys.justPressed.D && !pressed)
 			{
-				ClientPrefs.flashingWarningEnabled = false;
-				ClientPrefs.saveSettings();
+				FlxG.save.data.flashingWarningEnabled = false;
+				FlxG.save.flush();
 				disabledText.alpha = 1;
 				pressed = true;
 			}
