@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="Vs zRamirez Gallery Text.png">
+<TextureAtlas imagePath="menu_gallery.png">
 	<!-- Created with Adobe Animate version 19.2.1.408 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="gallery basic0000" x="8" y="8" width="396" height="138"/>
-	<SubTexture name="gallery basic0001" x="8" y="8" width="396" height="138"/>
-	<SubTexture name="gallery basic0002" x="8" y="8" width="396" height="138"/>
-	<SubTexture name="gallery basic0003" x="414" y="8" width="396" height="138"/>
-	<SubTexture name="gallery basic0004" x="414" y="8" width="396" height="138"/>
-	<SubTexture name="gallery basic0005" x="414" y="8" width="396" height="138"/>
-	<SubTexture name="gallery white0000" x="8" y="156" width="498" height="172"/>
-	<SubTexture name="gallery white0001" x="516" y="156" width="498" height="172"/>
+	<SubTexture name="gallery basic0000" x="8" y="8" width="429" height="137"/>
+	<SubTexture name="gallery basic0001" x="8" y="8" width="429" height="137"/>
+	<SubTexture name="gallery basic0002" x="8" y="8" width="429" height="137"/>
+	<SubTexture name="gallery basic0003" x="8" y="155" width="429" height="137"/>
+	<SubTexture name="gallery basic0004" x="8" y="155" width="429" height="137"/>
+	<SubTexture name="gallery basic0005" x="8" y="155" width="429" height="137"/>
+	<SubTexture name="gallery white0000" x="8" y="302" width="493" height="173"/>
+	<SubTexture name="gallery white0001" x="8" y="485" width="493" height="173"/>
 </TextureAtlas>
