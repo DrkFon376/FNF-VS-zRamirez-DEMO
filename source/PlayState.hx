@@ -55,7 +55,7 @@ import flixel.effects.particles.FlxParticle;
 import flixel.util.FlxSave;
 import flixel.animation.FlxAnimationController;
 import animateatlas.AtlasFrameMaker;
-import Achievements;
+import achievements.Achievements;
 import StageData;
 import FunkinLua;
 import DialogueBoxPsych;
@@ -3310,12 +3310,7 @@ class PlayState extends MusicBeatState
 				var tweenKeyShit:String = "overlay" + (isTargetCamGame ? "CamGame" : "CamHUD") + "Fade" + (leValue ? "Out" : "In");
 
 				if ((isTargetCamGame && blackOverlayCamGame != null) || (!isTargetCamGame && blackOverlayCamHUD != null))
-				{
-					instance.modchartTweens.set(tweenKeyShit, FlxTween.tween(targetOverlay, {alpha: (leValue ? 0 : 1)}, targetTime / playbackRate, {ease: getFlxEaseByString(value2Array[1]), onComplete: function(twn:FlxTween)
-					{
-						instance.modchartTweens.remove(tweenKeyShit);
-					}}));
-				}
+					instance.modchartTweens.set(tweenKeyShit, FlxTween.tween(targetOverlay, {alpha: (leValue ? 0 : 1)}, targetTime / playbackRate, {ease: getFlxEaseByString(value2Array[1]), onComplete: function(twn:FlxTween) instance.modchartTweens.remove(tweenKeyShit)}));
 
 			case 'Change Character':
 				var charType:Int = 0;
@@ -3367,22 +3362,17 @@ class PlayState extends MusicBeatState
 						setOnLuas('dadName', dad.curCharacter);
 
 					case 2:
-						if(gf != null)
+						if (gf != null && gf.curCharacter != value2)
 						{
-							if(gf.curCharacter != value2)
-							{
-								if(!gfMap.exists(value2))
-								{
-									addCharacterToList(value2, charType);
-								}
+							if(!gfMap.exists(value2))
+								addCharacterToList(value2, charType);
 
-								var lastAlpha:Float = gf.alpha;
-								gf.alpha = 0.00001;
-								gf = gfMap.get(value2);
-								gf.alpha = lastAlpha;
-							}
-							setOnLuas('gfName', gf.curCharacter);
+							var lastAlpha:Float = gf.alpha;
+							gf.alpha = 0.00001;
+							gf = gfMap.get(value2);
+							gf.alpha = lastAlpha;
 						}
+						setOnLuas('gfName', gf.curCharacter);
 				}
 				reloadHealthBarColors();
 
@@ -3397,26 +3387,16 @@ class PlayState extends MusicBeatState
 				var newValue:Float = SONG.speed * ClientPrefs.getGameplaySetting('scrollspeed', 1) * val1;
 
 				if(val2 <= 0)
-				{
 					songSpeed = newValue;
-				}
 				else
-				{
-					songSpeedTween = FlxTween.tween(this, {songSpeed: newValue}, val2 / playbackRate, {ease: FlxEase.linear, onComplete:
-						function (twn:FlxTween)
-						{
-							songSpeedTween = null;
-						}
-					});
-				}
+					songSpeedTween = FlxTween.tween(this, {songSpeed: newValue}, val2 / playbackRate, {ease: FlxEase.linear, onComplete: function (twn:FlxTween) songSpeedTween = null});
 
 			case 'Set Property':
 				var killMe:Array<String> = value1.split('.');
-				if(killMe.length > 1) {
+				if(killMe.length > 1)
 					FunkinLua.setVarInArray(FunkinLua.getPropertyLoopThingWhatever(killMe, true, true), killMe[killMe.length-1], value2);
-				} else {
+				else
 					FunkinLua.setVarInArray(this, value1, value2);
-				}
 		}
 		callOnLuas('onEvent', [eventName, value1, value2]);
 	}
@@ -3653,20 +3633,9 @@ class PlayState extends MusicBeatState
 		seenCutscene = false;
 
 		#if ACHIEVEMENTS_ALLOWED
-		if(achievementObj != null) {
-			return;
-		} else {
-			var achieve:String = checkForAchievement(['zweek_beat', 'bb_fucked', 'dweek_beat', 'gopico_yeah', 'toastie', 'ur_bad', 'ur_good', 'taunt_master', 'friendship_v2']);
-
-			if(achieve != null) {
-				startAchievement(achieve);
-				return;
-			}
-		}
+		checkForAchievement([WeekData.getWeekFileName() + '_nomiss', 'zweek_beat', 'bb_fucked', 'dweek_beat', 'gopico_yeah', 'taunt_master', 'friendship_v2', 'ur_bad', 'ur_good', 'hype', 'two_keys', 'toastie' #if BASE_GAME_FILES, 'debugger' #end]);
 		#end
-
-		var ret:Dynamic = callOnLuas('onEndSong', [], false);
-		if(ret != FunkinLua.Function_Stop && !transitioning) {
+		if(callOnLuas('onEndSong', [], false) != FunkinLua.Function_Stop && !transitioning) {
 			if (SONG.validScore)
 			{
 				#if !switch
@@ -3707,9 +3676,7 @@ class PlayState extends MusicBeatState
 						StoryMenuState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
 
 						if (SONG.validScore)
-						{
 							Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
-						}
 
 						FlxG.save.data.weekCompleted = StoryMenuState.weekCompleted;
 						FlxG.save.flush();
@@ -3761,9 +3728,7 @@ class PlayState extends MusicBeatState
 				trace('WENT BACK TO FREEPLAY??');
 				WeekData.loadTheFirstEnabledMod();
 				cancelMusicFadeTween();
-				if(FlxTransitionableState.skipNextTransIn) {
-					CustomFadeTransition.nextCamera = null;
-				}
+				if (FlxTransitionableState.skipNextTransIn) CustomFadeTransition.nextCamera = null;
 				canResync = false;
 				MusicBeatState.switchState(new FreeplayState());
 				FlxG.sound.playMusic(Paths.music('zRamirezMenu'));
@@ -3772,23 +3737,6 @@ class PlayState extends MusicBeatState
 			transitioning = true;
 		}
 	}
-
-	#if ACHIEVEMENTS_ALLOWED
-	var achievementObj:AchievementObject = null;
-	function startAchievement(achieve:String) {
-		achievementObj = new AchievementObject(achieve, camOther);
-		achievementObj.onFinish = achievementEnd;
-		add(achievementObj);
-		trace('Giving achievement ' + achieve);
-	}
-	function achievementEnd():Void
-	{
-		achievementObj = null;
-		if(endingSong && !inCutscene) {
-			endSong();
-		}
-	}
-	#end
 
 	public function KillNotes() {
 		while(notes.length > 0) {
@@ -4973,9 +4921,7 @@ class PlayState extends MusicBeatState
 		if (SONG.notes[curSection] != null)
 		{
 			if (generatedMusic && !endingSong && !isCameraOnForcedPos)
-			{
 				moveCameraSection();
-			}
 
 			if (camZooming && FlxG.camera.zoom < 1.35 && ClientPrefs.camZooms)
 			{
@@ -5061,9 +5007,8 @@ class PlayState extends MusicBeatState
 
 	public function setOnLuas(variable:String, arg:Dynamic) {
 		#if LUA_ALLOWED
-		for (i in 0...luaArray.length) {
-			luaArray[i].set(variable, arg);
-		}
+		for (script in luaArray)
+			script.set(variable, arg);
 		#end
 	}
 
@@ -5140,7 +5085,7 @@ class PlayState extends MusicBeatState
 		var usedPractice:Bool = (ClientPrefs.getGameplaySetting('practice', false) || ClientPrefs.getGameplaySetting('botplay', false));
 		for (i in 0...achievesToCheck.length) {
 			var achievementName:String = achievesToCheck[i];
-			if(!Achievements.isAchievementUnlocked(achievementName) && !cpuControlled) {
+			if(!Achievements.isUnlocked(achievementName) && !cpuControlled) {
 				var unlock:Bool = false;
 				
 				/*if (achievementName.contains(WeekData.getWeekFileName()) && achievementName.endsWith('nomiss')) // any FC achievements, name should be "weekFileName_nomiss", e.g: "weekd_nomiss"; --Wtf, this is a reference to drkfon week?!?!?!?1?
@@ -5217,7 +5162,7 @@ class PlayState extends MusicBeatState
 				}
 
 				if(unlock) {
-					Achievements.unlockAchievement(achievementName);
+					Achievements.unlock(achievementName);
 					return achievementName;
 				}
 			}

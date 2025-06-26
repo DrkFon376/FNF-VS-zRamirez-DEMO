@@ -109,6 +109,7 @@ class ClientPrefs {
 	}
 
 	public static function saveSettings() {
+		#if ACHIEVEMENTS_ALLOWED achievements.Achievements.save(); #end
 		FlxG.save.data.downScroll = downScroll;
 		FlxG.save.data.middleScroll = middleScroll;
 		FlxG.save.data.opponentStrums = opponentStrums;
@@ -145,8 +146,6 @@ class ClientPrefs {
 		FlxG.save.data.noReset = noReset;
 		FlxG.save.data.healthBarAlpha = healthBarAlpha;
 		FlxG.save.data.comboOffset = comboOffset;
-		FlxG.save.data.achievementsMap = Achievements.achievementsMap;
-		FlxG.save.data.henchmenDeath = Achievements.henchmenDeath;
 
 		FlxG.save.data.ratingOffset = ratingOffset;
 		FlxG.save.data.sickWindow = sickWindow;
@@ -173,6 +172,7 @@ class ClientPrefs {
 	}
 
 	public static function loadPrefs() {
+		#if ACHIEVEMENTS_ALLOWED achievements.Achievements.load(); #end
 		if(FlxG.save.data.downScroll != null) {
 			downScroll = FlxG.save.data.downScroll;
 		}

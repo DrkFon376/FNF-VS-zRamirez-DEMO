@@ -612,19 +612,13 @@ class TitleState extends MusicBeatState
 
 	private var sickBeats:Int = 0; //Basically curBeat but won't be skipped if you hold the tab or resize the screen
 	public static var closedState:Bool = false;
+	var zoomAdd:Float = 0;
 	override function beatHit()
 	{
 		super.beatHit();
 
 		if(logoBl != null)
 			logoBl.animation.play('bump', true);
-
-		FlxG.camera.zoom = 1.015;
-
-		FlxTween.tween(FlxG.camera, {zoom: 1}, Conductor.crochet / 1300,
-		{
-			ease: FlxEase.quadOut
-		});
 
 		if(zRamirezDance != null) {
 			/*danceLeft = !danceLeft;
@@ -641,6 +635,7 @@ class TitleState extends MusicBeatState
 			switch (sickBeats)
 			{
 				case 1:
+					zoomAdd = 0.12;
 					//FlxG.sound.music.stop();
 					FlxG.sound.playMusic(Paths.music('zRamirezMenu'), 0.2);
 					FlxG.sound.music.fadeIn(4, 0.2, 0.7);
@@ -652,6 +647,7 @@ class TitleState extends MusicBeatState
 					#end
 				// credTextShit.visible = true;
 				case 4:
+					zoomAdd = 0.22;
 					#if PSYCH_WATERMARKS
 					addMoreText('Shadow Mario', 15);
 					addMoreText('RiverOaken', 15);
@@ -673,6 +669,7 @@ class TitleState extends MusicBeatState
 					createCoolText(['In association', 'with'], -40);
 					#end
 				case 8:
+					zoomAdd = 0.24;
 					addMoreText('newgrounds', -40);
 					ngSpr.visible = true;
 				// credTextShit.text += '\nNewgrounds';
@@ -695,24 +692,36 @@ class TitleState extends MusicBeatState
 				// credTextShit.text = "Friday Night Funkin'";
 				// credTextShit.screenCenter();
 				case 14:
+					zoomAdd = 0.3;
 					addMoreText("Friday Night Funkin'");
 				// credTextShit.visible = true;
 				case 15:
+					zoomAdd = 0.4;
 					addMoreText('VS');
 				// credTextShit.text += '\nVS';
 				case 16:
+					zoomAdd = 0.5;
 					addMoreText('zRamírez'); // credTextShit.text += '\nzRamírez';
 
 				case 17:
+					zoomAdd = 0;
 					skipIntro();
 			}
 		}
+
+		FlxG.camera.zoom = 1.015 + zoomAdd;
+
+		FlxTween.tween(FlxG.camera, {zoom: 1}, Conductor.crochet / 1300,
+		{
+			ease: FlxEase.quadOut
+		});
 	}
 
 	var skippedIntro:Bool = false;
 	var increaseVolume:Bool = false;
 	function skipIntro():Void
 	{
+		zoomAdd = 0;
 		if (!skippedIntro)
 		{
 			if (playJingle) //Ignore deez
