@@ -36,7 +36,7 @@ class GalleryState extends MusicBeatState
     override function create()
     {
         #if desktop
-	    DiscordClient.changePresence("Gallery", null);
+	    DiscordClient.changePresence("In the Gallery", null);
 	    #end
         
         super.create();
@@ -85,19 +85,23 @@ class GalleryState extends MusicBeatState
         bg.setGraphicSize(Std.int(bg.width * 1.1));
         bg.updateHitbox();
         bg.screenCenter();
+        bg.antialiasing = ClientPrefs.globalAntialiasing;
         add(bg);
 
         currentImage = new FlxSprite();
+        currentImage.antialiasing = ClientPrefs.globalAntialiasing;
         add(currentImage);
 
         descriptionText = new FlxText(0, currentImage.y + currentImage.height + 20, FlxG.width, "", 16);
-        descriptionText.setFormat("VCR OSD Mono", 18, FlxColor.WHITE, CENTER);
+        descriptionText.setFormat(Paths.font("PhantomMuff Full Letters 1.1.5.ttf"), 30, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
         descriptionText.scrollFactor.set();
+        descriptionText.antialiasing = ClientPrefs.globalAntialiasing;
         add(descriptionText);
 
-        var instructions = new FlxText(0, FlxG.height - 30, FlxG.width, "IZQ/DERECHA para cambiar imagen | ESC para volver", 16);
-        instructions.setFormat("VCR OSD Mono", 16, FlxColor.GRAY, CENTER);
+        var instructions = new FlxText(0, FlxG.height - 30, FlxG.width, "LEFT/RIGHT to change image | ESC to back to menu", 16);
+        instructions.setFormat(Paths.font("PhantomMuff Full Letters 1.1.5.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
         instructions.scrollFactor.set();
+        instructions.antialiasing = ClientPrefs.globalAntialiasing;
         add(instructions);
         changeImage(0);
     }
