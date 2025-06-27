@@ -37,6 +37,7 @@ import neko.vm.Gc;
 
 using StringTools;
 
+@:access(openfl.display.BitmapData)
 class Paths
 {
 	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
@@ -449,28 +450,25 @@ class Paths
 			if (!currentTrackedAssets.exists(modKey))
 			{
 				var bitmap:BitmapData = BitmapData.fromFile(modKey);
-
 				var graphic:FlxGraphic = null;
 				if (gpuRender)
 				{
 					bitmap.lock();
-					var texture = FlxG.stage.context3D.createRectangleTexture(bitmap.width, bitmap.height, BGRA, true);
-					texture.uploadFromBitmapData(bitmap);
-
+					if (bitmap.__texture == null)
+					{
+						bitmap.image.premultiplied = true;
+						bitmap.getTexture(FlxG.stage.context3D);
+					}
+					bitmap.getSurface();
 					bitmap.disposeImage();
-
-					FlxDestroyUtil.dispose(bitmap);
-
-					bitmap = null;
-
-					bitmap = BitmapData.fromTexture(texture);
-
-					bitmap.unlock();
+					bitmap.image.data = null;
+					bitmap.image = null;
+					bitmap.readable = true;
 				}
 
-				graphic = FlxGraphic.fromBitmapData(bitmap, false, modKey, false);
-
+				graphic = FlxGraphic.fromBitmapData(bitmap, false, modKey);
 				graphic.persist = true;
+				graphic.destroyOnNoUse = false;
 				currentTrackedAssets.set(modKey, graphic);
 			}
 			else
@@ -493,28 +491,25 @@ class Paths
 			if (!currentTrackedAssets.exists(path))
 			{
 				var bitmap:BitmapData = OpenFlAssets.getBitmapData(path, false);
-
 				var graphic:FlxGraphic = null;
 				if (gpuRender)
 				{
 					bitmap.lock();
-					var texture = FlxG.stage.context3D.createRectangleTexture(bitmap.width, bitmap.height, BGRA, true);
-					texture.uploadFromBitmapData(bitmap);
-
+					if (bitmap.__texture == null)
+					{
+						bitmap.image.premultiplied = true;
+						bitmap.getTexture(FlxG.stage.context3D);
+					}
+					bitmap.getSurface();
 					bitmap.disposeImage();
-
-					FlxDestroyUtil.dispose(bitmap);
-
-					bitmap = null;
-
-					bitmap = BitmapData.fromTexture(texture);
-
-					bitmap.unlock();
+					bitmap.image.data = null;
+					bitmap.image = null;
+					bitmap.readable = true;
 				}
 
-				graphic = FlxGraphic.fromBitmapData(bitmap, false, path, false);
-
+				graphic = FlxGraphic.fromBitmapData(bitmap, false, path);
 				graphic.persist = true;
+				graphic.destroyOnNoUse = false;
 				currentTrackedAssets.set(path, graphic);
 			}
 			else
