@@ -635,7 +635,8 @@ class TitleState extends MusicBeatState
 			switch (sickBeats)
 			{
 				case 1:
-					zoomAdd = 0.12;
+					if (!skippedIntro)
+						zoomAdd = 0.03;
 					//FlxG.sound.music.stop();
 					FlxG.sound.playMusic(Paths.music('zRamirezMenu'), 0.2);
 					FlxG.sound.music.fadeIn(4, 0.2, 0.7);
@@ -647,7 +648,8 @@ class TitleState extends MusicBeatState
 					#end
 				// credTextShit.visible = true;
 				case 4:
-					zoomAdd = 0.22;
+					if (!skippedIntro)
+						zoomAdd = 0.06;
 					#if PSYCH_WATERMARKS
 					addMoreText('Shadow Mario', 15);
 					addMoreText('RiverOaken', 15);
@@ -669,7 +671,8 @@ class TitleState extends MusicBeatState
 					createCoolText(['In association', 'with'], -40);
 					#end
 				case 8:
-					zoomAdd = 0.24;
+					if (!skippedIntro)
+						zoomAdd = 0.1;
 					addMoreText('newgrounds', -40);
 					ngSpr.visible = true;
 				// credTextShit.text += '\nNewgrounds';
@@ -692,19 +695,22 @@ class TitleState extends MusicBeatState
 				// credTextShit.text = "Friday Night Funkin'";
 				// credTextShit.screenCenter();
 				case 14:
-					zoomAdd = 0.3;
+					if (!skippedIntro)
+						zoomAdd = 0.14;
 					addMoreText("Friday Night Funkin'");
 				// credTextShit.visible = true;
 				case 15:
-					zoomAdd = 0.4;
+					if (!skippedIntro)
+						zoomAdd = 0.17;
 					addMoreText('VS');
 				// credTextShit.text += '\nVS';
 				case 16:
-					zoomAdd = 0.5;
+					if (!skippedIntro)
+						zoomAdd = 0.2;
 					addMoreText('zRamírez'); // credTextShit.text += '\nzRamírez';
-
 				case 17:
-					zoomAdd = 0;
+					if (!skippedIntro)
+						zoomAdd = 0;
 					skipIntro();
 			}
 		}
