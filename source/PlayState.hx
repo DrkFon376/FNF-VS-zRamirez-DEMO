@@ -202,8 +202,8 @@ class PlayState extends MusicBeatState
 	public var playerStrums:FlxTypedGroup<StrumNote>;
 	public var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
 
-	public var opponentHoldCovers:HoldCoverGroup;
-	public var playerHoldCovers:HoldCoverGroup;
+	public var opponentHoldCovers:HoldCover;
+	public var playerHoldCovers:HoldCover;
 
 	public var camZooming:Bool = true; //so now it's canon that camZooming is activated from the beginning of the song eh?
 	public var camZoomingMult:Float = 1;
@@ -1018,14 +1018,8 @@ class PlayState extends MusicBeatState
    		 	}
 		}
 
-		opponentHoldCovers = new HoldCoverGroup();
-		opponentHoldCovers.enabled = !visualsOnlyMode ? (ClientPrefs.holdSplashes && ClientPrefs.opponentStrums ? true : false) : false;
-	    playerHoldCovers = new HoldCoverGroup();
-		playerHoldCovers.enabled = !visualsOnlyMode ? ClientPrefs.holdSplashes : false;
-		playerHoldCovers.canSplash = true;
-		opponentHoldCovers.get_isReady = playerHoldCovers.get_isReady = function():Bool
-			return strumLineNotes != null && strumLineNotes.members.length > 0 && !startingSong;
-		
+		opponentHoldCovers = new HoldCover(!visualsOnlyMode ? (ClientPrefs.holdSplashes && ClientPrefs.opponentStrums ? true : false) : false, false);
+	    playerHoldCovers = new HoldCover(!visualsOnlyMode ? ClientPrefs.holdSplashes : false, true);
 		add(opponentHoldCovers);
 		add(playerHoldCovers);
 
@@ -2314,7 +2308,6 @@ class PlayState extends MusicBeatState
 
 			if (player == 1)
 			{
-				playerHoldCovers.addHolds(i, babyArrow);
 				playerStrums.add(babyArrow);
 			}
 			else
@@ -2326,7 +2319,6 @@ class PlayState extends MusicBeatState
 						babyArrow.x += FlxG.width / 2 + 25;
 					}
 				}
-				opponentHoldCovers.addHolds(i, babyArrow);
 				opponentStrums.add(babyArrow);
 			}
 
@@ -2789,18 +2781,8 @@ class PlayState extends MusicBeatState
 				}
 			}
 			checkEventNote();
-		}
-
-		if (strumLineNotes != null && strumLineNotes.members.length >= 8)
-		{
-			for (i in 0...4)
-			{
-				if (opponentHoldCovers != null && strumLineNotes.members[i] != null && opponentHoldCovers.grabMember(i) != null)
-					opponentHoldCovers.grabMember(i).holdCPos.set(strumLineNotes.members[i].x, strumLineNotes.members[i].y);
-		
-				if (playerHoldCovers != null && strumLineNotes.members[i+4] != null && playerHoldCovers.grabMember(i) != null)
-					playerHoldCovers.grabMember(i).holdCPos.set(strumLineNotes.members[i+4].x, strumLineNotes.members[i+4].y);
-			}
+			playerHoldCovers.updateHold(elapsed, true);
+   			opponentHoldCovers.updateHold(elapsed, true);
 		}
 			
 
@@ -4068,7 +4050,7 @@ class PlayState extends MusicBeatState
 				Conductor.songPosition = lastTime;
 			}
 
-			if (playerHoldCovers.enabled && playerHoldCovers != null)
+			/*if (playerHoldCovers.enabled && playerHoldCovers != null)
 			{
 				var foundSustainNote:Note = null;
 			
@@ -4080,16 +4062,16 @@ class PlayState extends MusicBeatState
 					}
 				});
 			
-				if (foundSustainNote != null)
+				 if (foundSustainNote != null)
 				{
 					var member = playerHoldCovers.grabMember(key);
-					if (member != null && !member.visible)
+					if (member != null)
 					{
 						member.revive();
 						member.playStart();
 					}
 				}
-			}
+			}*/
 
 			var spr:StrumNote = playerStrums.members[key];
 			if(strumsBlocked[key] != true && spr != null && spr.animation.curAnim.name != 'confirm')
@@ -4126,21 +4108,11 @@ class PlayState extends MusicBeatState
 			}
 			callOnLuas('onKeyRelease', [key]);
 
-			if (playerHoldCovers != null && playerHoldCovers.members[key].animation.curAnim != null && !playerHoldCovers.members[key].animation.curAnim.name.endsWith('End')) //Me cago en todo glow
-			{
-				playerHoldCovers.despawnOnMiss(key);
+			if (playerHoldCovers != null && playerHoldCovers.members[key].animation.curAnim != null && !playerHoldCovers.members[key].animation.curAnim.name.endsWith('p')) //De nada glow
+				playerHoldCovers.despawnOnMiss(strumLineNotes != null && strumLineNotes.members.length > 0 && !startingSong, key);
 
-				if (playerHoldCovers != null)
-				{
-					var member = playerHoldCovers.grabMember(key);
-					if (member != null)
-					{
-						member.holdSucceeded = false;
-					}
-				}
-			}
-		}
 		//trace('released: ' + controlArray);
+		}
 	}
 
 	private function getKeyFromEvent(key:FlxKey):Int
@@ -4245,7 +4217,6 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(daNote:Note):Void { //You didn't hit the key and let it go offscreen, also used by Hurt Notes
 		//Dupe note remove
-		playerHoldCovers.despawnOnMiss(daNote.noteData, daNote);
 		notes.forEachAlive(function(note:Note) {
 			if (daNote != note && daNote.mustPress && daNote.noteData == note.noteData && daNote.isSustainNote == note.isSustainNote && Math.abs(daNote.strumTime - note.strumTime) < 1) {
 				note.kill();
@@ -4297,6 +4268,10 @@ class PlayState extends MusicBeatState
 			var animToPlay:String = singAnimations[Std.int(Math.abs(daNote.noteData))] + 'miss';
 			char.playAnim(animToPlay + altAnim, true);
 		}
+		if (daNote != null)
+		{
+			playerHoldCovers.despawnOnMiss(strumLineNotes != null && strumLineNotes.members.length > 0 && !startingSong, daNote.noteData, daNote);
+		}
 
 		callOnLuas('noteMiss', [notes.members.indexOf(daNote), daNote.noteData, daNote.noteType, daNote.isSustainNote]);
 	}
@@ -4305,7 +4280,7 @@ class PlayState extends MusicBeatState
 	{
 		if(ClientPrefs.ghostTapping) return; //fuck it
 
-		playerHoldCovers.despawnOnMiss(direction);
+		playerHoldCovers.despawnOnMiss(strumLineNotes != null && strumLineNotes.members.length > 0 && !startingSong, direction);
 
 		if (!boyfriend.stunned)
 		{
@@ -4437,7 +4412,7 @@ class PlayState extends MusicBeatState
 		}
 		StrumPlayAnim(true, Std.int(Math.abs(note.noteData)), time);
 		note.hitByOpponent = true;
-		opponentHoldCovers.spawnOnNoteHit(note);
+		opponentHoldCovers.spawnOnNoteHit(note, strumLineNotes != null && strumLineNotes.members.length > 0 && !startingSong);
 
 		if (allowedHealthDrainByOpponent) {
 			if (CoolUtil.difficulties[storyDifficulty] == 'Fucked')
@@ -4679,7 +4654,7 @@ class PlayState extends MusicBeatState
 				}
 			}
 			note.wasGoodHit = true;
-			playerHoldCovers.spawnOnNoteHit(note);
+			playerHoldCovers.spawnOnNoteHit(note, strumLineNotes != null && strumLineNotes.members.length > 0 && !startingSong);
 			vocals.volume = 1;
 
 			var isSus:Bool = note.isSustainNote; //GET OUT OF MY HEAD, GET OUT OF MY HEAD, GET OUT OF MY HEAD

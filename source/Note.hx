@@ -57,12 +57,6 @@ class Note extends FlxSprite
 	public var lateHitMult:Float = 1;
 	public var lowPriority:Bool = false;
 
-	public var isHoldEnd(get, never):Bool;
-	function get_isHoldEnd():Bool
-		return animation.curAnim.name.endsWith('end');
-	public var canHoldC:Bool = false;
-	public var endHoldC:Bool = false;
-
 	public static var swagWidth:Float = 160 * 0.7;
 	
 	public static var colArray:Array<String> = ['purple', 'blue', 'green', 'red'];
@@ -74,10 +68,6 @@ class Note extends FlxSprite
 	public var noteSplashHue:Float = 0;
 	public var noteSplashSat:Float = 0;
 	public var noteSplashBrt:Float = 0;
-
-	public var holdSplashHue:Float = 0;
-	public var holdSplashSat:Float = 0;
-	public var holdSplashBrt:Float = 0;
 
 	public var offsetX:Float = 0;
 	public var offsetY:Float = 0;
@@ -114,7 +104,7 @@ class Note extends FlxSprite
 
 	public function resizeByRatio(ratio:Float) //haha funny twitter shit
 	{
-		if(isSustainNote && !isHoldEnd)
+		if(isSustainNote && !animation.curAnim.name.endsWith('end'))
 		{
 			scale.y *= ratio;
 			updateHitbox();
@@ -165,9 +155,9 @@ class Note extends FlxSprite
 			}
 			noteType = value;
 		}
-		noteSplashHue = holdSplashHue = colorSwap.hue;
-		noteSplashSat = holdSplashSat = colorSwap.saturation;
-		noteSplashBrt = holdSplashBrt = colorSwap.brightness;
+		noteSplashHue = colorSwap.hue;
+		noteSplashSat = colorSwap.saturation;
+		noteSplashBrt = colorSwap.brightness;
 		return value;
 	}
 
@@ -227,8 +217,6 @@ class Note extends FlxSprite
 
 			if (prevNote.isSustainNote)
 			{
-				prevNote.endHoldC = false;
-				prevNote.canHoldC = true;
 				prevNote.animation.play(colArray[prevNote.noteData % 4] + 'hold');
 
 				prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.05;
@@ -245,8 +233,6 @@ class Note extends FlxSprite
 				// prevNote.setGraphicSize();
 			}
 
-			endHoldC = true;
-			canHoldC = false;
 
 			if(PlayState.isPixelStage) {
 				scale.y *= PlayState.daPixelZoom;
