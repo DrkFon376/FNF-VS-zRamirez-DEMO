@@ -51,7 +51,7 @@ class Achievements {
 		createAchievement('toastie', {name: "This is zRamirez's PC", description: "Seriously, do you need to play with these shitty graphics?", hidden: true});
 		createAchievement('ur_bad', {name: "What a Funkin' Disaster!", description: "Complete a Song with a rating lower than 20%"});
 		createAchievement('ur_good', {name: "Perfectionist", description: "Complete a Song with a rating of 100%"});
-		createAchievement('taunt_master', {name: "Taunt Master", description: "Taunt 100 times or more in a song and complete it with less than 10 misses"});
+	createAchievement('taunt_master', {name: "Taunt Master", description: "Taunt 100 times or more in a song\nand complete it with less than 10 misses"});
 		createAchievement('friendship_v2', {name: "What is this doing here?", description: "Find and complete the song Friendship v2"});
 
 		//dont delete this thing below
