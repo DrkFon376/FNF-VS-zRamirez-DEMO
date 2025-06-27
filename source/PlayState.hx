@@ -3618,7 +3618,7 @@ class PlayState extends MusicBeatState
 		seenCutscene = false;
 
 		#if ACHIEVEMENTS_ALLOWED
-		checkForAchievement([WeekData.getWeekFileName() + '_nomiss', 'zweek_beat', 'bb_fucked', 'dweek_beat', 'gopico_yeah', 'taunt_master', 'friendship_v2', 'ur_bad', 'ur_good', 'hype', 'two_keys', 'toastie' #if BASE_GAME_FILES, 'debugger' #end]);
+		checkForAchievement([WeekData.getWeekFileName() + '_nomiss', 'bb_ara', 'zweek_beat', 'bb_fucked', 'dweek_beat', 'gopico_yeah', 'taunt_master', 'friendship_v2', 'ur_bad', 'ur_good', 'hype', 'two_keys', 'toastie' #if BASE_GAME_FILES, 'debugger' #end]);
 		#end
 		if(callOnLuas('onEndSong', [], false) != FunkinLua.Function_Stop && !transitioning) {
 			if (SONG.validScore)
@@ -5058,8 +5058,6 @@ class PlayState extends MusicBeatState
 	#if ACHIEVEMENTS_ALLOWED
 	private function checkForAchievement(achievesToCheck:Array<String> = null):String
 	{
-		if(chartingMode) return null;
-
 		var usedPractice:Bool = (ClientPrefs.getGameplaySetting('practice', false) || ClientPrefs.getGameplaySetting('botplay', false));
 		for (i in 0...achievesToCheck.length) {
 			var achievementName:String = achievesToCheck[i];
@@ -5075,39 +5073,43 @@ class PlayState extends MusicBeatState
 				switch(achievementName)
 				{
 					case 'zweek_beat':
-						if(WeekData.getWeekFileName().toLowerCase() == 'weekz' && isStoryMode && storyPlaylist.length <= 1 && !usedPractice) {
+						if(WeekData.getWeekFileName().toLowerCase() == 'weekz' && isStoryMode && storyPlaylist.length <= 1 && !usedPractice && !chartingMode) {
 							unlock = true;
 						}
 					case 'bb_fucked':
-						if(songName == 'bad-battle' && !usedPractice && storyDifficulty==2) {
+						if(songName == 'bad-battle' && !usedPractice && storyDifficulty==2 && !chartingMode) {
+							unlock = true;
+						}
+					case 'bb_ara':
+						if(Paths.formatToSongPath(SONG.song) == 'bad-battle-ara' && !usedPractice) {
 							unlock = true;
 						}
 					case 'dweek_beat':
-						if(songName == 'override' && !usedPractice) {
+						if(songName == 'override' && !usedPractice && !chartingMode) {
 							unlock = true;
 						}
 					case 'gopico_yeah':
-						if(songName == 'bad-battle-pico' && !usedPractice) {
+						if(songName == 'bad-battle-pico' && !usedPractice && !chartingMode) {
 							unlock = true;
 						}
 					case 'ur_bad':
-						if(ratingPercent < 0.2 && !practiceMode) {
+						if(ratingPercent < 0.2 && !practiceMode && !chartingMode) {
 							unlock = true;
 						}
 					case 'ur_good':
-						if(ratingPercent >= 1 && !usedPractice) {
+						if(ratingPercent >= 1 && !usedPractice && !chartingMode) {
 							unlock = true;
 						}
 					case 'taunt_master':
-						if(!usedPractice && tauntCounter >= 100 && songMisses < 10) {
+						if(!usedPractice && tauntCounter >= 100 && songMisses < 10 && !chartingMode) {
 							unlock = true;
 						}
 					case 'friendship_v2':
-						if(Paths.formatToSongPath(SONG.song) == 'friendship-v2' && !usedPractice) {
+						if(Paths.formatToSongPath(SONG.song) == 'friendship-v2' && !usedPractice && !chartingMode) {
 							unlock = true;
 						}
 					case 'toastie':
-						if(ClientPrefs.framerate <= 60 && !ClientPrefs.shaders && ClientPrefs.lowQuality && !ClientPrefs.globalAntialiasing) {
+						if(ClientPrefs.framerate <= 60 && !ClientPrefs.shaders && ClientPrefs.lowQuality && !ClientPrefs.globalAntialiasing && !chartingMode) {
 							unlock = true;
 						}
 					/*case 'roadkill_enthusiast':

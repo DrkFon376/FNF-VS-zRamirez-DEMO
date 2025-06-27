@@ -43,6 +43,7 @@ class Achievements {
 	public static function init()
 	{
 		createAchievement('friday_night_play', {name: "Freaky on a Friday Night", description: "Play on a Friday... Night.", hidden: true});
+		createAchievement('bb_ara', {name: "You found me!~ :D", description: "Find and Complete Bad Battle Ara MIX", hidden: true});
 		createAchievement('zweek_beat', {name: "It's a Funkin time..", description: "Complete Week Z on Hard or Harder"});
 		createAchievement('bb_fucked', {name: "Get Ready to final match...", description: "Complete Bad Battle on Fucked Difficulty"});
 		createAchievement('dweek_beat', {name: "I'll see you here soon.", description: "Beat Override Song"});

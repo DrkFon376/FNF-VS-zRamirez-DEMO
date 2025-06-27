@@ -36,7 +36,7 @@ class CoverSprite extends FlxSprite
 
   public function initAnimations(i:Int, hcolor:String)
   {
-    this.animation.addByPrefix(Std.string(i), 'holdCoverStart$hcolor', 24, true); //it not works for now
+    this.animation.addByPrefix(Std.string(i), 'holdCoverStart$hcolor', 24, true); //it don't works for now
     this.animation.addByPrefix(Std.string(i), 'holdCover$hcolor', 24, true);
     this.animation.addByPrefix(Std.string(i) + 'p', 'holdCoverEnd$hcolor', 24, false);
   }
