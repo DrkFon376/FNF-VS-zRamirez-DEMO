@@ -956,6 +956,7 @@ class PlayState extends MusicBeatState
 		timeTxt.alpha = 0;
 		timeTxt.borderSize = 2;
 		timeTxt.visible = showTime;
+		timeTxt.antialiasing = ClientPrefs.globalAntialiasing;
 		if(ClientPrefs.downScroll) timeTxt.y = FlxG.height - 44;
 
 		if(ClientPrefs.timeBarType == 'Song Name')
@@ -1098,6 +1099,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.setFormat(Paths.font("PhantomMuff Full Letters 1.1.5.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
+		scoreTxt.antialiasing = ClientPrefs.globalAntialiasing;
 		scoreTxt.visible = (!ClientPrefs.hideHud && !visualsOnlyMode);
 		add(scoreTxt);
 
@@ -1105,6 +1107,7 @@ class PlayState extends MusicBeatState
 		botplayTxt.setFormat(Paths.font("PhantomMuff Full Letters 1.1.5.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.25;
+		botplayTxt.antialiasing = ClientPrefs.globalAntialiasing;
 		botplayTxt.visible = (cpuControlled && !visualsOnlyMode);
 		add(botplayTxt);
 		if(ClientPrefs.downScroll) {
