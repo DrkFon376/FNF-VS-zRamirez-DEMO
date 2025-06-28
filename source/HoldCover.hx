@@ -213,10 +213,18 @@ class HoldCover extends FlxTypedSpriteGroup<CoverSprite>
   {
     if (enabled && PlayState.instance != null && !PlayState.instance.inCutscene)
     {
+      var vanillaOffset:Float = 3;
       var game:PlayState = PlayState.instance;
       if (game == null) return 110;
       else
       {
+        if (ClientPrefs.noteSkin == 'Vanilla')
+        {
+          if (info == "x") return game.strumLineNotes.members[isPlayer ? note + 4 : note].x+vanillaOffset;
+          else if (info == "y") return game.strumLineNotes.members[isPlayer ? note + 4 : note].y;
+          return 0;
+        }
+        else
         if (info == "x") return game.strumLineNotes.members[isPlayer ? note + 4 : note].x;
         else if (info == "y") return game.strumLineNotes.members[isPlayer ? note + 4 : note].y;
         return 0;
