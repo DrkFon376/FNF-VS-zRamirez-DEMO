@@ -4050,29 +4050,6 @@ class PlayState extends MusicBeatState
 				Conductor.songPosition = lastTime;
 			}
 
-			/*if (playerHoldCovers.enabled && playerHoldCovers != null)
-			{
-				var foundSustainNote:Note = null;
-			
-				notes.forEachAlive(function(note:Note)
-				{
-					if (note.noteData == key && note.mustPress && note.isSustainNote && !note.wasGoodHit && note.canBeHit)
-					{
-						foundSustainNote = note;
-					}
-				});
-			
-				 if (foundSustainNote != null)
-				{
-					var member = playerHoldCovers.grabMember(key);
-					if (member != null)
-					{
-						member.revive();
-						member.playStart();
-					}
-				}
-			}*/
-
 			var spr:StrumNote = playerStrums.members[key];
 			if(strumsBlocked[key] != true && spr != null && spr.animation.curAnim.name != 'confirm')
 			{
