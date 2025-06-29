@@ -47,6 +47,12 @@ class DialogueEditorState extends MusicBeatState
 	var dialogueFile:DialogueFile = null;
 
 	override function create() {
+
+		if (ClientPrefs.pauseMusic != 'None') 
+		{
+			FlxG.sound.playMusic(Paths.music(ClientPrefs.pauseMusic == 'Breakfast' ? "breakfast-pixel" : (ClientPrefs.pauseMusic == 'zRamírez' ? "ramirez-week-pause" : ClientPrefs.pauseMusic == 'Tea Time' ? "tea-time" : ClientPrefs.pauseMusic)), 0.5);
+		}
+		
 		persistentUpdate = persistentDraw = true;
 		FlxG.camera.bgColor = FlxColor.fromHSL(0, 0, 0.5);
 

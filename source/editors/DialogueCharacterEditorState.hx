@@ -75,6 +75,12 @@ class DialogueCharacterEditorState extends MusicBeatState
 	var curAnim:Int = 0;
 
 	override function create() {
+
+		if (ClientPrefs.pauseMusic != 'None') 
+		{
+			FlxG.sound.playMusic(Paths.music(ClientPrefs.pauseMusic == 'Breakfast' ? "breakfast-pixel" : (ClientPrefs.pauseMusic == 'zRamírez' ? "ramirez-week-pause" : ClientPrefs.pauseMusic == 'Tea Time' ? "tea-time" : ClientPrefs.pauseMusic)), 0.5);
+		}
+		
 		persistentUpdate = persistentDraw = true;
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();

@@ -40,6 +40,13 @@ class MenuCharacterEditorState extends MusicBeatState
 	var defaultCharacters:Array<String> = ['dad', 'bf', 'gf'];
 
 	override function create() {
+
+		if (ClientPrefs.pauseMusic != 'None') 
+		{
+			FlxG.sound.playMusic(Paths.music(ClientPrefs.pauseMusic == 'Breakfast' ? "breakfast-pixel" : (ClientPrefs.pauseMusic == 'zRamírez' ? "ramirez-week-pause" : ClientPrefs.pauseMusic == 'Tea Time' ? "tea-time" : ClientPrefs.pauseMusic)), 0.5);
+			trace('Now Playing:'+ ClientPrefs.pauseMusic);
+		}
+
 		characterFile = {
 			image: 'Menu_Dad',
 			scale: 1,

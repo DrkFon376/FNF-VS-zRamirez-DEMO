@@ -55,6 +55,13 @@ class WeekEditorState extends MusicBeatState
 	}
 
 	override function create() {
+		
+		if (ClientPrefs.pauseMusic != 'None') 
+		{
+			FlxG.sound.playMusic(Paths.music(ClientPrefs.pauseMusic == 'Breakfast' ? "breakfast-pixel" : (ClientPrefs.pauseMusic == 'zRamírez' ? "ramirez-week-pause" : ClientPrefs.pauseMusic == 'Tea Time' ? "tea-time" : ClientPrefs.pauseMusic)), 0.5);
+			trace('Now Playing:'+ ClientPrefs.pauseMusic);
+		}
+		
 		txtWeekTitle = new FlxText(FlxG.width * 0.7, 10, 0, "", 32);
 		txtWeekTitle.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, RIGHT);
 		txtWeekTitle.alpha = 0.7;
