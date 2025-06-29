@@ -736,14 +736,6 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(new FlxText(stepperBPM.x, stepperBPM.y - 40, 0, 'Song BPM:'));
 		tab_group_song.add(new FlxText(stepperBPM.x + 100, stepperBPM.y - 15, 0, 'Song Offset:'));
 		tab_group_song.add(new FlxText(stepperSpeed.x, stepperSpeed.y - 40, 0, 'Song Speed:'));
-		tab_group_song.add(new FlxText(player2DropDown.x, player2DropDown.y - 15, 0, 'Opponent:'));
-		tab_group_song.add(new FlxText(gfVersionDropDown.x, gfVersionDropDown.y - 15, 0, 'Girlfriend:'));
-		tab_group_song.add(new FlxText(player1DropDown.x, player1DropDown.y - 15, 0, 'Boyfriend:'));
-		tab_group_song.add(new FlxText(stageDropDown.x, stageDropDown.y - 15, 0, 'Stage:'));
-		tab_group_song.add(player2DropDown);
-		tab_group_song.add(gfVersionDropDown);
-		tab_group_song.add(player1DropDown);
-		tab_group_song.add(stageDropDown);
 		tab_group_song.add(vocPre);
 		tab_group_song.add(vocSuf);
 		tab_group_song.add(instPre);
@@ -752,6 +744,14 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(new FlxText(vocSuf.x, vocSuf.y - 15, 0, "Vocal Suffix:"));
 		tab_group_song.add(new FlxText(instPre.x, instPre.y - 15, 0, "Instrumental Prefix:"));
 		tab_group_song.add(new FlxText(instSuf.x, instSuf.y - 15, 0, "Instrumental Suffix:"));
+		tab_group_song.add(new FlxText(player2DropDown.x, player2DropDown.y - 15, 0, 'Opponent:'));
+		tab_group_song.add(new FlxText(gfVersionDropDown.x, gfVersionDropDown.y - 15, 0, 'Girlfriend:'));
+		tab_group_song.add(new FlxText(player1DropDown.x, player1DropDown.y - 15, 0, 'Boyfriend:'));
+		tab_group_song.add(new FlxText(stageDropDown.x, stageDropDown.y - 15, 0, 'Stage:'));
+		tab_group_song.add(player2DropDown);
+		tab_group_song.add(gfVersionDropDown);
+		tab_group_song.add(player1DropDown);
+		tab_group_song.add(stageDropDown);
 
 		stepperBPM.y -= 25;
 		stepperSpeed.y -= 25;

@@ -844,6 +844,7 @@ class EditorPlayState extends MusicBeatState
 			pixelShitPart2 = '-pixel';
 		}
 
+		if (!ClientPrefs.disablePopUp){
 		rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2));
 		rating.screenCenter();
 		rating.x = coolText.x - 40;
@@ -952,7 +953,8 @@ class EditorPlayState extends MusicBeatState
 				rating.destroy();
 			},
 			startDelay: Conductor.crochet * 0.001
-		});
+		});}
+		
 	}
 
 	private function generateStaticArrows(player:Int):Void
