@@ -278,7 +278,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		if(ClientPrefs.pauseMusic == 'None')
 			FlxG.sound.music.volume = 0;
 		else
-			FlxG.sound.playMusic(Paths.music(Paths.formatToSongPath(ClientPrefs.pauseMusic == 'Breakfast' ? "breakfast-pixel" : (ClientPrefs.pauseMusic == 'zRamírez' ? "ramirez-week-pause" : ClientPrefs.pauseMusic))));
+			FlxG.sound.playMusic(Paths.music(ClientPrefs.getPauseMusic()));
 
 		changedMusic = true;
 	}

@@ -378,6 +378,20 @@ class ClientPrefs {
 		FlxG.sound.volumeDownKeys = TitleState.volumeDownKeys;
 		FlxG.sound.volumeUpKeys = TitleState.volumeUpKeys;
 	}
+	public static function getPauseMusic():String
+	{
+		var name:String = ClientPrefs.pauseMusic;
+		switch (name.toLowerCase())
+		{
+			case 'breakfest':
+				name = 'breakfast-pixel';
+			case 'zramírez':
+				name = 'ramirez-week-pause';
+			case 'tea time':
+				name = 'tea-time';
+		}
+		return Paths.formatToSongPath(name);
+	}
 	public static function copyKey(arrayToCopy:Array<FlxKey>):Array<FlxKey> {
 		var copiedArray:Array<FlxKey> = arrayToCopy.copy();
 		var i:Int = 0;
