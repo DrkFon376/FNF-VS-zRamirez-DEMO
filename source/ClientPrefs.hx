@@ -383,7 +383,7 @@ class ClientPrefs {
 		var name:String = ClientPrefs.pauseMusic;
 		switch (name.toLowerCase())
 		{
-			case 'breakfest':
+			case 'breakfast':
 				name = 'breakfast-pixel';
 			case 'zramírez':
 				name = 'ramirez-week-pause';
