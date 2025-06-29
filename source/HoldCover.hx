@@ -15,7 +15,6 @@ class CoverSprite extends FlxSprite
 {
   public var boom:Bool = false;
   public var isPlaying:Bool = false;
-  public var holdSucceeded:Bool = true;
   public var activatedSprite:Bool = true;
   public var useRGBShader:Bool = false;
 
@@ -37,7 +36,7 @@ class CoverSprite extends FlxSprite
 
   public function initAnimations(i:Int, hcolor:String)
   {
-    this.animation.addByPrefix(Std.string(i) + 's', 'holdCoverStart$hcolor', 24, false); //it don't works for now
+    this.animation.addByPrefix(Std.string(i) + 's', 'holdCoverStart$hcolor', 24, false);
     this.animation.addByPrefix(Std.string(i), 'holdCover$hcolor', 24, true);
     this.animation.addByPrefix(Std.string(i) + 'p', 'holdCoverEnd$hcolor', 24, false);
   }
@@ -87,7 +86,6 @@ class HoldCover extends FlxTypedSpriteGroup<CoverSprite>
     hold.visible = false;
     hold.activatedSprite = enabled;
     hold.spriteId = '$hcolor-$i';
-    hold.holdSucceeded = true;
     this.add(hold);
   }
 
@@ -111,17 +109,8 @@ class HoldCover extends FlxTypedSpriteGroup<CoverSprite>
           if (isPlayer)
           {
             this.members[data].isPlaying = false;
-
-            if (this.members[data].holdSucceeded)
-            {
-              this.members[data].boom = true;
-              this.members[data].animation.play(Std.string(data) + 'p');
-            }
-            else
-            {
-              this.members[data].boom = false;
-              hideHoldCoverLater(data, 0.075);
-            }
+            this.members[data].boom = true;
+            this.members[data].animation.play(Std.string(data) + 'p');
           }
           else
           {
@@ -131,9 +120,7 @@ class HoldCover extends FlxTypedSpriteGroup<CoverSprite>
           }
         }
         else
-        {
-          this.members[data].holdSucceeded = true;
-          
+        {          
           if (this.members[data].isPlaying == false)
           {
             if (this.members[data].boom == false)
@@ -167,7 +154,6 @@ class HoldCover extends FlxTypedSpriteGroup<CoverSprite>
       this.members[data].boom = false;
       this.members[data].visible = false;
       this.members[data].animation.stop();
-      this.members[data].holdSucceeded = false;
     }
   }
 
@@ -218,14 +204,7 @@ class HoldCover extends FlxTypedSpriteGroup<CoverSprite>
       if (game == null) return 110;
       else
       {
-        if (ClientPrefs.noteSkin == 'Vanilla')
-        {
-          if (info == "x") return game.strumLineNotes.members[isPlayer ? note + 4 : note].x+vanillaOffset;
-          else if (info == "y") return game.strumLineNotes.members[isPlayer ? note + 4 : note].y;
-          return 0;
-        }
-        else
-        if (info == "x") return game.strumLineNotes.members[isPlayer ? note + 4 : note].x;
+        if (info == "x") return game.strumLineNotes.members[isPlayer ? note + 4 : note].x + (ClientPrefs.noteSkin == 'Vanilla' ? vanillaOffset : 0);
         else if (info == "y") return game.strumLineNotes.members[isPlayer ? note + 4 : note].y;
         return 0;
       }
