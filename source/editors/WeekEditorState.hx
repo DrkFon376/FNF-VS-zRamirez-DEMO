@@ -58,7 +58,7 @@ class WeekEditorState extends MusicBeatState
 		
 		if (ClientPrefs.pauseMusic != 'None') 
 		{
-			FlxG.sound.playMusic(Paths.music(ClientPrefs.pauseMusic == 'Breakfast' ? "breakfast-pixel" : (ClientPrefs.pauseMusic == 'zRamírez' ? "ramirez-week-pause" : ClientPrefs.pauseMusic == 'Tea Time' ? "tea-time" : ClientPrefs.pauseMusic)), 0.5);
+			FlxG.sound.playMusic(Paths.music(Paths.formatToSongPath(ClientPrefs.pauseMusic == 'Breakfast' ? "breakfast-pixel" : (ClientPrefs.pauseMusic == 'zRamírez' ? "ramirez-week-pause" : ClientPrefs.pauseMusic == 'Tea Time' ? "tea-time" : ClientPrefs.pauseMusic))), 0.5);
 			trace('Now Playing:'+ ClientPrefs.pauseMusic);
 		}
 		
