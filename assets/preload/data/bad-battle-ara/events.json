@@ -83,6 +83,41 @@
 						"Camera_Tween_Zoom",
 						"1.05",
 						""
+					],
+					[
+						"Bad Battle Countdown",
+						"3",
+						""
+					]
+				]
+			],
+			[
+				42134.8314606742,
+				[
+					[
+						"Bad Battle Countdown",
+						"2",
+						""
+					]
+				]
+			],
+			[
+				42471.9101123596,
+				[
+					[
+						"Bad Battle Countdown",
+						"1",
+						""
+					]
+				]
+			],
+			[
+				42808.9887640449,
+				[
+					[
+						"Bad Battle Countdown",
+						"go",
+						""
 					]
 				]
 			],
@@ -102,6 +137,11 @@
 					[
 						"PantallaYesHud",
 						"adios",
+						""
+					],
+					[
+						"Invert Scroll Direction",
+						"",
 						""
 					]
 				]
@@ -133,6 +173,11 @@
 						"Camera Follow Pos",
 						"",
 						""
+					],
+					[
+						"Invert Scroll Direction",
+						"",
+						""
 					]
 				]
 			],
@@ -152,6 +197,41 @@
 					[
 						"Camera_Tween_Zoom",
 						"1.05",
+						""
+					],
+					[
+						"Bad Battle Countdown",
+						"3",
+						""
+					]
+				]
+			],
+			[
+				63707.8651685393,
+				[
+					[
+						"Bad Battle Countdown",
+						"2",
+						""
+					]
+				]
+			],
+			[
+				64044.9438202247,
+				[
+					[
+						"Bad Battle Countdown",
+						"1",
+						""
+					]
+				]
+			],
+			[
+				64382.0224719101,
+				[
+					[
+						"Bad Battle Countdown",
+						"go",
 						""
 					]
 				]
@@ -173,6 +253,11 @@
 						"Camera Follow Pos",
 						"1045",
 						"850"
+					],
+					[
+						"Invert Scroll Direction",
+						"",
+						""
 					]
 				]
 			],
@@ -201,6 +286,11 @@
 					],
 					[
 						"Camera Follow Pos",
+						"",
+						""
+					],
+					[
+						"Invert Scroll Direction",
 						"",
 						""
 					]
@@ -283,6 +373,41 @@
 						"Camera_Tween_Zoom",
 						"1.05",
 						""
+					],
+					[
+						"Bad Battle Countdown",
+						"3",
+						""
+					]
+				]
+			],
+			[
+				120059.652706844,
+				[
+					[
+						"Bad Battle Countdown",
+						"2",
+						""
+					]
+				]
+			],
+			[
+				120396.731358529,
+				[
+					[
+						"Bad Battle Countdown",
+						"1",
+						""
+					]
+				]
+			],
+			[
+				120733.810010215,
+				[
+					[
+						"Bad Battle Countdown",
+						"go",
+						""
 					]
 				]
 			],
@@ -303,6 +428,11 @@
 						"Camera Follow Pos",
 						"1045",
 						"850"
+					],
+					[
+						"Invert Scroll Direction",
+						"",
+						""
 					]
 				]
 			],
@@ -333,6 +463,11 @@
 						"Camera Follow Pos",
 						"",
 						""
+					],
+					[
+						"Invert Scroll Direction",
+						"",
+						""
 					]
 				]
 			],
@@ -352,6 +487,41 @@
 					[
 						"Camera_Tween_Zoom",
 						"1.05",
+						""
+					],
+					[
+						"Bad Battle Countdown",
+						"3",
+						""
+					]
+				]
+			],
+			[
+				141632.686414709,
+				[
+					[
+						"Bad Battle Countdown",
+						"2",
+						""
+					]
+				]
+			],
+			[
+				141969.765066395,
+				[
+					[
+						"Bad Battle Countdown",
+						"1",
+						""
+					]
+				]
+			],
+			[
+				142306.84371808,
+				[
+					[
+						"Bad Battle Countdown",
+						"go",
 						""
 					]
 				]
@@ -373,6 +543,11 @@
 						"Camera Follow Pos",
 						"1045",
 						"850"
+					],
+					[
+						"Invert Scroll Direction",
+						"",
+						""
 					]
 				]
 			],
@@ -408,6 +583,11 @@
 						"Camera Follow Pos",
 						"",
 						""
+					],
+					[
+						"Invert Scroll Direction",
+						"",
+						""
 					]
 				]
 			],
@@ -428,6 +608,41 @@
 						"Flash White",
 						"",
 						""
+					],
+					[
+						"Invert Scroll Direction",
+						"",
+						""
+					]
+				]
+			],
+			[
+				165565.270684372,
+				[
+					[
+						"Invert Scroll Direction",
+						"",
+						""
+					]
+				]
+			],
+			[
+				166913.585291113,
+				[
+					[
+						"Invert Scroll Direction",
+						"",
+						""
+					]
+				]
+			],
+			[
+				168261.899897855,
+				[
+					[
+						"Invert Scroll Direction",
+						"",
+						""
 					]
 				]
 			],
@@ -438,6 +653,41 @@
 						"Camera Follow Pos",
 						"1045",
 						"860"
+					],
+					[
+						"Invert Scroll Direction",
+						"",
+						""
+					]
+				]
+			],
+			[
+				170958.529111338,
+				[
+					[
+						"Invert Scroll Direction",
+						"",
+						""
+					]
+				]
+			],
+			[
+				172306.84371808,
+				[
+					[
+						"Invert Scroll Direction",
+						"",
+						""
+					]
+				]
+			],
+			[
+				173655.158324821,
+				[
+					[
+						"Invert Scroll Direction",
+						"",
+						""
 					]
 				]
 			],
