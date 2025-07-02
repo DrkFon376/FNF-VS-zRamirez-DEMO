@@ -138,6 +138,11 @@
 						"PantallaYesHud",
 						"adios",
 						""
+					],
+					[
+						"Camera Twist",
+						"0.1",
+						"0.6"
 					]
 				]
 			],
@@ -166,6 +171,11 @@
 					],
 					[
 						"Camera Follow Pos",
+						"",
+						""
+					],
+					[
+						"Camera Twist",
 						"",
 						""
 					]
@@ -243,6 +253,11 @@
 						"Camera Follow Pos",
 						"1045",
 						"850"
+					],
+					[
+						"Camera Twist",
+						"0.1",
+						"0.6"
 					]
 				]
 			],
@@ -271,6 +286,11 @@
 					],
 					[
 						"Camera Follow Pos",
+						"",
+						""
+					],
+					[
+						"Camera Twist",
 						"",
 						""
 					]
@@ -408,6 +428,11 @@
 						"Camera Follow Pos",
 						"1045",
 						"850"
+					],
+					[
+						"Camera Twist",
+						"0.1",
+						"0.6"
 					]
 				]
 			],
@@ -436,6 +461,11 @@
 					],
 					[
 						"Camera Follow Pos",
+						"",
+						""
+					],
+					[
+						"Camera Twist",
 						"",
 						""
 					]
@@ -513,6 +543,11 @@
 						"Camera Follow Pos",
 						"1045",
 						"850"
+					],
+					[
+						"Camera Twist",
+						"0.1",
+						"0.6"
 					]
 				]
 			],
@@ -531,6 +566,11 @@
 				[
 					[
 						"Flash White",
+						"",
+						""
+					],
+					[
+						"Camera Twist",
 						"",
 						""
 					]

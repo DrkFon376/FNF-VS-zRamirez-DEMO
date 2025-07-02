@@ -1,7 +1,7 @@
---Por Slushi, para el mod Vs zRamirez. Testeado en Slushi Engine-- 
---Modificado por DrkFon376
+--Made by Slushi, from Vs zRamirez Mod. Tested on Slushi Engine-- 
+--Modified by DrkFon376
 
------VARIABLES-----
+-----VARS-----
 local move = false
 local moveYOpponent = false
 local moveYPlayer = false

@@ -37,12 +37,42 @@
 				]
 			],
 			[
+				5393.25842696629,
+				[
+					[
+						"Set Character Idle Speed",
+						"gf",
+						"1"
+					]
+				]
+			],
+			[
+				8089.88764044944,
+				[
+					[
+						"Set Character Idle Speed",
+						"gf",
+						"0.5"
+					]
+				]
+			],
+			[
 				9438.20224719101,
 				[
 					[
 						"Bad Battle Countdown",
 						"3",
 						""
+					]
+				]
+			],
+			[
+				9438.20224719101,
+				[
+					[
+						"Set Character Idle Speed",
+						"gf",
+						"1"
 					]
 				]
 			],
@@ -93,6 +123,16 @@
 						"Flash Camera",
 						"0.75",
 						""
+					],
+					[
+						"Set Character Idle Speed",
+						"gf",
+						"2"
+					],
+					[
+						"Camera Twist",
+						"0.1",
+						"0.6"
 					]
 				]
 			],
@@ -156,6 +196,11 @@
 					],
 					[
 						"Camera Follow Pos",
+						"",
+						""
+					],
+					[
+						"Camera Twist",
 						"",
 						""
 					]
@@ -273,6 +318,11 @@
 						"PantallaYesHud",
 						"adios",
 						""
+					],
+					[
+						"Camera Twist",
+						"0.1",
+						"0.6"
 					]
 				]
 			],
@@ -336,6 +386,11 @@
 					],
 					[
 						"Camera Follow Pos",
+						"",
+						""
+					],
+					[
+						"Camera Twist",
 						"",
 						""
 					]
@@ -523,6 +578,11 @@
 						"PantallaYesHud",
 						"adios",
 						""
+					],
+					[
+						"Camera Twist",
+						"0.1",
+						"0.6"
 					]
 				]
 			],
@@ -586,6 +646,11 @@
 					],
 					[
 						"Camera Follow Pos",
+						"",
+						""
+					],
+					[
+						"Camera Twist",
 						"",
 						""
 					]
@@ -683,6 +748,11 @@
 						"PantallaYesHud",
 						"adios",
 						""
+					],
+					[
+						"Camera Twist",
+						"0.1",
+						"0.6"
 					]
 				]
 			],
@@ -748,6 +818,11 @@
 						"Camera Follow Pos",
 						"",
 						""
+					],
+					[
+						"Camera Twist",
+						"",
+						""
 					]
 				]
 			],
@@ -773,6 +848,41 @@
 						"Camera_Tween_Zoom",
 						"0.83",
 						""
+					],
+					[
+						"Invert Scroll Direction",
+						"",
+						""
+					]
+				]
+			],
+			[
+				208647.84603661,
+				[
+					[
+						"Invert Scroll Direction",
+						"",
+						""
+					]
+				]
+			],
+			[
+				209996.160643351,
+				[
+					[
+						"Invert Scroll Direction",
+						"",
+						""
+					]
+				]
+			],
+			[
+				211344.475250093,
+				[
+					[
+						"Invert Scroll Direction",
+						"",
+						""
 					]
 				]
 			],
@@ -793,6 +903,21 @@
 						"Flash Camera",
 						"0.75",
 						""
+					],
+					[
+						"Invert Scroll Direction",
+						"",
+						""
+					]
+				]
+			],
+			[
+				214041.104463576,
+				[
+					[
+						"Invert Scroll Direction",
+						"",
+						""
 					]
 				]
 			],
@@ -802,6 +927,11 @@
 					[
 						"Flash Camera",
 						"0.5",
+						""
+					],
+					[
+						"Invert Scroll Direction",
+						"",
 						""
 					]
 				]
@@ -822,6 +952,11 @@
 					[
 						"Flash Camera",
 						"0.3",
+						""
+					],
+					[
+						"Invert Scroll Direction",
+						"",
 						""
 					]
 				]

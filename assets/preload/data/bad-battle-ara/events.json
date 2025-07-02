@@ -140,6 +140,11 @@
 						""
 					],
 					[
+						"Camera Twist",
+						"0.1",
+						"0.6"
+					],
+					[
 						"Invert Scroll Direction",
 						"",
 						""
@@ -171,6 +176,11 @@
 					],
 					[
 						"Camera Follow Pos",
+						"",
+						""
+					],
+					[
+						"Camera Twist",
 						"",
 						""
 					],
@@ -255,6 +265,11 @@
 						"850"
 					],
 					[
+						"Camera Twist",
+						"0.1",
+						"0.6"
+					],
+					[
 						"Invert Scroll Direction",
 						"",
 						""
@@ -286,6 +301,11 @@
 					],
 					[
 						"Camera Follow Pos",
+						"",
+						""
+					],
+					[
+						"Camera Twist",
 						"",
 						""
 					],
@@ -430,6 +450,11 @@
 						"850"
 					],
 					[
+						"Camera Twist",
+						"0.1",
+						"0.6"
+					],
+					[
 						"Invert Scroll Direction",
 						"",
 						""
@@ -461,6 +486,11 @@
 					],
 					[
 						"Camera Follow Pos",
+						"",
+						""
+					],
+					[
+						"Camera Twist",
 						"",
 						""
 					],
@@ -545,6 +575,11 @@
 						"850"
 					],
 					[
+						"Camera Twist",
+						"0.1",
+						"0.6"
+					],
+					[
 						"Invert Scroll Direction",
 						"",
 						""
@@ -566,6 +601,11 @@
 				[
 					[
 						"Flash White",
+						"",
+						""
+					],
+					[
+						"Camera Twist",
 						"",
 						""
 					]
@@ -605,12 +645,12 @@
 				164216.95607763,
 				[
 					[
-						"Flash White",
+						"Invert Scroll Direction",
 						"",
 						""
 					],
 					[
-						"Invert Scroll Direction",
+						"Flash White",
 						"",
 						""
 					]
