@@ -221,6 +221,8 @@ class PlayState extends MusicBeatState
 	private var timeBarBG:AttachedSprite;
 	public var timeBar:FlxBar;
 
+	var originalScroll:Bool;
+
 	public var ratingsData:Array<Rating> = [];
 	public var sicks:Int = 0;
 	public var goods:Int = 0;
@@ -912,6 +914,8 @@ class PlayState extends MusicBeatState
 			if(gf != null)
 				gf.visible = false;
 		}
+
+		originalScroll = ClientPrefs.downScroll;
 
 		if (gf != null /*&& !isGfIdleByBPM*/)
 			gfIdleInt = recalculateIdleInt(SONG.bpm);
@@ -3145,7 +3149,55 @@ class PlayState extends MusicBeatState
 
 					cameraFromString(cameraTarget).flash(colorNum, duration, null, true);
 				}
-					
+
+			case 'Invert Scroll Direction':
+				originalScroll = !originalScroll;
+				var isDownscroll = originalScroll;
+
+				healthBarBG.y = isDownscroll ? 0.11 * FlxG.height : 0.89 * FlxG.height;
+				healthBar.y = healthBarBG.y + 4;
+				iconP1.y = healthBar.y - 75;
+    			iconP2.y = healthBar.y - 75;
+				scoreTxt.y = healthBarBG.y + 36;
+				timeTxt.y = isDownscroll ? FlxG.height - 44 : 19;
+				timeBarBG.y = timeTxt.y + (timeTxt.height / 4);
+				timeBar.y = timeBarBG.y + 4;
+				botplayTxt.y = isDownscroll ? timeBarBG.y - 78 : timeBarBG.y + 55;
+
+				var strumY:Float = isDownscroll ? (FlxG.height - 150) : 50;
+
+				for (i in 0...opponentStrums.length)
+    			{
+    			    var strum = opponentStrums.members[i];
+     				strum.y = strumY;
+        			strum.downScroll = isDownscroll;
+    			}
+
+				for (i in 0...playerStrums.length)
+    			{
+    			    var strum = playerStrums.members[i];
+    			    strum.y = strumY;
+    			    strum.downScroll = isDownscroll;
+    			}
+
+				for (note in notes)
+    			{
+    			    if (note.isSustainNote && note.prevNote != null)
+    			    {
+    			        note.flipY = isDownscroll;
+    			    }
+    			}
+			
+    			for (note in unspawnNotes)
+    			{
+    			    if (note.isSustainNote && note.prevNote != null)
+    			    {
+    			        note.flipY = isDownscroll;
+    			    }
+    			}
+
+				callOnLuas('clearOriginalYPositions', []);
+
 			case 'Move Camera When Singing':
 				var value:Float = Std.parseFloat(value2);
 				value1 = value1.toLowerCase().trim();

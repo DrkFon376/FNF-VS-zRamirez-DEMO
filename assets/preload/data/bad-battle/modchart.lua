@@ -212,6 +212,15 @@ function onBeatHit()
     end
 end
 
+function clearOriginalYPositions()
+    for i = 0, 3 do
+        originalYPositionsOpponent[i] = nil
+    end
+    for i = 4, 7 do
+        originalYPositionsPlayer[i] = nil
+    end
+end
+
 function onUpdate()
     local currentBeat = (getSongPosition() / 1000) * (bpm / 60)
     if moveYOpponent == true then
