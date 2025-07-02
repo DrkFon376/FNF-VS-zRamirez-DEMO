@@ -5,198 +5,63 @@
 local move = false
 local moveYOpponent = false
 local moveYPlayer = false
+local originalXPositionsOpponent = {}
+local originalXPositionsPlayer = {}
 local originalYPositionsOpponent = {}
 local originalYPositionsPlayer = {}
 -------------------
+
 -----------------------MODCHART-----------------------
 function onStepHit()
-    if curStep >= 512 and curStep <= 640 then
-        if not middlescroll then
-            noteTweenX('NoteX4', 4, 416, 0.3, 'sineOut')
-            noteTweenX('NoteX5', 5, 528, 0.3, 'sineOut')
-            noteTweenX('NoteX6', 6, 640, 0.3, 'sineOut')
-            noteTweenX('NoteX7', 7, 752, 0.3, 'sineOut')
-            move = true
-            noteTweenX('Noteop1', 2, defaultPlayerStrumX2, 0.3, 'sineOut')
-            noteTweenX('Noteop2', 3, defaultPlayerStrumX3, 0.3, 'sineOut')
-            if getPropertyFromClass("ClientPrefs", "opponentStrums") == true then
-                noteTweenAlpha('alphaNote0', 0, 0.5, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote1', 1, 0.5, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote2', 2, 0.5, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote3', 3, 0.5, 0.3, 'sineIn')
-                if getPropertyFromClass("ClientPrefs", "holdSplashes") == true then
-                    setProperty("opponentHoldCovers.alpha", 0.5)
-                end
-            end
-        end
+    if curStep == 512 then
+        tweenArrowsPosition(middlescroll, false)
+        move = true
         moveYOpponent = true
         moveYPlayer = true
-    end
-    if curStep == 640 then
-        if not middlescroll then
-            noteTweenX('NoteX4', 4, defaultPlayerStrumX0, 0.3, 'sineOut')
-            noteTweenX('NoteX5', 5, defaultPlayerStrumX1, 0.3, 'sineOut')
-            noteTweenX('NoteX6', 6, defaultPlayerStrumX2, 0.3, 'sineOut')
-            noteTweenX('NoteX7', 7, defaultPlayerStrumX3, 0.3, 'sineOut')
-            move = false
-            doTweenX('cam','camHUD', 0, 1, 'linear')
-            noteTweenX('Noteop1', 2, defaultOpponentStrumX2, 0.3, 'sineOut')
-            noteTweenX('Noteop2', 3, defaultOpponentStrumX3, 0.3, 'sineOut')
-            if getPropertyFromClass("ClientPrefs", "opponentStrums") == true then
-                noteTweenAlpha('alphaNote0', 0, 1, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote1', 1, 1, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote2', 2, 1, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote3', 3, 1, 0.3, 'sineIn')
-                if getPropertyFromClass("ClientPrefs", "holdSplashes") == true then
-                    setProperty("opponentHoldCovers.alpha", 1)
-                end
-            end
-        end
+    elseif curStep == 640 then
+        tweenArrowsPosition(middlescroll, true)
+        move = false
+        doTweenX('cam','camHUD', 0, 1, 'linear')
         moveYOpponent = false
         moveYPlayer = false
-    end
-    if curStep >= 768 and curStep <= 896 then
-        if not middlescroll then
-            noteTweenX('NoteX4', 4, 416, 0.3, 'sineOut')
-            noteTweenX('NoteX5', 5, 528, 0.3, 'sineOut')
-            noteTweenX('NoteX6', 6, 640, 0.3, 'sineOut')
-            noteTweenX('NoteX7', 7, 752, 0.3, 'sineOut')
-            move = true
-            noteTweenX('Noteop1', 2, defaultPlayerStrumX2, 0.3, 'sineOut')
-            noteTweenX('Noteop2', 3, defaultPlayerStrumX3, 0.3, 'sineOut')
-            if getPropertyFromClass("ClientPrefs", "opponentStrums") == true then
-                noteTweenAlpha('alphaNote0', 0, 0.5, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote1', 1, 0.5, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote2', 2, 0.5, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote3', 3, 0.5, 0.3, 'sineIn')
-                if getPropertyFromClass("ClientPrefs", "holdSplashes") == true then
-                    setProperty("opponentHoldCovers.alpha", 0.5)
-                end
-            end
-        end
+    elseif curStep == 768 then
+        tweenArrowsPosition(middlescroll, false)
+        move = true
         moveYOpponent = true
         moveYPlayer = true
-    end
-    if curStep == 896 then
-        if not middlescroll then
-            noteTweenX('NoteX4', 4, defaultPlayerStrumX0, 0.3, 'sineOut')
-            noteTweenX('NoteX5', 5, defaultPlayerStrumX1, 0.3, 'sineOut')
-            noteTweenX('NoteX6', 6, defaultPlayerStrumX2, 0.3, 'sineOut')
-            noteTweenX('NoteX7', 7, defaultPlayerStrumX3, 0.3, 'sineOut')
-            move = false
-            doTweenX('cam','camHUD', 0, 1, 'linear')
-            noteTweenX('Noteop1', 2, defaultOpponentStrumX2, 0.3, 'sineOut')
-            noteTweenX('Noteop2', 3, defaultOpponentStrumX3, 0.3, 'sineOut')
-            if getPropertyFromClass("ClientPrefs", "opponentStrums") == true then
-                noteTweenAlpha('alphaNote0', 0, 1, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote1', 1, 1, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote2', 2, 1, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote3', 3, 1, 0.3, 'sineIn')
-                if getPropertyFromClass("ClientPrefs", "holdSplashes") == true then
-                    setProperty("opponentHoldCovers.alpha", 1)
-                end
-            end
-        end
+    elseif curStep == 896 then
+        tweenArrowsPosition(middlescroll, true)
+        move = false
+        doTweenX('cam','camHUD', 0, 1, 'linear')
         moveYOpponent = false
         moveYPlayer = false
-    end
-    if curStep >= 1408 and curStep <= 1536 then
-        if not middlescroll then
-            noteTweenX('NoteX4', 4, 416, 0.3, 'sineOut')
-            noteTweenX('NoteX5', 5, 528, 0.3, 'sineOut')
-            noteTweenX('NoteX6', 6, 640, 0.3, 'sineOut')
-            noteTweenX('NoteX7', 7, 752, 0.3, 'sineOut')
-            move = true
-            noteTweenX('Noteop1', 2, defaultPlayerStrumX2, 0.3, 'sineOut')
-            noteTweenX('Noteop2', 3, defaultPlayerStrumX3, 0.3, 'sineOut')
-            if getPropertyFromClass("ClientPrefs", "opponentStrums") == true then
-                noteTweenAlpha('alphaNote0', 0, 0.5, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote1', 1, 0.5, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote2', 2, 0.5, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote3', 3, 0.5, 0.3, 'sineIn')
-                if getPropertyFromClass("ClientPrefs", "holdSplashes") == true then
-                    setProperty("opponentHoldCovers.alpha", 0.5)
-                end
-            end
-        end
+    elseif curStep == 1408 then
+        tweenArrowsPosition(middlescroll, false)
+        move = true
         moveYOpponent = true
         moveYPlayer = true
-    end
-    if curStep == 1536 then
-        if not middlescroll then
-            noteTweenX('NoteX4', 4, defaultPlayerStrumX0, 0.3, 'sineOut')
-            noteTweenX('NoteX5', 5, defaultPlayerStrumX1, 0.3, 'sineOut')
-            noteTweenX('NoteX6', 6, defaultPlayerStrumX2, 0.3, 'sineOut')
-            noteTweenX('NoteX7', 7, defaultPlayerStrumX3, 0.3, 'sineOut')
-            move = false
-            doTweenX('cam','camHUD', 0, 1, 'linear')
-            noteTweenX('Noteop1', 2, defaultOpponentStrumX2, 0.3, 'sineOut')
-            noteTweenX('Noteop2', 3, defaultOpponentStrumX3, 0.3, 'sineOut')
-            if getPropertyFromClass("ClientPrefs", "opponentStrums") == true then
-                noteTweenAlpha('alphaNote0', 0, 1, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote1', 1, 1, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote2', 2, 1, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote3', 3, 1, 0.3, 'sineIn')
-                if getPropertyFromClass("ClientPrefs", "holdSplashes") == true then
-                    setProperty("opponentHoldCovers.alpha", 1)
-                end
-            end
-        end
+    elseif curStep == 1536 then
+        tweenArrowsPosition(middlescroll, true)
+        move = false
+        doTweenX('cam','camHUD', 0, 1, 'linear')
         moveYOpponent = false
         moveYPlayer = false
-    end
-    if curStep >= 1664 and curStep <= 1792 then
-        if not middlescroll then
-            noteTweenX('NoteX4', 4, 416, 0.3, 'sineOut')
-            noteTweenX('NoteX5', 5, 528, 0.3, 'sineOut')
-            noteTweenX('NoteX6', 6, 640, 0.3, 'sineOut')
-            noteTweenX('NoteX7', 7, 752, 0.3, 'sineOut')
-            move = true
-            noteTweenX('Noteop1', 2, defaultPlayerStrumX2, 0.3, 'sineOut')
-            noteTweenX('Noteop2', 3, defaultPlayerStrumX3, 0.3, 'sineOut')
-            if getPropertyFromClass("ClientPrefs", "opponentStrums") == true then
-                noteTweenAlpha('alphaNote0', 0, 0.5, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote1', 1, 0.5, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote2', 2, 0.5, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote3', 3, 0.5, 0.3, 'sineIn')
-                if getPropertyFromClass("ClientPrefs", "holdSplashes") == true then
-                    setProperty("opponentHoldCovers.alpha", 0.5)
-                end
-            end
-        end
+    elseif curStep == 1664 then
+        tweenArrowsPosition(middlescroll, false)
+        move = true
         moveYOpponent = true
         moveYPlayer = true
-    end
-    if curStep == 1792 then
-        if not middlescroll then
-            noteTweenX('NoteX4', 4, defaultPlayerStrumX0, 0.3, 'sineOut')
-            noteTweenX('NoteX5', 5, defaultPlayerStrumX1, 0.3, 'sineOut')
-            noteTweenX('NoteX6', 6, defaultPlayerStrumX2, 0.3, 'sineOut')
-            noteTweenX('NoteX7', 7, defaultPlayerStrumX3, 0.3, 'sineOut')
-            move = false
-            doTweenX('cam','camHUD', 0, 1, 'linear')
-            noteTweenX('Noteop1', 2, defaultOpponentStrumX2, 0.3, 'sineOut')
-            noteTweenX('Noteop2', 3, defaultOpponentStrumX3, 0.3, 'sineOut')
-            if getPropertyFromClass("ClientPrefs", "opponentStrums") == true then
-                noteTweenAlpha('alphaNote0', 0, 1, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote1', 1, 1, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote2', 2, 1, 0.3, 'sineIn')
-                noteTweenAlpha('alphaNote3', 3, 1, 0.3, 'sineIn')
-                if getPropertyFromClass("ClientPrefs", "holdSplashes") == true then
-                    setProperty("opponentHoldCovers.alpha", 1)
-                end
-            end
-        end
+    elseif curStep == 1792 then
+        tweenArrowsPosition(middlescroll, true)
+        move = false
+        doTweenX('cam','camHUD', 0, 1, 'linear')
         moveYOpponent = false
         moveYPlayer = false
-    end
-    if curStep == 1920 then
+    elseif curStep == 1920 then
         moveYOpponent = true
-    end
-    if curStep == 1984 then
+    elseif curStep == 1984 then
         moveYPlayer = true
-    end
-    if curStep == 2048 then
+    elseif curStep == 2048 then
         moveYOpponent = false
         moveYPlayer = false
     end
@@ -218,6 +83,81 @@ function clearOriginalYPositions()
     end
     for i = 4, 7 do
         originalYPositionsPlayer[i] = nil
+    end
+end
+
+function tweenArrowsPosition(isMiddlescroll, originalPos)
+    for i = 0, 3 do
+        if not originalXPositionsOpponent[i] then
+            originalXPositionsOpponent[i] = getPropertyFromGroup('strumLineNotes', i, 'x')
+        end
+    end
+    for i = 4, 7 do
+        if not originalXPositionsPlayer[i-4] then
+            originalXPositionsPlayer[i-4] = getPropertyFromGroup('strumLineNotes', i, 'x')
+        end
+    end
+
+    local targetAlpha = 0
+
+    if isMiddlescroll then
+        if not originalPos then
+            targetAlpha = 1
+            noteTweenX('NoteX0', 0, 92, 0.3, 'sineOut')
+            noteTweenX('NoteX1', 1, 204, 0.3, 'sineOut')
+            noteTweenX('NoteX2', 2, 316, 0.3, 'sineOut')
+            noteTweenX('NoteX3', 3, 428, 0.3, 'sineOut')
+            noteTweenX('NoteX4', 4, 732, 0.3, 'sineOut')
+            noteTweenX('NoteX5', 5, 844, 0.3, 'sineOut')
+            noteTweenX('NoteX6', 6, 956, 0.3, 'sineOut')
+            noteTweenX('NoteX7', 7, 1068, 0.3, 'sineOut')
+        else
+            targetAlpha = 0.35
+            for i = 0, 3 do
+                noteTweenX('NoteX'..i, i, originalXPositionsOpponent[i], 0.3, 'sineOut')
+            end
+            for i = 4, 7 do
+                noteTweenX('NoteX'..i, i, originalXPositionsPlayer[i-4], 0.3, 'sineOut')
+            end
+        end
+
+        if getPropertyFromClass("ClientPrefs", "opponentStrums") == true then
+            for i = 0, 3 do
+                noteTweenAlpha('alphaNote'..i, i, targetAlpha, 0.3, 'sineIn')
+            end
+            if getPropertyFromClass("ClientPrefs", "holdSplashes") == true then
+                setProperty("opponentHoldCovers.alpha", targetAlpha)
+            end
+        end
+    else
+        if not originalPos then
+            targetAlpha = 0.35
+            noteTweenX('NoteX0', 0, 82, 0.3, 'sineOut')
+            noteTweenX('NoteX1', 1, 194, 0.3, 'sineOut')
+            noteTweenX('NoteX2', 2, 971, 0.3, 'sineOut')
+            noteTweenX('NoteX3', 3, 1083, 0.3, 'sineOut')
+            noteTweenX('NoteX4', 4, 412, 0.3, 'sineOut')
+            noteTweenX('NoteX5', 5, 524, 0.3, 'sineOut')
+            noteTweenX('NoteX6', 6, 636, 0.3, 'sineOut')
+            noteTweenX('NoteX7', 7, 748, 0.3, 'sineOut')
+        else
+            targetAlpha = 1
+            for i = 0, 3 do
+                noteTweenX('NoteX'..i, i, originalXPositionsOpponent[i], 0.3, 'sineOut')
+            end
+            for i = 4, 7 do
+                noteTweenX('NoteX'..i, i, originalXPositionsPlayer[i-4], 0.3, 'sineOut')
+            end
+        end
+
+        if getPropertyFromClass("ClientPrefs", "opponentStrums") == true then
+            for i = 0, 3 do
+                noteTweenAlpha('alphaNote'..i, i, targetAlpha, 0.3, 'sineIn')
+            end
+            if getPropertyFromClass("ClientPrefs", "holdSplashes") == true then
+                setProperty("opponentHoldCovers.alpha", targetAlpha)
+            end
+        end
     end
 end
 
