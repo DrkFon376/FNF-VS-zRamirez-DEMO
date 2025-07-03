@@ -12,8 +12,20 @@ local originalYPositionsPlayer = {}
 -------------------
 
 -----------------------MODCHART-----------------------
+function onCreatePost()
+	if (getPropertyFromClass("ClientPrefs", "hideHud") == false and getProperty("visualsOnlyMode") == false) then
+        setProperty("iconP2.visible", false)
+    end
+    setProperty("dad.visible", false)
+end
+
 function onStepHit()
-    if curStep == 512 then
+    if curStep == 48 then
+        if (getPropertyFromClass("ClientPrefs", "hideHud") == false and getProperty("visualsOnlyMode") == false) then
+            setProperty("iconP2.visible", true)
+        end
+        setProperty("dad.visible", true)
+    elseif curStep == 512 then
         tweenArrowsPosition(middlescroll, false)
         move = true
         moveYOpponent = true
