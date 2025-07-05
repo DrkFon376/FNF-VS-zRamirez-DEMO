@@ -116,7 +116,7 @@ class CreditsState extends MusicBeatState
 			['Keoiki',					'keoiki',			'Note Splash Animations and Latin Alphabet',																			'https://x.com/Keoiki_',											'D2D2D2'],
 			['SqirraRNG',				'sqirra',			'Crash Handler and Base code for\nChart Editor\'s Waveform',															'https://x.com/gedehari',											'E1843A'],
 			['iFlicky',					'flicky',			'Composer of Psync and Tea Time\nMade the Dialogue Sounds',																'https://x.com/flicky_i',											'9E29CF'],
-			['EliteMasterEric',			'mastereric',		'Runtime Shaders support',																								'https://twitter.com/EliteMasterEric',				|				'FFBD40'],
+			['EliteMasterEric',			'mastereric',		'Runtime Shaders support',																								'https://twitter.com/EliteMasterEric',								'FFBD40'],
 			['PolybiusProxy',			'proxy',			'.MP4 Video Loader Library (hxCodec)',																					'https://twitter.com/polybiusproxy',								'DCD294'],
 			['KadeDev',					'kade',				'Fixed some cool stuff on Chart Editor\nand other PRs',																	'https://twitter.com/kade0912',										'64A250'],
 			['Nebula the Zorua',		'nebula',			'LUA JIT Fork and some Lua reworks',																					'https://twitter.com/Nebula_Zorua',									'7D40B2'],
