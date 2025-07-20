@@ -116,7 +116,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('Disable Sustain Loop',
-			"If unchecked, the looping of singing animations when you press a sustain note will be disabled, like V-Slice.",
+			"If checked, the looping of singing animations when you press a sustain note will be disabled, like V-Slice.",
 			'disableSustainLoop',
 			'bool',
 			false);

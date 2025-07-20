@@ -17,12 +17,32 @@
 				]
 			],
 			[
+				2022.47191011236,
+				[
+					[
+						"Overlay Alpha Fade",
+						"fadeIn",
+						"0.590625"
+					]
+				]
+			],
+			[
 				2696.62921348315,
 				[
 					[
 						"Flash White",
 						"",
 						""
+					]
+				]
+			],
+			[
+				5393.25842696629,
+				[
+					[
+						"Overlay Alpha Fade",
+						"fadeOut",
+						"4.05"
 					]
 				]
 			],
@@ -343,6 +363,26 @@
 						"Flash White",
 						"",
 						""
+					]
+				]
+			],
+			[
+				87640.4494382024,
+				[
+					[
+						"Overlay Alpha Fade",
+						"fadeIn",
+						"8.57, cubicOut"
+					]
+				]
+			],
+			[
+				97212.1406683206,
+				[
+					[
+						"Overlay Alpha Fade",
+						"fadeOut",
+						"2, cubicIn"
 					]
 				]
 			],
@@ -767,6 +807,26 @@
 				]
 			],
 			[
+				176351.787538304,
+				[
+					[
+						"Overlay Alpha Fade",
+						"fadeIn",
+						"8.57, cubicOut"
+					]
+				]
+			],
+			[
+				185923.478768423,
+				[
+					[
+						"Overlay Alpha Fade",
+						"fadeOut",
+						"2.29, cubicIn"
+					]
+				]
+			],
+			[
 				188209.193054137,
 				[
 					[
@@ -778,6 +838,16 @@
 						"Hey!",
 						"",
 						"30"
+					]
+				]
+			],
+			[
+				189352.050196994,
+				[
+					[
+						"Overlay Alpha Fade",
+						"fadeIn",
+						"2.29, cubicIn"
 					]
 				]
 			]

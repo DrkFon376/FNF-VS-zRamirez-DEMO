@@ -5225,3 +5225,4 @@ class PlayState extends MusicBeatState
 	}
 	#end
 }
+//hey buddy, a lot of the code used for this mod comes from the QT mod, so we give a special thanks to Hazard and NightShade who were the original creators of the QT mod from which we took some lines of code. -zRamírez
