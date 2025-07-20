@@ -113,7 +113,7 @@ class Note extends FlxSprite
 
 	private function set_texture(value:String):String {
 		if(texture != value) {
-			reloadNote(value);
+			reloadNote('', value, '');
 		}
 		texture = value;
 		return value;
